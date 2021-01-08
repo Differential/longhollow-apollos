@@ -113,10 +113,6 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           appdir: apollos-church-api
-          healthcheck: ${{ secrets.APP_DATA_URL }}/health
-          rollbackonhealthcheckfailed: true
-          checkstring: "ok"
-          delay: 300
 
       - name: Setup Node
         uses: actions/setup-node@v1
