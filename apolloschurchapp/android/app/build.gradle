@@ -143,7 +143,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.differential.apollos"
+        applicationId "com.longhollow"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 331
@@ -151,7 +151,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
-        resValue "string", "build_config_package", "com.differential.apollos"
+        resValue "string", "build_config_package", "com.longhollow"
         multiDexEnabled true
     }
     signingConfigs {

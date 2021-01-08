@@ -1,4 +1,4 @@
-package com.differential.apollos;
+package com.longhollow;
 import android.os.Bundle;
 import org.devio.rn.splashscreen.SplashScreen;
 import com.facebook.react.ReactActivity;
@@ -14,7 +14,7 @@ public class MainActivity extends GoogleCastActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "apolloschurchapp";
+        return "LongHollowchurchapp";
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.differential.apollos;
+package com.longhollow;
 
 import android.app.Application;
 import android.content.Context;
