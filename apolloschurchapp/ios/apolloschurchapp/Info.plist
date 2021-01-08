@@ -59,8 +59,6 @@
 	<string>$(PRODUCT_NAME) would like to use your camera (for uploading profile pictures)</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your location for determining your closest campus</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location for determining your closest campus</string>	
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your location for determining your closest campus</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -85,7 +83,7 @@
 		<string>Inter-UI-Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>BootSplash</string>
+	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
