@@ -1,6 +1,6 @@
 import './loadConfig';
 import { AppRegistry, YellowBox } from 'react-native';
-import ApollosConfig from '@LongHollowproject/config';
+import ApollosConfig from '@apollosproject/config';
 
 // temp fix for the promise.finally
 // https://github.com/storybookjs/storybook/issues/8371
@@ -21,4 +21,4 @@ YellowBox.ignoreWarnings([
   'Module RCTImageLoader',
 ]);
 
-AppRegistry.registerComponent('LongHollowchurchapp', () => App);
+AppRegistry.registerComponent('LongHollow', () => App);

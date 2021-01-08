@@ -2,7 +2,7 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '10.0'
-target 'LongHollowchurchapp' do
+target 'LongHollow' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
@@ -13,7 +13,7 @@ target 'LongHollowchurchapp' do
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
   # pod 'react-native-google-cast/NoBluetooth', path: '../node_modules/react-native-google-cast/ios/'
 
-  target 'LongHollowchurchappTests' do
+  target 'LongHollowTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -36,14 +36,14 @@ target 'LongHollowchurchapp' do
          target.build_phases << phase
          target.build_phases.move(phase,0)
        end
-      end    
+      end
   end
 end
 
-target 'LongHollowchurchapp-tvOS' do
-  # Pods for LongHollowchurchapp-tvOS
+target 'LongHollow-tvOS' do
+  # Pods for LongHollow-tvOS
 
-  target 'LongHollowchurchapp-tvOSTests' do
+  target 'LongHollow-tvOSTests' do
     inherit! :complete
     # Pods for testing
   end
