@@ -14,7 +14,7 @@ public class MainActivity extends GoogleCastActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "LongHollowchurchapp";
+        return "LongHollow";
     }
 
     @Override
