@@ -11,6 +11,12 @@
  * on a per-component basis with "overrides"
  */
 // const colors = {};
+const colors = {
+  // Brand Colors
+  primary: '#8B9612',
+  secondary: '#9CA24A',
+  tertiary: '#333333',
+};
 
 /* Base Typography sizing and fonts.
  * To control speicfic styles used on different type components (like H1, H2, etc), see "overrides"
@@ -56,4 +62,4 @@
 //   ...propOverrides,
 // };
 
-export default {};
+export default { colors };
