@@ -105,13 +105,11 @@ ROCK_MAPPINGS:
 
   CONTENT_ITEM:
     ContentSeriesContentItem:
-      # When resolving "ContentSeriesContentItem" look in rock for a "ContentChannelItem"
       EntityType: ContentChannelItem
-      # Used to define the subset of content channels types that use this specific type.
-      ContentChannelTypeId: [6]
+      ContentChannelId: [4, 10]
     DevotionalContentItem:
       EntityType: ContentChannelItem
-      ContentChannelId: [7]
+      ContentChannelId: [9]
     MediaContentItem:
       EntityType: ContentChannelItem
     UniversalContentItem:
@@ -128,15 +126,14 @@ ROCK_MAPPINGS:
 
   # Apollos will pull these content channels and expose them in the app on the discover screen.
   DISCOVER_CONTENT_CHANNEL_IDS:
-    - 3
-    - 5
-    - 6
-    - 8
+    - 4
+    - 10
   # Apollos will pull content items from these channels and expose them on the user feed
   # However, it will not expose the channel itself.
   # These channels are also pulled when indexing searchable content.
   FEED_CONTENT_CHANNEL_IDS:
-    - 6
+    - 5
+    - 9
 
   CAMPAIGN_CHANNEL_IDS:
     - 11
