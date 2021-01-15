@@ -36,7 +36,9 @@ jobs:
       run: yarn generate-stories
 
     - name: Get Introspection Data
-      run: node ./scripts/get-introspection-data.js
+      run: |
+        node ./scripts/get-introspection-data.js
+        echo ${{ secrets.APP_DATA_URL }}
       env:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
 
