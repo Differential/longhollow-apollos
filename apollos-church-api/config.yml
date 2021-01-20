@@ -166,17 +166,18 @@ DISCOVER_FEATURES:
   - algorithms:
       - type: CONTENT_CHANNEL
         arguments:
-          contentChannelId: 5
+          contentChannelId: 10
+          limit: 1
+    type: VerticalCardList
+    title: Your daily reading
+  - algorithms:
+      - type: CONTENT_CHANNEL
+        arguments:
+          contentChannelId: 9
           limit: 3
     type: HorizontalCardList
-    subtitle: Podcasts
-    primaryAction:
-      action: OPEN_CHANNEL
-      title: 'Read More'
-      relatedNode:
-        __typename: ContentChannel
-        id: 5
-        name: Podcasts
+    title: Start a new plan
+    subtitle: Read the bible
 
 # Default mapping of field types -> ids. There's probably no reason to edit this.
 ROCK_CONSTANTS:

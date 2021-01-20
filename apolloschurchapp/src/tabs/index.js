@@ -18,14 +18,14 @@ const TabNavigator = (props) => (
       options={{ tabBarIcon: tabBarIcon('home') }}
     />
     <Screen
-      name="Discover"
+      name="Read"
       component={Discover}
-      options={{ tabBarIcon: tabBarIcon('sections') }}
+      options={{ tabBarIcon: tabBarIcon('discover') }}
     />
     <Screen
       name="Connect"
       component={Connect}
-      options={{ tabBarIcon: tabBarIcon('profile') }}
+      options={{ tabBarIcon: tabBarIcon('connect') }}
     />
   </Navigator>
 );
