@@ -11,7 +11,8 @@ target 'LongHollow' do
 
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
-  # pod 'react-native-google-cast/NoBluetooth', path: '../node_modules/react-native-google-cast/ios/'
+  pod 'react-native-google-cast/NoBluetooth', path: '../node_modules/react-native-google-cast/ios/'
+  pod 'google-cast-sdk-no-bluetooth'
 
   target 'LongHollowTests' do
     inherit! :complete

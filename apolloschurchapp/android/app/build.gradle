@@ -217,6 +217,12 @@ dependencies {
     } else {
       implementation jscFlavor
     }
+    implementation "com.google.android.gms:play-services-cast-framework:${safeExtGet('castFrameworkVersion', '+')}"
+}
+
+// this is for cast
+def safeExtGet(prop, fallback) {
+  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 
 // Run this once to be able to run the application with BUCK
