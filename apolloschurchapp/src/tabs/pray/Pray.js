@@ -23,9 +23,9 @@ function handleOnPress({ action, ...props }) {
 // getHomeFeed uses the HOME_FEATURES in the config.yml
 // You can also hardcode an ID if you are confident it will never change
 // Or use some other strategy to get a FeatureFeed.id
-export const GET_DISCOVER_FEED = gql`
-  query getDiscoverFeatureFeed {
-    discoverFeedFeatures {
+export const GET_PRAY_FEED = gql`
+  query getPrayFeatureFeed {
+    prayFeedFeatures {
       id
     }
   }
@@ -36,20 +36,20 @@ const TabHeader = styled(({ theme }) => ({
   paddingTop: theme.sizing.baseUnit * 2,
 }))(H2);
 
-function Discover({ navigation }) {
+function Pray({ navigation }) {
   return (
     <RockAuthedWebBrowser>
       {(openUrl) => (
         <BackgroundView>
           <SafeAreaView>
-            <Query query={GET_DISCOVER_FEED}>
+            <Query query={GET_PRAY_FEED}>
               {({ data }) => (
                 <FeaturesFeedConnected
                   openUrl={openUrl}
                   navigation={navigation}
-                  featureFeedId={data?.discoverFeedFeatures?.id}
+                  featureFeedId={data?.prayFeedFeatures?.id}
                   onPressActionItem={handleOnPress}
-                  ListHeaderComponent={<TabHeader>Read</TabHeader>}
+                  ListHeaderComponent={<TabHeader>Pray</TabHeader>}
                 />
               )}
             </Query>
@@ -60,4 +60,4 @@ function Discover({ navigation }) {
   );
 }
 
-export default Discover;
+export default Pray;

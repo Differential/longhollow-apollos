@@ -187,14 +187,6 @@ WATCH_FEATURES:
           limit: 1
     type: VerticalCardList
     title: Your daily reading
-  - algorithms:
-      - type: CONTENT_CHANNEL
-        arguments:
-          contentChannelId: 9
-          limit: 3
-    type: HorizontalCardList
-    title: Start a new plan
-    subtitle: Read the bible
 
 PRAY_FEATURES:
   - algorithms:

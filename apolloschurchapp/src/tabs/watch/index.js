@@ -5,17 +5,13 @@ import { withTheme } from '@apollosproject/ui-kit';
 
 import ContentFeed from '../../content-feed';
 
-import Discover from './Discover';
+import Watch from './Watch';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-const DiscoverNavigator = (props) => (
-  <Navigator initialRouteName="Discover" {...props}>
-    <Screen
-      component={Discover}
-      name="Discover"
-      options={{ headerShown: false }}
-    />
+const WatchNavigator = (props) => (
+  <Navigator initialRouteName="Watch" {...props}>
+    <Screen component={Watch} name="Watch" options={{ headerShown: false }} />
     <Screen
       component={ContentFeed}
       name="ContentFeed"
@@ -26,7 +22,7 @@ const DiscoverNavigator = (props) => (
     />
   </Navigator>
 );
-const EnhancedDiscover = withTheme(({ theme, ...props }) => ({
+const EnhancedWatch = withTheme(({ theme, ...props }) => ({
   ...props,
   screenOptions: {
     headerTintColor: theme.colors.action.secondary,
@@ -39,6 +35,6 @@ const EnhancedDiscover = withTheme(({ theme, ...props }) => ({
     },
     headerLargeTitle: true,
   },
-}))(DiscoverNavigator);
+}))(WatchNavigator);
 
-export default EnhancedDiscover;
+export default EnhancedWatch;

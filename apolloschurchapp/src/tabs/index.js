@@ -27,12 +27,12 @@ const TabNavigator = (props) => (
     <Screen
       name="Watch"
       component={Watch}
-      options={{ tabBarIcon: tabBarIcon('play') }}
+      options={{ tabBarIcon: tabBarIcon('video') }}
     />
     <Screen
       name="Pray"
       component={Pray}
-      options={{ tabBarIcon: tabBarIcon('like-solid') }}
+      options={{ tabBarIcon: tabBarIcon('heart') }}
     />
     <Screen
       name="Connect"
