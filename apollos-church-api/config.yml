@@ -179,6 +179,32 @@ DISCOVER_FEATURES:
     title: Start a new plan
     subtitle: Read the bible
 
+WATCH_FEATURES:
+  - algorithms:
+      - type: CONTENT_CHANNEL
+        arguments:
+          contentChannelId: 10
+          limit: 1
+    type: VerticalCardList
+    title: Your daily reading
+  - algorithms:
+      - type: CONTENT_CHANNEL
+        arguments:
+          contentChannelId: 9
+          limit: 3
+    type: HorizontalCardList
+    title: Start a new plan
+    subtitle: Read the bible
+
+PRAY_FEATURES:
+  - algorithms:
+      - type: CONTENT_CHANNEL
+        arguments:
+          contentChannelId: 10
+          limit: 1
+    type: VerticalCardList
+    title: Your daily reading
+
 # Default mapping of field types -> ids. There's probably no reason to edit this.
 ROCK_CONSTANTS:
   TEXT: 1

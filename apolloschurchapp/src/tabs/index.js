@@ -6,6 +6,8 @@ import { withTheme } from '@apollosproject/ui-kit';
 import Connect from './connect';
 import Home from './home';
 import Discover from './discover';
+import Watch from './watch';
+import Pray from './pray';
 import tabBarIcon from './tabBarIcon';
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -21,6 +23,16 @@ const TabNavigator = (props) => (
       name="Read"
       component={Discover}
       options={{ tabBarIcon: tabBarIcon('discover') }}
+    />
+    <Screen
+      name="Watch"
+      component={Watch}
+      options={{ tabBarIcon: tabBarIcon('play') }}
+    />
+    <Screen
+      name="Pray"
+      component={Pray}
+      options={{ tabBarIcon: tabBarIcon('like-solid') }}
     />
     <Screen
       name="Connect"
