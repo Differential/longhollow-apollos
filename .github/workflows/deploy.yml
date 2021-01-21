@@ -35,6 +35,11 @@ jobs:
     - name: Generate Stories
       run: yarn generate-stories
 
+    - name: Fill out config variables
+      run: |
+        grep -o '\$.*' .env.production | sed 's/\$\(.*\)/\1/' | xargs -I _ sh -c "sed -i -e 's/\$_/${{ secrets._ }}/' .env.production"
+        cat .env.production
+
     - name: Get Introspection Data
       run: |
         node ./scripts/get-introspection-data.js
