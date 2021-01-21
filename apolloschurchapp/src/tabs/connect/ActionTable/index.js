@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import {
   TableView,
@@ -26,67 +25,100 @@ const Name = styled({
   flexGrow: 1,
 })(View);
 
-const ActionTable = () => {
-  const navigation = useNavigation();
-  return (
-    <RockAuthedWebBrowser>
-      {(openUrl) => (
-        <View>
-          <RowHeader>
-            <Name>
-              <H4>{'Connect with Apollos'}</H4>
-            </Name>
-          </RowHeader>
-          <TableView>
-            <Touchable
-              onPress={() =>
-                openUrl('https://apollosrock.newspring.cc/page/235')
-              }
-            >
-              <Cell>
-                <CellText>Find a serving opportunity</CellText>
-                <CellIcon name="arrow-next" />
-              </Cell>
-            </Touchable>
-            <Divider />
-            <Touchable
-              onPress={() =>
-                openUrl('https://apollosrock.newspring.cc/page/236')
-              }
-            >
-              <Cell>
-                <CellText>Join a small group</CellText>
-                <CellIcon name="arrow-next" />
-              </Cell>
-            </Touchable>
-            <Divider />
-            <Touchable
-              onPress={() =>
-                openUrl('https://apollosrock.newspring.cc/page/233')
-              }
-            >
-              <Cell>
-                <CellText>I need prayer</CellText>
-                <CellIcon name="arrow-next" />
-              </Cell>
-            </Touchable>
-          </TableView>
-          <TableView>
-            <Touchable
-              onPress={() => navigation.navigate('TestingControlPanel')}
-            >
-              <Cell>
-                <CellIcon name="settings" />
-                <CellText>Open Testing Panel</CellText>
-                <CellIcon name="arrow-next" />
-              </Cell>
-            </Touchable>
-          </TableView>
-        </View>
-      )}
-    </RockAuthedWebBrowser>
-  );
-};
+const ActionTable = () => (
+  <RockAuthedWebBrowser>
+    {(openUrl) => (
+      <View>
+        <RowHeader>
+          <Name>
+            <H4>{'Connect with Long Hollow'}</H4>
+          </Name>
+        </RowHeader>
+        <TableView>
+          <Touchable onPress={() => openUrl('https://longhollow.com/contact')}>
+            <Cell>
+              <CellText>Contact Us</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable onPress={() => openUrl('https://longhollow.com/prayer')}>
+            <Cell>
+              <CellText>Prayer Requests</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable onPress={() => openUrl('https://longhollow.com/baptism')}>
+            <Cell>
+              <CellText>Get Baptized</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable onPress={() => openUrl('https://longhollow.com/support')}>
+            <Cell>
+              <CellText>Support Groups</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable onPress={() => openUrl('https://longhollow.com/schedule')}>
+            <Cell>
+              <CellText>Times and Locations</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable onPress={() => openUrl('mailto:support@longhollow.com')}>
+            <Cell>
+              <CellText>Report an issue</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+        </TableView>
+        <RowHeader>
+          <Name>
+            <H4>{'Follow Us Online'}</H4>
+          </Name>
+        </RowHeader>
+        <TableView>
+          <Touchable onPress={() => openUrl('https://facebook.com/longhollow')}>
+            <Cell>
+              <CellText>Facebook</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable
+            onPress={() => openUrl('https://instagram.com/longhollow')}
+          >
+            <Cell>
+              <CellText>Instagram</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable onPress={() => openUrl('https://twitter.com/longhollow')}>
+            <Cell>
+              <CellText>Twitter</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable onPress={() => openUrl('https://youtube.com/longhollow')}>
+            <Cell>
+              <CellText>YouTube</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+        </TableView>
+      </View>
+    )}
+  </RockAuthedWebBrowser>
+);
 
 const StyledActionTable = styled(({ theme }) => ({
   paddingBottom: theme.sizing.baseUnit * 100,

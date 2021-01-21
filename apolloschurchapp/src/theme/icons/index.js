@@ -3,4 +3,7 @@ export Discover from './Discover';
 export Home from './Home';
 export Connect from './Connect';
 export Heart from './Heart';
+export HeartSolid from './HeartSolid';
 export Video from './Video';
+export Groups from './Groups';
+export Question from './Question';

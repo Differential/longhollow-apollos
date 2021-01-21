@@ -546,6 +546,8 @@ type Query {
   userFeedFeatures: [Feature] @deprecated(reason: "Use homeFeedFeatures or discoverFeedFeatures")
   homeFeedFeatures(campusId: ID): FeatureFeed
   discoverFeedFeatures: FeatureFeed
+  watchFeedFeatures: FeatureFeed
+  prayFeedFeatures: FeatureFeed
 }
 
 type RockPersonDetails {
