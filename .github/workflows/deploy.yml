@@ -29,13 +29,6 @@ jobs:
     - name: Install Bundler
       run: gem install bundler
 
-    - name: Install Dependencies
-      run: yarn
-
-    # required to build
-    - name: Generate Stories
-      run: yarn generate-stories
-
     - name: Fill out config variables
       run: |
         grep -o '\$.*' .env.production | sed 's/\$\(.*\)/\1/' | xargs -I {} sh -c "sed -i '' 's@\$"{}"@'$"{}"'@' .env.production"
@@ -43,11 +36,21 @@ jobs:
         git config --global user.name "doesntmatter"
         git add .env.production
         git commit -am "added variables"
+        echo $AMPLITUDE_API_KEY
+        echo $APP_DATA_URL
+        cat .env.production
       env:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
         ONESIGNAL_KEY: ${{ secrets.ONESIGNAL_KEY }}
         GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
+
+    - name: Install Dependencies
+      run: yarn
+
+    # required to build
+    - name: Generate Stories
+      run: yarn generate-stories
 
     - name: Get Introspection Data
       run: node ./scripts/get-introspection-data.js
