@@ -25,6 +25,7 @@ jobs:
     - name: Install Yarn
       run: npm install -g yarn
 
+    # required for the bundler version mismatch
     - name: Install Bundler
       run: gem install bundler
 
@@ -80,12 +81,29 @@ jobs:
     - name: Install Yarn
       run: npm install -g yarn
 
+    # required for the bundler version mismatch
+    - name: Install Bundler
+      run: gem install bundler
+
     - name: Install Dependencies
       run: yarn
 
     # required to build
     - name: Generate Stores
       run: yarn generate-stories
+
+    - name: Fill out config variables
+      run: |
+        grep -o '\$.*' .env.production | sed 's/\$\(.*\)/\1/' | xargs -I {} sh -c "sed -i '' 's@\$"{}"@'$"{}"'@' .env.production"
+        git config --global user.email "doesntmatter"
+        git config --global user.name "doesntmatter"
+        git add .env.production
+        git commit -am "added variables"
+      env:
+        APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
+        ONESIGNAL_KEY: ${{ secrets.ONESIGNAL_KEY }}
+        GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
 
     - name: Get Introspection Data
       run: node ./scripts/get-introspection-data.js
