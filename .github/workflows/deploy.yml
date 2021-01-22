@@ -41,7 +41,7 @@ jobs:
         cat .env.production
       env:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
-        ONESIGNAL_KEY: ${{ secrets.ONESIGNAL_KEY }}
+        ONE_SIGNAL_KEY: ${{ secrets.ONE_SIGNAL_KEY }}
         GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
 
