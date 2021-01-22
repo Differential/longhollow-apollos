@@ -37,8 +37,13 @@ jobs:
 
     - name: Fill out config variables
       run: |
-        grep -o '\$.*' .env.production | sed 's/\$\(.*\)/\1/' | xargs -I _ sh -c "sed -i -e 's/\$_/${{ secrets._ }}/' .env.production"
+        grep -o '\$.*' .env.production | sed 's/\$\(.*\)/\1/' | xargs -I _ sh -c "sed -i -e 's/\$_/$_/' .env.production"
         cat .env.production
+      env:
+        APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
+        ONESIGNAL_KEY: ${{ secrets.ONESIGNAL_KEY }}
+        GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
 
     - name: Get Introspection Data
       run: |
