@@ -36,9 +36,9 @@ jobs:
         git config --global user.name "doesntmatter"
         git add .env.production
         git commit -am "added variables"
-        echo $AMPLITUDE_API_KEY
-        echo $APP_DATA_URL
-        cat .env.production
+        echo $AMPLITUDE_API_KEY | cut -c1-10
+        echo $ONE_SIGNAL_KEY | cut -c1-10
+        echo $APP_DATA_URL | cut -c1-10
       env:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
         ONE_SIGNAL_KEY: ${{ secrets.ONE_SIGNAL_KEY }}
