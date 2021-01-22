@@ -228,6 +228,24 @@
     natural "^0.6.2"
     sanitize-html "^1.19.3"
 
+"@apollosproject/data-connector-rock@^2.0.0-beta.1":
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.0.0-beta.1.tgz#fcb8065218a8280cbe6c616f46be19933449fa35"
+  integrity sha512-0HnQ510eG3fff8R9x7QGsCumdfVbA1jW0PK90wQWGAfC3WM94NZlYrtuDGp+JYbFqN39LZYGA1Ua33VIfd+xxw==
+  dependencies:
+    "@apollosproject/server-core" "^2.0.0-beta.1"
+    awesome-phonenumber "^2.4.2"
+    form-data "^2.3.3"
+    hyphenation.en-us "^0.2.1"
+    hypher "^0.2.5"
+    jest "^25.1.0"
+    jsonwebtoken "^8.5.1"
+    lodash "^4.17.11"
+    moment "^2.22.2"
+    moment-timezone "^0.5.23"
+    natural "^0.6.2"
+    sanitize-html "^1.19.3"
+
 "@apollosproject/data-connector-twilio@^2.0.0-beta.0":
   version "2.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-twilio/-/data-connector-twilio-2.0.0-beta.0.tgz#ee6e16b098427ef1739dc700b67ec575a2c25249"
@@ -240,6 +258,13 @@
   version "2.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.0.0-beta.0.tgz#2c2492a08fa3cd101c9d0663e81f02068faccc60"
   integrity sha512-het+724/tPm+0+9GgZzMghN0a8kvSnjztXBLbu9iFFi0rhQZUtJR4Neg4f35hm920wgBPmMguZ/MCA5e3wdHww==
+  dependencies:
+    graphql-tag "^2.10.0"
+
+"@apollosproject/data-schema@^2.0.0-beta.1":
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.0.0-beta.1.tgz#d1dde7822506afdb2df3eee4ea9930453051ee8e"
+  integrity sha512-iQU3WqrGz4lOQvDLMNrXjivRgXIfAVK/1+n3eLv06R6Q+rqHaKSqgq4zViEG6hdEAK0uwZ5CMP+ygIbw3X3ZkQ==
   dependencies:
     graphql-tag "^2.10.0"
 
@@ -277,6 +302,20 @@
     graphql-tag "^2.10.0"
     lodash "^4.17.11"
 
+"@apollosproject/server-core@^2.0.0-beta.1":
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.0.0-beta.1.tgz#b4147658c132c98662108cede86894c813a1a593"
+  integrity sha512-/XEN3k/6ywdPA9AL/X314h+Mv7YNS9BQ4fgwm+DymdxDJkWlPJPbY89voa9FOnEELjILpea1jq0S5Dl0TDAgZQ==
+  dependencies:
+    "@apollosproject/data-schema" "^2.0.0-beta.1"
+    apollo-server-caching "^0.4.0"
+    bull "^3.11.0"
+    bull-board "^0.1.1"
+    express-basic-auth "^1.2.0"
+    graphql-parse-resolve-info "^4.4.5"
+    graphql-tag "^2.10.0"
+    lodash "^4.17.11"
+
 "@apollosproject/ui-analytics@^2.0.0-beta.0":
   version "2.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@apollosproject/ui-analytics/-/ui-analytics-2.0.0-beta.0.tgz#e7630ee023921c308500697fef19b77acdf1f2d6"
@@ -285,10 +324,10 @@
     graphql-tag "2.9.2"
     react-native-device-info "^4.0.1"
 
-"@apollosproject/ui-auth@^2.0.0-beta.0":
-  version "2.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-auth/-/ui-auth-2.0.0-beta.0.tgz#77a15538db64cca27fa246499f1dae461b8c3c89"
-  integrity sha512-LMa8MHmJkj6a1XHQFRBqCoPsHSnATGUOCXWyOCuIsyB96zXLsWmIrV+9mrujS17ddC8aH+O6N488M3UcsRAtHQ==
+"@apollosproject/ui-auth@^2.0.0-beta.1":
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-auth/-/ui-auth-2.0.0-beta.1.tgz#af1d8dec0ceb07ae88e9a8830fe9d45f4fbd46c6"
+  integrity sha512-gl2v65ydWgABQUDRl2IcAI+0kQ+i6meINmZUma6ZUg9CvSjBWWGoZDX08nZ5mG58vumePRBLb3WXZhguBf/d7Q==
   dependencies:
     formik "1.5.1"
     graphql-tag "2.9.2"
