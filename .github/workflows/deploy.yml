@@ -36,7 +36,6 @@ jobs:
         git config --global user.email "doesntmatter"
         git config --global user.name "doesntmatter"
         git add .env.production
-        git add .env
         git commit -am "added variables"
       env:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
