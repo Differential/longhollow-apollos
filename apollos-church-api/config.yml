@@ -181,12 +181,18 @@ DISCOVER_FEATURES:
 
 WATCH_FEATURES:
   - algorithms:
+      - type: LATEST_SERIES_CHILDREN
+        arguments:
+          channelId: 4
+    type: HeroList
+    title: Catch up
+    subtitle: The Weekend
+  - algorithms:
       - type: CONTENT_CHANNEL
         arguments:
-          contentChannelId: 10
-          limit: 1
+          contentChannelId: 4
     type: VerticalCardList
-    title: Your daily reading
+    subtitle: All series
 
 PRAY_FEATURES:
   - algorithms:

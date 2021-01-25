@@ -54,7 +54,6 @@
     "@apollo/client": "3.3.0-rc.2",
     "@apollo/react-hooks": "^3.1.3",
     "@apollosproject/config": "^2.0.0-beta.0",
-    "@apollosproject/data-connector-rock": "^2.0.0-beta.1",
     "@apollosproject/react-native-airplay-btn": "^0.2.0",
     "@apollosproject/ui-analytics": "^2.0.0-beta.0",
     "@apollosproject/ui-auth": "^2.0.0-beta.1",

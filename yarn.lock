@@ -210,24 +210,6 @@
     apollo-datasource "^0.2.0"
     ioredis "4.14.1"
 
-"@apollosproject/data-connector-rock@^2.0.0-beta.0":
-  version "2.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.0.0-beta.0.tgz#3c39024e53a30e95b3fcb1d22145c44fa5850a29"
-  integrity sha512-chjKNz9R/uyeXzlMjlf3//udUUpQeUAuIXp8YissRY8xJgRE7X/fCYwEVXetA5sS2iK/HWM7A419HuLdZ1NJ9Q==
-  dependencies:
-    "@apollosproject/server-core" "^2.0.0-beta.0"
-    awesome-phonenumber "^2.4.2"
-    form-data "^2.3.3"
-    hyphenation.en-us "^0.2.1"
-    hypher "^0.2.5"
-    jest "^25.1.0"
-    jsonwebtoken "^8.5.1"
-    lodash "^4.17.11"
-    moment "^2.22.2"
-    moment-timezone "^0.5.23"
-    natural "^0.6.2"
-    sanitize-html "^1.19.3"
-
 "@apollosproject/data-connector-rock@^2.0.0-beta.1":
   version "2.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.0.0-beta.1.tgz#fcb8065218a8280cbe6c616f46be19933449fa35"

@@ -530,7 +530,7 @@ type Query {
   _placeholder: Boolean
   node(id: ID!): Node
   likedContent(first: Int, after: String): ContentItemsConnection
-  contentChannels: [ContentChannel]
+  contentChannels: [ContentChannel] @deprecated(reason: "No longer supported.")
   campaigns: ContentItemsConnection
   userFeed(first: Int, after: String): ContentItemsConnection
   personaFeed(first: Int, after: String): ContentItemsConnection
