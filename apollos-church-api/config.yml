@@ -195,13 +195,10 @@ WATCH_FEATURES:
     subtitle: All series
 
 PRAY_FEATURES:
-  - algorithms:
-      - type: CONTENT_CHANNEL
-        arguments:
-          contentChannelId: 10
-          limit: 1
-    type: VerticalCardList
-    title: Your daily reading
+  - algorithms: [DAILY_PRAYER]
+    isCard: false
+    type: PrayerList
+    title: Daily Prayer
 
 # Default mapping of field types -> ids. There's probably no reason to edit this.
 ROCK_CONSTANTS:
