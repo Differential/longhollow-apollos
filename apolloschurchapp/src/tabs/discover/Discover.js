@@ -41,7 +41,7 @@ function Discover({ navigation }) {
     <RockAuthedWebBrowser>
       {(openUrl) => (
         <BackgroundView>
-          <SafeAreaView>
+          <SafeAreaView edges={['top', 'right', 'left']}>
             <Query query={GET_DISCOVER_FEED}>
               {({ data }) => (
                 <FeaturesFeedConnected

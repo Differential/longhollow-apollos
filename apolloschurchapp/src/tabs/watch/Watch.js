@@ -41,7 +41,7 @@ function Watch({ navigation }) {
     <RockAuthedWebBrowser>
       {(openUrl) => (
         <BackgroundView>
-          <SafeAreaView>
+          <SafeAreaView edges={['top', 'right', 'left']}>
             <Query query={GET_WATCH_FEED}>
               {({ data }) => (
                 <FeaturesFeedConnected

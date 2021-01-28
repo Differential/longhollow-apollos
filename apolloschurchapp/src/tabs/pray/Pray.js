@@ -41,7 +41,7 @@ function Pray({ navigation }) {
     <RockAuthedWebBrowser>
       {(openUrl) => (
         <BackgroundView>
-          <SafeAreaView>
+          <SafeAreaView edges={['top', 'right', 'left']}>
             <Query query={GET_PRAY_FEED}>
               {({ data }) => (
                 <FeaturesFeedConnected
