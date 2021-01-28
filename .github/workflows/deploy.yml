@@ -32,7 +32,7 @@ jobs:
     - name: Fill out config variables
       run: |
         grep -o '\$.*' .env.production | sed 's/\$\(.*\)/\1/' | xargs -I {} sh -c "sed -i '' 's@\$"{}"@'$"{}"'@' .env.production"
-        mv .env.production .env
+        cp .env.production .env
       env:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
         ONE_SIGNAL_KEY: ${{ secrets.ONE_SIGNAL_KEY }}
@@ -85,7 +85,7 @@ jobs:
     - name: Fill out config variables
       run: |
         grep -o '\$.*' .env.production | sed 's/\$\(.*\)/\1/' | xargs -I {} sh -c "sed -i '' 's@\$"{}"@'$"{}"'@' .env.production"
-        mv .env.production .env
+        cp .env.production .env
       env:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
         ONE_SIGNAL_KEY: ${{ secrets.ONE_SIGNAL_KEY }}
