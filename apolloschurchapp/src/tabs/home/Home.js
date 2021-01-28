@@ -44,6 +44,14 @@ const GET_HOME_FEED = gql`
   }
 `;
 
+const SearchHeaderView = styled({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  left: 0,
+  elevation: 3,
+})(Animated.View);
+
 function Home(props) {
   const [searchText, setSearchText] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -76,23 +84,13 @@ function Home(props) {
     <RockAuthedWebBrowser>
       {(openUrl) => (
         <BackgroundView>
-          <Animated.View
-            style={{ transform: [{ translateY }] }}
-            onLayout={({
-              nativeEvent: {
-                layout: { height },
-              },
-            }) => setSearchBarHeight(height)}
-          >
-            <SearchInputHeader
-              onChangeText={throttle(setSearchText, 300)}
-              onFocus={setIsFocused}
-              inputRef={searchRef}
-            />
-          </Animated.View>
           <SafeAreaView>
             {isFocused || searchText ? (
-              <View style={{ marginTop: searchBarHeight }}>
+              <View
+                style={{
+                  marginTop: searchBarHeight,
+                }}
+              >
                 <SearchFeedConnected searchText={searchText} />
               </View>
             ) : (
@@ -114,6 +112,22 @@ function Home(props) {
               </Query>
             )}
           </SafeAreaView>
+          <SearchHeaderView
+            style={{
+              transform: [{ translateY }],
+            }}
+            onLayout={({
+              nativeEvent: {
+                layout: { height },
+              },
+            }) => setSearchBarHeight(height)}
+          >
+            <SearchInputHeader
+              onChangeText={throttle(setSearchText, 300)}
+              onFocus={setIsFocused}
+              inputRef={searchRef}
+            />
+          </SearchHeaderView>
         </BackgroundView>
       )}
     </RockAuthedWebBrowser>
