@@ -107,7 +107,7 @@ ROCK_MAPPINGS:
   CONTENT_ITEM:
     ContentSeriesContentItem:
       EntityType: ContentChannelItem
-      ContentChannelId: [4, 10]
+      ContentChannelId: [11, 10]
     DevotionalContentItem:
       EntityType: ContentChannelItem
       ContentChannelId: [9]
@@ -116,7 +116,7 @@ ROCK_MAPPINGS:
     UniversalContentItem:
       EntityType: ContentChannelItem
     WeekendContentItem:
-      ContentChannelId: [5]
+      ContentChannelId: [12]
       EntityType: ContentChannelItem
     ContentItem:
       EntityType: ContentChannelItem
@@ -127,19 +127,19 @@ ROCK_MAPPINGS:
 
   # Apollos will pull these content channels and expose them in the app on the discover screen.
   DISCOVER_CONTENT_CHANNEL_IDS:
-    - 4
+    - 11
     - 10
   # Apollos will pull content items from these channels and expose them on the user feed
   # However, it will not expose the channel itself.
   # These channels are also pulled when indexing searchable content.
   FEED_CONTENT_CHANNEL_IDS:
-    - 5
+    - 12
     - 9
 
   CAMPAIGN_CHANNEL_IDS:
-    - 11
+    - 1
 
-  SERMON_CHANNEL_ID: 5
+  SERMON_CHANNEL_ID: 12
 
   SERVING_GROUP_TYPE_ID: 23
   COMMUNITY_GROUP_TYPE_ID: 25
@@ -151,7 +151,7 @@ HOME_FEATURES:
   - algorithms:
     - type: CONTENT_CHANNEL
       arguments:
-        contentChannelId: 5
+        contentChannelId: 12
         limit: 1
     type: VerticalCardList
   - algorithms: [PERSONA_FEED]
@@ -183,14 +183,14 @@ WATCH_FEATURES:
   - algorithms:
       - type: LATEST_SERIES_CHILDREN
         arguments:
-          channelId: 4
+          channelId: 11
     type: HeroList
     title: Catch up
     subtitle: The Weekend
   - algorithms:
       - type: CONTENT_CHANNEL
         arguments:
-          contentChannelId: 4
+          contentChannelId: 11
     type: VerticalCardList
     subtitle: All series
 
