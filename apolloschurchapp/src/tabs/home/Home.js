@@ -72,7 +72,7 @@ function Home(props) {
         mass: 3,
         useNativeDriver: true,
       }).start(() => {
-        if (active) {
+        if (active && isFocused) {
           searchRef.current.focus();
         }
       });
