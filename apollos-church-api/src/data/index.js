@@ -19,7 +19,7 @@ import {
   Interactions,
   RockConstants,
   Person,
-  ContentItem,
+  // ContentItem,
   ContentChannel,
   Sharable,
   Auth,
@@ -38,6 +38,8 @@ import {
 import * as Theme from './theme';
 import * as Feature from './features';
 import * as FeatureFeed from './feature-feeds';
+import * as Vimeo from './Vimeo';
+import * as ContentItem from './ContentItem';
 
 // This module is used to attach Rock User updating to the OneSignal module.
 // This module includes a Resolver that overides a resolver defined in `OneSignal`
@@ -75,6 +77,7 @@ const data = {
   Event,
   Cache,
   PrayerRequest,
+  Vimeo,
 };
 
 const {
