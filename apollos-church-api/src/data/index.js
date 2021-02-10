@@ -35,6 +35,9 @@ import {
   Event,
   PrayerRequest,
 } from '@apollosproject/data-connector-rock';
+
+import { Comment, UserFlag } from '@apollosproject/data-connector-postgres';
+
 import * as Theme from './theme';
 import * as Feature from './features';
 import * as FeatureFeed from './feature-feeds';
@@ -78,6 +81,8 @@ const data = {
   Cache,
   PrayerRequest,
   Vimeo,
+  Comment,
+  UserFlag,
 };
 
 const {

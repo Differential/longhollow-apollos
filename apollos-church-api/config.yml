@@ -148,12 +148,12 @@ ROCK_MAPPINGS:
   MOBILE_DEVICE_TYPE_ID: 671
 
 HOME_FEATURES:
-  - algorithms:
-    - type: CONTENT_CHANNEL
-      arguments:
-        contentChannelId: 14
-        limit: 1
-    type: VerticalCardList
+  #- algorithms:
+    #- type: CONTENT_CHANNEL
+      #arguments:
+        #contentChannelId: 14
+        #limit: 1
+    #type: VerticalCardList
   - algorithms: [PERSONA_FEED]
     type: ActionList
     title: For you
@@ -199,6 +199,8 @@ PRAY_FEATURES:
     isCard: false
     type: PrayerList
     title: Daily Prayer
+  - type: UserPrayerList
+    title: Your Prayers
 
 # Default mapping of field types -> ids. There's probably no reason to edit this.
 ROCK_CONSTANTS:

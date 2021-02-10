@@ -63,7 +63,11 @@ const App = (props) => (
   <Providers>
     <BackgroundView>
       <AppStatusBar />
-      <NavigationContainer ref={NavigationService.setTopLevelNavigator}>
+      <NavigationContainer
+        ref={NavigationService.setTopLevelNavigator}
+        /* eslint-disable-next-line */
+        onReady={NavigationService.setIsReady}
+      >
         <ThemedNavigator initialRouteName="ProtectedRoute" {...props}>
           <Screen
             name="ProtectedRoute"
