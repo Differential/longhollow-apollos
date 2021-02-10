@@ -199,7 +199,7 @@ PRAY_FEATURES:
     isCard: false
     type: PrayerList
     title: Daily Prayer
-  - type: UserPrayerList
+  - type: VerticalPrayerList
     title: Your Prayers
 
 # Default mapping of field types -> ids. There's probably no reason to edit this.
