@@ -57,10 +57,10 @@
     "@apollosproject/react-native-airplay-btn": "^0.2.0",
     "@apollosproject/ui-analytics": "^2.0.0",
     "@apollosproject/ui-auth": "^2.0.0",
-    "@apollosproject/ui-connected": "^2.0.0",
-    "@apollosproject/ui-fragments": "^2.0.0",
+    "@apollosproject/ui-connected": "^2.0.1-canary.17",
+    "@apollosproject/ui-fragments": "^2.0.1-canary.15",
     "@apollosproject/ui-htmlview": "^2.0.0",
-    "@apollosproject/ui-kit": "^2.0.0",
+    "@apollosproject/ui-kit": "^2.0.1-canary.17",
     "@apollosproject/ui-mapview": "^2.0.0",
     "@apollosproject/ui-media-player": "^2.0.0",
     "@apollosproject/ui-notifications": "^2.0.0",
@@ -69,6 +69,7 @@
     "@apollosproject/ui-prayer": "^2.0.0",
     "@apollosproject/ui-scripture": "^2.0.0",
     "@apollosproject/ui-storybook": "^2.0.0",
+    "@apollosproject/ui-test-utils": "^2.0.0",
     "@bugsnag/react-native": "^7.6.0",
     "@metarouter/analytics-react-native": "^1.1.5",
     "@react-native-community/async-storage": "^1.5.1",
@@ -126,8 +127,7 @@
     "recompose": "^0.30.0",
     "rn-fetch-blob": "^0.10.16",
     "stream": "^0.0.2",
-    "yup": "0.26.6",
-    "@apollosproject/ui-test-utils": "^2.0.0"
+    "yup": "0.26.6"
   },
   "devDependencies": {
     "@apollosproject/eslint-config": "^2.0.0",
