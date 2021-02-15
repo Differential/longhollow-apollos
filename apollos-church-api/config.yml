@@ -23,7 +23,7 @@ ROCK:
   API_URL: ${ROCK_API}
   API_TOKEN: ${ROCK_TOKEN}
   IMAGE_URL: https://rock.longhollow.com/GetImage.ashx
-  SHARE_URL: https://rock.longhollow.com
+  SHARE_URL: https://longhollow.herokuapp.com
   # This should match the timezone of the Rock server
   TIMEZONE: 'America/New_York'
   USE_PLUGIN: true
@@ -31,16 +31,16 @@ ROCK:
   VERSION: 11
 UNIVERSAL_LINKS:
   # This should be your app's bundle ID, as found in your info.plist.
-  APPLE_APP_ID: org.reactjs.native.apolloschurchapp
+  APPLE_APP_ID: com.longhollow.churchapp
   # This should be your app's team ID, as found in Xcode
-  APPLE_TEAM_ID: 7TM8C6252Z
+  APPLE_TEAM_ID: 6QZF6PFAQS
   # Where should a user be redirected if they don't have your app installed?
-  APP_STORE_LINK: https://apollos.app/ios
-  PLAY_STORE_LINK: https://apollos.app/android
+  APP_STORE_LINK: https://longhollow.com
+  PLAY_STORE_LINK: https://longhollow.com
   # Your app Id, as found in your app/build.gradle.
-  GOOGLE_APP_ID: com.differential.apollos
+  GOOGLE_APP_ID: com.longhollow
   # https://docs.getsocial.im/knowledge-base/android-signing-key-sha256/
-  GOOGLE_KEYSTORE_SHA256: EC:6E:B5:5A:62:53:1E:53:FF:C4:BA:A7:CB:29:77:57:71:9D:65:2F:AF:69:41:A3:AD:2B:C4:55:A1:7A:07:03
+  GOOGLE_KEYSTORE_SHA256: FA:30:F5:C2:8F:ED:D7:F8:C2:16:8C:6A:95:88:56:0A:68:40:A9:A7:FA:BE:42:05:45:05:2B:DD:C2:2C:B6:6A
 ONE_SIGNAL:
   APP_ID: 74697261-f31d-489d-9a42-aaf6b2529de3
   REST_KEY: ${ONE_SIGNAL_REST_KEY}
