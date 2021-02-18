@@ -28,6 +28,11 @@ platform :ios do
 
   desc "Push a new beta build to TestFlight"
   lane :deploy do
+    app_store_connect_api_key(
+      key_id: "5BBBTT88VV",
+      issuer_id: "9ff7deb7-be87-427d-bc7a-89685f5de288",
+      key_filepath: "ios/apollos.p8",
+    )
     setup_ci
     certificates
     increment_build_number(build_number: number_of_commits, xcodeproj: "ios/LongHollow.xcodeproj")
