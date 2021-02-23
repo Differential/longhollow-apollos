@@ -150,12 +150,12 @@ ROCK_MAPPINGS:
   MOBILE_DEVICE_TYPE_ID: 671
 
 HOME_FEATURES:
-  #- algorithms:
-    #- type: CONTENT_CHANNEL
-      #arguments:
-        #contentChannelId: 14
-        #limit: 1
-    #type: VerticalCardList
+  - algorithms:
+    - type: CONTENT_CHANNEL
+      arguments:
+        contentChannelId: 14
+        limit: 1
+    type: VerticalCardList
   - algorithms: [PERSONA_FEED]
     type: ActionList
     title: For you
