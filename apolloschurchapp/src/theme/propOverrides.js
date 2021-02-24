@@ -2,12 +2,12 @@
 
 export default {
   // 'ui-kit.HighlightCard': {
-  // LabelComponent: () => () => null,
+  // labelText: '',
   // },
   // 'ui-kit.DefaultCard': {
-  // LabelComponent: () => () => null,
+  // labelText: '',
   // },
   // 'ui-kit.FeaturedCard': {
-  // LabelComponent: () => () => null,
+  // labelText: '',
   // },
 };
