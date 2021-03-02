@@ -18,7 +18,7 @@ jobs:
         fetch-depth: 0
 
     - name: Setup Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
 
     - name: Install Yarn
       run: npm install -g yarn
@@ -73,7 +73,7 @@ jobs:
         fetch-depth: 0
 
     - name: Setup Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
 
     - name: Install Yarn
       run: npm install -g yarn
@@ -139,7 +139,7 @@ jobs:
           appdir: apollos-church-api
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
 
       - name: Publish Schema
         run: npx apollo schema:publish --endpoint=${{ secrets.APP_DATA_URL }}
