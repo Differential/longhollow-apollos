@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import gql from 'graphql-tag';
 import { Query } from '@apollo/client/react/components';
 
-import { styled, BackgroundView } from '@apollosproject/ui-kit';
+import { withTheme, BackgroundView } from '@apollosproject/ui-kit';
 import {
   FeaturesFeedConnected,
   FEATURE_FEED_ACTION_MAP,
@@ -14,11 +14,17 @@ import {
 
 import HomeSearchButton from './HomeSearchButton';
 
-const LogoTitle = styled(({ theme }) => ({
-  height: theme.sizing.baseUnit * 2,
-  margin: theme.sizing.baseUnit,
-  alignSelf: 'center',
-  resizeMode: 'contain',
+const LogoTitle = withTheme(({ theme }) => ({
+  style: {
+    height: theme.sizing.baseUnit * 2,
+    margin: theme.sizing.baseUnit,
+    alignSelf: 'center',
+    resizeMode: 'contain',
+  },
+  source:
+    theme.type === 'dark'
+      ? require('./wordmark.dark.png')
+      : require('./wordmark.png'),
 }))(Image);
 
 function handleOnPress({ action, ...props }) {
@@ -56,7 +62,7 @@ function Home(props) {
                   onPressActionItem={handleOnPress}
                   ListHeaderComponent={
                     <>
-                      <LogoTitle source={require('./wordmark.png')} />
+                      <LogoTitle />
                       <HomeSearchButton
                         onPress={() => props.navigation.navigate('Search')}
                       />
