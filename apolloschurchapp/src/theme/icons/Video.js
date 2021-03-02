@@ -4,19 +4,25 @@ import Svg, { Path } from 'react-native-svg';
 import { makeIcon } from '@apollosproject/ui-kit';
 
 const Icon = makeIcon(({ size, fill } = {}) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+  <Svg
+    width={size}
+    height={size}
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/Svg"
+  >
     <Path
-      d="M12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5C6.20101 1.5 1.5 6.20101 1.5 12C1.5 17.799 6.20101 22.5 12 22.5Z"
+      d="M14 24.5C19.799 24.5 24.5 19.799 24.5 14C24.5 8.20101 19.799 3.5 14 3.5C8.20101 3.5 3.5 8.20101 3.5 14C3.5 19.799 8.20101 24.5 14 24.5Z"
       stroke={fill}
-      stroke-width="2"
-      stroke-miterlimit="10"
+      strokeWidth="2"
+      strokeMiterlimit="10"
     />
     <Path
-      d="M15.5 12L10.25 8.5V15.5L15.5 12Z"
+      d="M17.5 14L12.25 10.5V17.5L17.5 14Z"
       stroke={fill}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </Svg>
 ));
