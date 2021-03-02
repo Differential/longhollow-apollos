@@ -84,18 +84,6 @@ class UserSettings extends PureComponent {
                           }
                         >
                           <Cell>
-                            <CellText>Give Feedback</CellText>
-                            <CellIcon name="arrow-next" />
-                          </Cell>
-                        </Touchable>
-                      </TableView>
-                      <TableView>
-                        <Touchable
-                          onPress={() =>
-                            openUrl('https://apollosrock.newspring.cc/')
-                          }
-                        >
-                          <Cell>
                             <CellText>Privacy Policy</CellText>
                             <CellIcon name="arrow-next" />
                           </Cell>
