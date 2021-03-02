@@ -14,10 +14,8 @@ import {
 } from '@apollosproject/ui-kit';
 import {
   AskNotificationsConnected,
-  AskNameConnected,
-  FeaturesConnected,
-  AboutYouConnected,
   LocationFinderConnected,
+  FeaturesConnected,
   OnboardingSwiper,
   onboardingComplete,
   WITH_USER_ID,
@@ -40,16 +38,10 @@ function Onboarding({ navigation }) {
       <OnboardingSwiper>
         {({ swipeForward }) => (
           <>
-            <AskNameConnected onPressPrimary={swipeForward} />
             <FeaturesConnected
-              onPressPrimary={swipeForward}
-              BackgroundComponent={
-                <StyledGradient
-                  source={'https://picsum.photos/640/640/?random'}
-                />
+              description={
+                'Let’s take a few seconds to get your profile set up so you can get the most out of our app.'
               }
-            />
-            <AboutYouConnected
               onPressPrimary={swipeForward}
               BackgroundComponent={
                 <StyledGradient
@@ -58,6 +50,10 @@ function Onboarding({ navigation }) {
               }
             />
             <LocationFinderConnected
+              slideTitle={'Let’s Find Your Campus'}
+              description={
+                'If you attend one of our local campuses, select it below. If you’re a part of our Online Campus, there’s an option for that as well.'
+              }
               onPressPrimary={swipeForward}
               onNavigate={() => {
                 navigation.navigate('Location');
@@ -71,6 +67,10 @@ function Onboarding({ navigation }) {
             <Query query={WITH_USER_ID} fetchPolicy="network-only">
               {({ data }) => (
                 <AskNotificationsConnected
+                  slideTitle={'Want to Stay in the Loop?'}
+                  description={
+                    'Turn on notifications for this app, and you’ll be the first to know when something important pops up.'
+                  }
                   onPressPrimary={() => {
                     onboardingComplete({ userId: data?.currentUser?.id });
                     navigation.dispatch(

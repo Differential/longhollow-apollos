@@ -11,12 +11,16 @@ const FullScreenImage = styled({
 
 const LandingScreenSlide = ({ navigation }) => (
   <LandingScreen
+    slideTitle={'Welcome to Long Hollow!'}
+    description={
+      'We’re a church that exists to invite each other into a growing relationship with Jesus.'
+    }
     onPressPrimary={() => navigation.push('Auth')}
     textColor={'white'}
     BackgroundComponent={
       <FullScreenImage source={'https://picsum.photos/375/812/?random'} />
     }
-    primaryNavText={"Let's go!"}
+    primaryNavText={"Let's get started"}
   />
 );
 
