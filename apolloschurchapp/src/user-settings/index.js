@@ -80,7 +80,7 @@ class UserSettings extends PureComponent {
                       <TableView>
                         <Touchable
                           onPress={() =>
-                            openUrl('https://apollosrock.newspring.cc/')
+                            openUrl('http://longhollow.com/privacy/')
                           }
                         >
                           <Cell>
@@ -91,7 +91,7 @@ class UserSettings extends PureComponent {
                         <Divider />
                         <Touchable
                           onPress={() =>
-                            openUrl('https://apollosrock.newspring.cc/')
+                            openUrl('http://longhollow.com/terms/')
                           }
                         >
                           <Cell>
