@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, Image } from 'react-native';
 import { Query } from '@apollo/client/react/components';
 import {
   checkNotifications,
@@ -7,7 +8,6 @@ import {
   RESULTS,
 } from 'react-native-permissions';
 import {
-  GradientOverlayImage,
   styled,
   BackgroundView,
   NavigationService,
@@ -27,9 +27,14 @@ const FullscreenBackgroundView = styled({
   height: '100%',
 })(BackgroundView);
 
-const StyledGradient = styled({
-  maxHeight: '40%',
-})(GradientOverlayImage);
+const ImageContainer = styled({
+  height: '40%',
+})(View);
+
+const StyledImage = styled({
+  height: '100%',
+  width: '100%',
+})(Image);
 
 function Onboarding({ navigation }) {
   return (
@@ -44,9 +49,9 @@ function Onboarding({ navigation }) {
               }
               onPressPrimary={swipeForward}
               BackgroundComponent={
-                <StyledGradient
-                  source={'https://picsum.photos/640/640/?random'}
-                />
+                <ImageContainer>
+                  <StyledImage source={require('./personalize.jpg')} />
+                </ImageContainer>
               }
             />
             <LocationFinderConnected
@@ -59,9 +64,9 @@ function Onboarding({ navigation }) {
                 navigation.navigate('Location');
               }}
               BackgroundComponent={
-                <StyledGradient
-                  source={'https://picsum.photos/640/640/?random'}
-                />
+                <ImageContainer>
+                  <StyledImage source={require('./location.jpg')} />
+                </ImageContainer>
               }
             />
             <Query query={WITH_USER_ID} fetchPolicy="network-only">
@@ -95,9 +100,9 @@ function Onboarding({ navigation }) {
                   }}
                   primaryNavText={'Finish'}
                   BackgroundComponent={
-                    <StyledGradient
-                      source={'http://picsum.photos/640/640/?random'}
-                    />
+                    <ImageContainer>
+                      <StyledImage source={require('./notifications.jpg')} />
+                    </ImageContainer>
                   }
                 />
               )}

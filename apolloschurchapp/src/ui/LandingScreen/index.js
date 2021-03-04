@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { styled, ConnectedImage } from '@apollosproject/ui-kit';
+import { StyleSheet, Image } from 'react-native';
+import { styled } from '@apollosproject/ui-kit';
 
 import LandingScreen from './LandingScreen';
 
 const FullScreenImage = styled({
   resizeMode: 'cover',
   ...StyleSheet.absoluteFill,
-})(ConnectedImage);
+  width: '100%',
+  height: '100%',
+})(Image);
 
 const LandingScreenSlide = ({ navigation }) => (
   <LandingScreen
@@ -17,9 +19,7 @@ const LandingScreenSlide = ({ navigation }) => (
     }
     onPressPrimary={() => navigation.push('Auth')}
     textColor={'white'}
-    BackgroundComponent={
-      <FullScreenImage source={'https://picsum.photos/375/812/?random'} />
-    }
+    BackgroundComponent={<FullScreenImage source={require('./landing.jpg')} />}
     primaryNavText={"Let's get started"}
   />
 );
