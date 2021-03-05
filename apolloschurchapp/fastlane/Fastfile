@@ -20,6 +20,7 @@ before_all do
 end
 
 platform :ios do
+
   desc 'Fetch certificates and provisioning profiles'
   lane :certificates do
     match(app_identifier: "com.longhollow.churchapp", type: 'development', readonly: true)
