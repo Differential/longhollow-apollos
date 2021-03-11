@@ -42,14 +42,6 @@ type ActionListFeature implements Feature & Node {
   primaryAction: FeatureAction
 }
 
-type AddCommentFeature implements Feature & Node {
-  id: ID!
-  order: Int
-  relatedNode: Node!
-  addPrompt: String
-  initialPrompt: String
-}
-
 input AnalyticsDeviceInfo {
   platform: AnalyticsPlatform
   deviceId: String
@@ -158,25 +150,6 @@ type CardListItem {
 
 """A rgb color string"""
 scalar Color
-
-type Comment implements Node {
-  id: ID!
-  person: Person
-  text: String
-  visibility: CommentVisibility
-}
-
-type CommentListFeature implements Feature & Node {
-  id: ID!
-  order: Int
-  comments: [Comment]
-}
-
-enum CommentVisibility {
-  PUBLIC
-  PRIVATE
-  FOLLOWERS
-}
 
 type ContentChannel implements Node {
   id: ID!
@@ -469,8 +442,6 @@ type Mutation {
   updateUserPushSettings(input: PushSettingsInput!): Person
   updateUserCampus(campusId: String!): Person
   addPrayer(text: String!, isAnonymous: Boolean): PrayerRequest
-  addComment(parentId: ID!, text: String!, visibility: CommentVisibility): Comment
-  flagComment(commentId: ID!): Comment
 }
 
 interface Node {

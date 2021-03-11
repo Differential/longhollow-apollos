@@ -37,12 +37,12 @@ import {
   Person as RockPerson,
 } from '@apollosproject/data-connector-rock';
 
-import {
-  Comment,
-  UserFlag,
-  Campus as PostgresCampus,
-  Person as PostgresPerson,
-} from '@apollosproject/data-connector-postgres';
+// import {
+// Comment,
+// UserFlag,
+// Campus as PostgresCampus,
+// Person as PostgresPerson,
+// } from '@apollosproject/data-connector-postgres';
 // import * as PostgresPerson from '@apollosproject/data-connector-postgres/lib/people';
 // import * as PostgresCampus from '@apollosproject/data-connector-postgres/lib/campus';
 
@@ -67,7 +67,7 @@ const data = {
   ContentItem,
   RockPerson, // This entry needs to come before (postgres) Person
   BinaryFiles, // This entry needs to come before (postgres) Person
-  PostgresPerson, // Postgres person for now, as we extend this dataSource in the 'rockWithPostgres' file
+  // PostgresPerson, // Postgres person for now, as we extend this dataSource in the 'rockWithPostgres' file
   Cloudinary,
   Auth,
   AuthSms,
@@ -94,9 +94,9 @@ const data = {
   Cache,
   PrayerRequest,
   Vimeo,
-  Comment,
-  UserFlag,
-  PostgresCampus,
+  // Comment,
+  // UserFlag,
+  // PostgresCampus,
   Persona,
   Person, // An extension of Postgres person. Will be eliminated in the near future so you can use just postgres/Person.
 };
