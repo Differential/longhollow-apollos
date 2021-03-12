@@ -59,7 +59,7 @@ import * as OneSignalWithRock from './oneSignalWithRock';
 
 // This modules ties together certain updates so they occurs in both Rock and Postgres.
 // Will be eliminated in the future through an enhancement to the Shovel
-import * as Person from './rockWithPostgres';
+// import * as Person from './rockWithPostgres';
 
 const data = {
   Interfaces,
@@ -100,7 +100,7 @@ const data = {
   // Follow,
   // PostgresCampus,
   Persona,
-  Person, // An extension of Postgres person. Will be eliminated in the near future so you can use just postgres/Person.
+  // Person, // An extension of Postgres person. Will be eliminated in the near future so you can use just postgres/Person.
 };
 
 const {
