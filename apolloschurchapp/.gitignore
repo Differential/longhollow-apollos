@@ -147,9 +147,9 @@ DerivedData
 fastlane/report.xml
 
 # symbols
-apolloschurchapp.app.dSYM.zip
+LongHollow.app.dSYM.zip
 
-# Apple API key
+# iOS keys
 *.p8
 
 # Google Play authentication key
