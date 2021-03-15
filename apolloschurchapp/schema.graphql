@@ -438,9 +438,6 @@ type Mutation {
   _placeholder: Boolean
   updateLikeEntity(input: LikeEntityInput!): ContentItem @deprecated(reason: "Use the more general updateLikeNode instead")
   updateLikeNode(input: LikeEntityInput!): Node
-  updateProfileField(input: UpdateProfileInput!): Person
-  updateProfileFields(input: [UpdateProfileInput]!): Person
-  uploadProfileImage(file: Upload!, size: Int!): Person
   authenticate(identity: String!, password: String!): Authentication
   changePassword(password: String!): Authentication
   registerPerson(email: String!, password: String!, userProfile: [UpdateProfileInput]): Authentication
@@ -453,6 +450,9 @@ type Mutation {
   updateUserPushSettings(input: PushSettingsInput!): Person
   updateUserCampus(campusId: String!): Person
   addPrayer(text: String!, isAnonymous: Boolean): PrayerRequest
+  updateProfileField(input: UpdateProfileInput!): Person
+  updateProfileFields(input: [UpdateProfileInput]!): Person
+  uploadProfileImage(file: Upload!, size: Int!): Person
 }
 
 interface Node {
@@ -548,7 +548,6 @@ type Query {
   campaigns: ContentItemsConnection
   userFeed(first: Int, after: String): ContentItemsConnection
   personaFeed(first: Int, after: String): ContentItemsConnection
-  suggestedFollows: [Person]
   currentUser: AuthenticatedUser
   userExists(identity: String): USER_AUTH_STATUS
   liveStream: LiveStream @deprecated(reason: "Use liveStreams, there may be multiple.")
@@ -563,6 +562,7 @@ type Query {
   discoverFeedFeatures: FeatureFeed
   watchFeedFeatures: FeatureFeed
   prayFeedFeatures: FeatureFeed
+  suggestedFollows: [Person]
 }
 
 type RockPersonDetails {
@@ -676,6 +676,8 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   theme: Theme
   isLiked: Boolean
   likedCount: Int
+  isFeatured: Boolean
+  subtitle: String
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")
   featureFeed: FeatureFeed
