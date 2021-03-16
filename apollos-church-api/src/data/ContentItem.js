@@ -47,15 +47,14 @@ const resolver = {
   CTA: {
     title: ({ attributeValues: { title } }) => title?.value,
     body: ({ attributeValues: { body } }) => body?.value,
-    image: ({ attributeValues: { image } }) =>
-      console.log(image) || {
-        __typename: 'ImageMedia',
-        key: image?.attributeId,
-        name: image?.value,
-        sources: image?.value
-          ? [{ uri: `${ApollosConfig.ROCK.IMAGE_URL}?guid=${image?.value}` }]
-          : [],
-      },
+    image: ({ attributeValues: { image } }) => ({
+      __typename: 'ImageMedia',
+      key: image?.attributeId,
+      name: image?.value,
+      sources: image?.value
+        ? [{ uri: `${ApollosConfig.ROCK.IMAGE_URL}?guid=${image?.value}` }]
+        : [],
+    }),
     buttonText: ({ attributeValues: { buttonText } }) => buttonText?.value,
     buttonLink: ({ attributeValues: { buttonLink } }) => buttonLink?.value,
   },
