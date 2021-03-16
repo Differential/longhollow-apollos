@@ -23,10 +23,11 @@ const resolver = {
       isFeatured?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
     staff: ({ attributeValues: { staff } }, args, { dataSources: { Group } }) =>
-      staff?.value ??
-      Group.request()
-        .filter(`Guid eq guid'${staff?.value}'`)
-        .first(),
+      staff?.value
+        ? Group.request()
+            .filter(`Guid eq guid'${staff?.value}'`)
+            .first()
+        : null,
   },
 };
 
