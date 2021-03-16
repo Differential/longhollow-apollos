@@ -8,6 +8,14 @@ const schema = gql`
     isFeatured: Boolean
     subtitle: String
     staff: Group
+    ctaLinks: [CTA]
+  }
+
+  type CTA {
+    title: String
+    body: String
+    buttonText: String
+    buttonLink: String
   }
 `;
 
@@ -28,6 +36,17 @@ const resolver = {
             .filter(`Guid eq guid'${staff?.value}'`)
             .first()
         : null,
+    ctaLinks: (
+      { attributeValues: { ctaLinks } },
+      args,
+      { dataSources: { Matrix } }
+    ) => Matrix.getItemsFromGuid(ctaLinks?.value),
+  },
+  CTA: {
+    title: ({ attributeValues: { title } }) => title?.value,
+    body: ({ attributeValues: { body } }) => body?.value,
+    buttonText: ({ attributeValues: { buttonText } }) => buttonText?.value,
+    buttonLink: ({ attributeValues: { buttonLink } }) => buttonLink?.value,
   },
 };
 

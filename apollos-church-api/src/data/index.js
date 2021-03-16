@@ -53,6 +53,7 @@ import * as Feature from './features';
 import * as FeatureFeed from './feature-feeds';
 import * as Vimeo from './Vimeo';
 import * as ContentItem from './ContentItem';
+import * as Matrix from './Matrix';
 
 // This module is used to attach Rock User updating to the OneSignal module.
 // This module includes a Resolver that overides a resolver defined in `OneSignal`
@@ -102,6 +103,7 @@ const data = {
   // PostgresCampus,
   Persona,
   Person, // An extension of Postgres person. Will be eliminated in the near future so you can use just postgres/Person.
+  Matrix,
 };
 
 const {
