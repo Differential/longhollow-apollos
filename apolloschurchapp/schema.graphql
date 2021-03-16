@@ -243,6 +243,7 @@ type ContentSeriesContentItem implements ContentItem & Node & ContentNode & Card
 type CTA {
   title: String
   body: String
+  image: ImageMedia
   buttonText: String
   buttonLink: String
 }

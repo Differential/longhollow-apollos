@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { ContentItem } from '@apollosproject/data-connector-rock';
+import ApollosConfig from '@apollosproject/config';
 
 const schema = gql`
   ${ContentItem.schema}
@@ -14,6 +15,7 @@ const schema = gql`
   type CTA {
     title: String
     body: String
+    image: ImageMedia
     buttonText: String
     buttonLink: String
   }
@@ -45,6 +47,15 @@ const resolver = {
   CTA: {
     title: ({ attributeValues: { title } }) => title?.value,
     body: ({ attributeValues: { body } }) => body?.value,
+    image: ({ attributeValues: { image } }) =>
+      console.log(image) || {
+        __typename: 'ImageMedia',
+        key: image?.attributeId,
+        name: image?.value,
+        sources: image?.value
+          ? [{ uri: `${ApollosConfig.ROCK.IMAGE_URL}?guid=${image?.value}` }]
+          : [],
+      },
     buttonText: ({ attributeValues: { buttonText } }) => buttonText?.value,
     buttonLink: ({ attributeValues: { buttonLink } }) => buttonLink?.value,
   },
