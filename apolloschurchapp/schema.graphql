@@ -240,6 +240,14 @@ type ContentSeriesContentItem implements ContentItem & Node & ContentNode & Card
   featureFeed: FeatureFeed
 }
 
+type CTA {
+  title: String
+  body: String
+  image: ImageMedia
+  buttonText: String
+  buttonLink: String
+}
+
 type Device implements Node {
   id: ID!
   pushId: String!
@@ -679,6 +687,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   isFeatured: Boolean
   subtitle: String
   staff: Group
+  ctaLinks: [CTA]
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")
   featureFeed: FeatureFeed
