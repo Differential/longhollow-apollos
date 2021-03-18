@@ -177,8 +177,10 @@ DISCOVER_FEATURES:
   - algorithms:
       - type: SERIES_IN_PROGRESS
         arguments:
+          channelIds:
+            - 10
           limit: 1
-    type: VerticalCardList
+    type: HorizontalCardList
     title: Your daily reading
   - algorithms:
       - type: CONTENT_CHANNEL
