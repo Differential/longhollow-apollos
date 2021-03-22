@@ -27,7 +27,6 @@ import {
   AuthSms,
   Campus,
   Group,
-  BinaryFiles,
   // Feature,
   // FeatureFeed,
   ActionAlgorithm,
@@ -36,6 +35,7 @@ import {
   Persona,
   // Person as RockPerson,
   Person,
+  BinaryFiles,
 } from '@apollosproject/data-connector-rock';
 
 // import {
@@ -69,6 +69,7 @@ const data = {
   ContentChannel,
   ContentItem,
   // RockPerson, // This entry needs to come before (postgres) Person
+  Person, // An extension of Postgres person. Will be eliminated in the near future so you can use just postgres/Person.
   BinaryFiles, // This entry needs to come before (postgres) Person
   // PostgresPerson, // Postgres person for now, as we extend this dataSource in the 'rockWithPostgres' file
   Cloudinary,
@@ -102,7 +103,6 @@ const data = {
   // Follow,
   // PostgresCampus,
   Persona,
-  Person, // An extension of Postgres person. Will be eliminated in the near future so you can use just postgres/Person.
   Matrix,
 };
 
