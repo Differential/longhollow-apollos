@@ -687,6 +687,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   isFeatured: Boolean
   subtitle: String
   staff: Group
+  campus: Campus
   ctaLinks: [CTA]
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")
