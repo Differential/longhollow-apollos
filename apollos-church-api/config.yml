@@ -66,6 +66,9 @@ ALGOLIA:
     searchableAttributes:
       - title
       - unordered(summary)
+    attributesForFaceting:
+      - location
+      - ministry
     #customRankings:
     # NOT CURRENTLY INCLUDED
     # This just demonstrates what's possible
