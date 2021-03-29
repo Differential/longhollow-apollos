@@ -9,6 +9,7 @@ const schema = gql`
     isFeatured: Boolean
     subtitle: String
     staff: Group
+    campus: Campus
     ctaLinks: [CTA]
   }
 
@@ -36,6 +37,16 @@ const resolver = {
       staff?.value
         ? Group.request()
             .filter(`Guid eq guid'${staff?.value}'`)
+            .first()
+        : null,
+    campus: (
+      { attributeValues: { campus } },
+      args,
+      { dataSources: { Campus } }
+    ) =>
+      campus?.value
+        ? Campus.request()
+            .filter(`Guid eq guid'${campus?.value}'`)
             .first()
         : null,
     ctaLinks: (
