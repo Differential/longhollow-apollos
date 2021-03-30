@@ -1,7 +1,7 @@
 import { graphql } from 'graphql';
 import * as baseSearch from '@apollosproject/data-connector-algolia-search';
 
-const { schema, resolver, dataSource: BaseSearch } = baseSearch;
+const { schema, resolver, jobs, dataSource: BaseSearch } = baseSearch;
 
 export class Search extends BaseSearch {
   baseMapItemToAlgolia = this.mapItemToAlgolia;
@@ -31,4 +31,4 @@ export class Search extends BaseSearch {
   }
 }
 
-export { schema, Search as dataSource, resolver };
+export { schema, Search as dataSource, resolver, jobs };
