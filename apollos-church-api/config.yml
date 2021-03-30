@@ -178,21 +178,11 @@ HOME_FEATURES:
 
 DISCOVER_FEATURES:
   - algorithms:
-      - type: SERIES_IN_PROGRESS
-        arguments:
-          channelIds:
-            - 10
-          limit: 1
-    type: HorizontalCardList
-    title: Your daily reading
-  - algorithms:
       - type: CONTENT_CHANNEL
         arguments:
           contentChannelId: 9
-          limit: 3
-    type: HorizontalCardList
+    type: VerticalCardList
     title: Start a new plan
-    subtitle: Read the bible
 
 WATCH_FEATURES:
   - algorithms:
