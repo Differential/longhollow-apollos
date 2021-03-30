@@ -14,7 +14,7 @@ export class Search extends BaseSearch {
         node(id: "${node.id}") {
           id
           __typename
-          ... on ContentItem { 
+          ... on ContentItem {
             parentChannel { name }
           }
           ... on UniversalContentItem {
