@@ -140,12 +140,12 @@
   dependencies:
     js-yaml "^3.12.0"
 
-"@apollosproject/data-connector-algolia-search@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-algolia-search/-/data-connector-algolia-search-2.3.1.tgz#fc5fe413891538420f8e7ba4ec817544ef3f57d1"
-  integrity sha512-A8ZLgn/oX8PaoZ6iM0uCyUrHLuX7dtMmzV6izx10RCYky0Eun+qu/YCh+bxO2K916x5fwZo6Oa1TFO0jBKezOQ==
+"@apollosproject/data-connector-algolia-search@^2.9.1-canary.1":
+  version "2.9.1-canary.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-algolia-search/-/data-connector-algolia-search-2.9.1-canary.1.tgz#2e12ac44cc8012a8a800ac790e05e7a1a7e76890"
+  integrity sha512-MwVhNgNgavJC0eU5da35FLvuLAtngE2TaHnOPADdKoLsMDCmaNVWTRDO53hdMP2gTEiaf6vJHY80Xymrs7d6qA==
   dependencies:
-    "@apollosproject/server-core" "^2.3.1"
+    "@apollosproject/server-core" "^2.9.1-canary.1+1210d6e3"
     algoliasearch "^3.34.0"
     apollo-datasource-rest "^0.6.4"
 
@@ -262,6 +262,13 @@
   dependencies:
     graphql-tag "^2.10.0"
 
+"@apollosproject/data-schema@^2.9.1-canary.1+1210d6e3":
+  version "2.9.1-canary.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.9.1-canary.1.tgz#2fdc249d9cbc4c68a0296d3b9f3f2dc2daac1512"
+  integrity sha512-xcEj4d9RpTux1d6ajft7B7AwTtsEDc5hDi/g4Xb1JccbO4U2Gk4M4l+UKfLT6nGCGtiL3glYIHB0mNLURpigkQ==
+  dependencies:
+    graphql-tag "^2.10.0"
+
 "@apollosproject/eslint-config@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@apollosproject/eslint-config/-/eslint-config-2.3.1.tgz#dcfe1beec00c591c6e55b2c5d11af079a83861f0"
@@ -302,6 +309,20 @@
   integrity sha512-6D0lH7qYDcQGlR2Ha/M57rftuaxusttzWgdCwLkwgFkl5Z3sC3ovOZKv/gxXCjXpxUfC8lDlda30XE7d2h6tmw==
   dependencies:
     "@apollosproject/data-schema" "^2.6.0"
+    apollo-server-caching "^0.4.0"
+    bull "^3.11.0"
+    bull-board "^0.1.1"
+    express-basic-auth "^1.2.0"
+    graphql-parse-resolve-info "^4.4.5"
+    graphql-tag "^2.10.0"
+    lodash "^4.17.11"
+
+"@apollosproject/server-core@^2.9.1-canary.1", "@apollosproject/server-core@^2.9.1-canary.1+1210d6e3":
+  version "2.9.1-canary.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.9.1-canary.1.tgz#0156837b6755651f0890b2943a143289a49392c2"
+  integrity sha512-0+DTo9e55924dVZL8m3dJa0XnUzK9zdAM5ZBdzFWxFMDiv5ydFYYIVjLJGecTdAyudR3UagSe8EYQBXbOmxVGg==
+  dependencies:
+    "@apollosproject/data-schema" "^2.9.1-canary.1+1210d6e3"
     apollo-server-caching "^0.4.0"
     bull "^3.11.0"
     bull-board "^0.1.1"

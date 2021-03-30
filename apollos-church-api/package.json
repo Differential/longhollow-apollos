@@ -22,7 +22,7 @@
   "dependencies": {
     "@apollosproject/bugsnag": "^2.3.1",
     "@apollosproject/config": "^2.3.1",
-    "@apollosproject/data-connector-algolia-search": "^2.3.1",
+    "@apollosproject/data-connector-algolia-search": "^2.9.1-canary.1",
     "@apollosproject/data-connector-analytics": "^2.3.1",
     "@apollosproject/data-connector-bible": "^2.3.1",
     "@apollosproject/data-connector-church-online": "^2.3.1",
@@ -35,7 +35,7 @@
     "@apollosproject/data-connector-twilio": "^2.3.1",
     "@apollosproject/data-schema": "^2.3.1",
     "@apollosproject/rock-apollo-data-source": "^2.3.1",
-    "@apollosproject/server-core": "^2.3.1",
+    "@apollosproject/server-core": "^2.9.1-canary.1",
     "apollo-server": "^2.14.2",
     "apollo-server-express": "2.14.2",
     "color": "3.0.0",
