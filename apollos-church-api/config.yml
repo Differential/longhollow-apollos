@@ -67,6 +67,7 @@ ALGOLIA:
       - title
       - unordered(summary)
     attributesForFaceting:
+      - category
       - location
       - ministry
     #customRankings:

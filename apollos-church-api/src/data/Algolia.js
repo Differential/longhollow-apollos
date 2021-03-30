@@ -12,6 +12,11 @@ export class Search extends BaseSearch {
       `
       {
         node(id: "${node.id}") {
+          id
+          __typename
+          ... on ContentItem { 
+            parentChannel { name }
+          }
           ... on UniversalContentItem {
             campus { name }
             staff { name }
@@ -24,6 +29,7 @@ export class Search extends BaseSearch {
     );
     return {
       ...node,
+      category: data.node.parentChannel?.name,
       location: data.node.campus?.name,
       ministry: data.node.staff?.name,
     };
