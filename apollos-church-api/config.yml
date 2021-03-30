@@ -182,7 +182,6 @@ DISCOVER_FEATURES:
         arguments:
           contentChannelId: 9
     type: VerticalCardList
-    title: Start a new plan
 
 WATCH_FEATURES:
   - algorithms:
