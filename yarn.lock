@@ -222,12 +222,12 @@
     apollo-datasource "^0.2.0"
     ioredis "4.14.1"
 
-"@apollosproject/data-connector-rock@^2.4.1-canary.6":
-  version "2.4.1-canary.6"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.4.1-canary.6.tgz#d5e184411087d3dd0afb592bb16d19da2b3fe8ea"
-  integrity sha512-YoDf9fAjYyXcjxUUmlvP1W3W80FJ1i4tLxFC5qvoHPEwCQ2efInY640c69uFwvLOT0zJu5noRN5k641KXTHPaQ==
+"@apollosproject/data-connector-rock@^2.9.1-canary.4":
+  version "2.9.1-canary.4"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.9.1-canary.4.tgz#beb315cd84f19431fc4e7a83903578d113d03e7d"
+  integrity sha512-YhhJ8Mx/daUM4lOGd5Aj4HQ1cy9MKhpBbQR7svMGelFJIintTxRaY5agTKnuD9avDMsjhpfhpXc2k8AT/QNMGQ==
   dependencies:
-    "@apollosproject/server-core" "^2.4.0"
+    "@apollosproject/server-core" "^2.9.0"
     awesome-phonenumber "^2.4.2"
     form-data "^2.3.3"
     hyphenation.en-us "^0.2.1"
@@ -255,10 +255,10 @@
   dependencies:
     graphql-tag "^2.10.0"
 
-"@apollosproject/data-schema@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.6.0.tgz#949a96a072173b3b26bfddfe21304d0e27bceeac"
-  integrity sha512-Cr2sxlJPa8GBHBVGvzgWeHMGIkQJofq57pXR3WIKB2l8cG8dSyqODSJcKEBEnjx0cXdUwANL3mLbscl/yt34WQ==
+"@apollosproject/data-schema@^2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.9.0.tgz#befd2640af17f1d488fe9ee5203efa5d5ddd510e"
+  integrity sha512-g0F+GbYdTebpSWdRwBOdvLMt9xK7CdNlafgSzOHfBU2XVL7EnS2dF/53Lh1Ys3jMpxzkuvPneB5MdAm4LRDjJw==
   dependencies:
     graphql-tag "^2.10.0"
 
@@ -303,12 +303,12 @@
     graphql-tag "^2.10.0"
     lodash "^4.17.11"
 
-"@apollosproject/server-core@^2.4.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.6.0.tgz#64fe21b3bafcdf8737113fe8ecf6c7f70e3f8719"
-  integrity sha512-6D0lH7qYDcQGlR2Ha/M57rftuaxusttzWgdCwLkwgFkl5Z3sC3ovOZKv/gxXCjXpxUfC8lDlda30XE7d2h6tmw==
+"@apollosproject/server-core@^2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.9.0.tgz#a0c517b5818daf2a198e4ac57e19f22353ec700b"
+  integrity sha512-LXHfvigiWnog+0mYTZqu4AVPoGPY5rA7pHbo7P/Inp2EWkGT2jgpofz997fK3VRqWO6PL1ygxgGLujn+Fxt/eA==
   dependencies:
-    "@apollosproject/data-schema" "^2.6.0"
+    "@apollosproject/data-schema" "^2.9.0"
     apollo-server-caching "^0.4.0"
     bull "^3.11.0"
     bull-board "^0.1.1"

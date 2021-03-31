@@ -150,6 +150,9 @@ ROCK_MAPPINGS:
     - 14 # sermons
     - 35 # events
     - 36 # articles
+    - 43 # mission trips
+    - 44 # service opportunies
+    - 45 # volunteer positions
 
   CAMPAIGN_CHANNEL_IDS:
     - 1
@@ -173,7 +176,13 @@ HOME_FEATURES:
     type: ActionList
     title: For you
     subtitle: Recommended
-  - algorithms: [USER_FEED]
+  - algorithms:
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 14
+            - 35
+            - 36
     type: VerticalCardList
 
 
