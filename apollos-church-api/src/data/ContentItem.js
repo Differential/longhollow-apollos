@@ -8,7 +8,7 @@ const schema = gql`
   extend type UniversalContentItem {
     isFeatured: Boolean
     subtitle: String
-    staff: Group
+    ministry: Group
     campus: Campus
     ctaLinks: [CTA]
   }
@@ -33,10 +33,14 @@ const resolver = {
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
-    staff: ({ attributeValues: { staff } }, args, { dataSources: { Group } }) =>
-      staff?.value
+    ministry: (
+      { attributeValues: { ministry } },
+      args,
+      { dataSources: { Group } }
+    ) =>
+      ministry?.value
         ? Group.request()
-            .filter(`Guid eq guid'${staff?.value}'`)
+            .filter(`Guid eq guid'${ministry?.value}'`)
             .first()
         : null,
     campus: (
