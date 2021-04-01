@@ -31,7 +31,7 @@ export class Search extends BaseSearch {
       ...node,
       category: data.node.parentChannel?.name,
       location: data.node.campus?.name,
-      ministry: data.node.staff?.name,
+      ministry: data.node.ministry?.name,
     };
   }
 }
