@@ -20,6 +20,7 @@ export class Search extends BaseSearch {
           ... on UniversalContentItem {
             campus { name }
             ministry { name }
+            tripType
           }
         }
       }
@@ -32,6 +33,7 @@ export class Search extends BaseSearch {
       category: data.node.parentChannel?.name,
       location: data.node.campus?.name,
       ministry: data.node.ministry?.name,
+      tripType: data.node.tripType,
     };
   }
 }

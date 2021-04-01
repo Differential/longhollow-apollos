@@ -70,6 +70,7 @@ ALGOLIA:
       - category
       - location
       - ministry
+      - tripType
     #customRankings:
     # NOT CURRENTLY INCLUDED
     # This just demonstrates what's possible
