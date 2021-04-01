@@ -401,6 +401,18 @@ type LiveStream {
   contentItem: ContentItem
 }
 
+type Location {
+  name: String
+  street1: String
+  street2: String
+  city: String
+  state: String
+  country: String
+  postalCode: Int
+  latitude: Float
+  longitude: Float
+}
+
 interface Media {
   name: String
   key: String
@@ -699,6 +711,8 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   subtitle: String
   staff: Group
   campus: Campus
+  location: Location
+  alternateLink: String
   ctaLinks: [CTA]
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")

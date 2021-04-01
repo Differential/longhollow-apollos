@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import moment from 'moment';
 import { ContentItem } from '@apollosproject/data-connector-rock';
 import ApollosConfig from '@apollosproject/config';
 
@@ -11,7 +12,15 @@ const schema = gql`
     ministry: Group
     campus: Campus
     tripType: String
+    location: Location
+    start: String
+    end: String
+    alternateLink: String
     ctaLinks: [CTA]
+    childcareInfo: String
+    deadline: String
+    finePrint: String
+    closedInstructions: String
   }
 
   type CTA {
@@ -20,6 +29,13 @@ const schema = gql`
     image: ImageMedia
     buttonText: String
     buttonLink: String
+  }
+
+  type Location {
+    name: String
+    address: String
+    latitude: Float
+    longitude: Float
   }
 `;
 
@@ -55,11 +71,35 @@ const resolver = {
             .first()
         : null,
     tripType: ({ attributeValues: { tripType } }) => tripType?.valueFormatted,
+    alternateLink: ({ attributeValues: { alternateLink } }) =>
+      alternateLink?.value,
     ctaLinks: (
       { attributeValues: { ctaLinks } },
       args,
       { dataSources: { Matrix } }
     ) => Matrix.getItemsFromGuid(ctaLinks?.value),
+    location: ({ attributeValues: { locationName, locationAddress } }) => ({
+      name: locationName?.value,
+      address: locationAddress?.valueFormatted,
+    }),
+    start: ({ attributeValues: { start } }) =>
+      start?.value
+        ? moment.tz(start?.value, ApollosConfig.ROCK.TIMEZONE).format()
+        : null,
+    end: ({ attributeValues: { end } }) =>
+      end?.value
+        ? moment.tz(end?.value, ApollosConfig.ROCK.TIMEZONE).format()
+        : null,
+    childcareInfo: ({ attributeValues: { childcareInfo } }) =>
+      childcareInfo?.value,
+    deadline: ({ attributeValues: { signupDeadline } }) =>
+      signupDeadline?.value
+        ? moment.tz(signupDeadline?.value, ApollosConfig.ROCK.TIMEZONE).format()
+        : null,
+    finePrint: ({ attributeValues: { finePrint } }) => finePrint?.value,
+    closedInstructions: ({
+      attributeValues: { registrationClosedInstructions },
+    }) => registrationClosedInstructions?.value,
   },
   CTA: {
     title: ({ attributeValues: { title } }) => title?.value,

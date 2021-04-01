@@ -33,7 +33,7 @@ ROCK:
   IMAGE_URL: https://rock.longhollow.com/GetImage.ashx
   SHARE_URL: https://longhollow.herokuapp.com
   # This should match the timezone of the Rock server
-  TIMEZONE: 'America/New_York'
+  TIMEZONE: 'America/Chicago'
   USE_PLUGIN: true
   SHOW_INACTIVE_CONTENT: ${ROCK_SHOW_INACTIVE_CONTENT}
   VERSION: 11
