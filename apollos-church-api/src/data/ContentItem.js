@@ -16,6 +16,8 @@ const schema = gql`
     start: String
     end: String
     alternateLink: String
+    linkText: String
+    linkURL: String
     ctaLinks: [CTA]
     childcareInfo: String
     deadline: String
@@ -73,6 +75,8 @@ const resolver = {
     tripType: ({ attributeValues: { tripType } }) => tripType?.valueFormatted,
     alternateLink: ({ attributeValues: { alternateLink } }) =>
       alternateLink?.value,
+    linkText: ({ attributeValues: { linkText } }) => linkText?.value,
+    linkURL: ({ attributeValues: { linkURL } }) => linkURL?.value,
     ctaLinks: (
       { attributeValues: { ctaLinks } },
       args,
