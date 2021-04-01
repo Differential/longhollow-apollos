@@ -19,7 +19,7 @@ export class Search extends BaseSearch {
           }
           ... on UniversalContentItem {
             campus { name }
-            staff { name }
+            ministry { name }
           }
         }
       }
