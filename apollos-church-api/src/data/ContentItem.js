@@ -11,6 +11,7 @@ const schema = gql`
     subtitle: String
     ministry: Group
     campus: Campus
+    tripType: String
     location: Location
     start: String
     end: String
@@ -69,6 +70,7 @@ const resolver = {
             .filter(`Guid eq guid'${campus?.value}'`)
             .first()
         : null,
+    tripType: ({ attributeValues: { tripType } }) => tripType?.valueFormatted,
     alternateLink: ({ attributeValues: { alternateLink } }) =>
       alternateLink?.value,
     ctaLinks: (
