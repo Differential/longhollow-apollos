@@ -6,6 +6,13 @@ import ApollosConfig from '@apollosproject/config';
 const schema = gql`
   ${ContentItem.schema}
 
+  extend type WeekendContentItem {
+    speaker: String
+    topics: [String]
+    scriptures: [Scripture]
+    series: ContentChannel
+  }
+
   extend type UniversalContentItem {
     isFeatured: Boolean
     isMembershipRequired: Boolean
@@ -57,6 +64,23 @@ class dataSource extends ContentItem.dataSource {
 
 const resolver = {
   ...ContentItem.resolver,
+  WeekendContentItem: {
+    ...ContentItem.resolver.WeekendContentItem,
+    topics: ({ attributeValues: { topics } }) =>
+      topics?.valueFormatted
+        ? topics?.valueFormatted.split(',').map((topic) => topic.trim())
+        : [],
+    scriptures: (
+      { attributeValues: { scriptures } },
+      args,
+      { dataSources: { Scripture } }
+    ) => Scripture.getScriptures(scriptures?.value || ''),
+    speaker: ({ attributeValues: { speaker } }) => speaker?.value,
+    // TODO: this could be a list of parent associations cross referenced
+    // with a SERIES_CHANNEL_IDS list from the config yml. Probably could be
+    // a core feature
+    series: () => null,
+  },
   UniversalContentItem: {
     ...ContentItem.resolver.UniversalContentItem,
     isFeatured: ({ attributeValues: { isFeatured } }) =>

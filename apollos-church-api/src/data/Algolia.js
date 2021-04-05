@@ -19,6 +19,10 @@ export class Search extends BaseSearch {
           opportunityType,
           relatedSkills,
           isGroupEvent,
+          speaker,
+          topics,
+          scriptures,
+          series,
         },
       },
     } = await graphql(
@@ -41,6 +45,12 @@ export class Search extends BaseSearch {
             relatedSkills
             isGroupEvent
           }
+          ... on WeekendContentItem {
+            speaker
+            topics
+            scriptures
+            series
+          }
         }
       }
       `,
@@ -58,6 +68,12 @@ export class Search extends BaseSearch {
       opportunityType,
       relatedSkills,
       isGroupEvent,
+      speaker,
+      topics,
+      // TODO get only the books from the reference, could probably be a core
+      // feature to add "book" as a field on Scripture GQL type
+      bookOfTheBible: null,
+      series,
     };
   }
 }
