@@ -7,7 +7,21 @@ export class Search extends BaseSearch {
   async mapItemToAlgolia(item) {
     const node = await super.mapItemToAlgolia(item);
 
-    const { data } = await graphql(
+    const {
+      data: {
+        node: {
+          parentChannel,
+          campus,
+          ministry,
+          tripType,
+          daysAvailable,
+          serviceArea,
+          opportunityType,
+          relatedSkills,
+          isGroupEvent,
+        },
+      },
+    } = await graphql(
       this.context.schema,
       `
       {
@@ -21,6 +35,11 @@ export class Search extends BaseSearch {
             campus { name }
             ministry { name }
             tripType
+            daysAvailable
+            serviceArea
+            opportunityType
+            relatedSkills
+            isGroupEvent
           }
         }
       }
@@ -30,10 +49,15 @@ export class Search extends BaseSearch {
     );
     return {
       ...node,
-      category: data.node.parentChannel?.name,
-      location: data.node.campus?.name,
-      ministry: data.node.ministry?.name,
-      tripType: data.node.tripType,
+      category: parentChannel?.name,
+      location: campus?.name,
+      ministry: ministry?.name,
+      tripType,
+      daysAvailable,
+      serviceArea,
+      opportunityType,
+      relatedSkills,
+      isGroupEvent,
     };
   }
 }
