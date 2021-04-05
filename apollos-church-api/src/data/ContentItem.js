@@ -8,10 +8,19 @@ const schema = gql`
 
   extend type UniversalContentItem {
     isFeatured: Boolean
+    isMembershipRequired: Boolean
+    isGroupEvent: Boolean
     subtitle: String
     ministry: Group
     campus: Campus
+    contactName: String
+    contactEmail: String
+    contactPhone: String
     tripType: String
+    daysAvailable: [String]
+    serviceArea: [String]
+    opportunityType: [String]
+    relatedSkills: [String]
     location: Location
     start: String
     end: String
@@ -23,6 +32,7 @@ const schema = gql`
     deadline: String
     finePrint: String
     closedInstructions: String
+    schedule: String
   }
 
   type CTA {
@@ -51,6 +61,10 @@ const resolver = {
     ...ContentItem.resolver.UniversalContentItem,
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
+    isMembershipRequired: ({ attributeValues: { isMembershipRequired } }) =>
+      isMembershipRequired?.value === 'True',
+    isGroupEvent: ({ attributeValues: { groupEvent } }) =>
+      groupEvent?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
     ministry: (
       { attributeValues: { ministry } },
@@ -73,6 +87,22 @@ const resolver = {
             .first()
         : null,
     tripType: ({ attributeValues: { tripType } }) => tripType?.valueFormatted,
+    daysAvailable: ({ attributeValues: { daysAvailable } }) =>
+      daysAvailable?.valueFormatted
+        ? daysAvailable?.valueFormatted.split(',').map((day) => day.trim())
+        : [],
+    serviceArea: ({ attributeValues: { serviceArea } }) =>
+      serviceArea?.valueFormatted
+        ? serviceArea?.valueFormatted.split(',').map((area) => area.trim())
+        : [],
+    opportunityType: ({ attributeValues: { opportunityType } }) =>
+      opportunityType?.valueFormatted
+        ? opportunityType?.valueFormatted.split(',').map((type) => type.trim())
+        : [],
+    relatedSkills: ({ attributeValues: { relatedSkills } }) =>
+      relatedSkills?.valueFormatted
+        ? relatedSkills?.valueFormatted.split(',').map((skill) => skill.trim())
+        : [],
     alternateLink: ({ attributeValues: { alternateLink } }) =>
       alternateLink?.value,
     linkText: ({ attributeValues: { linkText } }) => linkText?.value,
@@ -104,6 +134,12 @@ const resolver = {
     closedInstructions: ({
       attributeValues: { registrationClosedInstructions },
     }) => registrationClosedInstructions?.value,
+    schedule: ({ attributeValues: { schedule } }) => schedule?.value,
+    contactName: ({ attributeValues: { contactName } }) => contactName?.value,
+    contactEmail: ({ attributeValues: { contactEmail } }) =>
+      contactEmail?.value,
+    contactPhone: ({ attributeValues: { contactPhone } }) =>
+      contactPhone?.value,
   },
   CTA: {
     title: ({ attributeValues: { title } }) => title?.value,

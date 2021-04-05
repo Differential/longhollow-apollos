@@ -71,6 +71,11 @@ ALGOLIA:
       - location
       - ministry
       - tripType
+      - daysAvailable
+      - serviceArea
+      - opportunityType
+      - relatedSkills
+      - isGroupEvent
     #customRankings:
     # NOT CURRENTLY INCLUDED
     # This just demonstrates what's possible
