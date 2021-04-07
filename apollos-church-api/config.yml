@@ -79,7 +79,6 @@ ALGOLIA:
       - speaker
       - topics
       - bookOfTheBible
-      - series
     #customRankings:
     # NOT CURRENTLY INCLUDED
     # This just demonstrates what's possible

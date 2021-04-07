@@ -22,8 +22,8 @@ export class Search extends BaseSearch {
           speaker,
           topics,
           scriptures,
-          series,
         },
+        error,
       },
     } = await graphql(
       this.context.schema,
@@ -48,8 +48,9 @@ export class Search extends BaseSearch {
           ... on WeekendContentItem {
             speaker
             topics
-            scriptures
-            series
+            scriptures {
+              book
+            }
           }
         }
       }
@@ -57,6 +58,7 @@ export class Search extends BaseSearch {
       {},
       this.context
     );
+    if (error) console.error(error);
     return {
       ...node,
       category: parentChannel?.name,
@@ -70,10 +72,7 @@ export class Search extends BaseSearch {
       isGroupEvent,
       speaker,
       topics,
-      // TODO get only the books from the reference, could probably be a core
-      // feature to add "book" as a field on Scripture GQL type
-      bookOfTheBible: null,
-      series,
+      bookOfTheBible: scriptures?.map(({ book }) => book),
     };
   }
 }

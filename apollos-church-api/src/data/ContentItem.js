@@ -10,7 +10,6 @@ const schema = gql`
     speaker: String
     topics: [String]
     scriptures: [Scripture]
-    series: ContentChannel
   }
 
   extend type UniversalContentItem {
@@ -76,10 +75,6 @@ const resolver = {
       { dataSources: { Scripture } }
     ) => Scripture.getScriptures(scriptures?.value || ''),
     speaker: ({ attributeValues: { speaker } }) => speaker?.value,
-    // TODO: this could be a list of parent associations cross referenced
-    // with a SERIES_CHANNEL_IDS list from the config yml. Probably could be
-    // a core feature
-    series: () => null,
   },
   UniversalContentItem: {
     ...ContentItem.resolver.UniversalContentItem,

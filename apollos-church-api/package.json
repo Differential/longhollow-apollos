@@ -24,7 +24,7 @@
     "@apollosproject/config": "^2.3.1",
     "@apollosproject/data-connector-algolia-search": "^2.9.1-canary.1",
     "@apollosproject/data-connector-analytics": "^2.3.1",
-    "@apollosproject/data-connector-bible": "^2.3.1",
+    "@apollosproject/data-connector-bible": "^2.10.1-canary.1",
     "@apollosproject/data-connector-church-online": "^2.3.1",
     "@apollosproject/data-connector-cloudinary": "^2.3.1",
     "@apollosproject/data-connector-onesignal": "^2.3.1",
