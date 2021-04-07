@@ -403,12 +403,7 @@ type LiveStream {
 
 type Location {
   name: String
-  street1: String
-  street2: String
-  city: String
-  state: String
-  country: String
-  postalCode: Int
+  address: String
   latitude: Float
   longitude: Float
 }
@@ -595,6 +590,7 @@ type Scripture implements Node {
   id: ID!
   html: String
   reference: String
+  book: String
   copyright: String
   version: String
 }
@@ -708,12 +704,31 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   isLiked: Boolean
   likedCount: Int
   isFeatured: Boolean
+  isMembershipRequired: Boolean
+  isGroupEvent: Boolean
   subtitle: String
-  staff: Group
+  ministry: Group
   campus: Campus
+  contactName: String
+  contactEmail: String
+  contactPhone: String
+  tripType: String
+  daysAvailable: [String]
+  serviceArea: [String]
+  opportunityType: [String]
+  relatedSkills: [String]
   location: Location
+  start: String
+  end: String
   alternateLink: String
+  linkText: String
+  linkURL: String
   ctaLinks: [CTA]
+  childcareInfo: String
+  deadline: String
+  finePrint: String
+  closedInstructions: String
+  schedule: String
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")
   featureFeed: FeatureFeed
@@ -808,6 +823,9 @@ type WeekendContentItem implements ContentItem & Node & ContentNode & Card & Vid
   theme: Theme
   isLiked: Boolean
   likedCount: Int
+  speaker: String
+  topics: [String]
+  scriptures: [Scripture]
   liveStream: LiveStream
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")

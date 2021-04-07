@@ -76,6 +76,9 @@ ALGOLIA:
       - opportunityType
       - relatedSkills
       - isGroupEvent
+      - speaker
+      - topics
+      - bookOfTheBible
     #customRankings:
     # NOT CURRENTLY INCLUDED
     # This just demonstrates what's possible

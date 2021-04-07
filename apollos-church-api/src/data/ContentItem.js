@@ -6,6 +6,12 @@ import ApollosConfig from '@apollosproject/config';
 const schema = gql`
   ${ContentItem.schema}
 
+  extend type WeekendContentItem {
+    speaker: String
+    topics: [String]
+    scriptures: [Scripture]
+  }
+
   extend type UniversalContentItem {
     isFeatured: Boolean
     isMembershipRequired: Boolean
@@ -57,6 +63,19 @@ class dataSource extends ContentItem.dataSource {
 
 const resolver = {
   ...ContentItem.resolver,
+  WeekendContentItem: {
+    ...ContentItem.resolver.WeekendContentItem,
+    topics: ({ attributeValues: { topics } }) =>
+      topics?.valueFormatted
+        ? topics?.valueFormatted.split(',').map((topic) => topic.trim())
+        : [],
+    scriptures: (
+      { attributeValues: { scriptures } },
+      args,
+      { dataSources: { Scripture } }
+    ) => Scripture.getScriptures(scriptures?.value || ''),
+    speaker: ({ attributeValues: { speaker } }) => speaker?.value,
+  },
   UniversalContentItem: {
     ...ContentItem.resolver.UniversalContentItem,
     isFeatured: ({ attributeValues: { isFeatured } }) =>

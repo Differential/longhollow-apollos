@@ -19,7 +19,11 @@ export class Search extends BaseSearch {
           opportunityType,
           relatedSkills,
           isGroupEvent,
+          speaker,
+          topics,
+          scriptures,
         },
+        error,
       },
     } = await graphql(
       this.context.schema,
@@ -41,12 +45,20 @@ export class Search extends BaseSearch {
             relatedSkills
             isGroupEvent
           }
+          ... on WeekendContentItem {
+            speaker
+            topics
+            scriptures {
+              book
+            }
+          }
         }
       }
       `,
       {},
       this.context
     );
+    if (error) console.error(error);
     return {
       ...node,
       category: parentChannel?.name,
@@ -58,6 +70,9 @@ export class Search extends BaseSearch {
       opportunityType,
       relatedSkills,
       isGroupEvent,
+      speaker,
+      topics,
+      bookOfTheBible: scriptures?.map(({ book }) => book),
     };
   }
 }
