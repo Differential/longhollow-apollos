@@ -581,6 +581,11 @@ type Query {
   prayFeedFeatures: FeatureFeed
 }
 
+type RelatedLink {
+  name: String
+  uri: String
+}
+
 type RockPersonDetails {
   authToken: String
   authCookie: String
@@ -720,7 +725,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   location: Location
   start: String
   end: String
-  alternateLink: String
+  relatedLinks: String
   linkText: String
   linkURL: String
   ctaLinks: [CTA]
