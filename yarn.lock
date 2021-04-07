@@ -248,7 +248,7 @@
     apollo-datasource "^0.2.0"
     twilio "^3.28.0"
 
-"@apollosproject/data-schema@^2.10.1-canary.1+87f6dedc":
+"@apollosproject/data-schema@^2.10.1-canary.1", "@apollosproject/data-schema@^2.10.1-canary.1+87f6dedc":
   version "2.10.1-canary.1"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.10.1-canary.1.tgz#ef1762a6a1f9628335ccb668f8d0a22ed6c4006a"
   integrity sha512-MENlVcTjr7owtd7YNFXAMpE3tEU50pejRgu0cR88sQCMNHr7Bv1U23MIbDmdXFyCBdY+db94YQYT6EQDUNxYRg==
