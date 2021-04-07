@@ -24,7 +24,7 @@ const schema = gql`
     location: Location
     start: String
     end: String
-    alternateLink: String
+    relatedLinks: String
     linkText: String
     linkURL: String
     ctaLinks: [CTA]
@@ -33,6 +33,11 @@ const schema = gql`
     finePrint: String
     closedInstructions: String
     schedule: String
+  }
+
+  type RelatedLink {
+    name: String
+    uri: String
   }
 
   type CTA {
@@ -103,8 +108,11 @@ const resolver = {
       relatedSkills?.valueFormatted
         ? relatedSkills?.valueFormatted.split(',').map((skill) => skill.trim())
         : [],
-    alternateLink: ({ attributeValues: { alternateLink } }) =>
-      alternateLink?.value,
+    relatedLinks: (
+      { attributeValues: { relatedLinks } },
+      __,
+      { dataSources: { Matrix } }
+    ) => Matrix.getItemsFromGuid(relatedLinks?.value),
     linkText: ({ attributeValues: { linkText } }) => linkText?.value,
     linkURL: ({ attributeValues: { linkURL } }) => linkURL?.value,
     ctaLinks: (
