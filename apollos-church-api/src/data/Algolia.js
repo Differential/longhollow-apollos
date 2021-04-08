@@ -75,6 +75,12 @@ export class Search extends BaseSearch {
       bookOfTheBible: scriptures?.map(({ book }) => book),
     };
   }
+
+  async indexAll() {
+    await super.indexAll();
+
+    // TODO add indexable people
+  }
 }
 
 export { schema, Search as dataSource, resolver, jobs };
