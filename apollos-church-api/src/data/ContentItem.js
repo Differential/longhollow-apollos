@@ -17,7 +17,7 @@ const schema = gql`
     isMembershipRequired: Boolean
     isGroupEvent: Boolean
     subtitle: String
-    ministry: Group
+    ministry: String
     campus: Campus
     contactName: String
     contactEmail: String
@@ -91,16 +91,7 @@ const resolver = {
     isGroupEvent: ({ attributeValues: { groupEvent } }) =>
       groupEvent?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
-    ministry: (
-      { attributeValues: { ministry } },
-      args,
-      { dataSources: { Group } }
-    ) =>
-      ministry?.value
-        ? Group.request()
-            .filter(`Guid eq guid'${ministry?.value}'`)
-            .first()
-        : null,
+    ministry: ({ attributeValues: { ministry } }) => ministry?.valueFormatted,
     campus: (
       { attributeValues: { campus } },
       args,

@@ -34,7 +34,7 @@ import {
   PrayerRequest,
   Persona,
   // Person as RockPerson,
-  Person,
+  // Person,
   BinaryFiles,
 } from '@apollosproject/data-connector-rock';
 
@@ -53,6 +53,7 @@ import * as Feature from './features';
 import * as FeatureFeed from './feature-feeds';
 import * as Vimeo from './Vimeo';
 import * as ContentItem from './ContentItem';
+import * as Person from './Person';
 import * as Matrix from './Matrix';
 import * as Search from './Algolia';
 
