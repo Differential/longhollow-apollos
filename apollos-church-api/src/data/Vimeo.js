@@ -32,11 +32,12 @@ class dataSource extends RESTDataSource {
 
 const baseResolver = {
   videos: (root, args, { dataSources: { ContentItem, Vimeo } }) => {
-    const vimeoUrls = ContentItem.getVideos(root);
-    return vimeoUrls.map((video) => ({
+    const videoUrls = ContentItem.getVideos(root);
+    return videoUrls.map((video) => ({
       ...video,
       sources: video.sources.map(({ uri }) => ({
-        uri: Vimeo.getHLSForVideo(uri),
+        // if it's not a URI, we're assuming it's a Vimeo ID
+        uri: uri.startsWith('http') ? uri : Vimeo.getHLSForVideo(uri),
       })),
     }));
   },

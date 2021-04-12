@@ -63,7 +63,8 @@ const schema = gql`
 `;
 
 class dataSource extends ContentItem.dataSource {
-  attributeIsVideo = ({ key }) => key.toLowerCase().includes('vimeo');
+  attributeIsVideo = ({ key }) =>
+    key.toLowerCase().includes('video') || key.toLowerCase().includes('vimeo');
 }
 
 const resolver = {
