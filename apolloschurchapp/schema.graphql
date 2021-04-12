@@ -525,6 +525,7 @@ type Person implements Node {
   htmlContent: String
   summary: String
   position: String
+  ministry: String
   facebook: String
   twitter: String
   instagram: String
@@ -572,7 +573,7 @@ type Query {
   personaFeed(first: Int, after: String): ContentItemsConnection
   suggestedFollows: [Person]
   searchPeople(name: String, first: Int, after: String): SearchPeopleResultsConnection
-  getStaff(ministry: ID): [Person]
+  getStaff(ministry: String): [Person]
   currentUser: AuthenticatedUser
   userExists(identity: String): USER_AUTH_STATUS
   liveStream: LiveStream @deprecated(reason: "Use liveStreams, there may be multiple.")
@@ -720,7 +721,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   isMembershipRequired: Boolean
   isGroupEvent: Boolean
   subtitle: String
-  ministry: Group
+  ministry: String
   campus: Campus
   contactName: String
   contactEmail: String

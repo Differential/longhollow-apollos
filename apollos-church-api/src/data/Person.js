@@ -10,6 +10,7 @@ const schema = gql`
     htmlContent: String
     summary: String
     position: String
+    ministry: String
     facebook: String
     twitter: String
     instagram: String
@@ -17,48 +18,56 @@ const schema = gql`
   }
 
   extend type Query {
-    getStaff(ministry: ID): [Person]
+    getStaff(ministry: String): [Person]
   }
 `;
 
 const resolver = {
   Person: {
     ...Person.resolver.Person,
-    // TODO if staff or current user, expose the email address
-    email: async ({ id, email }, __, { dataSources: { Auth } }) => {
-      const { id: currentUserId } = await Auth.getCurrentUser();
-      return id === currentUserId ? email : null;
+    email: async ({ id, email }, __, { dataSources }) => {
+      // check for this first because the next data call takes a long time
+      const { id: currentUserId } = await dataSources.Auth.getCurrentUser();
+      if (id === currentUserId) return email;
+
+      const staff = await dataSources.Person.getStaff();
+      const person = staff.find((member) => member.id === id);
+      return person ? person.email : null;
     },
-    htmlContent: ({ id }, __, { dataSources }) =>
-      dataSources.Person.getAttribute(id, 'description'),
-    summary: ({ id }, __, { dataSources }) =>
-      dataSources.Person.getAttribute(id, 'summary'),
-    position: ({ id }, __, { dataSources }) =>
-      dataSources.Person.getAttribute(id, 'position'),
-    facebook: ({ id }, __, { dataSources }) =>
-      dataSources.Person.getAttribute(id, 'facebook'),
-    twitter: ({ id }, __, { dataSources }) =>
-      dataSources.Person.getAttribute(id, 'twitter'),
-    instagram: ({ id }, __, { dataSources }) =>
-      dataSources.Person.getAttribute(id, 'instagram'),
-    website: ({ id }, __, { dataSources }) =>
-      dataSources.Person.getAttribute(id, 'website'),
+    htmlContent: ({ attributeValues }) => attributeValues.description?.value,
+    summary: ({ attributeValues }) => attributeValues.summary?.value,
+    position: ({ attributeValues }) => attributeValues.position?.value,
+    ministry: ({ attributeValues }) => attributeValues.ministry?.valueFormatted,
+    facebook: ({ attributeValues }) => attributeValues.facebook?.value,
+    twitter: ({ attributeValues }) => attributeValues.twitter?.value,
+    instagram: ({ attributeValues }) => attributeValues.instagram?.value,
+    website: ({ attributeValues }) => attributeValues.website?.value,
   },
   Query: {
     ...Person.resolver.Query,
-    getStaff: () => [],
+    getStaff: (_, { ministry }, { dataSources }) =>
+      dataSources.Person.getStaff({ ministry }),
   },
 };
 
 class dataSource extends Person.dataSource {
   expanded = true;
 
-  getAttribute = async (id, attribute) => {
-    const person = await this.request()
+  getStaff = async ({ ministry = null } = {}) => {
+    // this is the Rock admin RSR - Staff Workers group, should always be correct
+    // as it's the only way staff have access to Rock back end
+    const members = await this.request('GroupMembers')
+      .filter('GroupId eq 3')
       .cache({ ttl: ONE_DAY })
-      .find(id)
       .get();
-    return person.attributeValues[attribute]?.value;
+    const staff = await Promise.all(
+      members.map(({ personId }) => this.getFromId(personId))
+    );
+    if (ministry)
+      return staff.filter(
+        (person) => person.attributeValues.ministry?.valueFormatted === ministry
+      );
+    return staff;
   };
 }
 
