@@ -30,7 +30,7 @@ const schema = gql`
     location: Location
     start: String
     end: String
-    relatedLinks: String
+    relatedLinks: [RelatedLink]
     linkText: String
     linkURL: String
     ctaLinks: [CTA]
@@ -39,6 +39,13 @@ const schema = gql`
     finePrint: String
     closedInstructions: String
     schedule: String
+    socialMedia: SocialMediaInfo
+  }
+
+  SocialMediaInfo {
+    title: String
+    summary: String
+    image: ImageMedia
   }
 
   type RelatedLink {
@@ -159,6 +166,30 @@ const resolver = {
       contactEmail?.value,
     contactPhone: ({ attributeValues: { contactPhone } }) =>
       contactPhone?.value,
+    socialMedia: ({
+      attributeValues: {
+        socialMediaTitle,
+        socialMediaSummary,
+        socialMediaGraphic,
+      },
+    }) => ({
+      title: socialMediaTitle.value,
+      summary: socialMediaSummary.value,
+      image: {
+        __typename: 'ImageMedia',
+        key: socialMediaGraphic?.attributeId,
+        name: socialMediaGraphic?.value,
+        sources: socialMediaGraphic?.value
+          ? [
+              {
+                uri: `${ApollosConfig.ROCK.IMAGE_URL}?guid=${
+                  socialMediaGraphic?.value
+                }`,
+              },
+            ]
+          : [],
+      },
+    }),
   },
   CTA: {
     title: ({ attributeValues: { title } }) => title?.value,
