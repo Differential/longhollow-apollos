@@ -42,7 +42,7 @@ const schema = gql`
     socialMedia: SocialMediaInfo
   }
 
-  SocialMediaInfo {
+  type SocialMediaInfo {
     title: String
     summary: String
     image: ImageMedia
