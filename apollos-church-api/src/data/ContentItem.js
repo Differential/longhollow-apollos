@@ -166,7 +166,7 @@ const resolver = {
       { dataSources: { Matrix } }
     ) => Matrix.getItemsFromGuid(relatedLinks?.value),
     linkText: ({ attributeValues: { linkText } }) => linkText?.value,
-    linkURL: ({ attributeValues: { linkURL } }) => linkURL?.value,
+    linkURL: ({ attributeValues: { linkUrl } }) => linkUrl?.value,
     ctaLinks: (
       { attributeValues: { ctaLinks } },
       args,
