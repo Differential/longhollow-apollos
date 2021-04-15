@@ -72,10 +72,44 @@ const schema = gql`
 class dataSource extends ContentItem.dataSource {
   attributeIsVideo = ({ key }) =>
     key.toLowerCase().includes('video') || key.toLowerCase().includes('vimeo');
+
+  getFeatures = async (item) => {
+    const features = await super.getFeatures(item);
+
+    const { Feature, Matrix } = this.context.dataSources;
+    const scriptures = await Matrix.getItemsFromGuid(
+      item.attributeValues.memoryVerses?.value
+    );
+    if (scriptures !== []) {
+      scriptures.forEach(({ attributeValues }, i) => {
+        features.push(
+          Feature.createScriptureFeature({
+            reference: attributeValues.passage.value,
+            id: `${item.attributeValues.memoryVerses.id}-${i}`,
+          })
+        );
+      });
+    }
+
+    return features;
+  };
 }
 
 const resolver = {
   ...ContentItem.resolver,
+  DevotionalContentItem: {
+    ...ContentItem.resolver.DevotionalContentItem,
+    scriptures: async ({ attributeValues }, args, { dataSources }) => {
+      const scriptures = await dataSources.Matrix.getItemsFromGuid(
+        attributeValues.scriptures?.value
+      );
+      const query = scriptures
+        .map((scripture) => scripture.attributeValues.passage.value)
+        .join(', ');
+      return query ? dataSources.Scripture.getScriptures(query) : [];
+    },
+  },
+
   WeekendContentItem: {
     ...ContentItem.resolver.WeekendContentItem,
     topics: ({ attributeValues: { topics } }) =>
