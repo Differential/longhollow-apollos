@@ -207,8 +207,8 @@ const resolver = {
         socialMediaGraphic,
       },
     }) => ({
-      title: socialMediaTitle.value,
-      summary: socialMediaSummary.value,
+      title: socialMediaTitle?.value,
+      summary: socialMediaSummary?.value,
       image: {
         __typename: 'ImageMedia',
         key: socialMediaGraphic?.attributeId,
