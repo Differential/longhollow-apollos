@@ -18,14 +18,13 @@ class dataSource extends RESTDataSource {
     // captures either vimeo/123 or 123
     const matches = id.match(/\/?(\d+)$/);
     if (matches && matches[1]) {
-
       const cachedVideo = await Cache.get({
         key: ['vimeo', id],
       });
       if (cachedVideo) return cachedVideo;
 
       const video = JSON.parse(await this.get(`videos/${matches[1]}`));
-      const source =  this.findHLSSource(video);
+      const source = this.findHLSSource(video);
 
       if (source) Cache.set({ key: ['vimeo', id], data: source });
 
