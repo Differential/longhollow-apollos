@@ -73,6 +73,17 @@ class dataSource extends ContentItem.dataSource {
   attributeIsVideo = ({ key }) =>
     key.toLowerCase().includes('video') || key.toLowerCase().includes('vimeo');
 
+  getActiveLiveStreamContent = async () => {
+    const { LiveStream } = this.context.dataSources;
+    const { isLive } = await LiveStream.getLiveStream();
+    // if not live, return empty content item
+    // TODO: return next future sermon
+    if (!isLive) return [null];
+
+    const mostRecentSermon = await this.getSermonFeed().first();
+    return [mostRecentSermon];
+  };
+
   getFeatures = async (item) => {
     const features = await super.getFeatures(item);
 
