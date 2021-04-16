@@ -1,8 +1,6 @@
 import gql from 'graphql-tag';
 import { Person } from '@apollosproject/data-connector-rock';
 
-const ONE_DAY = 60 * 60 * 24;
-
 const schema = gql`
   ${Person.schema}
 
