@@ -1,10 +1,11 @@
 import gql from 'graphql-tag';
 import moment from 'moment';
 import { ContentItem } from '@apollosproject/data-connector-rock';
+import { contentItemSchema } from '@apollosproject/data-schema';
 import ApollosConfig from '@apollosproject/config';
 
 const schema = gql`
-  ${ContentItem.schema}
+  ${contentItemSchema}
 
   extend type WeekendContentItem {
     speaker: String
