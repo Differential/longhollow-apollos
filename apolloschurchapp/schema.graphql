@@ -671,6 +671,12 @@ type SmsPinResult {
   userAuthStatus: USER_AUTH_STATUS
 }
 
+type SocialMediaInfo {
+  title: String
+  summary: String
+  image: ImageMedia
+}
+
 type TextFeature implements Feature & Node {
   id: ID!
   order: Int
@@ -734,7 +740,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   location: Location
   start: String
   end: String
-  relatedLinks: String
+  relatedLinks: [RelatedLink]
   linkText: String
   linkURL: String
   ctaLinks: [CTA]
@@ -743,6 +749,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   finePrint: String
   closedInstructions: String
   schedule: String
+  socialMedia: SocialMediaInfo
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")
   featureFeed: FeatureFeed

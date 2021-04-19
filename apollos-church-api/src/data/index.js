@@ -7,7 +7,7 @@ import {
 
 import * as Analytics from '@apollosproject/data-connector-analytics';
 import * as Scripture from '@apollosproject/data-connector-bible';
-import * as LiveStream from '@apollosproject/data-connector-church-online';
+// import * as LiveStream from '@apollosproject/data-connector-church-online';
 import * as Cloudinary from '@apollosproject/data-connector-cloudinary';
 import * as OneSignal from '@apollosproject/data-connector-onesignal';
 // import * as Search from '@apollosproject/data-connector-algolia-search';
@@ -56,6 +56,7 @@ import * as ContentItem from './ContentItem';
 import * as Person from './Person';
 import * as Matrix from './Matrix';
 import * as Search from './Algolia';
+import * as LiveStream from './LiveStream';
 
 // This module is used to attach Rock User updating to the OneSignal module.
 // This module includes a Resolver that overides a resolver defined in `OneSignal`
