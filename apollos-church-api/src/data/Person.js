@@ -1,8 +1,6 @@
 import gql from 'graphql-tag';
 import { Person } from '@apollosproject/data-connector-rock';
 
-const ONE_DAY = 60 * 60 * 24;
-
 const schema = gql`
   ${Person.schema}
 
@@ -50,24 +48,40 @@ const resolver = {
   },
 };
 
+const ONE_DAY = 60 * 60 * 24;
+
 class dataSource extends Person.dataSource {
   expanded = true;
 
+  async getByMinistry({ ministry }) {
+    const ministryValues = await this.request('DefinedValues')
+      .select('Guid, Value')
+      .filter('DefinedTypeId eq 117') // Ministries defined type
+      .get();
+    const currentMinistry = ministryValues.find(
+      ({ value }) => value === ministry
+    );
+
+    if (!currentMinistry) return [];
+
+    const peopleValuesForMinistry = await this.request('AttributeValues')
+      .filter(`Value eq '${currentMinistry.guid}' and Attribute/Id eq 11993`) // People/Ministry attribute
+      .get();
+
+    return Promise.all(
+      peopleValuesForMinistry.map(({ entityId }) => this.getFromId(entityId))
+    );
+  }
+
   getStaff = async ({ ministry = null } = {}) => {
-    // this is the Rock admin RSR - Staff Workers group, should always be correct
-    // as it's the only way staff have access to Rock back end
+    if (ministry) {
+      return this.getByMinistry({ ministry });
+    }
     const members = await this.request('GroupMembers')
       .filter('GroupId eq 3')
       .cache({ ttl: ONE_DAY })
       .get();
-    const staff = await Promise.all(
-      members.map(({ personId }) => this.getFromId(personId))
-    );
-    if (ministry)
-      return staff.filter(
-        (person) => person.attributeValues.ministry?.valueFormatted === ministry
-      );
-    return staff;
+    return Promise.all(members.map(({ personId }) => this.getFromId(personId)));
   };
 }
 
