@@ -25,7 +25,7 @@ const resolver = {
     ...Person.resolver.Person,
     email: async ({ id, email }, __, { dataSources }) => {
       // check for this first because the next data call takes a long time
-      const { id: currentUserId } = await dataSources.Auth.getCurrentUser();
+      const { id: currentUserId } = await dataSources.Auth.getCurrentPerson();
       if (id === currentUserId) return email;
 
       const staff = await dataSources.Person.getStaff();

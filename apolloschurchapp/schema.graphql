@@ -162,7 +162,7 @@ type ContentChannel implements Node {
   name: String
   description: String
   childContentChannels: [ContentChannel]
-  childContentItemsConnection(first: Int, after: String): ContentItemsConnection
+  childContentItemsConnection(first: Int, after: String, orderBy: ContentItemsConnectionOrderInput): ContentItemsConnection
   iconName: String
 }
 
