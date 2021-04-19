@@ -571,6 +571,7 @@ type Query {
   campaigns: ContentItemsConnection
   userFeed(first: Int, after: String): ContentItemsConnection
   personaFeed(first: Int, after: String): ContentItemsConnection
+  getMinistryContent(ministry: String!): [ContentItem]
   suggestedFollows: [Person]
   searchPeople(name: String, first: Int, after: String): SearchPeopleResultsConnection
   getStaff(ministry: String): [Person]
@@ -738,8 +739,8 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   opportunityType: [String]
   relatedSkills: [String]
   location: Location
-  start: String
-  end: String
+  time: String
+  forWho: String
   relatedLinks: [RelatedLink]
   linkText: String
   linkURL: String

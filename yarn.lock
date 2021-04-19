@@ -222,12 +222,11 @@
     apollo-datasource "^0.2.0"
     ioredis "4.14.1"
 
-"@apollosproject/data-connector-rock@^2.9.1-canary.4":
-  version "2.9.1-canary.4"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.9.1-canary.4.tgz#beb315cd84f19431fc4e7a83903578d113d03e7d"
-  integrity sha512-YhhJ8Mx/daUM4lOGd5Aj4HQ1cy9MKhpBbQR7svMGelFJIintTxRaY5agTKnuD9avDMsjhpfhpXc2k8AT/QNMGQ==
+"@apollosproject/data-connector-rock@^2.11.1-canary.12":
+  version "2.11.1-canary.12"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.11.1-canary.12.tgz#92ecbfe9d67ed08df67f9569765e3f36a52d1085"
+  integrity sha512-+yuw6N0eqXD4fndpMi+Pl1f21MpoSZdIcZFQAgf2QLmXv9hZCEaKjfdYJXAC8ZNPajFuvIDO0gNs2mhmS6KR4g==
   dependencies:
-    "@apollosproject/server-core" "^2.9.0"
     awesome-phonenumber "^2.4.2"
     form-data "^2.3.3"
     hyphenation.en-us "^0.2.1"
@@ -255,17 +254,17 @@
   dependencies:
     graphql-tag "^2.10.0"
 
+"@apollosproject/data-schema@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.11.0.tgz#b62e48c078dbdf22173aad4a07407d71e21ebe44"
+  integrity sha512-q1TQgCUQ347JQKRgvg6YTpVdRlCGI9guxG9xEXuYxyDoPJbfqER/xe4Xtw0W28E71XDmvI3D7XOVq5sNLpMGyQ==
+  dependencies:
+    graphql-tag "^2.10.0"
+
 "@apollosproject/data-schema@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.3.1.tgz#d429f9b5b41a4ea3a8ccdefe7e97cc9a41b56ff3"
   integrity sha512-JqFypV6CIoS0azSibTUgCVhgd7X/lynMTWx89KlvhIliFwC62KdJg2LuILdI66XCSJflQswIRcouyRsqk96wyw==
-  dependencies:
-    graphql-tag "^2.10.0"
-
-"@apollosproject/data-schema@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.9.0.tgz#befd2640af17f1d488fe9ee5203efa5d5ddd510e"
-  integrity sha512-g0F+GbYdTebpSWdRwBOdvLMt9xK7CdNlafgSzOHfBU2XVL7EnS2dF/53Lh1Ys3jMpxzkuvPneB5MdAm4LRDjJw==
   dependencies:
     graphql-tag "^2.10.0"
 
@@ -310,6 +309,20 @@
     graphql-tag "^2.10.0"
     lodash "^4.17.11"
 
+"@apollosproject/server-core@^2.11.1-canary.8":
+  version "2.11.1-canary.8"
+  resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.11.1-canary.8.tgz#db5e4323b0595142ae0125ace6286350aee33a57"
+  integrity sha512-YJrdiASefJ5PpTQkxy+uKmYZ+i9Y77+YcqPanwFRMVlPahVVy4pSkx3t6y2QjPf3itt43zLtHO466xvHGwllxw==
+  dependencies:
+    "@apollosproject/data-schema" "^2.11.0"
+    apollo-server-caching "^0.4.0"
+    bull "^3.11.0"
+    bull-board "^0.1.1"
+    express-basic-auth "^1.2.0"
+    graphql-parse-resolve-info "^4.4.5"
+    graphql-tag "^2.10.0"
+    lodash "^4.17.11"
+
 "@apollosproject/server-core@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.3.1.tgz#0db90ef296fd1f186625c1d91607ef19de348030"
@@ -324,21 +337,7 @@
     graphql-tag "^2.10.0"
     lodash "^4.17.11"
 
-"@apollosproject/server-core@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.9.0.tgz#a0c517b5818daf2a198e4ac57e19f22353ec700b"
-  integrity sha512-LXHfvigiWnog+0mYTZqu4AVPoGPY5rA7pHbo7P/Inp2EWkGT2jgpofz997fK3VRqWO6PL1ygxgGLujn+Fxt/eA==
-  dependencies:
-    "@apollosproject/data-schema" "^2.9.0"
-    apollo-server-caching "^0.4.0"
-    bull "^3.11.0"
-    bull-board "^0.1.1"
-    express-basic-auth "^1.2.0"
-    graphql-parse-resolve-info "^4.4.5"
-    graphql-tag "^2.10.0"
-    lodash "^4.17.11"
-
-"@apollosproject/server-core@^2.9.1-canary.1", "@apollosproject/server-core@^2.9.1-canary.1+1210d6e3":
+"@apollosproject/server-core@^2.9.1-canary.1+1210d6e3":
   version "2.9.1-canary.1"
   resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.9.1-canary.1.tgz#0156837b6755651f0890b2943a143289a49392c2"
   integrity sha512-0+DTo9e55924dVZL8m3dJa0XnUzK9zdAM5ZBdzFWxFMDiv5ydFYYIVjLJGecTdAyudR3UagSe8EYQBXbOmxVGg==
