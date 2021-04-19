@@ -28,8 +28,8 @@ const schema = gql`
     opportunityType: [String]
     relatedSkills: [String]
     location: Location
-    start: String
-    end: String
+    time: String
+    forWho: String
     relatedLinks: [RelatedLink]
     linkText: String
     linkURL: String
@@ -176,14 +176,8 @@ const resolver = {
       name: locationName?.value,
       address: locationAddress?.valueFormatted,
     }),
-    start: ({ attributeValues: { start } }) =>
-      start?.value
-        ? moment.tz(start?.value, ApollosConfig.ROCK.TIMEZONE).format()
-        : null,
-    end: ({ attributeValues: { end } }) =>
-      end?.value
-        ? moment.tz(end?.value, ApollosConfig.ROCK.TIMEZONE).format()
-        : null,
+    time: ({ attributeValues: { time } }) => time?.value,
+    forWho: ({ attributeValues: { forWho } }) => forWho?.value,
     childcareInfo: ({ attributeValues: { childcareInfo } }) =>
       childcareInfo?.value,
     deadline: ({ attributeValues: { signupDeadline } }) =>
