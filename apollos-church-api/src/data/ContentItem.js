@@ -67,6 +67,10 @@ const schema = gql`
     latitude: Float
     longitude: Float
   }
+
+  extend type Query {
+    getMinistryContent(ministry: String!): [ContentItem]
+  }
 `;
 
 class dataSource extends ContentItem.dataSource {
@@ -104,10 +108,31 @@ class dataSource extends ContentItem.dataSource {
 
     return features;
   };
+
+  getByMinistry = async (ministry) => {
+    // get the Rock enum value (DefinedValue)
+    const { guid } = await this.request('DefinedValues')
+      // 117 is the Ministries defined type
+      .filter(`DefinedTypeId eq 117 and Value eq '${ministry}'`)
+      .first();
+    const attributeValues = await this.request('AttributeValues')
+      .expand('Attribute')
+      .filter(
+        // 208 is a Rock Content Item
+        `Attribute/Name eq 'Ministry' and Attribute/EntityTypeId eq 208 and Value eq '${guid}'`
+      )
+      .get();
+    const contentIds = attributeValues.map(({ entityId }) => entityId);
+    return this.getFromIds(contentIds).get();
+  };
 }
 
 const resolver = {
   ...ContentItem.resolver,
+  Query: {
+    getMinistryContent: (_, { ministry }, { dataSources }) =>
+      dataSources.ContentItem.getByMinistry(ministry),
+  },
   DevotionalContentItem: {
     ...ContentItem.resolver.DevotionalContentItem,
     scriptures: async ({ attributeValues }, args, { dataSources }) => {
