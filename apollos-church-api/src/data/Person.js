@@ -48,10 +48,12 @@ const resolver = {
   },
 };
 
+const ONE_DAY = 60 * 60 * 24;
+
 class dataSource extends Person.dataSource {
   expanded = true;
 
-  getStaff = async ({ ministry = null } = {}) => {
+  async getByMinistry({ ministry }) {
     const ministryValues = await this.request('DefinedValues')
       .select('Guid, Value')
       .filter('DefinedTypeId eq 117') // Ministries defined type
@@ -69,6 +71,17 @@ class dataSource extends Person.dataSource {
     return Promise.all(
       peopleValuesForMinistry.map(({ entityId }) => this.getFromId(entityId))
     );
+  }
+
+  getStaff = async ({ ministry = null } = {}) => {
+    if (ministry) {
+      return this.getByMinistry({ ministry });
+    }
+    const members = await this.request('GroupMembers')
+      .filter('GroupId eq 3')
+      .cache({ ttl: ONE_DAY })
+      .get();
+    return Promise.all(members.map(({ personId }) => this.getFromId(personId)));
   };
 }
 
