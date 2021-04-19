@@ -247,7 +247,7 @@
     apollo-datasource "^0.2.0"
     twilio "^3.28.0"
 
-"@apollosproject/data-schema@^2.10.1-canary.1", "@apollosproject/data-schema@^2.10.1-canary.1+87f6dedc":
+"@apollosproject/data-schema@^2.10.1-canary.1+87f6dedc":
   version "2.10.1-canary.1"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.10.1-canary.1.tgz#ef1762a6a1f9628335ccb668f8d0a22ed6c4006a"
   integrity sha512-MENlVcTjr7owtd7YNFXAMpE3tEU50pejRgu0cR88sQCMNHr7Bv1U23MIbDmdXFyCBdY+db94YQYT6EQDUNxYRg==
@@ -258,6 +258,13 @@
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.11.0.tgz#b62e48c078dbdf22173aad4a07407d71e21ebe44"
   integrity sha512-q1TQgCUQ347JQKRgvg6YTpVdRlCGI9guxG9xEXuYxyDoPJbfqER/xe4Xtw0W28E71XDmvI3D7XOVq5sNLpMGyQ==
+  dependencies:
+    graphql-tag "^2.10.0"
+
+"@apollosproject/data-schema@^2.11.1-canary.6":
+  version "2.11.1-canary.6"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.11.1-canary.6.tgz#e66bcad6f297e8fda9ec9d5014650b21ea07e578"
+  integrity sha512-FKFnkSdb9NjxlEajSAJyKpO0dbehNG824ofd4tmYVPO1Lv+GSLY5gktMauNT37WLIn+8K3yv3asT7XHD/St7yQ==
   dependencies:
     graphql-tag "^2.10.0"
 
@@ -285,10 +292,10 @@
   resolved "https://registry.yarnpkg.com/@apollosproject/react-native-airplay-btn/-/react-native-airplay-btn-0.2.0.tgz#19c1c7154e6c04fd4d5a5587faf6a69cb34d8a79"
   integrity sha512-yf5TRao2v+jq9LtzqAt4MBZ4OgYR01YsyfbU9TC8/D+M9TWkYTsU8uhWpwYyxN4K1dWBd9jagyDMU0fpcLhkPg==
 
-"@apollosproject/rock-apollo-data-source@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@apollosproject/rock-apollo-data-source/-/rock-apollo-data-source-2.3.1.tgz#2233505ff9d3e55db355578618f5d28e13579c57"
-  integrity sha512-E7Z+qRn5bZw6ARN7J00XCBZTR60Nk5EENX4b4VY047etMkmwPPWT/SONpEmOY/FO1mAZVo4B3J3bDfmBGgdSjQ==
+"@apollosproject/rock-apollo-data-source@^2.11.1-canary.6":
+  version "2.11.1-canary.6"
+  resolved "https://registry.yarnpkg.com/@apollosproject/rock-apollo-data-source/-/rock-apollo-data-source-2.11.1-canary.6.tgz#1d58b32861587972432357cc6f8e273596c279b1"
+  integrity sha512-3rorWmAi44Fumsc59zKldRSf8LdKlOqW/raJ9xk1KpY4eFeI6Z/plam4DvL1AnjV/8zrtHMidq7WIWUoCKMBvw==
   dependencies:
     apollo-datasource-rest "^0.6.4"
     apollo-server-env "^2.3.0"
