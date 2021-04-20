@@ -16,8 +16,8 @@ const Toolbar = () => {
           />
           <ActionBarItem
             onPress={() =>
-              navigation.navigate('NodeSingle', {
-                nodeId: 'UniversalContentItem:66e7a69ceb06c1ae1b8e792528813836',
+              navigation.navigate('ContentSingle', {
+                itemId: 'UniversalContentItem:7030adbb8729a5937d3187665a370f7e',
               })
             }
             icon="heart-solid"
