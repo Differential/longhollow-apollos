@@ -112,6 +112,9 @@ class dataSource extends ContentItem.dataSource {
 
   getByMinistry = async (ministry) => {
     // get the Rock enum value (DefinedValue)
+    if (!ministry) {
+      return [];
+    }
     const { guid } = await this.request('DefinedValues')
       // 117 is the Ministries defined type
       .filter(`DefinedTypeId eq 117 and Value eq '${ministry}'`)
