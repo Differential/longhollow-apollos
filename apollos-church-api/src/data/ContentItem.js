@@ -129,6 +129,14 @@ class dataSource extends ContentItem.dataSource {
     const contentIds = attributeValues.map(({ entityId }) => entityId);
     return this.getFromIds(contentIds).get();
   };
+
+  buildDetailsHTML = ({ attributeValues }) => {
+    const { cost: { value: cost } = {} } = attributeValues;
+    let html = '';
+    if (cost) html = `<strong>Cost: $${cost}</strong><br>`;
+    if (html !== '') html = `<p>${html}</p>`;
+    return html;
+  };
 }
 
 const resolver = {
@@ -163,8 +171,19 @@ const resolver = {
     ) => Scripture.getScriptures(scriptures?.value || ''),
     speaker: ({ attributeValues: { speaker } }) => speaker?.value,
   },
+  MediaContentItem: {
+    ...ContentItem.resolver.MediaContentItem,
+    htmlContent: (item, _, { dataSources }) =>
+      `${dataSources.ContentItem.buildDetailsHTML(
+        item
+      )}${dataSources.ContentItem.createHTMLContent(item.content)}`,
+  },
   UniversalContentItem: {
     ...ContentItem.resolver.UniversalContentItem,
+    htmlContent: (item, _, { dataSources }) =>
+      `${dataSources.ContentItem.buildDetailsHTML(
+        item
+      )}${dataSources.ContentItem.createHTMLContent(item.content)}`,
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
     isMembershipRequired: ({ attributeValues: { isMembershipRequired } }) =>
