@@ -131,9 +131,31 @@ class dataSource extends ContentItem.dataSource {
   };
 
   buildDetailsHTML = ({ attributeValues }) => {
-    const { cost: { value: cost } = {} } = attributeValues;
+    const {
+      cost: { value: cost } = {},
+      time: { value: time } = {},
+      forWho: { value: forWho } = {},
+      childcareInfo: { value: childcareInfo } = {},
+      locationName: { value: locationName } = {},
+      locationAddress: { valueFormatted: locationAddress } = {},
+      contactName: { value: contactName } = {},
+      contactEmail: { value: contactEmail } = {},
+      contactPhone: { value: contactPhone } = {},
+    } = attributeValues;
     let html = '';
-    if (cost) html = `<strong>Cost: $${cost}</strong><br>`;
+    if (cost) html = `${html}<br><strong>Cost: $${cost}</strong>`;
+    if (time) html = `${html}<br><strong>Time: ${time}</strong>`;
+    if (forWho) html = `${html}<br><strong>For Who: ${forWho}</strong>`;
+    if (childcareInfo)
+      html = `${html}<br><strong>Childcare: ${childcareInfo}</strong>`;
+    if (contactName)
+      html = `${html}<br><strong>Contact:</strong><br>${contactName}${
+        contactPhone ? `<br>${contactPhone}` : ''
+      }${contactEmail ? `<br>${contactEmail}` : ''}`;
+    if (locationAddress)
+      html = `${html}<br><strong>Location:</strong>${
+        locationName ? `<br>${locationName}` : ''
+      }<br>${locationAddress}`;
     if (html !== '') html = `<p>${html}</p>`;
     return html;
   };
