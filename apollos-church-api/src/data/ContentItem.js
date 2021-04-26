@@ -143,11 +143,11 @@ class dataSource extends ContentItem.dataSource {
       contactPhone: { value: contactPhone } = {},
     } = attributeValues;
     let html = '';
-    if (cost) html = `${html}<br><strong>Cost: $${cost}</strong>`;
-    if (time) html = `${html}<br><strong>Time: ${time}</strong>`;
-    if (forWho) html = `${html}<br><strong>For Who: ${forWho}</strong>`;
+    if (cost) html = `<strong>Cost:</strong> $${cost}`;
+    if (time) html = `${html}<br><strong>Time:</strong> ${time}`;
+    if (forWho) html = `${html}<br><strong>For Who:</strong> ${forWho}`;
     if (childcareInfo)
-      html = `${html}<br><strong>Childcare: ${childcareInfo}</strong>`;
+      html = `${html}<br><strong>Childcare:</strong> ${childcareInfo}`;
     if (contactName)
       html = `${html}<br><strong>Contact:</strong><br>${contactName}${
         contactPhone ? `<br>${contactPhone}` : ''
@@ -156,8 +156,27 @@ class dataSource extends ContentItem.dataSource {
       html = `${html}<br><strong>Location:</strong>${
         locationName ? `<br>${locationName}` : ''
       }<br>${locationAddress}`;
-    if (html !== '') html = `<p>${html}</p>`;
+    if (html !== '') html = `${html}<br><br>`;
     return html;
+  };
+
+  buildFooterHTML = async ({ attributeValues }) => {
+    const { Matrix } = this.context.dataSources;
+    const { relatedLinks: { value: relatedLinksGuid } = {} } = attributeValues;
+    const links = await Matrix.getItemsFromGuid(relatedLinksGuid);
+    if (!links.length) return '';
+    const linksHTML = links
+      .filter(({ attributeValues: { link } }) => link?.value)
+      .map(
+        ({
+          attributeValues: {
+            name1,
+            link: { value: link },
+          },
+        }) => `<a href="${link}">${name1?.value || link}</a>`
+      )
+      .join('<br>');
+    return `<br><br><strong>Related Links:</strong><br>${linksHTML}`;
   };
 }
 
@@ -195,17 +214,21 @@ const resolver = {
   },
   MediaContentItem: {
     ...ContentItem.resolver.MediaContentItem,
-    htmlContent: (item, _, { dataSources }) =>
+    htmlContent: async (item, _, { dataSources }) =>
       `${dataSources.ContentItem.buildDetailsHTML(
         item
-      )}${dataSources.ContentItem.createHTMLContent(item.content)}`,
+      )}${dataSources.ContentItem.createHTMLContent(
+        item.content
+      )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
   },
   UniversalContentItem: {
     ...ContentItem.resolver.UniversalContentItem,
-    htmlContent: (item, _, { dataSources }) =>
+    htmlContent: async (item, _, { dataSources }) =>
       `${dataSources.ContentItem.buildDetailsHTML(
         item
-      )}${dataSources.ContentItem.createHTMLContent(item.content)}`,
+      )}${dataSources.ContentItem.createHTMLContent(
+        item.content
+      )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
     isMembershipRequired: ({ attributeValues: { isMembershipRequired } }) =>
@@ -313,6 +336,10 @@ const resolver = {
     }),
     buttonText: ({ attributeValues: { buttonText } }) => buttonText?.value,
     buttonLink: ({ attributeValues: { buttonLink } }) => buttonLink?.value,
+  },
+  RelatedLink: {
+    name: ({ attributeValues: { name1 } }) => name1?.value,
+    uri: ({ attributeValues: { link } }) => link?.value,
   },
 };
 
