@@ -38,6 +38,10 @@ import {
   BinaryFiles,
 } from '@apollosproject/data-connector-rock';
 
+// This is to mock any postgres resolvers so we don't throw API errors for unresolved
+// typedefs
+import NoPostgres from './noPostgres';
+
 // import {
 // Comment,
 // UserFlag,
@@ -108,6 +112,7 @@ const data = {
   // PostgresCampus,
   Persona,
   Matrix,
+  NoPostgres,
 };
 
 const {

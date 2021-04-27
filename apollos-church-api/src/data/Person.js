@@ -53,6 +53,17 @@ const ONE_DAY = 60 * 60 * 24;
 class dataSource extends Person.dataSource {
   expanded = true;
 
+  attributesLoaded = [
+    'Description',
+    'Summary',
+    'Position',
+    'Ministry',
+    'Facebook',
+    'Twitter',
+    'Instagram',
+    'Website',
+  ];
+
   async getByMinistry({ ministry }) {
     const ministryValues = await this.request('DefinedValues')
       .select('Guid, Value')
