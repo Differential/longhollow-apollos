@@ -21,6 +21,7 @@ const schema = gql`
 `;
 
 const resolver = {
+  ...Person.resolver,
   Person: {
     ...Person.resolver.Person,
     email: async ({ id, email }, __, { dataSources }) => {
