@@ -178,6 +178,52 @@ class dataSource extends ContentItem.dataSource {
       .join('<br>');
     return `<br><br><strong>Related Links:</strong><br>${linksHTML}`;
   };
+
+  // same as core, with a longer expiresAt
+  async getCoverImage(root) {
+    const { Cache } = this.context.dataSources;
+    const cachedValue = await Cache.get({
+      key: `contentItem:coverImage:${root.id}`,
+    });
+
+    if (cachedValue) {
+      return cachedValue;
+    }
+
+    let image = null;
+
+    // filter images w/o URLs
+    const ourImages = this.getImages(root).filter(
+      ({ sources }) => sources.length
+    );
+
+    if (ourImages.length) {
+      image = this.pickBestImage({ images: ourImages });
+    }
+
+    // If no image, check parent for image:
+    if (!image) {
+      // The cursor returns a promise which returns a promisee, hence th edouble eawait.
+      const parentItems = await (
+        await this.getCursorByChildContentItemId(root.id)
+      ).get();
+
+      if (parentItems.length) {
+        const validParentImages = parentItems
+          .flatMap(this.getImages)
+          .filter(({ sources }) => sources.length);
+
+        if (validParentImages && validParentImages.length)
+          image = this.pickBestImage({ images: validParentImages });
+      }
+    }
+
+    if (image != null) {
+      Cache.set({ key: `contentItem:coverImage:${root.id}`, data: image, expiresIn: 60 * 5 });
+    }
+
+    return image;
+  }
 }
 
 const resolver = {
