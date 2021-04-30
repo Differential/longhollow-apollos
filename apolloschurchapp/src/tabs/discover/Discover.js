@@ -3,8 +3,9 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import gql from 'graphql-tag';
 import { Query } from '@apollo/client/react/components';
+import { useNavigation } from '@react-navigation/native';
 
-import { BackgroundView, H2, styled } from '@apollosproject/ui-kit';
+import { BackgroundView, styled, H2 } from '@apollosproject/ui-kit';
 import {
   FeaturesFeedConnected,
   FEATURE_FEED_ACTION_MAP,
@@ -36,12 +37,13 @@ const TabHeader = styled(({ theme }) => ({
   paddingTop: theme.sizing.baseUnit * 2,
 }))(H2);
 
-function Discover({ navigation }) {
+const Discover = () => {
+  const navigation = useNavigation();
   return (
     <RockAuthedWebBrowser>
       {(openUrl) => (
         <BackgroundView>
-          <SafeAreaView edges={['top', 'right', 'left']}>
+          <SafeAreaView edges={['right', 'top', 'left']}>
             <Query query={GET_DISCOVER_FEED}>
               {({ data }) => (
                 <FeaturesFeedConnected
@@ -58,6 +60,6 @@ function Discover({ navigation }) {
       )}
     </RockAuthedWebBrowser>
   );
-}
+};
 
 export default Discover;

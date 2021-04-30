@@ -204,9 +204,9 @@ class dataSource extends ContentItem.dataSource {
     // If no image, check parent for image:
     if (!image) {
       // The cursor returns a promise which returns a promisee, hence th edouble eawait.
-      const parentItems = await (
-        await this.getCursorByChildContentItemId(root.id)
-      ).get();
+      const parentItems = await (await this.getCursorByChildContentItemId(
+        root.id
+      )).get();
 
       if (parentItems.length) {
         const validParentImages = parentItems
@@ -219,7 +219,11 @@ class dataSource extends ContentItem.dataSource {
     }
 
     if (image != null) {
-      Cache.set({ key: `contentItem:coverImage:${root.id}`, data: image, expiresIn: 60 * 5 });
+      Cache.set({
+        key: `contentItem:coverImage:${root.id}`,
+        data: image,
+        expiresIn: 60 * 5,
+      });
     }
 
     return image;

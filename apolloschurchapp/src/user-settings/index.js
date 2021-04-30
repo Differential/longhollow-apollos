@@ -76,6 +76,28 @@ class UserSettings extends PureComponent {
                             <CellIcon name="arrow-next" />
                           </Cell>
                         </Touchable>
+                        <Touchable
+                          onPress={() => {
+                            this.props.navigation.navigate('Notifications');
+                          }}
+                        >
+                          <Cell>
+                            <CellText>Notification Settings</CellText>
+                            <CellIcon name="arrow-next" />
+                          </Cell>
+                        </Touchable>
+                      </TableView>
+                      <TableView>
+                        <Touchable
+                          onPress={() => {
+                            openUrl('mailto:support@apollos.app');
+                          }}
+                        >
+                          <Cell>
+                            <CellText>Give Feedback</CellText>
+                            <CellIcon name="arrow-next" />
+                          </Cell>
+                        </Touchable>
                       </TableView>
                       <TableView>
                         <Touchable

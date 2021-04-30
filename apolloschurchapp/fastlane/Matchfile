@@ -1,5 +1,2 @@
 git_url("https://github.com/apollosproject/longhollow-certificates")
-
-storage_mode("git")
-
 app_identifier(["com.longhollow.churchapp"])
