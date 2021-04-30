@@ -174,10 +174,10 @@
     apollo-datasource-rest "^0.6.4"
     lodash "^4.17.11"
 
-"@apollosproject/data-connector-church-online@^2.13.1":
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-church-online/-/data-connector-church-online-2.13.1.tgz#0881338ed4fc0763cc5e77da8afb9fbfc8a6d645"
-  integrity sha512-dOrhuGuAs0L2hARZybmH5QXJbum46mM3ReAQ4ruV6FtAyFKuAxFpYMXW6BO1UpLtNTLCEJlt4TFP5uHhUOChUg==
+"@apollosproject/data-connector-church-online@^2.13.2-canary.1":
+  version "2.13.2-canary.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-church-online/-/data-connector-church-online-2.13.2-canary.1.tgz#c796b3ed662b0c6e5b7c6452b2f4f7a5c9e2e521"
+  integrity sha512-c9XIp/4s2m/1KYOOYgECizMmHZ2Zm5yBngQahPZ9ZfhvJsuTf2Mvgm7ikqEuIZMc7Hn5PcCtfvtqSyMa1ODShQ==
   dependencies:
     "@apollosproject/server-core" "^2.13.1"
     apollo-datasource-rest "^0.6.4"
