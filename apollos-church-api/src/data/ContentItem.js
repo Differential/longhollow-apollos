@@ -75,6 +75,12 @@ const schema = gql`
 `;
 
 class dataSource extends ContentItem.dataSource {
+  DEFAULT_SORT = () => [
+    { field: 'Priority', direction: 'asc' },
+    { field: 'Order', direction: 'asc' },
+    { field: 'StartDateTime', direction: 'asc' },
+  ];
+
   attributeIsVideo = ({ key }) =>
     key.toLowerCase().includes('video') || key.toLowerCase().includes('vimeo');
 
