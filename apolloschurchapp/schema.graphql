@@ -819,6 +819,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   closedInstructions: String
   schedule: String
   socialMedia: SocialMediaInfo
+  showTitleOverImage: Boolean
   sharing: SharableContentItem
   features: [Feature] @deprecated(reason: "Use featureFeed")
   featureFeed: FeatureFeed

@@ -41,6 +41,7 @@ const schema = gql`
     closedInstructions: String
     schedule: String
     socialMedia: SocialMediaInfo
+    showTitleOverImage: Boolean
   }
 
   type SocialMediaInfo {
@@ -354,6 +355,8 @@ const resolver = {
       contactEmail?.value,
     contactPhone: ({ attributeValues: { contactPhone } }) =>
       contactPhone?.value,
+    showTitleOverImage: ({ attributeValues: { showTitleOverImage } }) =>
+      showTitleOverImage?.value !== 'False',
     socialMedia: ({
       attributeValues: {
         socialMediaTitle,
