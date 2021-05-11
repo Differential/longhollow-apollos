@@ -16,7 +16,6 @@ const schema = gql`
   extend type UniversalContentItem {
     isFeatured: Boolean
     isMembershipRequired: Boolean
-    isGroupEvent: Boolean
     subtitle: String
     ministry: String
     campus: Campus
@@ -25,6 +24,7 @@ const schema = gql`
     contactPhone: String
     tripType: String
     daysAvailable: [String]
+    groupEventType: [String]
     serviceArea: [String]
     opportunityType: [String]
     relatedSkills: [String]
@@ -295,8 +295,6 @@ const resolver = {
       isFeatured?.value === 'True',
     isMembershipRequired: ({ attributeValues: { isMembershipRequired } }) =>
       isMembershipRequired?.value === 'True',
-    isGroupEvent: ({ attributeValues: { groupEvent } }) =>
-      groupEvent?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
     ministry: ({ attributeValues: { ministry } }) => ministry?.valueFormatted,
     campus: (
@@ -313,6 +311,10 @@ const resolver = {
     daysAvailable: ({ attributeValues: { daysAvailable } }) =>
       daysAvailable?.valueFormatted
         ? daysAvailable?.valueFormatted.split(',').map((day) => day.trim())
+        : [],
+    groupEventType: ({ attributeValues: { groupEventType } }) =>
+      groupEventType?.valueFormatted
+        ? groupEventType?.valueFormatted.split(',').map((type) => type.trim())
         : [],
     serviceArea: ({ attributeValues: { serviceArea } }) =>
       serviceArea?.valueFormatted
