@@ -159,10 +159,15 @@ class dataSource extends ContentItem.dataSource {
       html = `${html}<br><strong>Contact:</strong><br>${contactName}${
         contactPhone ? `<br>${contactPhone}` : ''
       }${contactEmail ? `<br>${contactEmail}` : ''}`;
-    if (locationAddress)
-      html = `${html}<br><strong>Location:</strong>${
-        locationName ? `<br>${locationName}` : ''
-      }<br>${locationAddress}`;
+    if (locationName && locationAddress) {
+      const googleMapsURI = encodeURI(
+        `https://maps.google.com/?q=${locationAddress
+          .replace('\r', '')
+          .split('\n')
+          .join(' ')}`
+      );
+      html = `${html}<br><strong>Location:</strong>${`<br><a href="${googleMapsURI}">${locationName}</a>`}`;
+    }
     if (html !== '') html = `${html}<br><br>`;
     return html;
   };
@@ -180,7 +185,7 @@ class dataSource extends ContentItem.dataSource {
             name1,
             link: { value: link },
           },
-        }) => `<a href="${link}">${name1?.value || link}</a>`
+        }) => `<a class="btn" href="${link}">${name1?.value || link}</a>`
       )
       .join('<br>');
     return `<br><br><strong>Related Links:</strong><br>${linksHTML}`;
