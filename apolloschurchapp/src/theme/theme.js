@@ -13,7 +13,7 @@ import propOverrides from './propOverrides';
 // const colors = {};
 const colors = {
   // Brand Colors
-  primary: '#8B9612',
+  primary: '#71d671',
   secondary: '#9CA24A',
   tertiary: '#333333',
 };
