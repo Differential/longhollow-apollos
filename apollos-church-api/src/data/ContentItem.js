@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 import moment from 'moment';
 import { ContentItem } from '@apollosproject/data-connector-rock';
 import { contentItemSchema } from '@apollosproject/data-schema';
+import { createGlobalId } from '@apollosproject/server-core';
 import ApollosConfig from '@apollosproject/config';
 
 const schema = gql`
@@ -117,6 +118,70 @@ class dataSource extends ContentItem.dataSource {
 
     return features;
   };
+
+  async getUpNext({ id }) {
+    const { Auth, Interactions, Cache } = this.context.dataSources;
+
+    // Safely exit if we don't have a current user.
+    try {
+      await Auth.getCurrentPerson();
+    } catch (e) {
+      return null;
+    }
+
+    let childItemsWithApollosIds;
+    const cachedValue = await Cache.get({
+      key: `contentItem:childItemsForUpNext:${id}`,
+    });
+
+    if (cachedValue) {
+      childItemsWithApollosIds = JSON.parse(cachedValue);
+    } else {
+      const childItemsCursor = await this.getCursorByParentContentItemId(id);
+      const childItemsOldestFirst = await childItemsCursor
+        .orderBy()
+        .sort(this.DEFAULT_SORT())
+        .get();
+
+      const childItems = childItemsOldestFirst.reverse();
+      childItemsWithApollosIds = childItems.map((childItem) => ({
+        ...childItem,
+        apollosId: createGlobalId(childItem.id, this.resolveType(childItem)),
+      }));
+      Cache.set({
+        key: `contentItem:childItemsForUpNext:${id}`,
+        data: JSON.stringify(childItemsWithApollosIds),
+        expiresIn: 60 * 60 * 24,
+      });
+    }
+
+    const interactions = await Interactions.getInteractionsForCurrentUserAndNodes(
+      {
+        nodeIds: childItemsWithApollosIds.map(({ apollosId }) => apollosId),
+        actions: ['COMPLETE'],
+      }
+    );
+
+    const apollosIdsWithInteractions = interactions.map(
+      ({ foreignKey }) => foreignKey
+    );
+
+    const firstInteractedIndex = childItemsWithApollosIds.findIndex(
+      ({ apollosId }) => apollosIdsWithInteractions.includes(apollosId)
+    );
+
+    if (firstInteractedIndex === -1) {
+      // If you haven't completede anything, return the first (last in reversed array) item;
+      return childItemsWithApollosIds[childItemsWithApollosIds.length - 1];
+    }
+    if (firstInteractedIndex === 0) {
+      // If you have completed the last item, return null (no items left to read)
+      return null;
+    }
+    // otherwise, return the item immediately following (before) the item you have already read
+    console.timeEnd('up-next');
+    return childItemsWithApollosIds[firstInteractedIndex - 1];
+  }
 
   getByMinistry = async (ministry) => {
     // get the Rock enum value (DefinedValue)
