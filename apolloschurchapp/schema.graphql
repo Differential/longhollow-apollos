@@ -639,6 +639,7 @@ type Query {
   userFeed(first: Int, after: String): ContentItemsConnection
   personaFeed(first: Int, after: String): ContentItemsConnection
   getMinistryContent(ministry: String!): [ContentItem]
+  getContentBySlug(slug: String!): ContentItem
   currentUser: AuthenticatedUser
   userExists(identity: String): USER_AUTH_STATUS
   liveStream: LiveStream @deprecated(reason: "Use liveStreams, there may be multiple.")

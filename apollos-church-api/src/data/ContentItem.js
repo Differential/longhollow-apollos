@@ -72,6 +72,7 @@ const schema = gql`
 
   extend type Query {
     getMinistryContent(ministry: String!): [ContentItem]
+    getContentBySlug(slug: String!): ContentItem
   }
 `;
 
@@ -240,6 +241,15 @@ class dataSource extends ContentItem.dataSource {
 
     return image;
   }
+
+  getBySlug = async (slug) => {
+    const contentItemSlug = await this.request('ContentChannelItemSlugs')
+      .filter(`Slug eq '${slug}'`)
+      .first();
+    if (!contentItemSlug) throw new Error(`Slug "${slug}" does not exist.`);
+
+    return this.getFromId(`${contentItemSlug.contentChannelItemId}`);
+  };
 }
 
 const resolver = {
@@ -247,6 +257,8 @@ const resolver = {
   Query: {
     getMinistryContent: (_, { ministry }, { dataSources }) =>
       dataSources.ContentItem.getByMinistry(ministry),
+    getContentBySlug: (_, { slug }, { dataSources }) =>
+      dataSources.ContentItem.getBySlug(slug),
   },
   DevotionalContentItem: {
     ...ContentItem.resolver.DevotionalContentItem,
