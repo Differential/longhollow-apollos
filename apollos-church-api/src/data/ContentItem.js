@@ -13,6 +13,11 @@ const schema = gql`
     scriptures: [Scripture]
   }
 
+  extend type MediaContentItem {
+    speaker: String
+    topics: [String]
+  }
+
   extend type UniversalContentItem {
     isFeatured: Boolean
     isMembershipRequired: Boolean
@@ -174,22 +179,43 @@ class dataSource extends ContentItem.dataSource {
   };
 
   buildFooterHTML = async ({ attributeValues }) => {
-    const { Matrix } = this.context.dataSources;
-    const { relatedLinks: { value: relatedLinksGuid } = {} } = attributeValues;
+    const { Matrix, Scripture } = this.context.dataSources;
+    const {
+      relatedLinks: { value: relatedLinksGuid } = {},
+      scriptures: { value: references } = {},
+      speaker: { value: speaker },
+      topics: { valueFormatted: topics },
+    } = attributeValues;
+    let html = '';
+
     const links = await Matrix.getItemsFromGuid(relatedLinksGuid);
-    if (!links.length) return '';
-    const linksHTML = links
-      .filter(({ attributeValues: { link } }) => link?.value)
-      .map(
-        ({
-          attributeValues: {
-            name1,
-            link: { value: link },
-          },
-        }) => `<a class="btn" href="${link}">${name1?.value || link}</a>`
-      )
-      .join('<br>');
-    return `<br><br><strong>Related Links:</strong><br>${linksHTML}`;
+    const scriptures = await Scripture.getScriptures(references);
+    if (links.length) {
+      const linksHTML = links
+        .filter(({ attributeValues: { link } }) => link?.value)
+        .map(
+          ({
+            attributeValues: {
+              name1,
+              link: { value: link },
+            },
+          }) => `<a class="btn" href="${link}">${name1?.value || link}</a>`
+        )
+        .join('<br>');
+      html = `<br><br><strong>Related Links:</strong><br>${linksHTML}`;
+    }
+    if (scriptures.length) {
+      const scripturesHTML = scriptures
+        .map(
+          ({ reference, content }) =>
+            `<br><strong>${reference}</strong><br>${content}`
+        )
+        .join('<br>');
+      html = `${html}<br><br><h4>Scripture</h4>${scripturesHTML}`;
+    }
+    if (speaker) html = `${html}<br><br><h4>Speakers</h4>${speaker}`;
+    if (topics) html = `${html}<br><br><h4>Topics</h4>${topics}`;
+    return html;
   };
 
   // same as core, with a longer expiresAt
@@ -285,6 +311,12 @@ const resolver = {
       { dataSources: { Scripture } }
     ) => Scripture.getScriptures(scriptures?.value || ''),
     speaker: ({ attributeValues: { speaker } }) => speaker?.value,
+    htmlContent: async (item, _, { dataSources }) =>
+      `${dataSources.ContentItem.buildDetailsHTML(
+        item
+      )}${dataSources.ContentItem.createHTMLContent(
+        item.content
+      )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
   },
   MediaContentItem: {
     ...ContentItem.resolver.MediaContentItem,
