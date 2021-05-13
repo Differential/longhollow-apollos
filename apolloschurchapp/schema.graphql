@@ -639,6 +639,7 @@ type Query {
   userFeed(first: Int, after: String): ContentItemsConnection
   personaFeed(first: Int, after: String): ContentItemsConnection
   getMinistryContent(ministry: String!): [ContentItem]
+  getContentBySlug(slug: String!): ContentItem
   currentUser: AuthenticatedUser
   userExists(identity: String): USER_AUTH_STATUS
   liveStream: LiveStream @deprecated(reason: "Use liveStreams, there may be multiple.")
@@ -794,7 +795,6 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   likedCount: Int
   isFeatured: Boolean
   isMembershipRequired: Boolean
-  isGroupEvent: Boolean
   subtitle: String
   ministry: String
   campus: Campus
@@ -803,6 +803,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   contactPhone: String
   tripType: String
   daysAvailable: [String]
+  groupEventType: [String]
   serviceArea: [String]
   opportunityType: [String]
   relatedSkills: [String]
