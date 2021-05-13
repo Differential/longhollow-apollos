@@ -22,8 +22,8 @@ import { SearchButton } from '../../ui/Search';
 import { ONBOARDING_VERSION } from '../../ui/Onboarding';
 
 const LogoTitle = styled(({ theme }) => ({
-  height: theme.sizing.baseUnit,
-  margin: theme.sizing.baseUnit,
+  height: theme.sizing.baseUnit * 2,
+  margin: theme.sizing.baseUnit * 2,
   alignSelf: 'center',
   resizeMode: 'contain',
 }))(Image);
