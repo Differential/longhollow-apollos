@@ -47,7 +47,7 @@ export const schema = gql`
 export const resolver = {
   ...Interactions.resolver,
   Mutation: {
-    ...Interactions.resolver.mutation,
+    ...Interactions.resolver.Mutation,
     trackPageView: (root, args, { dataSources }) =>
       dataSources.Interactions.createPageViewInteraction(args),
   },

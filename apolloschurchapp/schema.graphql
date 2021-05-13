@@ -794,7 +794,6 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   likedCount: Int
   isFeatured: Boolean
   isMembershipRequired: Boolean
-  isGroupEvent: Boolean
   subtitle: String
   ministry: String
   campus: Campus
@@ -803,6 +802,7 @@ type UniversalContentItem implements ContentItem & Node & ContentNode & Card & V
   contactPhone: String
   tripType: String
   daysAvailable: [String]
+  groupEventType: [String]
   serviceArea: [String]
   opportunityType: [String]
   relatedSkills: [String]
