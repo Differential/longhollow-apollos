@@ -25,4 +25,5 @@ export default {
     body:
       'We’ll share your prayer request with other users of this app for the next 24 hours.\n\nFeel free to submit prayer requests as often as you have them.',
   },
+  'ui-connected.SuggestedFollowListConnected': { Component: () => () => null },
 };
