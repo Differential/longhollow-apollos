@@ -37,9 +37,12 @@ const resolver = {
     summary: ({ attributeValues }) => attributeValues.summary?.value,
     position: ({ attributeValues }) => attributeValues.position?.value,
     ministry: ({ attributeValues }) => attributeValues.ministry?.valueFormatted,
-    facebook: ({ attributeValues }) => attributeValues.facebook?.value,
-    twitter: ({ attributeValues }) => attributeValues.twitter?.value,
-    instagram: ({ attributeValues }) => attributeValues.instagram?.value,
+    facebook: ({ attributeValues }) =>
+      attributeValues.facebook?.value.replace('http', 'https'),
+    twitter: ({ attributeValues }) =>
+      attributeValues.twitter?.value.replace('http', 'https'),
+    instagram: ({ attributeValues }) =>
+      attributeValues.instagram?.value.replace('http', 'https'),
     website: ({ attributeValues }) => attributeValues.website?.value,
   },
   Query: {
