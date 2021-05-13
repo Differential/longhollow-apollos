@@ -248,8 +248,8 @@ class dataSource extends ContentItem.dataSource {
     const {
       relatedLinks: { value: relatedLinksGuid } = {},
       scriptures: { value: references } = {},
-      speaker: { value: speaker },
-      topics: { valueFormatted: topics },
+      speaker: { value: speaker } = {},
+      topics: { valueFormatted: topics } = {},
     } = attributeValues;
     let html = '';
 
