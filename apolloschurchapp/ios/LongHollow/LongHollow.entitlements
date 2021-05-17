@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applink:longhollow-web.vercel.app</string>
+		<string>applinks:longhollow-web.vercel.app</string>
 	</array>
 	<key>com.apple.developer.networking.wifi-info</key>
 	<true/>
