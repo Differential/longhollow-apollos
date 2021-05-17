@@ -341,6 +341,13 @@ class dataSource extends ContentItem.dataSource {
 
     return this.getFromId(`${contentItemSlug.contentChannelItemId}`);
   };
+
+  getShareUrl = async ({ id }) => {
+    const { slug } = await this.request('ContentChannelItemSlugs')
+      .filter(`ContentChannelItemId eq ${id}`)
+      .first();
+    return `${ApollosConfig.APP.UNIVERSAL_LINK_HOST}/app-link/${slug}`;
+  };
 }
 
 const resolver = {
