@@ -19,7 +19,7 @@ export class Search extends BaseSearch {
           serviceArea,
           opportunityType,
           relatedSkills,
-          isGroupEvent,
+          groupEventType,
           speaker,
           topics,
           scriptures,
@@ -43,7 +43,7 @@ export class Search extends BaseSearch {
             serviceArea
             opportunityType
             relatedSkills
-            isGroupEvent
+            groupEventType
           }
           ... on WeekendContentItem {
             speaker
@@ -68,7 +68,7 @@ export class Search extends BaseSearch {
       serviceArea,
       opportunityType,
       relatedSkills,
-      isGroupEvent,
+      groupEventType,
       speaker,
       topics,
       bookOfTheBible: scriptures?.map(({ book }) => book),
