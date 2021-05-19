@@ -12,11 +12,13 @@ const schema = gql`
     speaker: String
     topics: [String]
     scriptures: [Scripture]
+    relatedLinks: [RelatedLink]
   }
 
   extend type MediaContentItem {
     speaker: String
     topics: [String]
+    relatedLinks: [RelatedLink]
   }
 
   extend type UniversalContentItem {
@@ -212,7 +214,16 @@ class dataSource extends ContentItem.dataSource {
     const {
       cost: { value: cost } = {},
       time: { value: time } = {},
+      schedule: { value: schedule } = {},
+      signupDeadline: { value: signupDeadline } = {},
       forWho: { value: forWho } = {},
+      membershipRequired: { value: membershipRequired } = {},
+      groupEventType: { valueFormatted: groupEventType } = {},
+      daysAvailable: { valueFormatted: daysAvailable } = {},
+      ministry: { valueFormatted: ministry } = {},
+      serviceArea: { valueFormatted: serviceArea } = {},
+      opportunityType: { valueFormatted: opportunityType } = {},
+      relatedSkills: { valueFormatted: relatedSkills } = {},
       childcareInfo: { value: childcareInfo } = {},
       locationName: { value: locationName } = {},
       locationAddress: { valueFormatted: locationAddress } = {},
@@ -223,7 +234,25 @@ class dataSource extends ContentItem.dataSource {
     let html = '';
     if (cost) html = `<strong>Cost:</strong> $${cost}`;
     if (time) html = `${html}<br><strong>Time:</strong> ${time}`;
+    if (schedule) html = `${html}<br><strong>Schedule:</strong> ${schedule}`;
+    if (signupDeadline)
+      html = `${html}<br><strong>Signup Deadline:</strong> ${moment
+        .tz(signupDeadline, ApollosConfig.ROCK.TIMEZONE)
+        .calendar()}`;
     if (forWho) html = `${html}<br><strong>For Who:</strong> ${forWho}`;
+    if (membershipRequired === 'True')
+      html = `${html}<br><strong>Membership Required</strong>`;
+    if (groupEventType)
+      html = `${html}<br><strong>Group Type:</strong> ${groupEventType}`;
+    if (daysAvailable)
+      html = `${html}<br><strong>Days Available:</strong> ${daysAvailable}`;
+    if (ministry) html = `${html}<br><strong>Ministry:</strong> ${ministry}`;
+    if (serviceArea)
+      html = `${html}<br><strong>Service Area:</strong> ${serviceArea}`;
+    if (opportunityType)
+      html = `${html}<br><strong>Opportunity Type:</strong> ${opportunityType}`;
+    if (relatedSkills)
+      html = `${html}<br><strong>Related Skills:</strong> ${relatedSkills}`;
     if (childcareInfo)
       html = `${html}<br><strong>Childcare:</strong> ${childcareInfo}`;
     if (contactName)
@@ -249,6 +278,7 @@ class dataSource extends ContentItem.dataSource {
       relatedLinks: { value: relatedLinksGuid } = {},
       scriptures: { value: references } = {},
       speaker: { value: speaker } = {},
+      finePrint: { value: finePrint } = {},
       topics: { valueFormatted: topics } = {},
     } = attributeValues;
     let html = '';
@@ -280,6 +310,7 @@ class dataSource extends ContentItem.dataSource {
     }
     if (speaker) html = `${html}<br><br><h4>Speakers</h4>${speaker}`;
     if (topics) html = `${html}<br><br><h4>Topics</h4>${topics}`;
+    if (finePrint) html = `${html}<br><br><small>${finePrint}</small>`;
     return html;
   };
 
@@ -389,6 +420,11 @@ const resolver = {
       )}${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
+    relatedLinks: (
+      { attributeValues: { relatedLinks } },
+      __,
+      { dataSources: { Matrix } }
+    ) => Matrix.getItemsFromGuid(relatedLinks?.value),
   },
   MediaContentItem: {
     ...ContentItem.resolver.MediaContentItem,
@@ -398,6 +434,11 @@ const resolver = {
       )}${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
+    relatedLinks: (
+      { attributeValues: { relatedLinks } },
+      __,
+      { dataSources: { Matrix } }
+    ) => Matrix.getItemsFromGuid(relatedLinks?.value),
   },
   UniversalContentItem: {
     ...ContentItem.resolver.UniversalContentItem,
@@ -409,8 +450,8 @@ const resolver = {
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
-    isMembershipRequired: ({ attributeValues: { isMembershipRequired } }) =>
-      isMembershipRequired?.value === 'True',
+    isMembershipRequired: ({ attributeValues: { membershipRequired } }) =>
+      membershipRequired?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
     ministry: ({ attributeValues: { ministry } }) => ministry?.valueFormatted,
     campus: (
