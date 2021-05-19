@@ -204,10 +204,10 @@
     apollo-datasource "^0.2.0"
     universal-analytics "^0.4.20"
 
-"@apollosproject/data-connector-bible@^2.15.0":
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-bible/-/data-connector-bible-2.15.0.tgz#b5c75c44f7e348c6ec94874d4fe71188c305cc33"
-  integrity sha512-mJQkyecVe5dhJUZTENz/DT131FVrtMOvPAIiQ2GZTFreY/8TuqoHLEhQCK0NPr4CehLU3JPtjcD7ziPawv1hkw==
+"@apollosproject/data-connector-bible@^2.15.1-canary.5":
+  version "2.15.1-canary.5"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-bible/-/data-connector-bible-2.15.1-canary.5.tgz#b11225efd0f5ca2e62b656b864532d03766701b0"
+  integrity sha512-fMQap8yIIse/lP4vt0voclnrxMUPDJflzpNkur3gnvvybVwHKs7L9uSO3dcvO5fr8cxyvR5dzO0ADLCoLcK21Q==
   dependencies:
     "@apollosproject/server-core" "^2.15.0"
     apollo-datasource-rest "^0.6.4"
