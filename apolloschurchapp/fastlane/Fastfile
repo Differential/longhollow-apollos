@@ -60,6 +60,6 @@ platform :android do
     gradle(task: 'clean', project_dir: 'android')
     gradle(task: 'bundle', build_type: 'Release', project_dir: 'android')
     changelog_from_git_commits
-    upload_to_play_store(track: "internal", skip_upload_apk: true, json_key_file: "android/key.json")
+    upload_to_play_store(track: "internal", skip_upload_apk: true, json_key: "android/key.json")
   end
 end
