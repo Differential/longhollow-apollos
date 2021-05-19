@@ -13,7 +13,11 @@ const SearchIcon = withTheme(({ theme: { colors, sizing: { baseUnit } } }) => ({
 const SearchButtonContainer = styled(({ theme: { sizing: { baseUnit } } }) => ({
   position: 'absolute',
   right: baseUnit,
-  top: baseUnit / 2,
+  top: 0,
+  bottom: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 }))(Animated.View);
 
 const HomeSearchButton = ({ onPress }) => (
