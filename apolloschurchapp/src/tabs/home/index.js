@@ -23,7 +23,7 @@ import { ONBOARDING_VERSION } from '../../ui/Onboarding';
 
 const LogoTitle = styled(({ theme }) => ({
   height: theme.sizing.baseUnit * 2,
-  margin: theme.sizing.baseUnit * 2,
+  margin: theme.sizing.baseUnit,
   alignSelf: 'center',
   resizeMode: 'contain',
 }))(Image);

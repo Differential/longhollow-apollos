@@ -14,7 +14,7 @@ import propOverrides from './propOverrides';
 const colors = {
   // Brand Colors
   primary: '#71d671',
-  secondary: '#9CA24A',
+  secondary: '#71d671',
   tertiary: '#333333',
 };
 
