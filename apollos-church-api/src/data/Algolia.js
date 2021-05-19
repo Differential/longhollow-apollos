@@ -23,6 +23,7 @@ export class Search extends BaseSearch {
           speaker,
           topics,
           scriptures,
+          sharing,
         },
       },
     } = await graphql(
@@ -34,6 +35,9 @@ export class Search extends BaseSearch {
           __typename
           ... on ContentItem {
             parentChannel { name }
+            sharing {
+              url
+            }
           }
           ... on UniversalContentItem {
             campus { name }
@@ -61,6 +65,7 @@ export class Search extends BaseSearch {
     return {
       ...node,
       category: parentChannel?.name,
+      sharingUrl: sharing?.url,
       location: campus?.name,
       ministry,
       tripType,
