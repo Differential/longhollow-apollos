@@ -297,19 +297,21 @@ class dataSource extends ContentItem.dataSource {
           }) => `<a class="btn" href="${link}">${name1?.value || link}</a>`
         )
         .join('<br>');
-      html = `<br><br><strong>Related Links:</strong><br>${linksHTML}`;
+      html = `<h4>Related Links:</h4>${linksHTML}`;
     }
     if (scriptures.length) {
       const scripturesHTML = scriptures
         .map(
-          ({ reference, content }) =>
-            `<br><strong>${reference}</strong><br>${content}`
+          ({ reference, bookId }) =>
+            `<a href="https://www.bible.com/bible/1713/${bookId}.${reference
+              .match(/\d+:\d+-?\d*/)[0]
+              .replace(':', '.')}.CSB">${reference}</a>`
         )
-        .join('<br>');
-      html = `${html}<br><br><h4>Scripture</h4>${scripturesHTML}`;
+        .join(', ');
+      html = `${html}<h4>Scripture</h4>${scripturesHTML}`;
     }
-    if (speaker) html = `${html}<br><br><h4>Speakers</h4>${speaker}`;
-    if (topics) html = `${html}<br><br><h4>Topics</h4>${topics}`;
+    if (speaker) html = `${html}<h4>Speakers</h4>${speaker}`;
+    if (topics) html = `${html}<h4>Topics</h4>${topics}`;
     if (finePrint) html = `${html}<br><br><small>${finePrint}</small>`;
     return html;
   };
