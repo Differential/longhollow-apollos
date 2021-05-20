@@ -38,6 +38,7 @@
     "@apollosproject/server-core": "^2.15.0",
     "apollo-server": "^2.24.1",
     "apollo-server-express": "2.14.2",
+    "cloudinary": "^1.25.1",
     "color": "3.0.0",
     "cors": "^2.8.5",
     "dotenv": "6.0.0",
