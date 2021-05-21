@@ -223,7 +223,6 @@ dependencies {
     } else {
       implementation jscFlavor
     }
-    implementation "com.google.android.gms:play-services-cast-framework:${safeExtGet('castFrameworkVersion', '+')}"
 }
 
 // this is for cast
