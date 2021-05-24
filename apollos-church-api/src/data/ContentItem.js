@@ -91,6 +91,67 @@ class dataSource extends ContentItem.dataSource {
     { field: 'StartDateTime', direction: 'asc' },
   ];
 
+  getCursorByParentContentItemId = async (id) => {
+    const associations = await this.request('ContentChannelItemAssociations')
+      .filter(`ContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
+      .get();
+
+    if (!associations || !associations.length) return this.request().empty();
+
+    const cursor = this.getFromIds(
+      associations.map(
+        ({ childContentChannelItemId }) => childContentChannelItemId
+      )
+    );
+    let sortByOrder = false;
+
+    // If this is true, our transform will be activated.
+    // The transform is the only way to sort by `order`
+    const originalOrderBy = cursor.orderBy;
+
+    // Here we hijack the default behavior of the `.order` call, using it to set
+    // a value that we are going to use to trigger the `transform`
+    cursor.orderBy = (name, direction) => {
+      if (name === 'Order') {
+        sortByOrder = true;
+      }
+      // call is important here to preserve the original value of `this` (it should be `cursor`)
+      return originalOrderBy.call(cursor, name, direction);
+    };
+
+    // Same as above.
+    const originalSort = cursor.sort;
+    cursor.sort = (sorts) => {
+      if (sorts.map(({ field }) => field).includes('Order')) {
+        sortByOrder = true;
+      }
+      return originalSort.call(cursor, sorts);
+    };
+
+    cursor.transform((results) => {
+      // If we have called .orderBy or .sort w/ `order`, we do our in memory sort.
+      if (sortByOrder) {
+        return results.sort((a, b) => {
+          /**
+           * Find the Association Order for the given content channel items
+           */
+          const { order: orderA } = associations.find(
+            (item) => item.childContentChannelItemId === a.id
+          );
+          const { order: orderB } = associations.find(
+            (item) => item.childContentChannelItemId === b.id
+          );
+          return orderA - orderB;
+        });
+      }
+      return results;
+    });
+
+    // Return the cursor.
+    return cursor;
+  };
+
   attributeIsVideo = ({ key }) =>
     key.toLowerCase().includes('video') || key.toLowerCase().includes('vimeo');
 
