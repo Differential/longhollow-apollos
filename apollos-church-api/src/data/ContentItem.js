@@ -284,7 +284,13 @@ class dataSource extends ContentItem.dataSource {
     let html = '';
 
     const links = await Matrix.getItemsFromGuid(relatedLinksGuid);
-    const scriptures = await Scripture.getScriptures(references);
+    let scriptures;
+    try {
+      scriptures = await Scripture.getScriptures(references);
+    } catch (e) {
+      console.warn(e);
+      scriptures = [];
+    }
     if (links.length) {
       const linksHTML = links
         .filter(({ attributeValues: { link } }) => link?.value)
