@@ -51,6 +51,7 @@ const schema = gql`
     socialMedia: SocialMediaInfo
     showTitleOverImage: Boolean
     navImage: ImageMedia
+    secondaryHTML: String
   }
 
   type SocialMediaInfo {
@@ -514,6 +515,10 @@ const resolver = {
       )}${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
+    secondaryHTML: async (item, _, { dataSources }) =>
+      dataSources.ContentItem.createHTMLContent(
+        item.attributeValues.secondaryHtml?.value
+      ),
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
     isMembershipRequired: ({ attributeValues: { membershipRequired } }) =>
