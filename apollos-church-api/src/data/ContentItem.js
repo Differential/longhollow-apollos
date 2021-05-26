@@ -50,6 +50,7 @@ const schema = gql`
     schedule: String
     socialMedia: SocialMediaInfo
     showTitleOverImage: Boolean
+    navImage: ImageMedia
   }
 
   type SocialMediaInfo {
@@ -484,6 +485,13 @@ const resolver = {
   },
   UniversalContentItem: {
     ...ContentItem.resolver.UniversalContentItem,
+    // strip out cover image to only leave the nav image attribute
+    navImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getCoverImage({
+        ...root,
+        attributes: { ...root.attributes, coverImage: {} },
+        attributeValues: { ...root.attributeValues, coverImage: {} },
+      }),
     htmlContent: async (item, _, { dataSources }) =>
       `${dataSources.ContentItem.buildDetailsHTML(
         item
