@@ -492,6 +492,13 @@ const resolver = {
         attributes: { ...root.attributes, coverImage: {} },
         attributeValues: { ...root.attributeValues, coverImage: {} },
       }),
+    // strip out nav image
+    coverImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getCoverImage({
+        ...root,
+        attributes: { ...root.attributes, navigationImage: {} },
+        attributeValues: { ...root.attributeValues, navigationImage: {} },
+      }),
     htmlContent: async (item, _, { dataSources }) =>
       `${dataSources.ContentItem.buildDetailsHTML(
         item
