@@ -357,6 +357,15 @@ class dataSource extends ContentItem.dataSource {
     return html;
   };
 
+  async getNavImage(root) {
+    let image = null;
+    const ourImages = this.getImages(root).filter(
+      ({ sources }) => sources.length
+    );
+    if (ourImages.length) image = this.pickBestImage({ images: ourImages });
+    return image;
+  }
+
   // same as core, with a longer expiresAt
   async getCoverImage(root) {
     const { Cache } = this.context.dataSources;
@@ -487,7 +496,7 @@ const resolver = {
     ...ContentItem.resolver.UniversalContentItem,
     // strip out cover image to only leave the nav image attribute
     navImage: (root, args, { dataSources }) =>
-      dataSources.ContentItem.getCoverImage({
+      dataSources.ContentItem.getNavImage({
         ...root,
         attributes: { ...root.attributes, coverImage: {} },
         attributeValues: { ...root.attributeValues, coverImage: {} },
