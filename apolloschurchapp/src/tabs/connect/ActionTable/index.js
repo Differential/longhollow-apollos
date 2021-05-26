@@ -35,37 +35,67 @@ const ActionTable = () => (
           </Name>
         </RowHeader>
         <TableView>
-          <Touchable onPress={() => openUrl('https://longhollow.com/contact')}>
+          <Touchable
+            onPress={() =>
+              openUrl(
+                'https://longhollow-web.vercel.app/app-link/about/starting-point'
+              )
+            }
+          >
+            <Cell>
+              <CellText>Take Your Next Step</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
+          <Touchable
+            onPress={() =>
+              openUrl(
+                'https://longhollow-web.vercel.app/app-link/connect/connect-with-us'
+              )
+            }
+          >
             <Cell>
               <CellText>Contact Us</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
           <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/prayer')}>
-            <Cell>
-              <CellText>Prayer Requests</CellText>
-              <CellIcon name="arrow-next" />
-            </Cell>
-          </Touchable>
-          <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/baptism')}>
+          <Touchable
+            onPress={() =>
+              openUrl(
+                'https://longhollow-web.vercel.app/app-link/next-steps/baptism'
+              )
+            }
+          >
             <Cell>
               <CellText>Get Baptized</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
           <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/support')}>
+          <Touchable
+            onPress={() =>
+              openUrl(
+                'https://longhollow-web.vercel.app/app-link/next-steps/become-a-member'
+              )
+            }
+          >
             <Cell>
-              <CellText>Support Groups</CellText>
+              <CellText>Become a Member</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
           <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/schedule')}>
+          <Touchable
+            onPress={() =>
+              openUrl(
+                'https://longhollow-web.vercel.app/app-link/next-steps/plan-your-visit'
+              )
+            }
+          >
             <Cell>
-              <CellText>Times and Locations</CellText>
+              <CellText>Plan Your Visit</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
