@@ -38,6 +38,7 @@ const schema = gql`
     relatedSkills: [String]
     location: Location
     time: String
+    cost: String
     forWho: String
     relatedLinks: [RelatedLink]
     linkText: String
@@ -246,68 +247,6 @@ class dataSource extends ContentItem.dataSource {
     return this.getFromIds(contentIds).get();
   };
 
-  buildDetailsHTML = ({ attributeValues }) => {
-    const {
-      cost: { value: cost } = {},
-      time: { value: time } = {},
-      schedule: { value: schedule } = {},
-      signupDeadline: { value: signupDeadline } = {},
-      forWho: { value: forWho } = {},
-      membershipRequired: { value: membershipRequired } = {},
-      groupEventType: { valueFormatted: groupEventType } = {},
-      daysAvailable: { valueFormatted: daysAvailable } = {},
-      ministry: { valueFormatted: ministry } = {},
-      serviceArea: { valueFormatted: serviceArea } = {},
-      opportunityType: { valueFormatted: opportunityType } = {},
-      relatedSkills: { valueFormatted: relatedSkills } = {},
-      childcareInfo: { value: childcareInfo } = {},
-      locationName: { value: locationName } = {},
-      locationAddress: { valueFormatted: locationAddress } = {},
-      contactName: { value: contactName } = {},
-      contactEmail: { value: contactEmail } = {},
-      contactPhone: { value: contactPhone } = {},
-    } = attributeValues;
-    let html = '';
-    if (cost) html = `<strong>Cost:</strong> $${cost}`;
-    if (time) html = `${html}<br><strong>Time:</strong> ${time}`;
-    if (schedule) html = `${html}<br><strong>Schedule:</strong> ${schedule}`;
-    if (signupDeadline)
-      html = `${html}<br><strong>Signup Deadline:</strong> ${moment
-        .tz(signupDeadline, ApollosConfig.ROCK.TIMEZONE)
-        .calendar()}`;
-    if (forWho) html = `${html}<br><strong>For Who:</strong> ${forWho}`;
-    if (membershipRequired === 'True')
-      html = `${html}<br><strong>Membership Required</strong>`;
-    if (groupEventType)
-      html = `${html}<br><strong>Group Type:</strong> ${groupEventType}`;
-    if (daysAvailable)
-      html = `${html}<br><strong>Days Available:</strong> ${daysAvailable}`;
-    if (ministry) html = `${html}<br><strong>Ministry:</strong> ${ministry}`;
-    if (serviceArea)
-      html = `${html}<br><strong>Service Area:</strong> ${serviceArea}`;
-    if (opportunityType)
-      html = `${html}<br><strong>Opportunity Type:</strong> ${opportunityType}`;
-    if (relatedSkills)
-      html = `${html}<br><strong>Related Skills:</strong> ${relatedSkills}`;
-    if (childcareInfo)
-      html = `${html}<br><strong>Childcare:</strong> ${childcareInfo}`;
-    if (contactName)
-      html = `${html}<br><strong>Contact:</strong><br>${contactName}${
-        contactPhone ? `<br>${contactPhone}` : ''
-      }${contactEmail ? `<br>${contactEmail}` : ''}`;
-    if (locationName && locationAddress) {
-      const googleMapsURI = encodeURI(
-        `https://maps.google.com/?q=${locationAddress
-          .replace('\r', '')
-          .split('\n')
-          .join(' ')}`
-      );
-      html = `${html}<br><strong>Location:</strong>${`<br><a href="${googleMapsURI}">${locationName}</a>`}`;
-    }
-    if (html !== '') html = `${html}<br><br>`;
-    return html;
-  };
-
   buildFooterHTML = async ({ attributeValues }) => {
     const { Matrix, Scripture } = this.context.dataSources;
     const {
@@ -468,9 +407,7 @@ const resolver = {
     ) => Scripture.getScriptures(scriptures?.value || ''),
     speaker: ({ attributeValues: { speaker } }) => speaker?.value,
     htmlContent: async (item, _, { dataSources }) =>
-      `${dataSources.ContentItem.buildDetailsHTML(
-        item
-      )}${dataSources.ContentItem.createHTMLContent(
+      `${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
     relatedLinks: (
@@ -482,9 +419,7 @@ const resolver = {
   MediaContentItem: {
     ...ContentItem.resolver.MediaContentItem,
     htmlContent: async (item, _, { dataSources }) =>
-      `${dataSources.ContentItem.buildDetailsHTML(
-        item
-      )}${dataSources.ContentItem.createHTMLContent(
+      `${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
     relatedLinks: (
@@ -510,9 +445,7 @@ const resolver = {
         attributeValues: { ...root.attributeValues, navigationImage: {} },
       }),
     htmlContent: async (item, _, { dataSources }) =>
-      `${dataSources.ContentItem.buildDetailsHTML(
-        item
-      )}${dataSources.ContentItem.createHTMLContent(
+      `${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
     secondaryHTML: async (item, _, { dataSources }) =>
@@ -573,6 +506,7 @@ const resolver = {
       address: locationAddress?.valueFormatted,
     }),
     time: ({ attributeValues: { time } }) => time?.value,
+    cost: ({ attributeValues: { cost } }) => cost?.value,
     forWho: ({ attributeValues: { forWho } }) => forWho?.value,
     childcareInfo: ({ attributeValues: { childcareInfo } }) =>
       childcareInfo?.value,

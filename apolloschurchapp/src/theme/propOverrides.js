@@ -1,3 +1,6 @@
+import React from 'react';
+import { H2 } from '@apollosproject/ui-kit';
+import Metadata from '../ui/Metadata';
 /* Export your custom prop overrides here. */
 
 export default {
@@ -26,4 +29,15 @@ export default {
       'We’ll share your prayer request with other users of this app for the next 24 hours.\n\nFeel free to submit prayer requests as often as you have them.',
   },
   'ui-connected.SuggestedFollowListConnected': { Component: () => () => null },
+  // same as core, but with the Metadata component
+  'ui-connected.ContentNodeConnected': {
+    HeaderComponent: () => ({ isLoading, node }) => (
+      <>
+        <H2 padded isLoading={isLoading}>
+          {node?.title}
+        </H2>
+        <Metadata node={node} />
+      </>
+    ),
+  },
 };
