@@ -1,5 +1,6 @@
 import ApollosConfig from '@apollosproject/config';
 import FRAGMENTS from '@apollosproject/ui-fragments';
+import { gql } from '@apollo/client';
 // import fragmentTypes from './src/client/fragmentTypes.json';
 
 // Create a map all the interfaces each type implements.
@@ -23,4 +24,42 @@ const TYPEMAP = {
   DevotionalContentItem: ['ContentChildNode'],
 };
 
-ApollosConfig.loadJs({ FRAGMENTS, TYPEMAP });
+ApollosConfig.loadJs({
+  TYPEMAP,
+  FRAGMENTS: {
+    ...FRAGMENTS,
+    CONTENT_SINGLE_FRAGMENT: gql`
+      fragment ContentSingleFragment on ContentItem {
+        title
+        htmlContent
+        coverImage {
+          sources {
+            uri
+          }
+        }
+        ... on UniversalContentItem {
+          cost
+          time
+          schedule
+          deadline
+          forWho
+          isMembershipRequired
+          groupEventType
+          daysAvailable
+          ministry
+          serviceArea
+          opportunityType
+          relatedSkills
+          childcareInfo
+          location {
+            name
+            address
+          }
+          contactName
+          contactEmail
+          contactPhone
+        }
+      }
+    `,
+  },
+});
