@@ -52,6 +52,7 @@ const schema = gql`
     showTitleOverImage: Boolean
     navImage: ImageMedia
     secondaryHTML: String
+    seriesImage: ImageMedia
   }
 
   type SocialMediaInfo {
@@ -214,15 +215,14 @@ class dataSource extends ContentItem.dataSource {
     );
 
     if (firstInteractedIndex === -1) {
-      // If you haven't completede anything, return the first (last in reversed array) item;
+      // If you haven't completed anything, return the first (last in reversed array) item;
       return childItemsWithApollosIds[childItemsWithApollosIds.length - 1];
     }
     if (firstInteractedIndex === 0) {
       // If you have completed the last item, return null (no items left to read)
       return null;
     }
-    // otherwise, return the item immediately following (before) the item you have already read
-    console.timeEnd('up-next');
+    // otherwise, return the item immediately following the item you have already read
     return childItemsWithApollosIds[firstInteractedIndex - 1];
   }
 
@@ -417,6 +417,44 @@ class dataSource extends ContentItem.dataSource {
     return image;
   }
 
+  // same as core, gets just the parent image though.
+  async getSeriesImage(root) {
+    const { Cache } = this.context.dataSources;
+    const cachedValue = await Cache.get({
+      key: `contentItem:seriesCoverImage:${root.id}`,
+    });
+
+    if (cachedValue) {
+      return cachedValue;
+    }
+
+    let image = null;
+
+    // The cursor returns a promise which returns a promisee, hence th edouble eawait.
+    const parentItems = await (await this.getCursorByChildContentItemId(
+      root.id
+    )).get();
+
+    if (parentItems.length) {
+      const validParentImages = parentItems
+        .flatMap(this.getImages)
+        .filter(({ sources }) => sources.length);
+
+      if (validParentImages && validParentImages.length)
+        image = this.pickBestImage({ images: validParentImages });
+    }
+
+    if (image != null) {
+      Cache.set({
+        key: `contentItem:seriesCoverImage:${root.id}`,
+        data: image,
+        expiresIn: 60 * 5,
+      });
+    }
+
+    return image;
+  }
+
   getBySlug = async (slug) => {
     const contentItemSlug = await this.request('ContentChannelItemSlugs')
       .filter(`Slug eq '${slug}'`)
@@ -509,6 +547,8 @@ const resolver = {
         attributes: { ...root.attributes, navigationImage: {} },
         attributeValues: { ...root.attributeValues, navigationImage: {} },
       }),
+    seriesImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getSeriesImage(root),
     htmlContent: async (item, _, { dataSources }) =>
       `${dataSources.ContentItem.buildDetailsHTML(
         item
