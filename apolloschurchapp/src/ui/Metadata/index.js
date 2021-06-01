@@ -154,7 +154,7 @@ const Metadata = ({ node }) =>
             <Touchable
               onPress={() =>
                 node?.location?.address
-                  ? Linking.openUrl(
+                  ? Linking.openURL(
                       encodeURI(
                         `https://maps.google.com/?q=${node?.location?.address
                           .replace('\r', '')
@@ -184,7 +184,7 @@ const Metadata = ({ node }) =>
             </Cell>
             {node?.contactEmail ? (
               <Touchable
-                onPress={() => Linking.openUrl(`mailto:${node?.contactEmail}`)}
+                onPress={() => Linking.openURL(`mailto:${node?.contactEmail}`)}
               >
                 <Cell>
                   <CellText>{node?.contactEmail}</CellText>
@@ -194,7 +194,7 @@ const Metadata = ({ node }) =>
             ) : null}
             {node?.contactPhone ? (
               <Touchable
-                onPress={() => Linking.openUrl(`sms:${node?.contactPhone}`)}
+                onPress={() => Linking.openURL(`sms:${node?.contactPhone}`)}
               >
                 <Cell>
                   <CellText>{node?.contactPhone}</CellText>
