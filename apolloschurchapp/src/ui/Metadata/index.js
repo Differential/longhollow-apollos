@@ -22,6 +22,7 @@ const RowHeader = styled(({ theme }) => ({
 }))(PaddedView);
 
 const Metadata = ({ node }) =>
+  console.log(node?.daysAvailable) ||
   node?.cost ||
   node?.time ||
   node?.schedule ||
@@ -29,11 +30,11 @@ const Metadata = ({ node }) =>
   node?.forWho ||
   node?.isMembershipRequired ||
   node?.groupEventType?.length ||
-  node?.daysAvailable ||
+  node?.daysAvailable?.length ||
   node?.ministry ||
-  node?.serviceArea ||
-  node?.opportunityType ||
-  node?.relatedSkills ||
+  node?.serviceArea?.length ||
+  node?.opportunityType?.length ||
+  node?.relatedSkills?.length ||
   node?.childcareInfo ||
   node?.location?.name ||
   node?.contactName ? (
@@ -98,7 +99,7 @@ const Metadata = ({ node }) =>
             </Cell>
           </>
         ) : null}
-        {node?.daysAvailable ? (
+        {node?.daysAvailable?.length ? (
           <>
             <Divider />
             <Cell>
@@ -116,27 +117,31 @@ const Metadata = ({ node }) =>
             </Cell>
           </>
         ) : null}
-        {node?.serviceArea ? (
+        {node?.serviceArea?.length ? (
           <>
             <Divider />
             <Cell>
-              <CellText>Service Area: {node?.serviceArea}</CellText>
+              <CellText>Service Area: {node?.serviceArea.join(', ')}</CellText>
             </Cell>
           </>
         ) : null}
-        {node?.opportunityType ? (
+        {node?.opportunityType?.length ? (
           <>
             <Divider />
             <Cell>
-              <CellText>Opportunity Type: {node?.opportunityType}</CellText>
+              <CellText>
+                Opportunity Type: {node?.opportunityType.join(', ')}
+              </CellText>
             </Cell>
           </>
         ) : null}
-        {node?.relatedSkills ? (
+        {node?.relatedSkills?.length ? (
           <>
             <Divider />
             <Cell>
-              <CellText>Related Skills: {node?.relatedSkills}</CellText>
+              <CellText>
+                Related Skills: {node?.relatedSkills.join(', ')}
+              </CellText>
             </Cell>
           </>
         ) : null}

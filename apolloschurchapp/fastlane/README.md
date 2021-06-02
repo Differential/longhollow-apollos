@@ -16,11 +16,16 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios deploy
+### ios alpha
 ```
-fastlane ios deploy
+fastlane ios alpha
 ```
-Push a new beta build to TestFlight
+Push a new internal build to TestFlight
+### ios beta
+```
+fastlane ios beta
+```
+Push a new external build to TestFlight
 
 ----
 
@@ -30,11 +35,11 @@ Push a new beta build to TestFlight
 fastlane android bump_version_code
 ```
 Bumps Android versionCode
-### android deploy
+### android alpha
 ```
-fastlane android deploy
+fastlane android alpha
 ```
-Deploy a new version to the Google Play
+Push a new internal build to Google Play
 
 ----
 
