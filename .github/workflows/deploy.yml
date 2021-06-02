@@ -91,7 +91,7 @@ jobs:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
 
     - name: Fastlane Deploy
-      run: bundle exec fastlane ios deploy
+      run: bundle exec fastlane ios alpha
 
   android:
     defaults:
@@ -132,7 +132,7 @@ jobs:
         APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
 
     - name: Fastlane Deploy
-      run: bundle exec fastlane android deploy
+      run: bundle exec fastlane android alpha
       env:
         KEYSTORE_FILE: apollos.keystore
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}

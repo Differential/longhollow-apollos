@@ -169,9 +169,10 @@ ROCK_MAPPINGS:
 TABS:
   HOME:
     - algorithms:
-      - type: CONTENT_CHANNEL
+      - type: CONTENT_FEED
         arguments:
-          contentChannelId: 14
+          channelIds:
+            - 14
           limit: 1
       type: VerticalCardList
     - algorithms: [PERSONA_FEED]
@@ -179,10 +180,18 @@ TABS:
       title: For you
       subtitle: Recommended
     - algorithms:
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 13
+          limit: 1
+      type: VerticalCardList
+    - algorithms:
         - type: CONTENT_FEED
           arguments:
             channelIds:
-              - 13
+              - 36
+              - 35
       type: VerticalCardList
 
 

@@ -12,7 +12,7 @@ const FullScreenImage = styled({
 })(Image);
 
 const ThemedLandingScreen = withTheme(({ theme }) => ({
-  textColor: theme.colors.primary,
+  textColor: theme.colors.white,
 }))(LandingScreen);
 
 const LandingScreenSlide = ({ navigation }) => (
