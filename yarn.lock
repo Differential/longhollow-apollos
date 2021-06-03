@@ -344,9 +344,9 @@
     react-native-device-info "^4.0.1"
 
 "@apollosproject/ui-auth@^2.15.0":
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-auth/-/ui-auth-2.15.0.tgz#f4ea7d8113769394d2f57132034fa049b9387a7a"
-  integrity sha512-uU1MvtFXurjbo+7gY3Z5HaA7w9kY3QhjQD4ueTaT5kBxgI9mqln5gyAnVYmuEFw3C049s7ifMcxj5SbGUOnupw==
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-auth/-/ui-auth-2.18.1.tgz#b7f723678525067de5f7b08955ca101e6cacad9d"
+  integrity sha512-JTyWsCN4xDrx+nZYFycNl1VXEBoK/dtEHoIA5mbTJSaDdXbfy9EEnVE3Xar1omCy31+nMcH+EYYGiZ0eTDIGcA==
   dependencies:
     formik "1.5.1"
     graphql-tag "2.9.2"
@@ -376,10 +376,10 @@
     entities "^1.1.2"
     htmlparser2 "3.9.2"
 
-"@apollosproject/ui-kit@^2.15.0":
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-kit/-/ui-kit-2.15.0.tgz#1b659d2aa215e751aaf71a39c09a7979c9a56354"
-  integrity sha512-y4zAU3qS3XiN7mfoA3XfZnJRzovm3i2D3mOPRLr4ULW7slYG3v9sTbvqNEVkegdiLd0/OMSSbKeKGgx9nMVESQ==
+"@apollosproject/ui-kit@^2.18.1-canary.5":
+  version "2.18.1-canary.5"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-kit/-/ui-kit-2.18.1-canary.5.tgz#927b1d256d874c50451251947fb20f417ff80aad"
+  integrity sha512-1QhcbQAGV57hh8A1DXUBxADdf2XhG2oM2JtR47ouEPP4HAMGooSliErpGeQZE0d4RF65+MhFefcIDJ2RjW/BPQ==
   dependencies:
     "@react-native-community/blur" "^3.6.0"
     color "^3.1.0"
