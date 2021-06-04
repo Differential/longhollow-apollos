@@ -4,6 +4,16 @@ import { createGlobalId } from '@apollosproject/server-core';
 
 const { schema, resolver, jobs, dataSource: BaseSearch } = baseSearch;
 
+const CATEGORIES = [
+  'Messages',
+  'Events',
+  'Articles',
+  'Mission Trips',
+  'Volunteer Positions',
+  'Service Opportunities',
+  'Staff',
+];
+
 export class Search extends BaseSearch {
   async mapItemToAlgolia(item) {
     const node = await super.mapItemToAlgolia(item);
@@ -64,7 +74,9 @@ export class Search extends BaseSearch {
     );
     return {
       ...node,
-      category: parentChannel?.name,
+      category: CATEGORIES.includes(parentChannel?.name)
+        ? parentChannel?.name
+        : 'General',
       sharingUrl: sharing?.url,
       location: campus?.name,
       ministry,
