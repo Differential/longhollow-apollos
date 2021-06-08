@@ -54,6 +54,8 @@ const schema = gql`
     navImage: ImageMedia
     secondaryHTML: String
     seriesImage: ImageMedia
+    showOnHomePage: Boolean
+    featureOnHomePage: Boolean
   }
 
   type SocialMediaInfo {
@@ -494,6 +496,10 @@ const resolver = {
       ),
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
+    showOnHomePage: ({ attributeValues: { shownonHomePage } }) =>
+      shownonHomePage?.value === 'True',
+    featureOnHomePage: ({ attributeValues: { featuredonHomePage } }) =>
+      featuredonHomePage?.value === 'True',
     isMembershipRequired: ({ attributeValues: { membershipRequired } }) =>
       membershipRequired?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
