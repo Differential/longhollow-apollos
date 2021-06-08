@@ -496,10 +496,10 @@ const resolver = {
       ),
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
-    showOnHomePage: ({ attributeValues: { shownOnHomePage } }) =>
-      shownOnHomePage?.value === 'True',
-    featureOnHomePage: ({ attributeValues: { featuredOnHomePage } }) =>
-      featuredOnHomePage?.value === 'True',
+    showOnHomePage: ({ attributeValues: { shownonHomePage } }) =>
+      shownonHomePage?.value === 'True',
+    featureOnHomePage: ({ attributeValues: { featuredonHomePage } }) =>
+      featuredonHomePage?.value === 'True',
     isMembershipRequired: ({ attributeValues: { membershipRequired } }) =>
       membershipRequired?.value === 'True',
     subtitle: ({ attributeValues: { subtitle } }) => subtitle?.value,
