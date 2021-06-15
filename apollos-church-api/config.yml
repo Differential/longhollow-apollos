@@ -215,7 +215,7 @@ TABS:
           arguments:
             contentChannelId: 13
       type: VerticalCardList
-      subtitle: All series
+      subtitle: All Series
 
   PRAY:
     - algorithms: [DAILY_PRAYER]
