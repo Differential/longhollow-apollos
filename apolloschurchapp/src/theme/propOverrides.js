@@ -4,8 +4,12 @@ import Metadata from '../ui/Metadata';
 /* Export your custom prop overrides here. */
 
 export default {
+  'ui-kit.HighlightCard.Image': {
+    overlayColor: undefined,
+  },
   'ui-kit.HighlightCard': {
     labelText: '',
+    title: '',
   },
   'ui-kit.DefaultCard': {
     labelText: '',
