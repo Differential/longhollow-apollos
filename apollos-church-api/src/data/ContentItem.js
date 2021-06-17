@@ -114,6 +114,8 @@ class dataSource extends ContentItem.dataSource {
     cursor.transform((results) =>
       // sort by order
       results.sort((a, b) => {
+        // only sort by order if these are website child items
+        if (a.contentChannelId !== 47) return 0;
         /**
          * Find the Association Order for the given content channel items
          */
