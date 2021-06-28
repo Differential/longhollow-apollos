@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationService, withTheme } from '@apollosproject/ui-kit';
+import {
+  NavigationService,
+  withTheme,
+  Icon,
+  Touchable,
+} from '@apollosproject/ui-kit';
 import { useApolloClient } from '@apollo/client';
-
+import { createFeatureFeedTab } from '@apollosproject/ui-connected';
 import { checkOnboardingStatusAndNavigate } from '@apollosproject/ui-onboarding';
-import { SearchButton } from '../ui/Search';
-import { ONBOARDING_VERSION } from '../ui/Onboarding';
-import { createFeatureFeedTab } from './Tab';
 import Connect from './connect';
 import tabBarIcon from './tabBarIcon';
 
@@ -23,6 +26,22 @@ const HeaderLogo = withTheme(({ theme }) => ({
       ? require('./wordmark.png')
       : require('./wordmark.dark.png'),
 }))(Image);
+
+const SearchIcon = withTheme(({ theme: { colors, sizing: { baseUnit } } }) => ({
+  name: 'search',
+  size: baseUnit * 2,
+  fill: colors.primary,
+}))(Icon);
+
+const SearchButton = ({ onPress }) => (
+  <Touchable onPress={onPress}>
+    <SearchIcon />
+  </Touchable>
+);
+
+SearchButton.propTypes = {
+  onPress: PropTypes.func,
+};
 
 const HeaderCenter = () => <HeaderLogo source={require('./wordmark.png')} />;
 const HeaderRight = () => {
@@ -69,7 +88,6 @@ const TabNavigator = () => {
       checkOnboardingStatusAndNavigate({
         client,
         navigation: NavigationService,
-        latestOnboardingVersion: ONBOARDING_VERSION,
         navigateHome: false,
       });
     },
