@@ -4,7 +4,9 @@ import { Person } from '@apollosproject/data-connector-rock';
 const schema = gql`
   ${Person.schema}
 
-  extend type Person {
+  extend type Person implements ContentItem {
+    title(hyphenated: Boolean): String
+    coverImage: ImageMedia
     htmlContent: String
     summary: String
     position: String
@@ -13,6 +15,27 @@ const schema = gql`
     twitter: String
     instagram: String
     website: String
+
+    # unused, just here so we can implement content items for the app
+    publishDate: String
+    images: [ImageMedia]
+    videos: [VideoMedia]
+    audios: [AudioMedia]
+    childContentItemsConnection(
+      first: Int
+      after: String
+      orderBy: ContentItemsConnectionOrderInput
+    ): ContentItemsConnection
+    siblingContentItemsConnection(
+      first: Int
+      after: String
+      orderBy: ContentItemsConnectionOrderInput
+    ): ContentItemsConnection
+    parentChannel: ContentChannel
+    theme: Theme
+    isLiked: Boolean
+    likedCount: Int
+    sharing: SharableContentItem
   }
 
   extend type Query {
@@ -33,6 +56,10 @@ const resolver = {
       const person = staff.find((member) => member.id === id);
       return person ? person.email : null;
     },
+    title: ({ firstName, lastName }) => `${firstName} ${lastName}`,
+    coverImage: async ({ photo }, _, { dataSources: { BinaryFiles } }) => ({
+      sources: [{ uri: await BinaryFiles.findOrReturnImageUrl(photo) }],
+    }),
     htmlContent: ({ attributeValues }) => attributeValues.description?.value,
     summary: ({ attributeValues }) => attributeValues.summary?.value,
     position: ({ attributeValues }) => attributeValues.position?.value,
