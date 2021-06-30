@@ -4,6 +4,7 @@ import { ContentItem } from '@apollosproject/data-connector-rock';
 import { contentItemSchema } from '@apollosproject/data-schema';
 import { createGlobalId } from '@apollosproject/server-core';
 import ApollosConfig from '@apollosproject/config';
+import sanitizeHtml from 'sanitize-html';
 
 const schema = gql`
   ${contentItemSchema}
@@ -413,6 +414,23 @@ class dataSource extends ContentItem.dataSource {
       .first();
     return `${ApollosConfig.APP.UNIVERSAL_LINK_HOST}/app-link/${slug}`;
   };
+
+  createHTMLContent = (content) =>
+    sanitizeHtml(content || '', {
+      allowedTags: false,
+      allowedAttributes: false,
+      transformTags: {
+        img: (tagName, { src }) => ({
+          tagName,
+          attribs: {
+            // adds Rock URL in the case of local image references in the CMS
+            src: src.startsWith('http')
+              ? src
+              : `${ApollosConfig.ROCK.URL || ''}${src}`,
+          },
+        }),
+      },
+    });
 }
 
 const resolver = {
