@@ -284,7 +284,7 @@ class dataSource extends ContentItem.dataSource {
             },
           }) => `<a class="btn" href="${link}">${name1?.value || link}</a>`
         )
-        .join('<br>');
+        .join(' ');
       html = `<h4>Related Links:</h4>${linksHTML}`;
     }
     if (scriptures.length) {
