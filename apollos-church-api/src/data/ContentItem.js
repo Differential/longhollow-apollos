@@ -14,12 +14,14 @@ const schema = gql`
     topics: [String]
     scriptures: [Scripture]
     relatedLinks: [RelatedLink]
+    seriesImage: ImageMedia
   }
 
   extend type MediaContentItem {
     speaker: String
     topics: [String]
     relatedLinks: [RelatedLink]
+    seriesImage: ImageMedia
   }
 
   extend type UniversalContentItem {
@@ -374,7 +376,7 @@ class dataSource extends ContentItem.dataSource {
 
     let image = null;
 
-    // The cursor returns a promise which returns a promisee, hence th edouble eawait.
+    // The cursor returns a promise which returns a promise, hence the double await.
     const parentItems = await (await this.getCursorByChildContentItemId(
       root.id
     )).get();
@@ -470,6 +472,8 @@ const resolver = {
       `${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
+    seriesImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getSeriesImage(root),
     relatedLinks: (
       { attributeValues: { relatedLinks } },
       __,
@@ -482,6 +486,8 @@ const resolver = {
       `${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
+    seriesImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getSeriesImage(root),
     relatedLinks: (
       { attributeValues: { relatedLinks } },
       __,
