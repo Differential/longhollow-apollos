@@ -15,6 +15,42 @@ const CATEGORIES = [
 ];
 
 export class Search extends BaseSearch {
+  constructor() {
+    super();
+    this.index.setSettings({
+      replicas: [
+        'title_asc',
+        'publish_date_desc',
+        'start_date_asc',
+        'last_name_asc',
+      ],
+    });
+
+    // title A-Z
+    const titleIndex = this.client.initIndex('title_asc');
+    titleIndex.setSettings({
+      ranking: ['asc(title)'],
+    });
+
+    // last name A-Z
+    const nameIndex = this.client.initIndex('last_name_asc');
+    nameIndex.setSettings({
+      ranking: ['asc(lastName)'],
+    });
+
+    // published most to least recent
+    const publishedIndex = this.client.initIndex('publish_date_desc');
+    publishedIndex.setSettings({
+      ranking: ['desc(publishDate)'],
+    });
+
+    // start soonest to furthest
+    const startDateIndex = this.client.initIndex('start_date_asc');
+    startDateIndex.setSettings({
+      ranking: ['asc(startDateTimestamp)'],
+    });
+  }
+
   async mapItemToAlgolia(item) {
     const node = await super.mapItemToAlgolia(item);
 
@@ -34,6 +70,8 @@ export class Search extends BaseSearch {
           topics,
           scriptures,
           sharing,
+          publishDate,
+          dates,
         },
       },
     } = await graphql(
@@ -48,6 +86,7 @@ export class Search extends BaseSearch {
             sharing {
               url
             }
+            publishDate
           }
           ... on UniversalContentItem {
             campus { name }
@@ -58,6 +97,7 @@ export class Search extends BaseSearch {
             opportunityType
             relatedSkills
             groupEventType
+            dates
           }
           ... on WeekendContentItem {
             speaker
@@ -89,6 +129,8 @@ export class Search extends BaseSearch {
       speaker,
       topics,
       bookOfTheBible: scriptures?.map(({ book }) => book),
+      publishDate,
+      startDateTimestamp: dates?.split(',')[0],
     };
   }
 

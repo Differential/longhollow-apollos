@@ -52,6 +52,7 @@ const schema = gql`
     finePrint: String
     closedInstructions: String
     schedule: String
+    dates: String
     socialMedia: SocialMediaInfo
     showTitleOverImage: Boolean
     navImage: ImageMedia
@@ -593,6 +594,7 @@ const resolver = {
       attributeValues: { registrationClosedInstructions },
     }) => registrationClosedInstructions?.value,
     schedule: ({ attributeValues: { schedule } }) => schedule?.value,
+    dates: ({ attributeValues: { dates } }) => dates?.value,
     contactName: ({ attributeValues: { contactName } }) => contactName?.value,
     contactEmail: ({ attributeValues: { contactEmail } }) =>
       contactEmail?.value,
