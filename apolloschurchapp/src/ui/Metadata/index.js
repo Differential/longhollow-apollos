@@ -22,7 +22,6 @@ const RowHeader = styled(({ theme }) => ({
 }))(PaddedView);
 
 const Metadata = ({ node }) =>
-  console.log(node?.daysAvailable) ||
   node?.cost ||
   node?.time ||
   node?.schedule ||
