@@ -604,7 +604,7 @@ const resolver = {
       attributeValues: { registrationClosedInstructions },
     }) => registrationClosedInstructions?.value,
     schedule: ({ attributeValues: { schedule } }) => schedule?.value,
-    dates: ({ attributeValues: { dates } }) => dates?.value,
+    dates: ({ attributeValues: { dates } }) => dates?.value || null,
     contactName: ({ attributeValues: { contactName } }) => contactName?.value,
     contactEmail: ({ attributeValues: { contactEmail } }) =>
       contactEmail?.value,
