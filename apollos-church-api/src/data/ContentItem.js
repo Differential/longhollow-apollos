@@ -60,6 +60,7 @@ const schema = gql`
     seriesImage: ImageMedia
     showOnHomePage: Boolean
     featureOnHomePage: Boolean
+    summaryHTML: String
   }
 
   type SocialMediaInfo {
@@ -418,6 +419,7 @@ class dataSource extends ContentItem.dataSource {
     return `${ApollosConfig.APP.UNIVERSAL_LINK_HOST}/app-link/${slug}`;
   };
 
+  // allows everything through
   createHTMLContent = (content) =>
     sanitizeHtml(content || '', {
       allowedTags: false,
@@ -517,6 +519,14 @@ const resolver = {
       `${dataSources.ContentItem.createHTMLContent(
         item.content
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
+    // core summary let's anything through
+    summaryHTML: ({ content, attributeValues }, _, { dataSources }) =>
+      dataSources.ContentItem.createSummary({ content, attributeValues }),
+    // clean up summary HTML
+    summary: ({ content, attributeValues }, _, { dataSources }) =>
+      dataSources.ContentItem.createSummary({
+        content: attributeValues?.summary?.value || content,
+      }),
     secondaryHTML: async (item, _, { dataSources }) =>
       dataSources.ContentItem.createHTMLContent(
         item.attributeValues.secondaryHtml?.value
