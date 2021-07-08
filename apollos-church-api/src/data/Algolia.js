@@ -5,7 +5,7 @@ import { createGlobalId } from '@apollosproject/server-core';
 const { schema, resolver, jobs, dataSource: BaseSearch } = baseSearch;
 
 const CATEGORIES = [
-  'Messages',
+  'Sermons',
   'Events',
   'Articles',
   'Mission Trips',
