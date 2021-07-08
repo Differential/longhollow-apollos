@@ -594,11 +594,7 @@ const resolver = {
     childcareInfo: ({ attributeValues: { childcareInfo } }) =>
       childcareInfo?.value,
     deadline: ({ attributeValues: { signupDeadline } }) =>
-      signupDeadline?.value
-        ? moment
-            .tz(signupDeadline?.value, ApollosConfig.ROCK.TIMEZONE)
-            .calendar()
-        : null,
+      signupDeadline?.value || null,
     finePrint: ({ attributeValues: { finePrint } }) => finePrint?.value,
     closedInstructions: ({
       attributeValues: { registrationClosedInstructions },
