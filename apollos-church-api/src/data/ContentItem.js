@@ -1,5 +1,4 @@
 import gql from 'graphql-tag';
-import moment from 'moment';
 import { ContentItem } from '@apollosproject/data-connector-rock';
 import { contentItemSchema } from '@apollosproject/data-schema';
 import { createGlobalId } from '@apollosproject/server-core';
