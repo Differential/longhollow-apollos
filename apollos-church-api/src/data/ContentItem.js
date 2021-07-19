@@ -60,6 +60,7 @@ const schema = gql`
     showOnHomePage: Boolean
     featureOnHomePage: Boolean
     summaryHTML: String
+    redirectURL: String
   }
 
   type SocialMediaInfo {
@@ -530,6 +531,8 @@ const resolver = {
       dataSources.ContentItem.createHTMLContent(
         item.attributeValues.secondaryHtml?.value
       ),
+    redirectURL: async ({ attributeValues: { redirectUrl } }) =>
+      redirectUrl?.value,
     isFeatured: ({ attributeValues: { isFeatured } }) =>
       isFeatured?.value === 'True',
     showOnHomePage: ({ attributeValues: { shownonHomePage } }) =>
