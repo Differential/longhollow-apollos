@@ -17,7 +17,11 @@ const CATEGORIES = [
 export class Search extends BaseSearch {
   constructor() {
     super();
-    this.index.setSettings({
+    this.createReplicas();
+  }
+
+  createReplicas = async () => {
+    await this.index.setSettings({
       replicas: [
         'title_asc',
         'publish_date_desc',
@@ -32,12 +36,6 @@ export class Search extends BaseSearch {
       ranking: ['asc(title)'],
     });
 
-    // last name A-Z
-    const nameIndex = this.client.initIndex('last_name_asc');
-    nameIndex.setSettings({
-      ranking: ['asc(lastName)'],
-    });
-
     // published most to least recent
     const publishedIndex = this.client.initIndex('publish_date_desc');
     publishedIndex.setSettings({
@@ -49,7 +47,13 @@ export class Search extends BaseSearch {
     startDateIndex.setSettings({
       ranking: ['asc(startDateTimestamp)'],
     });
-  }
+
+    // last name A-Z
+    const nameIndex = this.client.initIndex('last_name_asc');
+    nameIndex.setSettings({
+      ranking: ['asc(lastName)'],
+    });
+  };
 
   async mapItemToAlgolia(item) {
     const node = await super.mapItemToAlgolia(item);
