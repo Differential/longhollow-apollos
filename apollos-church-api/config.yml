@@ -128,7 +128,7 @@ ROCK_MAPPINGS:
   CONTENT_ITEM:
     ContentSeriesContentItem:
       EntityType: ContentChannelItem
-      ContentChannelId: [9, 13]
+      ContentChannelId: [9, 13, 15]
     DevotionalContentItem:
       EntityType: ContentChannelItem
       ContentChannelId: [10]
