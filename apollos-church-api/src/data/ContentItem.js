@@ -524,8 +524,9 @@ const resolver = {
       dataSources.ContentItem.createSummary({ content, attributeValues }),
     // clean up summary HTML
     summary: ({ content, attributeValues }, _, { dataSources }) =>
+      attributeValues?.summary?.value ||
       dataSources.ContentItem.createSummary({
-        content: attributeValues?.summary?.value || content,
+        content,
       }),
     secondaryHTML: async (item, _, { dataSources }) =>
       dataSources.ContentItem.createHTMLContent(
