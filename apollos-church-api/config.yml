@@ -156,6 +156,13 @@ ROCK_MAPPINGS:
     - 43 # mission trips
     - 44 # service opportunies
     - 45 # volunteer positions
+    # website pages
+    - 41 # about pages
+    - 39 # connect pages
+    - 54 # give pages
+    - 40 # next steps pages
+    - 52 # watch pages
+    - 47 # child linked pages
 
   CAMPAIGN_CHANNEL_IDS:
     - 1
