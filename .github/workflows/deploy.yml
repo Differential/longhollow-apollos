@@ -66,9 +66,6 @@ jobs:
     - name: Generate Stories
       run: yarn generate-stories
 
-    - name: Generate Schema
-      run: yarn get-schema
-
     - name: Generate Fragment Types
       run: node ./scripts/get-introspection-data.js
       env:
@@ -106,9 +103,6 @@ jobs:
     # required to build
     - name: Generate Stories
       run: yarn generate-stories
-
-    - name: Generate Schema
-      run: yarn get-schema
 
     - name: Generate Fragment Types
       run: node ./scripts/get-introspection-data.js
