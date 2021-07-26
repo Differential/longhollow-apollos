@@ -167,7 +167,7 @@ ROCK_MAPPINGS:
   CAMPAIGN_CHANNEL_IDS:
     - 1
 
-  SERMON_CHANNEL_ID: 14
+  SERMON_CHANNEL_ID: 56
 
   MOBILE_DEVICE_TYPE_ID: 671
 TABS:
@@ -207,6 +207,13 @@ TABS:
       type: VerticalCardList
 
   WATCH:
+    - algorithms:
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 56
+          limit: 1
+      type: VerticalCardList
     - algorithms:
         - type: LATEST_SERIES_CHILDREN
           arguments:
