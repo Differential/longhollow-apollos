@@ -1,4 +1,5 @@
 import { graphql } from 'graphql';
+import Bugsnag from '@bugsnag/js';
 import * as baseSearch from '@apollosproject/data-connector-algolia-search';
 import { createGlobalId } from '@apollosproject/server-core';
 
@@ -58,29 +59,31 @@ export class Search extends BaseSearch {
   async mapItemToAlgolia(item) {
     const node = await super.mapItemToAlgolia(item);
 
-    const {
-      data: {
-        node: {
-          parentChannel,
-          campus,
-          ministry,
-          tripType,
-          daysAvailable,
-          serviceArea,
-          opportunityType,
-          relatedSkills,
-          groupEventType,
-          speaker,
-          topics,
-          scriptures,
-          sharing,
-          publishDate,
-          dates,
+    // TODO take this out once we figure out what's causing indexing to fail
+    try {
+      const {
+        data: {
+          node: {
+            parentChannel,
+            campus,
+            ministry,
+            tripType,
+            daysAvailable,
+            serviceArea,
+            opportunityType,
+            relatedSkills,
+            groupEventType,
+            speaker,
+            topics,
+            scriptures,
+            sharing,
+            publishDate,
+            dates,
+          },
         },
-      },
-    } = await graphql(
-      this.context.schema,
-      `
+      } = await graphql(
+        this.context.schema,
+        `
       {
         node(id: "${node.id}") {
           id
@@ -113,29 +116,33 @@ export class Search extends BaseSearch {
         }
       }
       `,
-      {},
-      this.context
-    );
-    return {
-      ...node,
-      category: CATEGORIES.includes(parentChannel?.name)
-        ? parentChannel?.name
-        : 'General',
-      sharingUrl: sharing?.url,
-      location: campus?.name,
-      ministry,
-      tripType,
-      daysAvailable,
-      serviceArea,
-      opportunityType,
-      relatedSkills,
-      groupEventType,
-      speaker,
-      topics,
-      bookOfTheBible: scriptures?.map(({ book }) => book),
-      publishDate,
-      startDateTimestamp: dates?.split(',')[0],
-    };
+        {},
+        this.context
+      );
+      return {
+        ...node,
+        category: CATEGORIES.includes(parentChannel?.name)
+          ? parentChannel?.name
+          : 'General',
+        sharingUrl: sharing?.url,
+        location: campus?.name,
+        ministry,
+        tripType,
+        daysAvailable,
+        serviceArea,
+        opportunityType,
+        relatedSkills,
+        groupEventType,
+        speaker,
+        topics,
+        bookOfTheBible: scriptures?.map(({ book }) => book),
+        publishDate,
+        startDateTimestamp: dates?.split(',')[0],
+      };
+    } catch (e) {
+      Bugsnag.notify(e);
+      return node;
+    }
   }
 
   async indexAll() {
