@@ -220,7 +220,7 @@ TABS:
             channelId: 13
       type: HeroList
       title: Catch up
-      subtitle: The Weekend
+      subtitle: Last Weekend
     - algorithms:
         - type: CONTENT_CHANNEL
           arguments:
