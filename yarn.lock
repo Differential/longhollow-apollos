@@ -186,12 +186,12 @@
   dependencies:
     js-yaml "^3.12.0"
 
-"@apollosproject/data-connector-algolia-search@^2.24.0":
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-algolia-search/-/data-connector-algolia-search-2.24.0.tgz#1be6c87b722d9cd5d246d3a929a54d8b99302209"
-  integrity sha512-S1+V3S6i+bq5Ydu6o22vXnUOlsfKiSkMAfjAPv0S4lA3Zlryg/O6Gf9DaH8eiEeYzyo0KCygrX7inA8CRpa3Cg==
+"@apollosproject/data-connector-algolia-search@^2.27.3-canary.8":
+  version "2.27.3-canary.8"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-algolia-search/-/data-connector-algolia-search-2.27.3-canary.8.tgz#c16f590db8a81e2e4a66edd301315f6d4f957f35"
+  integrity sha512-W5AyW4nePkfEFkKrk5HQWrTDvxqxrkK+Qd7MKTJzgKBfqIZM2FNL3DlIQdEQj52Du/R3ID50Tz0QbP6jIVlFIQ==
   dependencies:
-    "@apollosproject/server-core" "^2.24.0"
+    "@apollosproject/server-core" "^2.27.2"
     algoliasearch "^3.34.0"
     apollo-datasource-rest "^0.6.4"
 
@@ -261,10 +261,10 @@
     sequelize "^6.3.5"
     umzug "^3.0.0-beta.15"
 
-"@apollosproject/data-connector-redis-cache@^2.24.0":
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-redis-cache/-/data-connector-redis-cache-2.24.0.tgz#84c28f14c2250f34cd1e3027da12cca9be603b61"
-  integrity sha512-Q7iLa1Js1Chiw53usngCSGZGVwAcfLY7hqvzNfB5/3xjjKge7UqARpYJ/05zZKDAmR0nMINmNTzYAQcp44HmFA==
+"@apollosproject/data-connector-redis-cache@^2.27.3-canary.8":
+  version "2.27.3-canary.8"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-redis-cache/-/data-connector-redis-cache-2.27.3-canary.8.tgz#0024abd452d97076d0133fd00bdb5d26e30bf5fb"
+  integrity sha512-SLl+Rk8RWHLvlcVy4Oe1191/WjHcateth5qYWjCjSedU0U9uy/Ptpc+xaHEEj7uJo/0twE8dlNENTNv8hFjKbw==
   dependencies:
     apollo-datasource "^0.2.0"
     ioredis "4.14.1"
@@ -334,6 +334,20 @@
   integrity sha512-qlMErxb8o3GMAX+qzO5kXNTHcPa4Lp3IC/5CIC7/tNOcPkSiGiHOsVq/Fkoe4WdDc9XFAxUIZ2OTRNPsuB1KDg==
   dependencies:
     "@apollosproject/data-schema" "^2.24.0"
+    apollo-server-caching "^0.4.0"
+    bull "^3.11.0"
+    bull-board "^0.1.1"
+    express-basic-auth "^1.2.0"
+    graphql-parse-resolve-info "^4.4.5"
+    graphql-tag "^2.10.0"
+    lodash "^4.17.11"
+
+"@apollosproject/server-core@^2.27.2":
+  version "2.27.2"
+  resolved "https://registry.yarnpkg.com/@apollosproject/server-core/-/server-core-2.27.2.tgz#823618c490e9bdc80982c814d0a38f99da026e14"
+  integrity sha512-aoCzIQvRaqwBgWmwaPPuO2YSu0JlnIDGdoKGDuRPqf+eW487+/z5balZiGlOMoGl1x0ufdy0ug4gWUzpjn7Q5g==
+  dependencies:
+    "@apollosproject/data-schema" "^2.27.2"
     apollo-server-caching "^0.4.0"
     bull "^3.11.0"
     bull-board "^0.1.1"
