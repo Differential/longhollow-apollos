@@ -262,7 +262,7 @@ class dataSource extends ContentItem.dataSource {
       relatedLinks: { value: relatedLinksGuid } = {},
       scriptures: { value: references } = {},
       speaker: { value: speaker } = {},
-      finePrint: { value: finePrint } = {},
+//       finePrint: { value: finePrint } = {},
       topics: { valueFormatted: topics } = {},
     } = attributeValues;
     let html = '';
@@ -302,7 +302,7 @@ class dataSource extends ContentItem.dataSource {
     }
     if (speaker) html = `${html}<h4>Speakers</h4>${speaker}`;
     if (topics) html = `${html}<h4>Topics</h4>${topics}`;
-    if (finePrint) html = `${html}<br><br><small>${finePrint}</small>`;
+//     if (finePrint) html = `${html}<br><br><small>${finePrint}</small>`;
     return html;
   };
 
