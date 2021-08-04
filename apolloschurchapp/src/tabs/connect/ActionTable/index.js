@@ -35,37 +35,55 @@ const ActionTable = () => (
           </Name>
         </RowHeader>
         <TableView>
-          <Touchable onPress={() => openUrl('https://longhollow.com/contact')}>
+          <Touchable
+            onPress={() =>
+              openUrl('https://longhollow.com/about/starting-point')
+            }
+          >
             <Cell>
-              <CellText>Contact Us</CellText>
+              <CellText>Take your next step</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
           <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/prayer')}>
+          <Touchable
+            onPress={() =>
+              openUrl('https://longhollow.com/connect/connect-with-us')
+            }
+          >
             <Cell>
-              <CellText>Prayer Requests</CellText>
+              <CellText>Contact us</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
           <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/baptism')}>
+          <Touchable
+            onPress={() => openUrl('https://longhollow.com/next-steps/baptism')}
+          >
             <Cell>
               <CellText>Get Baptized</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
           <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/support')}>
+          <Touchable
+            onPress={() =>
+              openUrl('https://longhollow.com/next-steps/become-a-member')
+            }
+          >
             <Cell>
-              <CellText>Support Groups</CellText>
+              <CellText>Become a member</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
           <Divider />
-          <Touchable onPress={() => openUrl('https://longhollow.com/schedule')}>
+          <Touchable
+            onPress={() =>
+              openUrl('https://longhollow.com/next-steps/plan-your-visit')
+            }
+          >
             <Cell>
-              <CellText>Times and Locations</CellText>
+              <CellText>Plan your visit</CellText>
               <CellIcon name="arrow-next" />
             </Cell>
           </Touchable>
