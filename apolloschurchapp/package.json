@@ -125,7 +125,7 @@
     "@apollosproject/eslint-config": "^2.24.0",
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
-    "@bam.tech/react-native-make": "^3.0.0",
+    "@bam.tech/react-native-make": "^3.0.3",
     "@bugsnag/source-maps": "^1.0.1",
     "@carimus/metro-symlinked-deps": "^1.1.0",
     "@react-native-community/eslint-config": "^2.0.0",
