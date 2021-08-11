@@ -425,16 +425,19 @@ class dataSource extends ContentItem.dataSource {
       allowedTags: false,
       allowedAttributes: false,
       transformTags: {
-        img: (tagName, { src }) => ({
+        img: (tagName, { src, ...attribs }) => ({
           tagName,
-          attribs: src
-            ? {
-                // adds Rock URL in the case of local image references in the CMS
-                src: src.startsWith('http')
-                  ? src
-                  : `${ApollosConfig.ROCK.URL || ''}${src}`,
-              }
-            : {},
+          attribs: {
+            // adds Rock URL in the case of local image references in the CMS
+            ...(src
+              ? {
+                  src: src.startsWith('http')
+                    ? src
+                    : `${ApollosConfig.ROCK.URL || ''}${src}`,
+                }
+              : {}),
+            ...attribs,
+          },
         }),
       },
     });
