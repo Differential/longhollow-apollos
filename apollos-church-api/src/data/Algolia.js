@@ -21,12 +21,7 @@ export class Search extends BaseSearch {
 
   createReplicas = async () => {
     await this.index.setSettings({
-      replicas: [
-        'title_asc',
-        'publish_date_desc',
-        'start_date_asc',
-        'last_name_asc',
-      ],
+      replicas: ['title_asc', 'publish_date_desc', 'start_date_asc'],
     });
 
     // title A-Z
