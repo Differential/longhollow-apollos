@@ -215,9 +215,11 @@ TABS:
           limit: 1
       type: VerticalCardList
     - algorithms:
-        - type: LATEST_SERIES_CHILDREN
+        - type: CONTENT_FEED
           arguments:
-            channelId: 13
+            channelIds:
+              - 14
+            limit: 5
       type: HeroList
       title: Catch up
       subtitle: Last Weekend

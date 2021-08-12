@@ -12,6 +12,7 @@ import {
   PaddedView,
   Touchable,
 } from '@apollosproject/ui-kit';
+import moment from 'moment';
 
 const RowHeader = styled(({ theme }) => ({
   flexDirection: 'row',
@@ -70,7 +71,9 @@ const Metadata = ({ node }) =>
           <>
             <Divider />
             <Cell>
-              <CellText>Signup Deadline: {node?.deadline}</CellText>
+              <CellText>
+                Signup Deadline: {moment(node?.deadline).format('MMMM Do YYYY')}
+              </CellText>
             </Cell>
           </>
         ) : null}

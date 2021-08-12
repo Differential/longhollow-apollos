@@ -9,7 +9,7 @@ const Toolbar = () => (
         <ActionBarItem
           onPress={() => openUrl('https://www.longhollow.com/about/schedule')}
           icon="time"
-          label="Service Times"
+          label="Schedule"
         />
         <ActionBarItem
           onPress={() =>
