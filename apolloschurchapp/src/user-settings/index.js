@@ -76,6 +76,7 @@ class UserSettings extends PureComponent {
                             <CellIcon name="arrow-next" />
                           </Cell>
                         </Touchable>
+                        <Divider />
                         <Touchable
                           onPress={() => {
                             this.props.navigation.navigate('Notifications');
