@@ -425,6 +425,20 @@ class dataSource extends ContentItem.dataSource {
       allowedTags: false,
       allowedAttributes: false,
       transformTags: {
+        a: (tagName, { href, ...attribs }) => ({
+          tagName,
+          attribs: {
+            // adds Rock URL in the case of local urls
+            ...(href
+              ? {
+                  href: href.startsWith('http')
+                    ? href
+                    : `https://longhollow.com${href}`,
+                }
+              : {}),
+            ...attribs,
+          },
+        }),
         img: (tagName, { src, ...attribs }) => ({
           tagName,
           attribs: {
