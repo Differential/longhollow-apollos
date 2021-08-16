@@ -1,8 +1,9 @@
 import { graphql } from 'graphql';
 import Bugsnag from '@bugsnag/js';
 import * as baseSearch from '@apollosproject/data-connector-algolia-search';
+import Redis from 'ioredis';
 
-const { schema, resolver, jobs, dataSource: BaseSearch } = baseSearch;
+const { schema, resolver, dataSource: BaseSearch } = baseSearch;
 
 const CATEGORIES = [
   'Sermons',
@@ -133,4 +134,54 @@ export class Search extends BaseSearch {
   }
 }
 
-export { schema, Search as dataSource, resolver, jobs };
+const { REDIS_URL } = process.env;
+
+let client;
+let subscriber;
+let queueOpts;
+const tlsOptions = {
+  tls: {
+    rejectUnauthorized: false,
+  },
+};
+
+if (REDIS_URL) {
+  client = new Redis(REDIS_URL, {
+    ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+  });
+  subscriber = new Redis(REDIS_URL, {
+    ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+  });
+
+  // Used to ensure that N+3 redis connections are not created per queue.
+  // https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md#reusing-redis-connections
+  queueOpts = {
+    createClient(type) {
+      switch (type) {
+        case 'client':
+          return client;
+        case 'subscriber':
+          return subscriber;
+        default:
+          return new Redis(REDIS_URL);
+      }
+    },
+  };
+}
+
+// custom, moved full index to daily
+const createJobs = ({ getContext, queues, trigger = () => null }) => {
+  const FullIndexQueue = queues.add('algolia-full-index-queue', queueOpts);
+
+  FullIndexQueue.process(async () => {
+    const context = getContext();
+    return context.dataSources.Search.indexAll();
+  });
+
+  FullIndexQueue.add(null, { repeat: { cron: '15 3 * * *' } });
+
+  // add manual index trigger
+  trigger('/manual-index', FullIndexQueue);
+};
+
+export { schema, Search as dataSource, resolver, createJobs as jobs };
