@@ -54,8 +54,8 @@ ONE_SIGNAL:
   APP_ID: 74697261-f31d-489d-9a42-aaf6b2529de3
   REST_KEY: ${ONE_SIGNAL_REST_KEY}
 CHURCH_ONLINE:
-  URL: https://longhollow.online.church/
-  WEB_VIEW_URL: https://longhollow.online.church/
+  URL: https://live.longhollow.com/
+  WEB_VIEW_URL: https://live.longhollow.com/
 ALGOLIA:
   APPLICATION_ID: ${ALGOLIASEARCH_APPLICATION_ID}
   API_KEY: ${ALGOLIASEARCH_API_KEY}
@@ -137,7 +137,7 @@ ROCK_MAPPINGS:
     UniversalContentItem:
       EntityType: ContentChannelItem
     WeekendContentItem:
-      ContentChannelId: [14]
+      ContentChannelId: [14, 56]
       EntityType: ContentChannelItem
     ContentItem:
       EntityType: ContentChannelItem
@@ -213,7 +213,7 @@ TABS:
           channelIds:
             - 56
           limit: 1
-      type: VerticalCardList
+      type: HeroList
     - algorithms:
         - type: CONTENT_FEED
           arguments:
