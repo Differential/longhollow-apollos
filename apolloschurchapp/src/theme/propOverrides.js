@@ -1,5 +1,5 @@
 import React from 'react';
-import { H2 } from '@apollosproject/ui-kit';
+import { H2, PaddedView } from '@apollosproject/ui-kit';
 import Metadata from '../ui/Metadata';
 /* Export your custom prop overrides here. */
 
@@ -29,12 +29,12 @@ export default {
   // same as core, but with the Metadata component
   'ui-connected.ContentNodeConnected': {
     HeaderComponent: () => ({ isLoading, node }) => (
-      <>
+      <PaddedView vertical={false}>
         <H2 padded isLoading={isLoading}>
           {node?.title}
         </H2>
         <Metadata node={node} />
-      </>
+      </PaddedView>
     ),
   },
 };
