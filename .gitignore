@@ -6,6 +6,7 @@
 ehthumbs.db
 Thumbs.db
 *.swp
+lerna-debug.log
 
 # Dependency directories
 node_modules/
