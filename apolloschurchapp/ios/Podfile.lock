@@ -248,7 +248,7 @@ PODS:
   - react-native-amplitude-analytics (0.2.11):
     - Amplitude-iOS (~> 4.3.1)
     - React
-  - react-native-apollos-player (2.24.0):
+  - react-native-apollos-player (2.30.0):
     - React
   - react-native-config (0.11.7):
     - React
@@ -260,8 +260,8 @@ PODS:
     - React-Core
   - react-native-maps (0.27.1):
     - React
-  - react-native-music-control (0.10.8):
-    - React
+  - react-native-music-control (1.4.0):
+    - React-Core
   - react-native-onesignal (4.0.8):
     - OneSignal (= 3.4.3)
     - React (< 1.0.0, >= 0.13.0)
@@ -359,8 +359,8 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNInAppBrowser (3.4.0):
-    - React
+  - RNInAppBrowser (3.5.1):
+    - React-Core
   - RNPermissions (2.0.10):
     - React
   - RNReanimated (2.1.0):
@@ -655,13 +655,13 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
   react-native-amplitude-analytics: d04d873dc53813d04e267c31f6e7cd71a7a7155a
-  react-native-apollos-player: f54c15c6dc31f38e681757b28644aeb409d214af
+  react-native-apollos-player: e29218b35c8a2a338ff8c2559444d2c0115a75a0
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
   react-native-geolocation-service: 7c9436da6dfdecd9526c62eac62ea2bc3f0cc8ea
   react-native-image-picker: 28d8d1f5a643119876b8b2c7d4d1dcfb2b232dd4
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
-  react-native-music-control: dcfe5b61e56a15898c4618579cb8ce612c9d21a8
+  react-native-music-control: 93b521377efdf2e49b46ccade8457f9503359b38
   react-native-onesignal: 50b047c674b79ba700218338fdefb45220da4db5
   react-native-passkit-wallet: 51e3babdaeec4c10b5736786ebd1bfb470fcaa36
   react-native-safari-view: 955d7160d159241b8e9395d12d10ea0ef863dcdd
@@ -688,7 +688,7 @@ SPEC CHECKSUMS:
   RNDateTimePicker: 6f62fd42ac8b58bcc30c43ac3620e5097e8a227f
   RNDeviceInfo: 687c1b2ab6d86ff1ca1208783320cd144138c7f2
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNInAppBrowser: c1a0dad2734458d79bcb6c8f4297ba8658a1da9f
+  RNInAppBrowser: 48b95ba7a4eaff5cc223bca338d3e319561dbd1b
   RNPermissions: 1008d3511fee0e25739cf81c4af0d1b2248f1053
   RNReanimated: 70f662b5232dd5d19ccff581e919a54ea73df51c
   RNScreens: c277bfc4b5bb7c2fe977d19635df6f974f95dfd6
