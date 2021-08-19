@@ -138,8 +138,8 @@ class dataSource extends ContentItem.dataSource {
     return cursor;
   };
 
-  attributeIsVideo = ({ key }) =>
-    key.toLowerCase().includes('video') || key.toLowerCase().includes('vimeo');
+  // they also have "Video Link" but that's an m4v for a podcast potentially in the future
+  attributeIsVideo = ({ key }) => key.toLowerCase().includes('vimeo');
 
   getActiveLiveStreamContent = async () => {
     const { LiveStream } = this.context.dataSources;
