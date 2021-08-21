@@ -1,6 +1,7 @@
 import { graphql } from 'graphql';
 import * as baseSearch from '@apollosproject/data-connector-algolia-search';
 import Redis from 'ioredis';
+import { parseCursor, createCursor } from '@apollosproject/server-core';
 
 const { schema, resolver, dataSource: BaseSearch } = baseSearch;
 
@@ -42,6 +43,29 @@ export class Search extends BaseSearch {
       ranking: ['asc(startDateTimestamp)'],
     });
   };
+
+  async byPaginatedQuery({ query, after, first = 20 }) {
+    const length = first;
+    let offset = 0;
+    if (after) {
+      const parsed = parseCursor(after);
+      if (parsed && Object.hasOwnProperty.call(parsed, 'position')) {
+        offset = parsed.position + 1;
+      } else {
+        throw new Error(`An invalid 'after' cursor was provided: ${after}`);
+      }
+    }
+    const { hits } = await this.index.search({
+      query,
+      length,
+      offset,
+      filters: 'NOT category:General',
+    });
+    return hits.map((node, i) => ({
+      ...node,
+      cursor: createCursor({ position: i + offset }),
+    }));
+  }
 
   async mapItemToAlgolia(item) {
     const node = await super.mapItemToAlgolia(item);
