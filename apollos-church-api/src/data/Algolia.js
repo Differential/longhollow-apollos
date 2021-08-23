@@ -3,7 +3,7 @@ import * as baseSearch from '@apollosproject/data-connector-algolia-search';
 import Redis from 'ioredis';
 import { parseCursor, createCursor } from '@apollosproject/server-core';
 
-const { schema, resolver, dataSource: BaseSearch } = baseSearch;
+const { schema, resolver, dataSource: BaseSearch, jobs } = baseSearch;
 
 const CATEGORIES = [
   'Sermons',
@@ -151,42 +151,43 @@ export class Search extends BaseSearch {
   }
 }
 
-const { REDIS_URL } = process.env;
+// const { REDIS_URL } = process.env;
 
-let client;
-let subscriber;
-let queueOpts;
-const tlsOptions = {
-  tls: {
-    rejectUnauthorized: false,
-  },
-};
+// let client;
+// let subscriber;
+// let queueOpts;
+// const tlsOptions = {
+// tls: {
+// rejectUnauthorized: false,
+// },
+// };
 
-if (REDIS_URL) {
-  client = new Redis(REDIS_URL, {
-    ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
-  });
-  subscriber = new Redis(REDIS_URL, {
-    ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
-  });
+// if (REDIS_URL) {
+// client = new Redis(REDIS_URL, {
+// ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+// });
+// subscriber = new Redis(REDIS_URL, {
+// ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+// });
 
-  // Used to ensure that N+3 redis connections are not created per queue.
-  // https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md#reusing-redis-connections
-  queueOpts = {
-    createClient(type) {
-      switch (type) {
-        case 'client':
-          return client;
-        case 'subscriber':
-          return subscriber;
-        default:
-          return new Redis(REDIS_URL);
-      }
-    },
-  };
-}
+// // Used to ensure that N+3 redis connections are not created per queue.
+// // https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md#reusing-redis-connections
+// queueOpts = {
+// createClient(type) {
+// switch (type) {
+// case 'client':
+// return client;
+// case 'subscriber':
+// return subscriber;
+// default:
+// return new Redis(REDIS_URL);
+// }
+// },
+// };
+// }
 
 // custom, moved full index to daily
+// TODO put this back once i figure out why indexing isn't working
 const createJobs = ({ getContext, queues, trigger = () => null }) => {
   const FullIndexQueue = queues.add('algolia-full-index-queue', queueOpts);
 
@@ -201,4 +202,4 @@ const createJobs = ({ getContext, queues, trigger = () => null }) => {
   trigger('/manual-index', FullIndexQueue);
 };
 
-export { schema, Search as dataSource, resolver, createJobs as jobs };
+export { schema, Search as dataSource, resolver, jobs };
