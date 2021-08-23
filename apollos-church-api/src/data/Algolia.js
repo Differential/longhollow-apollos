@@ -3,7 +3,7 @@ import * as baseSearch from '@apollosproject/data-connector-algolia-search';
 import Redis from 'ioredis';
 import { parseCursor, createCursor } from '@apollosproject/server-core';
 
-const { schema, resolver, dataSource: BaseSearch, jobs } = baseSearch;
+const { schema, resolver, dataSource: BaseSearch } = baseSearch;
 
 const CATEGORIES = [
   'Sermons',
@@ -149,49 +149,89 @@ export class Search extends BaseSearch {
       startDateTimestamp: dates?.split(',')[0],
     };
   }
+
+  async indexAll() {
+    console.log('indexing');
+    await new Promise((resolve, reject) =>
+      this.index.clearIndex((err, result) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(result);
+      })
+    );
+    const { ContentItem } = this.context.dataSources;
+
+    // loop through each active channel
+    await Promise.all(
+      ContentItem.activeChannelIds.map(async (channelId) => {
+        let itemsLeft = true;
+        const args = { after: null, first: 100 };
+
+        while (itemsLeft) {
+          const { edges } = await ContentItem.paginate({
+            cursor: await ContentItem.byContentChannelId(channelId),
+            args,
+          });
+
+          const result = await edges;
+          const items = result.map(({ node }) => node);
+          itemsLeft = items.length === 100;
+
+          if (itemsLeft) args.after = result[result.length - 1].cursor;
+
+          const indexableItems = await Promise.all(
+            items.map((item) => this.mapItemToAlgolia(item))
+          );
+
+          await this.addObjects(indexableItems);
+        }
+      })
+    );
+    console.log('done');
+  }
 }
 
-// const { REDIS_URL } = process.env;
+const { REDIS_URL } = process.env;
 
-// let client;
-// let subscriber;
-// let queueOpts;
-// const tlsOptions = {
-// tls: {
-// rejectUnauthorized: false,
-// },
-// };
+let client;
+let subscriber;
+let queueOpts;
+const tlsOptions = {
+  tls: {
+    rejectUnauthorized: false,
+  },
+};
 
-// if (REDIS_URL) {
-// client = new Redis(REDIS_URL, {
-// ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
-// });
-// subscriber = new Redis(REDIS_URL, {
-// ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
-// });
+if (REDIS_URL) {
+  client = new Redis(REDIS_URL, {
+    ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+  });
+  subscriber = new Redis(REDIS_URL, {
+    ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+  });
 
-// // Used to ensure that N+3 redis connections are not created per queue.
-// // https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md#reusing-redis-connections
-// queueOpts = {
-// createClient(type) {
-// switch (type) {
-// case 'client':
-// return client;
-// case 'subscriber':
-// return subscriber;
-// default:
-// return new Redis(REDIS_URL);
-// }
-// },
-// };
-// }
+  // Used to ensure that N+3 redis connections are not created per queue.
+  // https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md#reusing-redis-connections
+  queueOpts = {
+    createClient(type) {
+      switch (type) {
+        case 'client':
+          return client;
+        case 'subscriber':
+          return subscriber;
+        default:
+          return new Redis(REDIS_URL);
+      }
+    },
+  };
+}
 
 // custom, moved full index to daily
-// TODO put this back once i figure out why indexing isn't working
 const createJobs = ({ getContext, queues, trigger = () => null }) => {
   const FullIndexQueue = queues.add('algolia-full-index-queue', queueOpts);
 
-  FullIndexQueue.process(async () => {
+  FullIndexQueue.process(() => {
     const context = getContext();
     return context.dataSources.Search.indexAll();
   });
@@ -202,4 +242,4 @@ const createJobs = ({ getContext, queues, trigger = () => null }) => {
   trigger('/manual-index', FullIndexQueue);
 };
 
-export { schema, Search as dataSource, resolver, jobs };
+export { schema, Search as dataSource, resolver, createJobs as jobs };
