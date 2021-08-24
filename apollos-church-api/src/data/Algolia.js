@@ -188,7 +188,12 @@ if (REDIS_URL) {
 
 // custom, moved full index to daily
 const createJobs = ({ getContext, queues, trigger = () => null }) => {
-  const FullIndexQueue = queues.add('algolia-full-index-queue');
+  const FullIndexQueue = queues.add(
+    'algolia-full-index-queue',
+    new Redis(REDIS_URL, {
+      ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+    })
+  );
   FullIndexQueue.empty();
 
   FullIndexQueue.process(() => {
