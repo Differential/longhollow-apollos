@@ -188,7 +188,7 @@ if (REDIS_URL) {
 
 // custom, moved full index to daily
 const createJobs = ({ getContext, queues, trigger = () => null }) => {
-  const FullIndexQueue = queues.add('algolia-full-index-queue', queueOpts);
+  const FullIndexQueue = queues.add('algolia-full-index-queue');
   FullIndexQueue.empty();
 
   FullIndexQueue.process(() => {
