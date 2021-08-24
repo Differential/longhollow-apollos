@@ -155,6 +155,7 @@ const { REDIS_URL } = process.env;
 
 let client;
 let subscriber;
+let _default;
 let queueOpts;
 const tlsOptions = {
   tls: {
@@ -169,6 +170,9 @@ if (REDIS_URL) {
   subscriber = new Redis(REDIS_URL, {
     ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
   });
+  _default = new Redis(REDIS_URL, {
+    ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
+  });
 
   // Used to ensure that N+3 redis connections are not created per queue.
   // https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md#reusing-redis-connections
@@ -180,7 +184,7 @@ if (REDIS_URL) {
         case 'subscriber':
           return subscriber;
         default:
-          return new Redis(REDIS_URL);
+          return _default;
       }
     },
   };
@@ -188,12 +192,7 @@ if (REDIS_URL) {
 
 // custom, moved full index to daily
 const createJobs = ({ getContext, queues, trigger = () => null }) => {
-  const FullIndexQueue = queues.add(
-    'algolia-full-index-queue',
-    new Redis(REDIS_URL, {
-      ...(REDIS_URL.includes('rediss') ? tlsOptions : {}),
-    })
-  );
+  const FullIndexQueue = queues.add('algolia-full-index-queue', queueOpts);
   FullIndexQueue.empty();
 
   FullIndexQueue.process(() => {
