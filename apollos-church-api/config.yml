@@ -55,7 +55,7 @@ ONE_SIGNAL:
   REST_KEY: ${ONE_SIGNAL_REST_KEY}
 CHURCH_ONLINE:
   URL: https://live.longhollow.com/
-  WEB_VIEW_URL: https://live.longhollow.com/
+  MEDIA_URLS: ["https://resi.media/lo-he-TN/Manifest.m3u8"]
 ALGOLIA:
   APPLICATION_ID: ${ALGOLIASEARCH_APPLICATION_ID}
   API_KEY: ${ALGOLIASEARCH_API_KEY}
