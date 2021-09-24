@@ -115,7 +115,7 @@ class dataSource extends Person.dataSource {
     );
   }
 
-  getStaff = async ({ ministry = null } = {}) => {
+  getStaff = async ({ ministry = "Staff Leaders" } = {}) => {
     if (ministry) {
       return this.getByMinistry({ ministry });
     }
