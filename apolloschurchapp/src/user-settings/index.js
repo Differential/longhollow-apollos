@@ -90,9 +90,9 @@ class UserSettings extends PureComponent {
                       </TableView>
                       <TableView>
                         <Touchable
-                          onPress={() => {
-                            openUrl('mailto:support@apollos.app');
-                          }}
+                        // onPress={() => {
+                        //   openUrl('mailto:support@apollos.app');
+                        // }}
                         >
                           <Cell>
                             <CellText>Give Feedback</CellText>
