@@ -29,7 +29,7 @@ import {
   Group,
   // Feature,
   // FeatureFeed,
-  ActionAlgorithm,
+  // ActionAlgorithm,
   Event,
   PrayerRequest,
   Persona,
@@ -48,6 +48,7 @@ import * as Search from './Algolia';
 import * as LiveStream from './LiveStream';
 import * as Interactions from './interactions';
 import Cloudinary from './Cloudinary';
+import * as ActionAlgorithm from './ActionAlgorithm';
 
 // This module is used to attach Rock User updating to the OneSignal module.
 // This module includes a Resolver that overides a resolver defined in `OneSignal`
