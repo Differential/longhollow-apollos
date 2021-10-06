@@ -272,10 +272,10 @@
     apollo-datasource "^0.2.0"
     ioredis "4.14.1"
 
-"@apollosproject/data-connector-rock@^2.30.0":
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.30.0.tgz#23a6ddcd6a06cf40bdad58cfe51949084364db3d"
-  integrity sha512-kQYpftbnZ/WhcRx7TF+ABudxEEiUhiujAuhIQwMcJ2TPAfcPzlz5HuPFa9laFJnfd+PYDMmpNIoT8Z80GIHcRA==
+"@apollosproject/data-connector-rock@^2.32.2":
+  version "2.34.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-connector-rock/-/data-connector-rock-2.34.0.tgz#2dce23a008173b966e4679ddf36368335a7155e7"
+  integrity sha512-BIkFtRBGEt55BXFWH9K2oSmNKx5tnNB0pe7GsxSlwPB3d8YJjB9Ai7LFrZEJZz0f55+sLnjlfKPw5B9OfWu3Kg==
   dependencies:
     awesome-phonenumber "^2.4.2"
     form-data "^4.0.0"
@@ -301,6 +301,13 @@
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.30.0.tgz#d29e166ab53e8019e4cb0829bd0b276ddcf6f695"
   integrity sha512-d95cVaNltZCOXHfIs0TxL/DeFNKfeA6RkqAxDe6JeBE2XTCDXQA133yf/fY28UwVc2jFL5ekGq203uzCStA29A==
+  dependencies:
+    "@apollo/client" "3.3.20"
+
+"@apollosproject/data-schema@^2.32.2":
+  version "2.34.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/data-schema/-/data-schema-2.34.0.tgz#b52b78a59e1f756114871bbc330a67fc89372e20"
+  integrity sha512-BgKaEhrAAagn1yWNpJ7o+t8BgSAPJkxkCL3RaqWBRMGe3vl1Td5zp8gfX79SWILWH4TlGQxwMh19X9237cM0rQ==
   dependencies:
     "@apollo/client" "3.3.20"
 
