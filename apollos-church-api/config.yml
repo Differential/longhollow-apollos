@@ -144,7 +144,7 @@ ROCK_MAPPINGS:
 
   DATAVIEW_CATEGORIES:
     # Id of the category used to store all persona dataviews
-    PersonaId: 425
+    PersonaId: 456
 
   # Apollos will pull content items from these channels and expose them on the user feed
   # However, it will not expose the channel itself.
