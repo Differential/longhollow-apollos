@@ -184,11 +184,11 @@ TABS:
       title: For you
       subtitle: Recommended
     - algorithms:
-      - type: CONTENT_FEED
+      - type: HOME_TAB_CONTENT_FEED
         arguments:
           channelIds:
-            - 13
-          limit: 1
+            - 36
+            - 35
       type: VerticalCardList
     - algorithms:
         - type: CONTENT_FEED
