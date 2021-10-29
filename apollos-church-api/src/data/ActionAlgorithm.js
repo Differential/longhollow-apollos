@@ -7,7 +7,7 @@ class dataSource extends ActionAlgorithm.dataSource {
   ACTION_ALGORITHMS = {
     ...this.ACTION_ALGORITHMS,
     HOME_TAB_CONTENT_FEED: this.homeTabContentFeedAlgorithm.bind(this),
-    NON_PERSONA_CONTENT_FEED: this.nonPersonaContentFeedAlgorithm.bind(this),
+    NON_PERSONA_OR_FEATURED_CONTENT_FEED: this.nonPersonaOrFeaturedContentFeedAlgorithm.bind(this),
   };
 
   async homeTabContentFeedAlgorithm({ channelIds = [], limit = 40, skip = 0 } = {}) {
@@ -42,7 +42,7 @@ class dataSource extends ActionAlgorithm.dataSource {
     }));
   }
 
-  async nonPersonaContentFeedAlgorithm({ channelIds = [], limit = 40, skip = 0 } = {}) {
+  async nonPersonaOrFeaturedContentFeedAlgorithm({ channelIds = [], limit = 40, skip = 0 } = {}) {
     const { ContentItem } = this.context.dataSources;
 
     const items = await ContentItem.byContentChannelIds(channelIds)
@@ -50,7 +50,14 @@ class dataSource extends ActionAlgorithm.dataSource {
       .skip(skip)
       .get();
 
-    return items.map((item, i) => ({
+    const filteredItems = items
+      .filter((item) => item.attributeValues.personas.value === '')
+      .filter((item) => item.attributeValues.shownonHomePage.value !== 'True')
+      .filter(
+        (item) => item.attributeValues.featuredonHomePage.value !== 'True'
+      );
+
+    return filteredItems.map((item, i) => ({
       id: `${item.id}${i}`,
       title: item.title,
       subtitle: get(item, 'contentChannel.name'),
