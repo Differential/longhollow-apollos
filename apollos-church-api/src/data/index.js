@@ -29,7 +29,7 @@ import {
   Group,
   // Feature,
   // FeatureFeed,
-  ActionAlgorithm,
+  // ActionAlgorithm,
   Event,
   PrayerRequest,
   Persona,
@@ -38,6 +38,7 @@ import {
 } from '@apollosproject/data-connector-rock';
 
 import * as Theme from './theme';
+import * as ActionAlgorithm from './ActionAlgorithm';
 import * as Feature from './features';
 import * as FeatureFeed from './feature-feeds';
 import * as Vimeo from './Vimeo';

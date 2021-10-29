@@ -2,8 +2,7 @@ import { get } from 'lodash';
 
 import { ActionAlgorithm } from '@apollosproject/data-connector-rock';
 
-const { resolver } = ActionAlgorithm;
-
+const { resolver, schema } = ActionAlgorithm;
 class dataSource extends ActionAlgorithm.dataSource {
   ACTION_ALGORITHMS = {
     ...this.ACTION_ALGORITHMS,
@@ -17,9 +16,21 @@ class dataSource extends ActionAlgorithm.dataSource {
       .top(limit)
       .skip(skip)
       .get();
-console.log('items: ', items[0])
-// filter out by shownon home page here featured on home page
-    return items.map((item, i) => ({
+
+    const featuredItems = items.filter(
+      (item) => item.attributeValues.featuredonHomePage.value === 'True'
+    );
+
+    const shownOnHomeItems = items.filter(
+      (item) => item.attributeValues.shownonHomePage.value === 'True'
+    );
+
+    // This returns the featured item first, then the first 2 items marked to be shown on the Home Feed
+    const combinedFeaturedAndShownItems = featuredItems.concat(
+      shownOnHomeItems.slice(0, 2)
+    );
+
+    return combinedFeaturedAndShownItems.map((item, i) => ({
       id: `${item.id}${i}`,
       title: item.title,
       subtitle: get(item, 'contentChannel.name'),
@@ -31,4 +42,4 @@ console.log('items: ', items[0])
   }
 }
 
-export { resolver, dataSource };
+export { schema, resolver, dataSource };

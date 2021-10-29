@@ -179,10 +179,10 @@ TABS:
             - 14
           limit: 1
       type: VerticalCardList
-    - algorithms: [PERSONA_FEED]
-      type: ActionList
-      title: For you
-      subtitle: Recommended
+    # - algorithms: [PERSONA_FEED]
+    #   type: ActionList
+    #   title: For you
+    #   subtitle: Recommended
     - algorithms:
       - type: HOME_TAB_CONTENT_FEED
         arguments:
@@ -190,13 +190,13 @@ TABS:
             - 36
             - 35
       type: VerticalCardList
-    - algorithms:
-        - type: CONTENT_FEED
-          arguments:
-            channelIds:
-              - 36
-              - 35
-      type: VerticalCardList
+    # - algorithms:
+    #     - type: CONTENT_FEED
+    #       arguments:
+    #         channelIds:
+    #           - 36
+    #           - 35
+    #   type: VerticalCardList
 
 
   READ:
