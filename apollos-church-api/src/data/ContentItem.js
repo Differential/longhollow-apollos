@@ -11,6 +11,10 @@ const SERIES_BACKGROUND_IMAGE_KEY = 'seriesBackgroundImage';
 const schema = gql`
   ${contentItemSchema}
 
+  extend type ContentSeriesContentItem {
+    backgroundImage: ImageMedia
+  }
+
   extend type WeekendContentItem {
     speaker: String
     topics: [String]
@@ -371,6 +375,61 @@ class dataSource extends ContentItem.dataSource {
     return image;
   }
 
+  async getBackgroundImage(root) {
+    const { Cache } = this.context.dataSources;
+    const cachedValue = await Cache.get({
+      key: `contentItem:backgroundImage:${root.id}`,
+    });
+
+    if (cachedValue) {
+      return cachedValue;
+    }
+
+    let image = null;
+
+    // filter images w/o URLs
+    let ourImages = this.getImages(root).filter(
+      ({ sources }) => sources.length
+    );
+
+    const backgroundImages = ourImages.filter(({ key }) =>
+      /background/i.test(key)
+    );
+
+    ourImages = backgroundImages.length ? backgroundImages : ourImages;
+
+    if (ourImages.length) {
+      image = this.pickBestImage({ images: ourImages });
+    }
+
+    // If no image, check parent for image:
+    if (!image) {
+      // The cursor returns a promise which returns a promisee, hence th edouble eawait.
+      const parentItems = await (await this.getCursorByChildContentItemId(
+        root.id
+      )).get();
+
+      if (parentItems.length) {
+        const validParentImages = parentItems
+          .flatMap(this.getImages)
+          .filter(({ sources }) => sources.length);
+
+        if (validParentImages && validParentImages.length)
+          image = this.pickBestImage({ images: validParentImages });
+      }
+    }
+
+    if (image != null) {
+      Cache.set({
+        key: `contentItem:backgroundImage:${root.id}`,
+        data: image,
+        expiresIn: 60 * 5,
+      });
+    }
+
+    return image;
+  }
+
   // same as core, gets just the parent image though.
   async getSeriesImage(root) {
     const { Cache } = this.context.dataSources;
@@ -422,7 +481,7 @@ class dataSource extends ContentItem.dataSource {
   async getSeriesBackgroundImage(root) {
     const { Cache } = this.context.dataSources;
     const cachedValue = await Cache.get({
-      key: `contentItem:seriesCoverImage:${root.id}`,
+      key: `contentItem:seriesBackgroundImage:${root.id}`,
     });
 
     if (cachedValue) {
@@ -457,7 +516,7 @@ class dataSource extends ContentItem.dataSource {
 
     if (image != null) {
       Cache.set({
-        key: `contentItem:seriesCoverImage:${root.id}`,
+        key: `contentItem:seriesBackgroundImage:${root.id}`,
         data: image,
         expiresIn: 60 * 5,
       });
@@ -522,6 +581,11 @@ class dataSource extends ContentItem.dataSource {
 
 const resolver = {
   ...ContentItem.resolver,
+  ContentSeriesContentItem: {
+    ...ContentItem.resolver.ContentSeriesContentItem,
+    backgroundImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getBackgroundImage(root),
+  },
   Query: {
     getMinistryContent: (_, { ministry }, { dataSources }) =>
       dataSources.ContentItem.getByMinistry(ministry),
