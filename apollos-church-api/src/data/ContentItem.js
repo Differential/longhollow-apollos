@@ -5,8 +5,15 @@ import { createGlobalId } from '@apollosproject/server-core';
 import ApollosConfig from '@apollosproject/config';
 import sanitizeHtml from 'sanitize-html';
 
+const SERIES_IMAGE_KEY = 'seriesImage';
+const SERIES_BACKGROUND_IMAGE_KEY = 'seriesBackgroundImage';
+
 const schema = gql`
   ${contentItemSchema}
+
+  extend type ContentSeriesContentItem {
+    backgroundImage: ImageMedia
+  }
 
   extend type WeekendContentItem {
     speaker: String
@@ -14,6 +21,7 @@ const schema = gql`
     scriptures: [Scripture]
     relatedLinks: [RelatedLink]
     seriesImage: ImageMedia
+    seriesBackgroundImage: ImageMedia
   }
 
   extend type MediaContentItem {
@@ -21,6 +29,7 @@ const schema = gql`
     topics: [String]
     relatedLinks: [RelatedLink]
     seriesImage: ImageMedia
+    seriesBackgroundImage: ImageMedia
   }
 
   extend type UniversalContentItem {
@@ -57,6 +66,7 @@ const schema = gql`
     navImage: ImageMedia
     secondaryHTML: String
     seriesImage: ImageMedia
+    seriesBackgroundImage: ImageMedia
     showOnHomePage: Boolean
     featureOnHomePage: Boolean
     summaryHTML: String
@@ -365,6 +375,61 @@ class dataSource extends ContentItem.dataSource {
     return image;
   }
 
+  async getBackgroundImage(root) {
+    const { Cache } = this.context.dataSources;
+    const cachedValue = await Cache.get({
+      key: `contentItem:backgroundImage:${root.id}`,
+    });
+
+    if (cachedValue) {
+      return cachedValue;
+    }
+
+    let image = null;
+
+    // filter images w/o URLs
+    let ourImages = this.getImages(root).filter(
+      ({ sources }) => sources.length
+    );
+
+    const backgroundImages = ourImages.filter(({ key }) =>
+      /background/i.test(key)
+    );
+
+    ourImages = backgroundImages.length ? backgroundImages : ourImages;
+
+    if (ourImages.length) {
+      image = this.pickBestImage({ images: ourImages });
+    }
+
+    // If no image, check parent for image:
+    if (!image) {
+      // The cursor returns a promise which returns a promisee, hence th edouble eawait.
+      const parentItems = await (await this.getCursorByChildContentItemId(
+        root.id
+      )).get();
+
+      if (parentItems.length) {
+        const validParentImages = parentItems
+          .flatMap(this.getImages)
+          .filter(({ sources }) => sources.length);
+
+        if (validParentImages && validParentImages.length)
+          image = this.pickBestImage({ images: validParentImages });
+      }
+    }
+
+    if (image != null) {
+      Cache.set({
+        key: `contentItem:backgroundImage:${root.id}`,
+        data: image,
+        expiresIn: 60 * 5,
+      });
+    }
+
+    return image;
+  }
+
   // same as core, gets just the parent image though.
   async getSeriesImage(root) {
     const { Cache } = this.context.dataSources;
@@ -388,13 +453,70 @@ class dataSource extends ContentItem.dataSource {
         .flatMap(this.getImages)
         .filter(({ sources }) => sources.length);
 
-      if (validParentImages && validParentImages.length)
-        image = this.pickBestImage({ images: validParentImages });
+      const seriesImages = validParentImages?.filter(
+        (_image) => _image.key === SERIES_IMAGE_KEY
+      );
+      const seriesBackgroundImages = validParentImages?.filter(
+        (_image) => _image.key === SERIES_BACKGROUND_IMAGE_KEY
+      );
+
+      const images = seriesImages?.length
+        ? seriesImages
+        : seriesBackgroundImages;
+
+      if (images?.length) image = this.pickBestImage({ images });
     }
 
     if (image != null) {
       Cache.set({
         key: `contentItem:seriesCoverImage:${root.id}`,
+        data: image,
+        expiresIn: 60 * 5,
+      });
+    }
+
+    return image;
+  }
+
+  async getSeriesBackgroundImage(root) {
+    const { Cache } = this.context.dataSources;
+    const cachedValue = await Cache.get({
+      key: `contentItem:seriesBackgroundImage:${root.id}`,
+    });
+
+    if (cachedValue) {
+      return cachedValue;
+    }
+
+    let image = null;
+
+    // The cursor returns a promise which returns a promise, hence the double await.
+    const parentItems = await (await this.getCursorByChildContentItemId(
+      root.id
+    )).get();
+
+    if (parentItems.length) {
+      const validParentImages = parentItems
+        .flatMap(this.getImages)
+        .filter(({ sources }) => sources.length);
+
+      const seriesBackgroundImages = validParentImages?.filter(
+        (_image) => _image.key === SERIES_BACKGROUND_IMAGE_KEY
+      );
+      const seriesImages = validParentImages?.filter(
+        (_image) => _image.key === SERIES_IMAGE_KEY
+      );
+
+      const images = seriesBackgroundImages?.length
+        ? seriesBackgroundImages
+        : seriesImages;
+
+      if (images?.length) image = this.pickBestImage({ images });
+    }
+
+    if (image != null) {
+      Cache.set({
+        key: `contentItem:seriesBackgroundImage:${root.id}`,
         data: image,
         expiresIn: 60 * 5,
       });
@@ -459,6 +581,11 @@ class dataSource extends ContentItem.dataSource {
 
 const resolver = {
   ...ContentItem.resolver,
+  ContentSeriesContentItem: {
+    ...ContentItem.resolver.ContentSeriesContentItem,
+    backgroundImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getBackgroundImage(root),
+  },
   Query: {
     getMinistryContent: (_, { ministry }, { dataSources }) =>
       dataSources.ContentItem.getByMinistry(ministry),
@@ -496,6 +623,8 @@ const resolver = {
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
     seriesImage: (root, args, { dataSources }) =>
       dataSources.ContentItem.getSeriesImage(root),
+    seriesBackgroundImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getSeriesBackgroundImage(root),
     relatedLinks: (
       { attributeValues: { relatedLinks } },
       __,
@@ -510,6 +639,8 @@ const resolver = {
       )}${await dataSources.ContentItem.buildFooterHTML(item)}`,
     seriesImage: (root, args, { dataSources }) =>
       dataSources.ContentItem.getSeriesImage(root),
+    seriesBackgroundImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getSeriesBackgroundImage(root),
     relatedLinks: (
       { attributeValues: { relatedLinks } },
       __,
@@ -534,6 +665,8 @@ const resolver = {
       }),
     seriesImage: (root, args, { dataSources }) =>
       dataSources.ContentItem.getSeriesImage(root),
+    seriesBackgroundImage: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getSeriesBackgroundImage(root),
     htmlContent: async (item, _, { dataSources }) =>
       `${dataSources.ContentItem.createHTMLContent(
         item.content
