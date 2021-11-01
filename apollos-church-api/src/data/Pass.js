@@ -9,8 +9,6 @@ const resolver = {
   Pass: {
     ...baseResolver.Pass,
     passkitFileUrl: () => null,
-    description: () => 'Long Hollow',
-    backgroundColor: () => 'rgb(113, 214, 113)',
   },
 };
 
