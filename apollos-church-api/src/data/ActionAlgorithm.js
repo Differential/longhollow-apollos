@@ -42,20 +42,32 @@ class dataSource extends ActionAlgorithm.dataSource {
     }));
   }
 
-  async nonPersonaOrFeaturedContentFeedAlgorithm({ channelIds = [], limit = 40, skip = 0 } = {}) {
+  async nonPersonaOrFeaturedContentFeedAlgorithm({ channelIds = [], limit = 10, skip = 0 } = {}) {
+    // Attribute IDs
+    // Persona  - 13494
+    // Shown on Home Page - 12961
+    // Featured on Home Page - 12962
     const { ContentItem } = this.context.dataSources;
 
-    const items = await ContentItem.byContentChannelIds(channelIds)
-      .top(limit)
-      .skip(skip)
+    // Returns an array of items that do not have a Persona, shownOnHomePage, or featuredOnHomePage
+    const combinedArrayByAttribute = await this.request('AttributeValues')
+      .filter(
+        `
+      (((AttributeId eq 13494) and (Value eq '')) or ((AttributeId eq 12961) and (Value eq 'False')) or ((AttributeId eq 12962) and (Value eq 'False')))`
+      )
+      .cache({ ttl: 60 })
       .get();
 
-    const filteredItems = items
-      .filter((item) => item.attributeValues.personas.value === '')
-      .filter((item) => item.attributeValues.shownonHomePage.value !== 'True')
-      .filter(
-        (item) => item.attributeValues.featuredonHomePage.value !== 'True'
-      );
+    // Returns an array of the EntityIds
+    const filteredEntityIds = combinedArrayByAttribute.map(
+      (item) => item.entityId
+    );
+
+    const filteredItems = await ContentItem.getFromIds(filteredEntityIds)
+      .top(limit)
+      .skip(skip)
+      .cache({ ttl: 60 })
+      .get();
 
     return filteredItems.map((item, i) => ({
       id: `${item.id}${i}`,
