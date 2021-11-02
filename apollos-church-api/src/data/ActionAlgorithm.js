@@ -63,6 +63,7 @@ class dataSource extends ActionAlgorithm.dataSource {
       (item) => item.entityId
     );
 
+    // Returns the content items based on their EntityIds
     const filteredItems = await ContentItem.getFromIds(filteredEntityIds)
       .top(limit)
       .skip(skip)
