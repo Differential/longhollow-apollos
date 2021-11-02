@@ -191,7 +191,7 @@ TABS:
             - 35
       type: VerticalCardList
     - algorithms:
-        - type: CONTENT_FEED
+        - type: NON_PERSONA_OR_FEATURED_CONTENT_FEED
           arguments:
             channelIds:
               - 36
