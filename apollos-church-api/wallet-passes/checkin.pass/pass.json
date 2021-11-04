@@ -2,7 +2,7 @@
   "description": "Long Hollow Church",
   "formatVersion": 1,
   "organizationName": "Long Hollow Church",
-  "passTypeIdentifier": "6QZF6PFAQS.pass.longhollow",
+  "passTypeIdentifier": "pass.longhollow.churchapp",
   "teamIdentifier": "6QZF6PFAQS",
   "logoText": "Long Hollow Church",
   "backgroundColor": "rgb(113, 214, 113)",
