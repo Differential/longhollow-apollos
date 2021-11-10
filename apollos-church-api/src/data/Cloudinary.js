@@ -17,7 +17,7 @@ const withCloudinary = (_url = '', options) => {
   return cloudinary.url(url, {
     type: 'fetch',
     fetch_format: 'auto',
-    width: '2680',
+    width: '1920',
     // crop: 'limit',
     quality: 'auto',
     ...options,
