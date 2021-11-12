@@ -547,20 +547,20 @@ class dataSource extends ContentItem.dataSource {
       allowedTags: false,
       allowedAttributes: false,
       transformTags: {
-        a: (tagName, { href, ...attribs }) => ({
-          tagName,
-          attribs: {
-            // adds Rock URL in the case of local urls
-            ...(href
-              ? {
-                  href: href.startsWith('http')
-                    ? href
-                    : `https://longhollow.com${href}`,
-                }
-              : {}),
-            ...attribs,
-          },
-        }),
+        a: (tagName, { href, ...attribs }) => {
+          let _href = href;
+          if (!_href.startsWith('mailto') && !_href.startsWith('http')) {
+            _href = `https://longhollow.com${href}`;
+          }
+          return {
+            tagName,
+            attribs: {
+              // adds Rock URL in the case of local urls
+              ...(href ? { href: _href } : {}),
+              ...attribs,
+            },
+          };
+        },
         img: (tagName, { src, ...attribs }) => ({
           tagName,
           attribs: {
