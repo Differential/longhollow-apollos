@@ -55,7 +55,7 @@
     "@apollosproject/ui-kit": "^2.30.0",
     "@apollosproject/ui-mapview": "^2.30.0",
     "@apollosproject/ui-media-player": "^2.30.0",
-    "@apollosproject/ui-notifications": "^2.30.0",
+    "@apollosproject/ui-notifications": "2.33.1",
     "@apollosproject/ui-onboarding": "^2.30.0",
     "@apollosproject/ui-passes": "^2.30.0",
     "@apollosproject/ui-prayer": "^2.30.0",
@@ -91,6 +91,7 @@
     "memoize-one": "4.0.0",
     "moment": "2.22.2",
     "node-fetch": "2.6.1",
+    "querystring": "^0.2.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-amplitude-analytics": "^0.2.11",
@@ -119,8 +120,7 @@
     "recompose": "^0.30.0",
     "rn-fetch-blob": "^0.10.16",
     "stream": "^0.0.2",
-    "yup": "0.26.6",
-    "querystring": "^0.2.1"
+    "yup": "0.26.6"
   },
   "devDependencies": {
     "@apollosproject/eslint-config": "^2.30.0",

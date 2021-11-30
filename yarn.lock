@@ -418,10 +418,10 @@
     color "^3.1.2"
     use-debounce "5.1.0"
 
-"@apollosproject/ui-notifications@^2.30.0":
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-notifications/-/ui-notifications-2.30.0.tgz#fb2a4cb72232684d4621bf790edc28f6d28973ac"
-  integrity sha512-pmlNXD1CzhjOOXdk+CWBmZY8kuugA7MGgwX93lG8yYDBrbcqec+GaOIMECld+kkcXrpftoO+tQx2YwaCNDaPzA==
+"@apollosproject/ui-notifications@2.33.1":
+  version "2.33.1"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-notifications/-/ui-notifications-2.33.1.tgz#52c38c3bac15cd3483305d9867cddf347e7ef290"
+  integrity sha512-7S6tAvJha/cKHR5/Y9CIRCuW3/v0nzOfz7rAY7TGpcOIh1uuDlCUHqgEsa+RNh20gwZAtSXtXyKQ36uW5Y25eQ==
   dependencies:
     lodash "^4.17.11"
     react-native-permissions "^2.0.5"
