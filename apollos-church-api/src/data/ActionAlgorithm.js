@@ -78,6 +78,7 @@ class dataSource extends ActionAlgorithm.dataSource {
     const filteredItems = await ContentItem.getFromIds(filteredEntityIds)
       .top(limit)
       .skip(skip)
+      .orderBy('StartDateTime', 'desc')
       .cache({ ttl: 60 })
       .get();
 
