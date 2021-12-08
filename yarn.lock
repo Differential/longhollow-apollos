@@ -440,10 +440,10 @@
     react-native-swiper "^1.5.14"
     yup "0.26.6"
 
-"@apollosproject/ui-passes@^2.30.0":
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-passes/-/ui-passes-2.30.0.tgz#7349d3149be9d5b7129e8c8450ceee477324a31b"
-  integrity sha512-u595I+rCKd8NTkUmStuc3SFt/vBY8aKJqHg7YNr6Ib6wFHjfgUO15zSU46Ja3NFEx6IrKAWmtzCyLMF6nsGUFw==
+"@apollosproject/ui-passes@2.33.4":
+  version "2.33.4"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-passes/-/ui-passes-2.33.4.tgz#c80ece4d2d4f40ce9690abfb2da2f54149286447"
+  integrity sha512-xcdOObGvAZDDF9K98/YH/kzEX3Rr+psIxhvSXVB7lg+hRjPFbxMXZQj645mHLdM9tmDPfupoRHC+jbjHnYkUlg==
   dependencies:
     "@apollo/client" "3.3.20"
 
