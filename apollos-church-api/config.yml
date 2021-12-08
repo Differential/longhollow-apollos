@@ -191,6 +191,14 @@ TABS:
             - 35
       type: VerticalCardList
     - algorithms:
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 14
+          limit: 5
+      type: HeroCardList
+      subtitle: Recent Sermons
+    - algorithms:
         - type: NON_PERSONA_OR_FEATURED_CONTENT_FEED
           arguments:
             channelIds:
