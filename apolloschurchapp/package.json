@@ -57,7 +57,7 @@
     "@apollosproject/ui-media-player": "^2.30.0",
     "@apollosproject/ui-notifications": "2.33.1",
     "@apollosproject/ui-onboarding": "^2.30.0",
-    "@apollosproject/ui-passes": "^2.30.0",
+    "@apollosproject/ui-passes": "2.33.4",
     "@apollosproject/ui-prayer": "^2.30.0",
     "@apollosproject/ui-scripture": "^2.30.0",
     "@apollosproject/ui-storybook": "^2.30.0",
