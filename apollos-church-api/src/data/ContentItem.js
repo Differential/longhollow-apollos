@@ -577,14 +577,6 @@ class dataSource extends ContentItem.dataSource {
         }),
       },
     });
-
-  byContentChannelId = (id) =>
-    this.request()
-      .filter(`ContentChannelId eq ${id}`)
-      .andFilter(this.LIVE_CONTENT())
-      .cache({ ttl: 60 })
-      .orderBy()
-      .sort(this.DEFAULT_SORT());
 }
 
 const resolver = {
@@ -742,14 +734,11 @@ const resolver = {
     ) => Matrix.getItemsFromGuid(relatedLinks?.value),
     linkText: ({ attributeValues: { linkText } }) => linkText?.value,
     linkURL: ({ attributeValues: { linkUrl } }) => linkUrl?.value,
-    ctaLinks: async (
+    ctaLinks: (
       { attributeValues: { ctaLinks } },
       args,
       { dataSources: { Matrix } }
-    ) => {
-      const links = await Matrix.getItemsFromGuid(ctaLinks?.value);
-      return links.sort((a, b) => a.order - b.order);
-    },
+    ) => Matrix.getItemsFromGuid(ctaLinks?.value),
     location: ({ attributeValues: { locationName, locationAddress } }) => ({
       name: locationName?.value,
       address: locationAddress?.valueFormatted,
