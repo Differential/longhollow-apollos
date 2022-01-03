@@ -1,8 +1,8 @@
-import gql from 'graphql-tag';
+import ApollosConfig from '@apollosproject/config';
 import { ContentItem } from '@apollosproject/data-connector-rock';
 import { contentItemSchema } from '@apollosproject/data-schema';
 import { createGlobalId } from '@apollosproject/server-core';
-import ApollosConfig from '@apollosproject/config';
+import gql from 'graphql-tag';
 import sanitizeHtml from 'sanitize-html';
 
 const SERIES_IMAGE_KEY = 'seriesImage';
@@ -577,6 +577,30 @@ class dataSource extends ContentItem.dataSource {
         }),
       },
     });
+
+  byContentChannelId = (id) =>
+    this.request()
+      .filter(`ContentChannelId eq ${id}`)
+      .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
+      .orderBy()
+      .sort([
+        { field: 'Priority', direction: 'asc' },
+        { field: 'Order', direction: 'asc' },
+        { field: 'StartDateTime', direction: 'desc' },
+      ]);
+
+  byContentChannelIds = (ids) =>
+    this.request()
+      .filterOneOf(ids.map((id) => `ContentChannelId eq ${id}`))
+      .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
+      .orderBy()
+      .sort([
+        { field: 'Priority', direction: 'asc' },
+        { field: 'Order', direction: 'asc' },
+        { field: 'StartDateTime', direction: 'desc' },
+      ]);
 }
 
 const resolver = {
@@ -734,11 +758,14 @@ const resolver = {
     ) => Matrix.getItemsFromGuid(relatedLinks?.value),
     linkText: ({ attributeValues: { linkText } }) => linkText?.value,
     linkURL: ({ attributeValues: { linkUrl } }) => linkUrl?.value,
-    ctaLinks: (
+    ctaLinks: async (
       { attributeValues: { ctaLinks } },
       args,
       { dataSources: { Matrix } }
-    ) => Matrix.getItemsFromGuid(ctaLinks?.value),
+    ) => {
+      const links = await Matrix.getItemsFromGuid(ctaLinks?.value);
+      return links.sort((a, b) => a.order - b.order);
+    },
     location: ({ attributeValues: { locationName, locationAddress } }) => ({
       name: locationName?.value,
       address: locationAddress?.valueFormatted,
