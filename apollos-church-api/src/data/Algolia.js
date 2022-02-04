@@ -1,6 +1,7 @@
 import * as baseSearch from '@apollosproject/data-connector-algolia-search';
 import {
-  createCursor, createGlobalId,
+  createCursor,
+  createGlobalId,
   parseCursor
 } from '@apollosproject/server-core';
 import { graphql } from 'graphql';
