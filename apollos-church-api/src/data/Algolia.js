@@ -1,11 +1,11 @@
-import { graphql } from 'graphql';
 import * as baseSearch from '@apollosproject/data-connector-algolia-search';
-import Redis from 'ioredis';
 import {
-  createGlobalId,
-  parseCursor,
   createCursor,
+  createGlobalId,
+  parseCursor
 } from '@apollosproject/server-core';
+import { graphql } from 'graphql';
+import Redis from 'ioredis';
 
 const { schema, resolver, dataSource: BaseSearch } = baseSearch;
 
@@ -27,7 +27,12 @@ export class Search extends BaseSearch {
 
   createReplicas = async () => {
     await this.index.setSettings({
-      replicas: ['title_asc', 'publish_date_desc', 'start_date_asc'],
+      replicas: [
+        'title_asc',
+        'publish_date_desc',
+        'start_date_asc',
+        'last_name_asc',
+      ],
     });
 
     // title A-Z
