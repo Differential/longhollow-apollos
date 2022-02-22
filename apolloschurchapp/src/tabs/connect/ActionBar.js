@@ -19,7 +19,7 @@ const Toolbar = () => (
         />
         <ActionBarItem
           onPress={() =>
-            openUrl('https://rock.longhollow.com/page/1308', {
+            openUrl('https://rock.longhollow.com/page/1308', {}, {
               useRockToken: true,
             })
           }
