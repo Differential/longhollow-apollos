@@ -2,6 +2,12 @@ import React from 'react';
 import { ActionBar, ActionBarItem } from '@apollosproject/ui-kit';
 import { RockAuthedWebBrowser } from '@apollosproject/ui-connected';
 
+// async (_, __, { dataSources }) => {
+//   // check for this first because the next data call takes a long time
+//   const authToken = await dataSources.Auth.getAuthToken();
+//   return `https://rock.longhollow.com/page/1308?rckipid=${authToken}`;
+// }
+
 const Toolbar = () => (
   <RockAuthedWebBrowser>
     {(openUrl) => (
@@ -12,7 +18,11 @@ const Toolbar = () => (
           label="Schedule"
         />
         <ActionBarItem
-          onPress={() => openUrl('https://rock.longhollow.com/page/1308')}
+          onPress={() =>
+            openUrl('https://rock.longhollow.com/page/1308', {
+              useRockToken: true,
+            })
+          }
           icon="check"
           label="Check-in"
         />
