@@ -88,6 +88,21 @@ const ActionTable = () => (
             </Cell>
           </Touchable>
           <Divider />
+          <Touchable
+            onPress={() =>
+              openUrl(
+                'https://rock.longhollow.com/page/1062',
+                {},
+                { useRockToken: true }
+              )
+            }
+          >
+            <Cell>
+              <CellText>Notification Preferences</CellText>
+              <CellIcon name="arrow-next" />
+            </Cell>
+          </Touchable>
+          <Divider />
           <Touchable onPress={() => openUrl('mailto:support@longhollow.com')}>
             <Cell>
               <CellText>Report an issue</CellText>
