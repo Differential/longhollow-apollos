@@ -151,6 +151,7 @@ fastlane/report.xml
 
 # iOS keys
 *.p8
+apple-api-key.json
 
 # Google Play authentication key
 key.json
