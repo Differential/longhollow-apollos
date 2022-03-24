@@ -1,6 +1,6 @@
 {
   "name": "apolloschurchapp",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "engines": {
     "node": ">=12"
@@ -16,12 +16,12 @@
     "generate-stories": "rnstl --searchDir ./src --pattern **/*.stories.js",
     "lint": "eslint ./src --ext .js",
     "postinstall": "jetify && yarn pods",
+    "bump": "yarn version --patch",
+    "postversion": "react-native-version --amend --never-increment-build && git push --follow-tags",
     "pods": "(bundle install && cd ios && bundle exec pod install --repo-update)",
     "start": "yarn start:dev",
     "start:dev": "yarn generate-stories && node ./scripts/get-introspection-data.js && react-native start",
-    "test": "TZ=UTC jest",
-    "icons": "react-native set-icon --path",
-    "splash": "react-native set-splash --path"
+    "test": "TZ=UTC jest"
   },
   "jest": {
     "preset": "react-native",
@@ -124,9 +124,9 @@
   },
   "devDependencies": {
     "@apollosproject/eslint-config": "^2.30.0",
+    "@apollosproject/react-native-make": "^3.0.4",
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
-    "@bam.tech/react-native-make": "^3.0.3",
     "@bugsnag/source-maps": "^1.0.1",
     "@carimus/metro-symlinked-deps": "^1.1.0",
     "@react-native-community/eslint-config": "^2.0.0",
@@ -157,6 +157,7 @@
     "prop-types": "15.6.1",
     "react-dom": "16.6.3",
     "react-native-storybook-loader": "1.8.0",
+    "react-native-version": "^4.0.0",
     "react-test-renderer": "16.13.1",
     "waait": "1.0.2"
   },
