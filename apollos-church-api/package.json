@@ -17,7 +17,7 @@
     "translate": "node scripts/translate.js"
   },
   "engines": {
-    "node": ">=12"
+    "node": "12"
   },
   "dependencies": {
     "@apollosproject/bugsnag": "^2.13.1",
