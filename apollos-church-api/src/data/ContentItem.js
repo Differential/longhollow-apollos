@@ -4,9 +4,12 @@ import { contentItemSchema } from '@apollosproject/data-schema';
 import { createGlobalId } from '@apollosproject/server-core';
 import gql from 'graphql-tag';
 import sanitizeHtml from 'sanitize-html';
+import moment from 'moment';
 
 const SERIES_IMAGE_KEY = 'seriesImage';
 const SERIES_BACKGROUND_IMAGE_KEY = 'seriesBackgroundImage';
+
+const { ROCK } = ApollosConfig;
 
 const schema = gql`
   ${contentItemSchema}
@@ -282,7 +285,6 @@ class dataSource extends ContentItem.dataSource {
     try {
       scriptures = await Scripture.getScriptures(references);
     } catch (e) {
-      console.warn(e);
       scriptures = [];
     }
     if (links.length) {
@@ -526,10 +528,19 @@ class dataSource extends ContentItem.dataSource {
   }
 
   getBySlug = async (slug) => {
+    const date = moment()
+      .tz(ROCK.TIMEZONE)
+      .format()
+      .split(/[-+]\d+:\d+/)[0];
     const contentItemSlug = await this.request('ContentChannelItemSlugs')
+      .expand('ContentChannelItem')
       .filter(`Slug eq '${slug}'`)
+      .andFilter(
+        `ContentChannelItem/ExpireDateTime gt datetime'${date}' or ContentChannelItem/ExpireDateTime eq null`
+      )
       .first();
-    if (!contentItemSlug) throw new Error(`Slug "${slug}" does not exist.`);
+    if (!contentItemSlug)
+      throw new Error(`Slug "${slug}" does not exist or is expired.`);
 
     return this.getFromId(`${contentItemSlug.contentChannelItemId}`);
   };
