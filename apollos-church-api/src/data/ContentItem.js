@@ -258,6 +258,7 @@ class dataSource extends ContentItem.dataSource {
       // 117 is the Ministries defined type
       .filter(`DefinedTypeId eq 117 and Value eq '${ministry}'`)
       .first();
+
     const attributeValues = await this.request('AttributeValues')
       .expand('Attribute')
       .filter(
@@ -266,7 +267,9 @@ class dataSource extends ContentItem.dataSource {
       )
       .get();
     const contentIds = attributeValues.map(({ entityId }) => entityId);
-    return this.getFromIds(contentIds).get();
+    return this.getFromIds(contentIds)
+      .orderBy('StartDateTime', 'desc')
+      .get();
   };
 
   buildFooterHTML = async ({ attributeValues }) => {
