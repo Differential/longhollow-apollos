@@ -275,7 +275,7 @@ const createJobs = ({ getContext, queues, trigger = () => null }) => {
     return context.dataSources.Search.indexAll();
   });
 
-  FullIndexQueue.add(null, { repeat: { cron: '15 3 * * *' } });
+  FullIndexQueue.add(null, { repeat: { cron: '15 3 * * *' }, attempts: 3 });
 
   // add manual index trigger
   trigger('/manual-index', FullIndexQueue);
