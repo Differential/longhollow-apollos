@@ -17,7 +17,7 @@
     "translate": "node scripts/translate.js"
   },
   "engines": {
-    "node": "16"
+    "node": "22"
   },
   "dependencies": {
     "@apollosproject/bugsnag": "^2.13.1",
@@ -36,6 +36,10 @@
     "@apollosproject/data-schema": "^2.32.2",
     "@apollosproject/rock-apollo-data-source": "^2.30.0",
     "@apollosproject/server-core": "^2.30.0",
+    "lodash": "^4.17.21",
+    "pg": "^8.13.1",
+    "sequelize": "^6.37.5",
+    "umzug": "^3.8.2",
     "apollo-server": "^2.24.1",
     "apollo-server-express": "2.14.2",
     "cloudinary": "^1.25.1",
@@ -46,8 +50,7 @@
     "graphql": "14.6.0",
     "prettier": "1.12.1",
     "randomcolor": "0.5.3",
-    "sanitize-html": "^2.4.0",
-    "umzug": "^3.0.0-beta.15"
+    "sanitize-html": "^2.4.0"
   },
   "devDependencies": {
     "@apollosproject/apollo-server-env-mock": "^2.29.3",
