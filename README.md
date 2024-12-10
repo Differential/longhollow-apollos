@@ -85,3 +85,5 @@ Start the sims _in separate tabs_
 yarn ios
 yarn android
 ```
+
+🍕
