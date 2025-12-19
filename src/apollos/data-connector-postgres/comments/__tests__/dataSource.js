@@ -4,7 +4,6 @@ import lodash from 'lodash';
 import { sequelize } from '../../postgres/index.js';
 import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 import {
-const { range } = lodash;
   Comment,
   Person,
   Follow,
@@ -15,6 +14,7 @@ const { range } = lodash;
   Media,
   ContentItemCategory,
 } from '../../index.js';
+const { range } = lodash;
 
 let person1;
 let person2;

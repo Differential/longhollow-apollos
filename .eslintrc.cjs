@@ -1,36 +1,31 @@
 module.exports = {
-  extends: ['airbnb-base', 'plugin:prettier/recommended'],
-  plugins: ['import', 'prettier', 'jest'],
+  extends: ['airbnb-base', 'prettier'],
+  plugins: ['import', 'jest'],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        trailingComma: 'es5',
-        arrowParens: 'always',
-        bracketSpacing: true,
-        printWidth: 80,
-        semi: true,
-      },
-    ],
+    'arrow-body-style': 0,
+    camelcase: 0,
+    'class-methods-use-this': 0,
+    'default-param-last': 0,
     'import/no-extraneous-dependencies': 0,
     'import/no-named-as-default': 0,
     'import/no-named-as-default-member': 2,
-    'import/prefer-default-export': 1,
-    'import/order': [
+    'import/extensions': 0,
+    'import/first': 0,
+    'import/newline-after-import': 0,
+    'import/order': 0,
+    'import/no-unresolved': [
       'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'ignore',
-      },
+      { ignore: ['^react-native-config$', '^jest-fetch-mock$'] },
     ],
+    'import/prefer-default-export': 1,
+    'max-classes-per-file': 0,
+    'no-promise-executor-return': 0,
+    'no-restricted-exports': 0,
+    'no-constructor-return': 0,
+    'no-unsafe-optional-chaining': 0,
+    'no-use-before-define': 0,
+    'prefer-promise-reject-errors': 0,
+    'prefer-regex-literals': 0,
     'react-native/no-unused-styles': 0,
     'react/destructuring-assignment': 0,
     'global-require': 0,
@@ -39,7 +34,7 @@ module.exports = {
     'no-underscore-dangle': 0,
   },
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2022,
     sourceType: 'module',
   },
   settings: {
@@ -49,6 +44,14 @@ module.exports = {
       },
     },
   },
+  overrides: [
+    {
+      files: ['**/__tests__/**', '**/*.test.js', '**/*.tests.js'],
+      rules: {
+        'import/no-unresolved': 0,
+      },
+    },
+  ],
   env: {
     node: true,
     'jest/globals': true,

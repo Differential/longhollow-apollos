@@ -96,10 +96,7 @@ export default class Followings extends RockApolloDataSource {
 
     const count = (
       await this.request('Followings')
-        .filter(
-          // eslint-disable-next-line prettier/prettier
-          `(EntityId eq ${rockId}) and (EntityTypeId eq ${nodeType.id})`
-        )
+        .filter(`(EntityId eq ${rockId}) and (EntityTypeId eq ${nodeType.id})`)
         .select('Id') // $count not supported, next best thing to make efficient
         .cache({ ttl: 1800 }) // TODO: whats the right way to do this?
         .get()
@@ -135,8 +132,7 @@ export default class Followings extends RockApolloDataSource {
 
     return this.request('Followings')
       .filter(
-        // eslint-disable-next-line prettier/prettier
-          `(EntityId eq ${rockId}) and (EntityTypeId eq ${nodeType.id}) and (PersonAliasId eq ${currentUser.primaryAliasId})`
+        `(EntityId eq ${rockId}) and (EntityTypeId eq ${nodeType.id}) and (PersonAliasId eq ${currentUser.primaryAliasId})`
       )
       .get();
   }
