@@ -1,8 +1,8 @@
-import { createTestHelpers } from 'apollos/server-core/testUtils';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
 import { fetch } from 'apollo-server-env';
-import { Auth, Person } from '../index';
+import { Auth, Person } from '../index.js';
 
-import Template from './data-source';
+import Template from './data-source.js';
 
 const { getContext } = createTestHelpers({
   Person,

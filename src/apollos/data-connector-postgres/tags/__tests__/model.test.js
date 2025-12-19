@@ -1,12 +1,12 @@
-import { sequelize } from '../../postgres/index';
-import * as ContentItem from '../../content-items';
-import * as Media from '../../media';
-import * as Tag from '../index';
-import * as People from '../../people';
-import * as Campus from '../../campus';
-import * as ContentItemCategory from '../../content-item-categories';
+import { sequelize } from '../../postgres/index.js';
+import * as ContentItem from '../../content-items/index.js';
+import * as Media from '../../media/index.js';
+import * as Tag from '../index.js';
+import * as People from '../../people/index.js';
+import * as Campus from '../../campus/index.js';
+import * as ContentItemCategory from '../../content-item-categories/index.js';
 
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 describe('Tag model', () => {
   beforeEach(async () => {

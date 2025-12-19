@@ -13,4 +13,4 @@ async function down({ context: queryInterface }) {
 
 const name = '004-add-feature-priority-field';
 
-module.exports = { up, down, name, order: 8 };
+export default { up, down, name, order: 8 };

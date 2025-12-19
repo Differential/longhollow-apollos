@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { makeExecutableSchema } from 'apollo-server';
-import { testSchema } from 'apollos/data-schema';
+import { testSchema } from '#apollos/data-schema/index.js';
 import { createApolloServerConfig, createContextGetter } from '..';
 
 export const createTestHelpers = (models) => {

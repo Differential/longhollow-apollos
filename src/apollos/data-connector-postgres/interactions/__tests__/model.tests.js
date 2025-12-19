@@ -1,11 +1,11 @@
-import { sequelize } from '../../postgres/index';
-import * as People from '../../people';
-import * as Campuses from '../../campus';
-import * as Interaction from '../index';
-import * as ContentItem from '../../content-items';
-import * as Media from '../../media';
-import * as ContentItemCategory from '../../content-item-categories';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { sequelize } from '../../postgres/index.js';
+import * as People from '../../people/index.js';
+import * as Campuses from '../../campus/index.js';
+import * as Interaction from '../index.js';
+import * as ContentItem from '../../content-items/index.js';
+import * as Media from '../../media/index.js';
+import * as ContentItemCategory from '../../content-item-categories/index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 describe('Interaction model', () => {
   beforeEach(async () => {

@@ -1,3 +1,3 @@
-export * as models from './model';
-export dataSource from './dataSource';
-export migrations from './migrations';
+export * as models from './model.js';
+export { default as dataSource } from './dataSource.js';
+export { default as migrations } from './migrations/index.js';

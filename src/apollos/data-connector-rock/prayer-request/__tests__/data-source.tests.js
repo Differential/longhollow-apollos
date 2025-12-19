@@ -1,7 +1,7 @@
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import { advanceTo } from 'jest-date-mock';
-import Prayer from '../data-source';
-import { buildGetMock } from '../../test-utils';
+import Prayer from '../data-source.js';
+import { buildGetMock } from '../../test-utils.js';
 
 ApollosConfig.loadJs({
   ROCK: {

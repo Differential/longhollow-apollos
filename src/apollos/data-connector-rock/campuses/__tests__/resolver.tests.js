@@ -1,13 +1,13 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from 'apollos/config';
-import { createGlobalId } from 'apollos/server-core';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
-import { campusSchema, authSchema } from 'apollos/data-schema';
+import ApollosConfig from '#apollos/config/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import { campusSchema, authSchema } from '#apollos/data-schema/index.js';
 
 // we import the root-level schema and resolver so we test the entire integration:
-import * as Campus from '../index';
-import { Person } from '../../index';
+import * as Campus from '../index.js';
+import { Person } from '../../index.js';
 
 class AuthDataSourceMock {
   initialize = () => {};

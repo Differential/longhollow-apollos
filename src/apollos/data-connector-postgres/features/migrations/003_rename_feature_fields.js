@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const fields = [
   'parentId',
@@ -31,4 +31,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-rename-feature-fields';
 
-module.exports = { up, down, name, order: 7 };
+export default { up, down, name, order: 7 };

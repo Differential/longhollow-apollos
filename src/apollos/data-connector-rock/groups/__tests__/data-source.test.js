@@ -1,4 +1,4 @@
-import GroupsDataSource from '../data-source';
+import GroupsDataSource from '../data-source.js';
 
 describe('Groups', () => {
   const personArrayMock = Promise.resolve([

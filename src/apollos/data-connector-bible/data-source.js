@@ -1,6 +1,7 @@
-import { get } from 'lodash';
+import lodash from 'lodash';
 import { RESTDataSource } from 'apollo-datasource-rest';
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
+const { get } = lodash;
 
 const { BIBLE_API } = ApollosConfig;
 const ONE_DAY = 60 * 60 * 24;

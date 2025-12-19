@@ -1,5 +1,5 @@
-import ApollosConfig from 'apollos/config';
-import Pass from './PassGenerator';
+import ApollosConfig from '#apollos/config/index.js';
+import Pass from './PassGenerator.js';
 
 describe('PassGenerator', () => {
   it('creates a valid Certificates object', async () => {

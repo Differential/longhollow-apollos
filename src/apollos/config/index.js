@@ -1,6 +1,6 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
-import attachEnvVariables from './attach-env-variables';
+import attachEnvVariables from './attach-env-variables.js';
 
 class Config {
   config = {

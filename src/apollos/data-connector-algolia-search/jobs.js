@@ -1,7 +1,8 @@
-import ApollosConfig from 'apollos/config';
-import { isEmpty } from 'lodash';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
 import moment from 'moment-timezone';
 import Redis from 'ioredis';
+const { isEmpty } = lodash;
 
 const { ROCK } = ApollosConfig;
 

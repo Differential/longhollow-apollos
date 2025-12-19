@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const fields = [
   'firstName',
@@ -33,4 +33,4 @@ async function down({ context: queryInterface }) {
 
 const name = '004-rename-people-fields';
 
-module.exports = { up, down, name, order: 5 };
+export default { up, down, name, order: 5 };

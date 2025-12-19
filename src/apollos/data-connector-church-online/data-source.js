@@ -1,7 +1,8 @@
 /* eslint-disable class-methods-use-this */
 import { RESTDataSource } from 'apollo-datasource-rest';
-import ApollosConfig from 'apollos/config';
-import { get } from 'lodash';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
+const { get } = lodash;
 
 const CurrentLivestreamQuery = `
 query CurrentState {

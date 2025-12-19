@@ -1,10 +1,11 @@
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import { Op } from 'sequelize';
-import { parseGlobalId } from 'apollos/server-core/node';
-import { generateAppLink } from 'apollos/server-core';
-import { get, partition } from 'lodash';
-import { PostgresDataSource, assertUuid } from '../postgres';
-import { FollowState } from './model';
+import { parseGlobalId } from '#apollos/server-core/node/index.js';
+import { generateAppLink } from '#apollos/server-core/index.js';
+import lodash from 'lodash';
+import { PostgresDataSource, assertUuid } from '../postgres/index.js';
+import { FollowState } from './model.js';
+const { get, partition } = lodash;
 
 class Follow extends PostgresDataSource {
   modelName = 'follows';

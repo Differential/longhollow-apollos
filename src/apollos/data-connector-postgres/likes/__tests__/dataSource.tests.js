@@ -1,13 +1,13 @@
-import ApollosConfig from 'apollos/config';
-import { sequelize } from '../../postgres/index';
-import * as People from '../../people';
-import * as Campuses from '../../campus';
-import * as ContentItem from '../../content-items';
-import * as Media from '../../media';
-import * as ContentItemCategory from '../../content-item-categories';
-import * as Interactions from '../../interactions';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
-import * as Like from '../index';
+import ApollosConfig from '#apollos/config/index.js';
+import { sequelize } from '../../postgres/index.js';
+import * as People from '../../people/index.js';
+import * as Campuses from '../../campus/index.js';
+import * as ContentItem from '../../content-items/index.js';
+import * as Media from '../../media/index.js';
+import * as ContentItemCategory from '../../content-item-categories/index.js';
+import * as Interactions from '../../interactions/index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
+import * as Like from '../index.js';
 
 let currentPerson;
 let contentItem;

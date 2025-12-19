@@ -1,4 +1,4 @@
-import { resolverMerge } from '../index';
+import { resolverMerge } from '../index.js';
 
 describe('Resolver Merge Util', () => {
   it('safely merges schemas from a data connector without a schema', () => {

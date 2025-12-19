@@ -1,20 +1,21 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from 'apollos/config';
-import { createGlobalId } from 'apollos/server-core';
+import ApollosConfig from '#apollos/config/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
 import { AuthenticationError } from 'apollo-server';
-import { get } from 'lodash';
+import lodash from 'lodash';
 
 import {
   contentItemSchema,
   contentChannelSchema,
   themeSchema,
   scriptureSchema,
-} from 'apollos/data-schema';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
-import { generateToken } from '../../auth';
-import * as Followings from '../index';
-import * as RockConstants from '../../rock-constants';
+} from '#apollos/data-schema/index.js';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import { generateToken } from '../../auth/index.js';
+import * as Followings from '../index.js';
+import * as RockConstants from '../../rock-constants/index.js';
+const { get } = lodash;
 
 class ContentItemDataSource {
   // eslint-disable-next-line class-methods-use-this

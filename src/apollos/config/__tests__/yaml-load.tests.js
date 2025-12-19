@@ -1,5 +1,9 @@
 import path from 'path';
-import ApollosConfig from '../index';
+import { fileURLToPath } from 'url';
+import ApollosConfig from '../index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 describe('the yaml loader', () => {
   it('must load variables from a yaml', () => {

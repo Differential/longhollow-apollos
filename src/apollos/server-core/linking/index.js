@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 
 const defaultCreateRedirectLink = ({ platform }) => {
   if (platform === 'android') {

@@ -1,4 +1,4 @@
-import { latLonDistance } from '../utils';
+import { latLonDistance } from '../utils/index.js';
 
 export default {
   Query: {

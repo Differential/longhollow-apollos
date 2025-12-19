@@ -1,2 +1,2 @@
-export * as models from './model';
-export migrations from './migrations';
+export * as models from './model.js';
+export { default as migrations } from './migrations/index.js';

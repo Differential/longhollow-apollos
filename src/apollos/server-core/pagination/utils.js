@@ -1,4 +1,4 @@
-import { createLegacyCipher, createLegacyDecipher } from '../crypto';
+import { createLegacyCipher, createLegacyDecipher } from '../crypto.js';
 
 export const withEdgePagination = async ({ edges }) => {
   const result = await edges;

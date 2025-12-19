@@ -8,4 +8,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-rename-prayer-table';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

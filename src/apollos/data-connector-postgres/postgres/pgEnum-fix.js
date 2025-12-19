@@ -1,7 +1,7 @@
 // Fix for Sequelize enum issue, where sync would fail due to a bug in creating enums which already exist
 // https://github.com/sequelize/sequelize/issues/7649#issuecomment-595365422
 
-const PostgresQueryGenerator = require('sequelize/lib/dialects/postgres/query-generator');
+import PostgresQueryGenerator from 'sequelize/lib/dialects/postgres/query-generator';
 
 // eslint-disable-next-line func-names
 PostgresQueryGenerator.prototype.pgEnum = function (

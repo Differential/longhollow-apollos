@@ -60,4 +60,4 @@ async function down({ context: queryInterface }) {
 
 const name = '001-create-content-items-connections';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

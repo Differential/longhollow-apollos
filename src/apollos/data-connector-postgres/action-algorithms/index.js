@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
-import { flatten, get } from 'lodash';
-import { PostgresDataSource } from '../postgres';
+import lodash from 'lodash';
+import { PostgresDataSource } from '../postgres/index.js';
+const { flatten, get } = lodash;
 
 class ActionAlgorithm extends PostgresDataSource {
   // Names of Action Algorithms mapping to the functions that create the actions.

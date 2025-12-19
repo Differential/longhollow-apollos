@@ -10,4 +10,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-create-tags-unique_index';
 
-module.exports = { up, down, name, order: 5 };
+export default { up, down, name, order: 5 };

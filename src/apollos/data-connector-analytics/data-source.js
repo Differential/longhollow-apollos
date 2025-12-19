@@ -1,9 +1,9 @@
 import { AuthenticationError } from 'apollo-server';
 import { DataSource } from 'apollo-datasource';
-import ApollosConfig from 'apollos/config';
-import GAInterface from './interfaces/ga';
-import SegmentInterface from './interfaces/segment';
-import RockInteractions from './interfaces/rock_interactions';
+import ApollosConfig from '#apollos/config/index.js';
+import GAInterface from './interfaces/ga.js';
+import SegmentInterface from './interfaces/segment.js';
+import RockInteractions from './interfaces/rock_interactions.js';
 
 const { ANALYTICS } = ApollosConfig;
 // Utility function to convert GQL array of key/values to Object.

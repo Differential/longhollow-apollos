@@ -1,7 +1,8 @@
-import { parseGlobalId, createGlobalId } from 'apollos/server-core';
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import ApollosConfig from 'apollos/config';
-import { flatten, get, chunk } from 'lodash';
+import { parseGlobalId, createGlobalId } from '#apollos/server-core/index.js';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
+const { flatten, get, chunk } = lodash;
 
 export default class Interactions extends RockApolloDataSource {
   resource = 'Interactions';

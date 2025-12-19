@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
-import { parseGlobalId, generateAppLink } from 'apollos/server-core';
-import { PostgresDataSource, isUuid } from '../postgres';
-import { Visibility } from './model';
+import { parseGlobalId, generateAppLink } from '#apollos/server-core/index.js';
+import { PostgresDataSource, isUuid } from '../postgres/index.js';
+import { Visibility } from './model.js';
 
 class CommentDataSource extends PostgresDataSource {
   modelName = 'comments';

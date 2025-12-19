@@ -1,5 +1,5 @@
-import resolver from './resolver';
-import dataSource from './data-source';
+import resolver from './resolver.js';
+import dataSource from './data-source.js';
 
 export { resolver, dataSource };
-export { scriptureSchema as schema } from 'apollos/data-schema';
+export { scriptureSchema as schema } from '#apollos/data-schema/index.js';

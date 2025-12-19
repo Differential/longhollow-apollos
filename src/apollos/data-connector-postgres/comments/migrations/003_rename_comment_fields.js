@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const fields = [
   'externalParentId',
@@ -35,4 +35,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-rename-comment-fields';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

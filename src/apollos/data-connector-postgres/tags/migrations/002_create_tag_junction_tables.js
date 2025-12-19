@@ -46,4 +46,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-create-tag-junction_tables';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

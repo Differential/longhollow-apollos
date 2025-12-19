@@ -1,7 +1,8 @@
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
 import moment from 'moment-timezone';
-import ApollosConfig from 'apollos/config';
-import { get } from 'lodash';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
+const { get } = lodash;
 
 export default class Event extends RockApolloDataSource {
   resource = 'EventItemOccurrences';

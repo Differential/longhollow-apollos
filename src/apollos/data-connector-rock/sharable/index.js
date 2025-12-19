@@ -1,4 +1,4 @@
-export { sharableSchema as schema } from 'apollos/data-schema';
+export { sharableSchema as schema } from '#apollos/data-schema/index.js';
 
 export const resolver = {
   Sharable: {

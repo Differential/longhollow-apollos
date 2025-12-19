@@ -1,4 +1,4 @@
-import createMigrationRunner from '../postgres/performMigrations';
+import createMigrationRunner from '../postgres/performMigrations.js';
 
 export const setupPostgresTestEnv = async (models = []) => {
   await Promise.all(

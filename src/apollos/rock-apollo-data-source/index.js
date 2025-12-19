@@ -1,15 +1,16 @@
 /* eslint-disable class-methods-use-this */
 import https from 'https';
 import { RESTDataSource } from 'apollo-datasource-rest';
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 
-import { get, mapKeys, mapValues, camelCase } from 'lodash';
+import lodash from 'lodash';
 import { fetch } from 'apollo-server-env';
-import { createCursor, parseCursor } from './cursor';
+import { createCursor, parseCursor } from './cursor.js';
 
-import RequestBuilder from './request-builder';
+import RequestBuilder from './request-builder.js';
+const { get, mapKeys, mapValues, camelCase } = lodash;
 
-export { RockLoggingExtension, parseKeyValueAttribute } from './utils';
+export { RockLoggingExtension, parseKeyValueAttribute } from './utils.js';
 
 const { ROCK } = ApollosConfig;
 

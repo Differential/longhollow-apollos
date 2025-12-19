@@ -1,8 +1,9 @@
-import ApollosConfig from 'apollos/config';
-import { get } from 'lodash';
-import { parseGlobalId } from 'apollos/server-core';
-import { PostgresDataSource } from '../postgres';
-import { latLonDistance } from '../utils';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
+import { parseGlobalId } from '#apollos/server-core/index.js';
+import { PostgresDataSource } from '../postgres/index.js';
+import { latLonDistance } from '../utils/index.js';
+const { get } = lodash;
 
 export default class Campus extends PostgresDataSource {
   modelName = 'campus';

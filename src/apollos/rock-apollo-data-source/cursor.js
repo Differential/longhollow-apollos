@@ -1,1 +1,1 @@
-export { createCursor, parseCursor } from 'apollos/server-core';
+export { createCursor, parseCursor } from '#apollos/server-core/index.js';

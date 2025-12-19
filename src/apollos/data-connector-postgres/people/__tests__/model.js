@@ -1,16 +1,16 @@
 /* eslint-disable import/named */
 
-import { sequelize } from '../../postgres/index';
-import * as People from '../index';
+import { sequelize } from '../../postgres/index.js';
+import * as People from '../index.js';
 import {
   ContentItem,
   Media,
   ContentItemCategory,
   Campus,
   Follow,
-} from '../../index';
+} from '../../index.js';
 
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 describe('People model', () => {
   beforeEach(async () => {

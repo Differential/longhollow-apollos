@@ -1,8 +1,8 @@
 /* eslint-disable import/named */
-import { createGlobalId } from 'apollos/server-core';
-import { sequelize } from '../../postgres/index';
-import CommentDataSource from '../../comments/dataSource';
-import UserLike from '../dataSource';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import { sequelize } from '../../postgres/index.js';
+import CommentDataSource from '../../comments/dataSource.js';
+import UserLike from '../dataSource.js';
 import {
   Person,
   ContentItem,
@@ -12,9 +12,9 @@ import {
   Campus,
   Follow,
   Comment,
-} from '../../index';
-import * as UserLikes from '../index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+} from '../../index.js';
+import * as UserLikes from '../index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 let person1;
 let person2;

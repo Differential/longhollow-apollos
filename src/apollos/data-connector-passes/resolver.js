@@ -1,8 +1,9 @@
 import url from 'url';
-import ApollosConfig from 'apollos/config';
-import { createGlobalId } from 'apollos/server-core';
-import { camelCase } from 'lodash';
+import ApollosConfig from '#apollos/config/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import lodash from 'lodash';
 import QRCode from 'qrcode';
+const { camelCase } = lodash;
 
 // Gets a list of supported pass types according to the graph schema
 const getSupportedPassTypes = (schema) => {

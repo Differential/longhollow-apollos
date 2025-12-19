@@ -1,19 +1,16 @@
 import { ApolloServer } from 'apollo-server-express';
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import express from 'express';
-import { RockLoggingExtension } from 'apollos/rock-apollo-data-source';
-import { get } from 'lodash';
-import { setupUniversalLinks } from 'apollos/server-core';
-import { createMigrationRunner } from 'apollos/data-connector-postgres';
-import { BugsnagPlugin } from 'apollos/bugsnag';
+import { RockLoggingExtension } from '#apollos/rock-apollo-data-source/index.js';
+import lodash from 'lodash';
+import { setupUniversalLinks } from '#apollos/server-core/index.js';
+import { createMigrationRunner } from '#apollos/data-connector-postgres/index.js';
+import { BugsnagPlugin } from '#apollos/bugsnag/index.js';
+const { get } = lodash;
 
-let dataObj;
-
-if (ApollosConfig?.DATABASE?.URL) {
-  dataObj = require('./data/index.postgres');
-} else {
-  dataObj = require('./data/index');
-}
+const dataObj = ApollosConfig?.DATABASE?.URL
+  ? await import('./data/index.postgres.js')
+  : await import('./data/index.js');
 
 const {
   resolvers,

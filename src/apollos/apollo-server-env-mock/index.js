@@ -1,7 +1,7 @@
 import fetch from 'jest-fetch-mock';
 
-import * as apolloDatasourceMocks from './apollo-datasource-mocks';
-import * as rockMocks from './rock-api-mocks';
+import * as apolloDatasourceMocks from './apollo-datasource-mocks/index.js';
+import * as rockMocks from './rock-api-mocks/index.js';
 
 const createApolloServerEnvMock = (apolloServerEnv) => {
   // eslint-disable-next-line

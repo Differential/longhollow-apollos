@@ -1,7 +1,8 @@
-import { flatten } from 'lodash';
+import lodash from 'lodash';
 import { Umzug, SequelizeStorage } from 'umzug';
-import systemMigrations from './migrations';
-import { sequelize } from './index';
+import systemMigrations from './migrations/index.js';
+import { sequelize } from './index.js';
+const { flatten } = lodash;
 
 const createMigrationRunner = async ({ migrations, logger = console }) => {
   const migrationsToRun = flatten([...systemMigrations, ...migrations]);

@@ -1,4 +1,4 @@
-import ApollosConfig from '../index';
+import ApollosConfig from '../index.js';
 
 describe('the yaml loader', () => {
   it('must load variables from a js object', () => {

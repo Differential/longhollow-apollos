@@ -1,6 +1,7 @@
-import { get } from 'lodash';
+import lodash from 'lodash';
 
-import { ActionAlgorithm } from 'apollos/data-connector-rock';
+import { ActionAlgorithm } from '#apollos/data-connector-rock/index.js';
+const { get } = lodash;
 
 const { resolver, schema } = ActionAlgorithm;
 class dataSource extends ActionAlgorithm.dataSource {

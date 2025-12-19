@@ -1,18 +1,18 @@
 /* eslint-disable import/named */
-import ApollosConfig from 'apollos/config';
-import { sequelize } from '../../postgres/index';
-import FollowDataSource from '../dataSource';
-import PeopleDataSource from '../../people/dataSource';
-import * as Follows from '../index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
-import { FollowState } from '../model';
+import ApollosConfig from '#apollos/config/index.js';
+import { sequelize } from '../../postgres/index.js';
+import FollowDataSource from '../dataSource.js';
+import PeopleDataSource from '../../people/dataSource.js';
+import * as Follows from '../index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
+import { FollowState } from '../model.js';
 import {
   Person,
   ContentItem,
   Media,
   ContentItemCategory,
   Campus,
-} from '../../index';
+} from '../../index.js';
 
 let currentPersonId;
 const notificationMock = jest.fn();

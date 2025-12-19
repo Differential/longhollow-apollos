@@ -1,21 +1,21 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
 import { AuthenticationError } from 'apollo-server';
-import ApollosConfig from 'apollos/config';
-import { createGlobalId } from 'apollos/server-core';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
+import ApollosConfig from '#apollos/config/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
 import {
   peopleSchema,
   mediaSchema,
   authSchema,
   deviceSchema,
-} from 'apollos/data-schema';
-import { generateToken, registerToken } from '../../auth';
+} from '#apollos/data-schema/index.js';
+import { generateToken, registerToken } from '../../auth/index.js';
 // we import the root-level schema and resolver so we test the entire integration:
-import * as Person from '../index';
-import { PersonalDevice, BinaryFiles } from '../../index';
-import authMock from '../../authMock';
-import { enforceCurrentUser } from '../../utils';
+import * as Person from '../index.js';
+import { PersonalDevice, BinaryFiles } from '../../index.js';
+import authMock from '../../authMock.js';
+import { enforceCurrentUser } from '../../utils.js';
 
 const Auth = { schema: authSchema, dataSource: authMock };
 const { getContext, getSchema } = createTestHelpers({
@@ -184,7 +184,11 @@ describe('enforceCurrentUser', () => {
   it("won't return a field with no user", async () => {
     const context = {
       dataSources: {
-        Auth: { getCurrentPerson: () => throw new AuthenticationError() },
+        Auth: {
+          getCurrentPerson: () => {
+            throw new AuthenticationError();
+          },
+        },
       },
     };
     const resultFunc = enforceCurrentUser(({ firstName }) => firstName);
@@ -232,7 +236,11 @@ describe('enforceCurrentUser', () => {
     expect.assertions(1);
     const context = {
       dataSources: {
-        Auth: { getCurrentPerson: () => throw new Error('Random Error') },
+        Auth: {
+          getCurrentPerson: () => {
+            throw new Error('Random Error');
+          },
+        },
       },
     };
     const resultFunc = enforceCurrentUser(({ firstName }) => firstName);

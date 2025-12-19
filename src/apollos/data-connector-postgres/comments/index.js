@@ -1,5 +1,5 @@
-export * as models from './model';
-export dataSource from './dataSource';
-export { commentSchema as schema } from 'apollos/data-schema';
-export resolver from './resolver';
-export migrations from './migrations';
+export * as models from './model.js';
+export { default as dataSource } from './dataSource.js';
+export { commentSchema as schema } from '#apollos/data-schema/index.js';
+export { default as resolver } from './resolver.js';
+export { default as migrations } from './migrations/index.js';

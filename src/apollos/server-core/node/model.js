@@ -1,6 +1,7 @@
-import { get, uniq, flatMap } from 'lodash';
+import lodash from 'lodash';
 import { parseResolveInfo } from 'graphql-parse-resolve-info';
-import { createLegacyCipher, createLegacyDecipher } from '../crypto';
+import { createLegacyCipher, createLegacyDecipher } from '../crypto.js';
+const { get, uniq, flatMap } = lodash;
 
 const secret = process.env.SECRET || 'LZEVhlgzFZKClu1r';
 

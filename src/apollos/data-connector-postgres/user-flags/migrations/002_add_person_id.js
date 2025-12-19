@@ -18,4 +18,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-add-person-id';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

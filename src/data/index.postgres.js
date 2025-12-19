@@ -1,20 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { gql } from 'apollo-server';
 
 import {
   createApolloServerConfig,
   Interfaces,
-} from 'apollos/server-core';
+} from '#apollos/server-core/index.js';
 
-import * as Analytics from 'apollos/data-connector-analytics';
-import * as Scripture from 'apollos/data-connector-bible';
-import * as LiveStream from 'apollos/data-connector-church-online';
-import * as Cloudinary from 'apollos/data-connector-cloudinary';
-import * as Search from 'apollos/data-connector-algolia-search';
-import * as Pass from 'apollos/data-connector-passes';
-import * as Cache from 'apollos/data-connector-redis-cache';
-import * as Sms from 'apollos/data-connector-twilio';
+import * as Analytics from '#apollos/data-connector-analytics/index.js';
+import * as Scripture from '#apollos/data-connector-bible/index.js';
+import * as LiveStream from '#apollos/data-connector-church-online/index.js';
+import * as Cloudinary from '#apollos/data-connector-cloudinary/index.js';
+import * as Search from '#apollos/data-connector-algolia-search/index.js';
+import * as Pass from '#apollos/data-connector-passes/index.js';
+import * as Cache from '#apollos/data-connector-redis-cache/index.js';
+import * as Sms from '#apollos/data-connector-twilio/index.js';
 import {
   Followings,
   Interactions,
@@ -35,7 +36,7 @@ import {
   ContentChannel,
   Feature as RockFeature,
   ActionAlgorithm as RockActionAlgorithm,
-} from 'apollos/data-connector-rock';
+} from '#apollos/data-connector-rock/index.js';
 
 import {
   Comment,
@@ -53,9 +54,9 @@ import {
   ContentItemsConnection,
   ContentItemCategory,
   ActionAlgorithm as PostgresActionAlgorithm,
-} from 'apollos/data-connector-postgres';
+} from '#apollos/data-connector-postgres/index.js';
 
-import * as Theme from './theme';
+import * as Theme from './theme/index.js';
 
 // This modules ties together certain updates so they occurs in both Rock and Postgres.
 // Will be eliminated in the future through an enhancement to the Shovel
@@ -63,7 +64,7 @@ import {
   Person,
   OneSignal,
   Followings as FollowingsPostgresBridge,
-} from './rockWithPostgres';
+} from './rockWithPostgres.js';
 
 const postgresContentModules = {
   ActionAlgorithm: PostgresActionAlgorithm,
@@ -74,6 +75,9 @@ const postgresContentModules = {
   ContentItemsConnection,
   ContentChannel: ContentItemCategory,
 };
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const rockContentModules = {
   ActionAlgorithm: RockActionAlgorithm,

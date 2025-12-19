@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { configureModel, defineModel } from '../postgres';
+import { configureModel, defineModel } from '../postgres/index.js';
 
 const createModel = defineModel({
   modelName: 'prayerRequest',

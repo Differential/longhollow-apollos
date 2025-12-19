@@ -1,5 +1,6 @@
-import createMock from '../src/apollos/apollo-server-env-mock';
+import { jest } from '@jest/globals';
+import createMock from '#apollos/apollo-server-env-mock/index.js';
 
-const apolloServerEnv = require.requireActual('apollo-server-env');
+const apolloServerEnv = jest.requireActual('apollo-server-env');
 
-module.exports = createMock(apolloServerEnv);
+export default createMock(apolloServerEnv);

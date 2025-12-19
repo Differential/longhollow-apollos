@@ -1,5 +1,5 @@
-import AuthDataSource from '../data-source';
-import * as Person from '../../people';
+import AuthDataSource from '../data-source.js';
+import * as Person from '../../people/index.js';
 
 class CacheDataSource {
   set = jest.fn();

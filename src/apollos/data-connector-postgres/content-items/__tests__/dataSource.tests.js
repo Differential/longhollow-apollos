@@ -1,7 +1,7 @@
 /* eslint-disable import/named, new-cap */
-import ApollosConfig from 'apollos/config';
-import { times, uniq } from 'lodash';
-import { sequelize } from '../../postgres/index';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
+import { sequelize } from '../../postgres/index.js';
 import {
   Media,
   ContentItemCategory,
@@ -12,9 +12,10 @@ import {
   Campus,
   Feature,
   Interactions,
-} from '../../index';
+} from '../../index.js';
 
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
+const { times, uniq } = lodash;
 
 let contentItem1;
 let ContentItem;

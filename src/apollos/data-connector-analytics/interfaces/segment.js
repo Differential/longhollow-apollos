@@ -1,5 +1,5 @@
 import Analytics from 'analytics-node';
-import BaseAnalytics from './base';
+import BaseAnalytics from './base.js';
 
 export default class GoogleAnalytics extends BaseAnalytics {
   constructor(writeKey) {

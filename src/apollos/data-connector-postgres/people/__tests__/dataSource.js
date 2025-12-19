@@ -1,15 +1,15 @@
 /* eslint-disable import/named */
-import { sequelize } from '../../postgres/index';
-import PeopleDataSource from '../dataSource';
-import * as People from '../index';
+import { sequelize } from '../../postgres/index.js';
+import PeopleDataSource from '../dataSource.js';
+import * as People from '../index.js';
 import {
   ContentItem,
   Media,
   ContentItemCategory,
   Campus,
   Follow,
-} from '../../index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+} from '../../index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 let personId;
 

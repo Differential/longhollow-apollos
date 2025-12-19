@@ -1,9 +1,9 @@
-import { sequelize } from '../../postgres/index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
-import * as ContentItem from '../../content-items';
-import * as ContentItemCategory from '../../content-item-categories';
-import * as ContentItemsConnection from '../index';
-import * as Media from '../../media';
+import { sequelize } from '../../postgres/index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
+import * as ContentItem from '../../content-items/index.js';
+import * as ContentItemCategory from '../../content-item-categories/index.js';
+import * as ContentItemsConnection from '../index.js';
+import * as Media from '../../media/index.js';
 
 describe('ContentItemsConnection model', () => {
   beforeEach(async () => {

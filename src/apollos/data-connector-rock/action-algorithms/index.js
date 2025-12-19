@@ -1,6 +1,7 @@
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import { flatten, get } from 'lodash';
-import ApollosConfig from 'apollos/config';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import lodash from 'lodash';
+import ApollosConfig from '#apollos/config/index.js';
+const { flatten, get } = lodash;
 
 class ActionAlgorithm extends RockApolloDataSource {
   // Names of Action Algorithms mapping to the functions that create the actions.

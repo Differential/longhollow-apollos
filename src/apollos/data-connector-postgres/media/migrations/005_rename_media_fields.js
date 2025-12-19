@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const fields = [
   'nodeId',
@@ -29,4 +29,4 @@ async function down({ context: queryInterface }) {
 
 const name = '005-rename-media-fields';
 
-module.exports = { up, down, name, order: 8 };
+export default { up, down, name, order: 8 };

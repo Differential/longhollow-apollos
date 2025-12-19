@@ -1,5 +1,5 @@
-import ApollosConfig from 'apollos/config';
-import withCloudinary, { config } from '../cloudinary';
+import ApollosConfig from '#apollos/config/index.js';
+import withCloudinary, { config } from '../cloudinary.js';
 
 const originalUrl =
   'https://apollosrock.newspring.cc/GetImage.ashx?guid=f54b0db0-95f5-44ad-b8f2-8bcd1b23cfdb';

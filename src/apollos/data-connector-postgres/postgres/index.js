@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import './pgEnum-fix';
+import './pgEnum-fix.js';
 import { Sequelize, DataTypes } from 'sequelize';
-import ApollosConfig from 'apollos/config';
-import connectJest from './test-connect';
+import ApollosConfig from '#apollos/config/index.js';
+import connectJest from './test-connect.js';
 
 const sequelize =
   process.env.NODE_ENV !== 'test'

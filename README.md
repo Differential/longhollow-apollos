@@ -21,7 +21,7 @@ yarn setup
 Start the API in dev mode:
 
 ```
-yarn start:dev
+yarn dev
 ```
 
 ## Deploy

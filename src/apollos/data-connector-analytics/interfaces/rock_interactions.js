@@ -1,4 +1,4 @@
-import BaseAnalytics from './base';
+import BaseAnalytics from './base.js';
 
 export default class RockInteractionAnalytics extends BaseAnalytics {
   eventWhitelist = ['View Content'];

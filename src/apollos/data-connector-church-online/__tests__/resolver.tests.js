@@ -1,15 +1,15 @@
 import { fetch } from 'apollo-server-env';
 
 import { graphql } from 'graphql';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
-import ApollosConfig from 'apollos/config';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import ApollosConfig from '#apollos/config/index.js';
 import {
   contentItemSchema,
   themeSchema,
   scriptureSchema,
   contentChannelSchema,
-} from 'apollos/data-schema';
-import * as LiveStream from '../index';
+} from '#apollos/data-schema/index.js';
+import * as LiveStream from '../index.js';
 
 ApollosConfig.loadJs({
   CHURCH_ONLINE: {

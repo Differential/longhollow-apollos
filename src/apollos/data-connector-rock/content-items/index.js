@@ -1,3 +1,3 @@
-export { default as dataSource } from './data-source';
-export { default as resolver } from './resolver';
-export { contentItemSchema as schema } from 'apollos/data-schema';
+export { default as dataSource } from './data-source.js';
+export { default as resolver } from './resolver.js';
+export { contentItemSchema as schema } from '#apollos/data-schema/index.js';

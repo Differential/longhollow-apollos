@@ -65,4 +65,4 @@ async function down({ context: queryInterface }) {
 
 const name = '004_update_tag_foreign_key_constraints';
 
-module.exports = { up, down, name, order: 6 };
+export default { up, down, name, order: 6 };

@@ -1,9 +1,9 @@
 import { mockUA, mockSend, mockEvent } from 'universal-analytics';
 import Analytics, { mockTrack, mockIdentify } from 'analytics-node';
 import { AuthenticationError } from 'apollo-server';
-import ApollosConfig from 'apollos/config';
-import DataSource from '../data-source';
-import RockAnalytics from '../interfaces/rock_interactions';
+import ApollosConfig from '#apollos/config/index.js';
+import DataSource from '../data-source.js';
+import RockAnalytics from '../interfaces/rock_interactions.js';
 
 const mockCurrentPerson = jest.fn().mockImplementation(() => ({
   id: 5,

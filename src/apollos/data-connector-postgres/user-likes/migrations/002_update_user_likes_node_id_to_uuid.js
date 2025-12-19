@@ -50,4 +50,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-update-user-likes-node-id-to-uuid';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

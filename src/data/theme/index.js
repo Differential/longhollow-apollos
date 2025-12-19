@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server';
 import randomColor from 'randomcolor';
 
-import colorScalarType from './colorScalarType';
+import colorScalarType from './colorScalarType.js';
 
 export const schema = gql`
   type Theme {

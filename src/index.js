@@ -1,9 +1,11 @@
-import dotenv from 'dotenv/config'; // eslint-disable-line
-// import 'apollos/data-connector-postgres/postgres/pgEnum-fix';
-import config from './config'; // eslint-disable-line
-import server from './server';
+import dotenv from 'dotenv'; // eslint-disable-line
 
-export { testSchema } from './server'; // eslint-disable-line import/prefer-default-export
+dotenv.config();
+// import '#apollos/data-connector-postgres/postgres/pgEnum-fix.js';
+import './config.js';
+import server from './server.js';
+
+export { testSchema } from './server.js'; // eslint-disable-line import/prefer-default-export
 
 // Use the port, if provided.
 const { PORT } = process.env;

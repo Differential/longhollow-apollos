@@ -14,4 +14,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-change-profile-image-url-to-text';
 
-module.exports = { up, down, name, order: 3 };
+export default { up, down, name, order: 3 };

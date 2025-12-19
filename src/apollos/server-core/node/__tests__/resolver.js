@@ -1,5 +1,5 @@
 import casual from 'casual';
-import Resolver from '../resolver';
+import Resolver from '../resolver.js';
 
 const sampleData = {
   _id: casual.word,

@@ -1,6 +1,6 @@
-import ApollosConfig from 'apollos/config';
-import { buildGetMock } from '../../test-utils';
-import ContentChannelDataSource from '../data-source';
+import ApollosConfig from '#apollos/config/index.js';
+import { buildGetMock } from '../../test-utils.js';
+import ContentChannelDataSource from '../data-source.js';
 
 ApollosConfig.loadJs({
   ROCK: {

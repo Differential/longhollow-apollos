@@ -1,6 +1,6 @@
 /* eslint-disable import/named */
-import { sequelize } from '../../postgres/index';
-import CampusDataSource from '../dataSource';
+import { sequelize } from '../../postgres/index.js';
+import CampusDataSource from '../dataSource.js';
 import * as Campus from '..';
 import {
   Person,
@@ -8,8 +8,8 @@ import {
   Media,
   Follow,
   ContentItemCategory,
-} from '../../index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+} from '../../index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 let personId;
 

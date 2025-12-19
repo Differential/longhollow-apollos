@@ -1,9 +1,9 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import { createGlobalId } from 'apollos/server-core';
+import { createGlobalId } from '#apollos/server-core/index.js';
 
-import { createTestHelpers } from 'apollos/server-core/testUtils';
-import ApollosConfig from 'apollos/config';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import ApollosConfig from '#apollos/config/index.js';
 
 import {
   mediaSchema,
@@ -11,10 +11,10 @@ import {
   scriptureSchema,
   liveSchema,
   featuresSchema,
-} from 'apollos/data-schema';
+} from '#apollos/data-schema/index.js';
 
 // we import the root-level schema and resolver so we test the entire integration:
-import { ContentChannel, ContentItem, Sharable } from '../..';
+import { ContentChannel, ContentItem, Sharable } from '../../index.js';
 
 const { getContext, getSchema } = createTestHelpers({
   ContentChannel,

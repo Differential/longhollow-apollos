@@ -1,5 +1,5 @@
 import { DataSource } from 'apollo-datasource';
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import Twilio from 'twilio';
 
 const { TWILIO } = ApollosConfig;

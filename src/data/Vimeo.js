@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import { RESTDataSource } from 'apollo-datasource-rest';
 
 class dataSource extends RESTDataSource {

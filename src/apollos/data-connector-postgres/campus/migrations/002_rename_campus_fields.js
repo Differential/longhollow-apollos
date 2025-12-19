@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const fields = [
   'postalCode',
@@ -33,4 +33,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-rename-campus-fields';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

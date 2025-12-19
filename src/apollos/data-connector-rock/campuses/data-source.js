@@ -1,8 +1,9 @@
-import { get } from 'lodash';
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import { parseGlobalId } from 'apollos/server-core';
-import ApollosConfig from 'apollos/config';
-import { latLonDistance } from '../utils';
+import lodash from 'lodash';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import { parseGlobalId } from '#apollos/server-core/index.js';
+import ApollosConfig from '#apollos/config/index.js';
+import { latLonDistance } from '../utils.js';
+const { get } = lodash;
 
 export default class Campus extends RockApolloDataSource {
   resource = 'Campuses';

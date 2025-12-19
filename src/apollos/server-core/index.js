@@ -1,26 +1,27 @@
-import { compact, mapValues, merge, flatten } from 'lodash';
+import lodash from 'lodash';
 import { gql } from '@apollo/client';
 import { InMemoryLRUCache } from 'apollo-server-caching';
 import { makeExecutableSchema } from 'apollo-server';
-import { createQueues, UI } from 'bull-board';
-import ApollosConfig from 'apollos/config';
+import bullBoard from 'bull-board';
+import ApollosConfig from '#apollos/config/index.js';
 import basicAuth from 'express-basic-auth';
 
-import * as Node from './node';
-import * as Interfaces from './interfaces';
-import * as Pagination from './pagination';
-import * as Media from './media';
-import * as Message from './message';
-import * as Upload from './upload';
+import * as Node from './node/index.js';
+import * as Interfaces from './interfaces/index.js';
+import * as Pagination from './pagination/index.js';
+import * as Media from './media/index.js';
+import * as Message from './message/index.js';
+import * as Upload from './upload/index.js';
+const { compact, mapValues, merge, flatten } = lodash;
 
-export { createGlobalId, parseGlobalId, isUuid } from './node';
+export { createGlobalId, parseGlobalId, isUuid } from './node/index.js';
 export {
   createCursor,
   parseCursor,
   withEdgePagination,
-} from './pagination/utils';
-export { resolverMerge, schemaMerge } from './utils';
-export { setupUniversalLinks, generateAppLink } from './linking';
+} from './pagination/utils.js';
+export { resolverMerge, schemaMerge } from './utils/index.js';
+export { setupUniversalLinks, generateAppLink } from './linking/index.js';
 export { Interfaces, Node };
 
 const safeGetWithWarning = (name) => (data, key) => {
@@ -279,3 +280,4 @@ export const createApolloServerConfig = (data) => {
     migrations,
   };
 };
+const { createQueues, UI } = bullBoard;

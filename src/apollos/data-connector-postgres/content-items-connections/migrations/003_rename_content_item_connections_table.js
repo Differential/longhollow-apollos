@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const fields = [
   'childId',
@@ -39,4 +39,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-rename-content-item-connections-table';
 
-module.exports = { up, down, name, order: 6 };
+export default { up, down, name, order: 6 };

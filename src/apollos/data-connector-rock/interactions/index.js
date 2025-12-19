@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import { interactionsSchema as schema } from 'apollos/data-schema';
+import { interactionsSchema as schema } from '#apollos/data-schema/index.js';
 
-import dataSource from './data-source';
-import resolver from './resolver';
+import dataSource from './data-source.js';
+import resolver from './resolver.js';
 
 export { dataSource, schema, resolver };

@@ -1,4 +1,4 @@
-import * as LiveStream from 'apollos/data-connector-church-online';
+import * as LiveStream from '#apollos/data-connector-church-online/index.js';
 
 const { schema, dataSource } = LiveStream;
 

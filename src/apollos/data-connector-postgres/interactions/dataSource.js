@@ -1,7 +1,8 @@
-import { parseGlobalId } from 'apollos/server-core';
-import ApollosConfig from 'apollos/config';
-import { get } from 'lodash';
-import { PostgresDataSource } from '../postgres';
+import { parseGlobalId } from '#apollos/server-core/index.js';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
+import { PostgresDataSource } from '../postgres/index.js';
+const { get } = lodash;
 
 export default class Interactions extends PostgresDataSource {
   modelName = 'interaction';

@@ -1,5 +1,5 @@
-import ApollosConfig from 'apollos/config';
-import { dataSource as BinaryFilesDataSource } from '../index';
+import ApollosConfig from '#apollos/config/index.js';
+import { dataSource as BinaryFilesDataSource } from '../index.js';
 
 ApollosConfig.loadJs({
   ROCK: {

@@ -3,17 +3,17 @@ import { gql } from 'apollo-server';
 import {
   createApolloServerConfig,
   Interfaces,
-} from 'apollos/server-core';
+} from '#apollos/server-core/index.js';
 
-import * as Analytics from 'apollos/data-connector-analytics';
-import * as Scripture from 'apollos/data-connector-bible';
-// import * as LiveStream from 'apollos/data-connector-church-online';
-// import * as Cloudinary from 'apollos/data-connector-cloudinary';
-import * as OneSignal from 'apollos/data-connector-onesignal';
-// import * as Search from 'apollos/data-connector-algolia-search';
-// import * as Pass from 'apollos/data-connector-passes';
-import * as Cache from 'apollos/data-connector-redis-cache';
-import * as Sms from 'apollos/data-connector-twilio';
+import * as Analytics from '#apollos/data-connector-analytics/index.js';
+import * as Scripture from '#apollos/data-connector-bible/index.js';
+// import * as LiveStream from '#apollos/data-connector-church-online/index.js';
+// import * as Cloudinary from '#apollos/data-connector-cloudinary/index.js';
+import * as OneSignal from '#apollos/data-connector-onesignal/index.js';
+// import * as Search from '#apollos/data-connector-algolia-search/index.js';
+// import * as Pass from '#apollos/data-connector-passes/index.js';
+import * as Cache from '#apollos/data-connector-redis-cache/index.js';
+import * as Sms from '#apollos/data-connector-twilio/index.js';
 import {
   Followings,
   // Interactions,
@@ -35,29 +35,29 @@ import {
   Persona,
   // Person
   BinaryFiles,
-} from 'apollos/data-connector-rock';
+} from '#apollos/data-connector-rock/index.js';
 
-import * as Theme from './theme';
-import * as ActionAlgorithm from './ActionAlgorithm';
-import * as Feature from './features';
-import * as FeatureFeed from './feature-feeds';
-import * as Vimeo from './Vimeo';
-import * as ContentItem from './ContentItem';
-import * as Person from './Person';
-import * as Matrix from './Matrix';
-import * as Search from './Algolia';
-import * as LiveStream from './LiveStream';
-import * as Interactions from './interactions';
-import * as Pass from './Pass';
-import Cloudinary from './Cloudinary';
+import * as Theme from './theme/index.js';
+import * as ActionAlgorithm from './ActionAlgorithm.js';
+import * as Feature from './features/index.js';
+import * as FeatureFeed from './feature-feeds/index.js';
+import * as Vimeo from './Vimeo.js';
+import * as ContentItem from './ContentItem.js';
+import * as Person from './Person.js';
+import * as Matrix from './Matrix.js';
+import * as Search from './Algolia.js';
+import * as LiveStream from './LiveStream.js';
+import * as Interactions from './interactions/index.js';
+import * as Pass from './Pass.js';
+import Cloudinary from './Cloudinary.js';
 
 // This module is used to attach Rock User updating to the OneSignal module.
 // This module includes a Resolver that overides a resolver defined in `OneSignal`
-import * as OneSignalWithRock from './oneSignalWithRock';
+import * as OneSignalWithRock from './oneSignalWithRock.js';
 
 // This is to mock any postgres resolvers so we don't throw API errors for unresolved
 // typedefs
-import NoPostgres from './noPostgres';
+import NoPostgres from './noPostgres.js';
 
 const data = {
   Interfaces,

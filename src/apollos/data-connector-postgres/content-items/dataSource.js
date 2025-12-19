@@ -5,10 +5,10 @@ import {
   generateAppLink,
   createCursor,
   parseCursor,
-} from 'apollos/server-core';
+} from '#apollos/server-core/index.js';
 import { Sequelize, Op } from 'sequelize';
-import ApollosConfig from 'apollos/config';
-import { PostgresDataSource } from '../postgres';
+import ApollosConfig from '#apollos/config/index.js';
+import { PostgresDataSource } from '../postgres/index.js';
 
 class ContentItemDataSource extends PostgresDataSource {
   modelName = 'contentItem';

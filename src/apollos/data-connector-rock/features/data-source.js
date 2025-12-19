@@ -1,7 +1,8 @@
-import { get } from 'lodash';
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import { createGlobalId } from 'apollos/server-core';
-import ApollosConfig from 'apollos/config';
+import lodash from 'lodash';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import ApollosConfig from '#apollos/config/index.js';
+const { get } = lodash;
 
 export default class Feature extends RockApolloDataSource {
   resource = '';

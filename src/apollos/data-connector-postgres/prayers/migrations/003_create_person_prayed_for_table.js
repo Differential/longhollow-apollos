@@ -27,4 +27,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-create-person-prayed-for-table';
 
-module.exports = { up, down, name, order: 5 };
+export default { up, down, name, order: 5 };

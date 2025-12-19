@@ -1,9 +1,9 @@
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from 'apollos/config';
-import { createGlobalId } from 'apollos/server-core';
+import ApollosConfig from '#apollos/config/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
 import { AuthenticationError } from 'apollo-server';
-import { dataSource as Interactions } from '../index';
-import { buildGetMock } from '../../test-utils';
+import { dataSource as Interactions } from '../index.js';
+import { buildGetMock } from '../../test-utils.js';
 
 ApollosConfig.loadJs({
   ROCK: {

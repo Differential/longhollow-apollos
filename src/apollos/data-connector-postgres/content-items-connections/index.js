@@ -1,4 +1,4 @@
-export * as models from './model';
+export * as models from './model.js';
 // export dataSource from './dataSource';
 // export resolver from './resolver';
-export migrations from './migrations';
+export { default as migrations } from './migrations/index.js';

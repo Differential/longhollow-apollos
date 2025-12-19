@@ -1,6 +1,6 @@
 import sequelize from 'sequelize';
-import { parseGlobalId } from 'apollos/server-core';
-import { PostgresDataSource } from '../postgres';
+import { parseGlobalId } from '#apollos/server-core/index.js';
+import { PostgresDataSource } from '../postgres/index.js';
 
 export default class Followings extends PostgresDataSource {
   resource = 'Followings';

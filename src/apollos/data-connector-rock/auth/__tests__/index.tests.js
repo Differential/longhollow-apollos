@@ -1,13 +1,13 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from 'apollos/config';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
-import { peopleSchema, mediaSchema } from 'apollos/data-schema';
+import ApollosConfig from '#apollos/config/index.js';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import { peopleSchema, mediaSchema } from '#apollos/data-schema/index.js';
 
-import * as Auth from '../index';
-import * as Person from '../../people/index';
+import * as Auth from '../index.js';
+import * as Person from '../../people/index.js';
 
-import { generateToken, registerToken } from '../token';
+import { generateToken, registerToken } from '../token.js';
 
 ApollosConfig.loadJs({
   ROCK: {

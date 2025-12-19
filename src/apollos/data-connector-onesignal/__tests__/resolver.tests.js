@@ -1,7 +1,7 @@
 import { graphql } from 'graphql';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
-import { peopleSchema, deviceSchema } from 'apollos/data-schema';
-import * as OneSignal from '../index';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import { peopleSchema, deviceSchema } from '#apollos/data-schema/index.js';
+import * as OneSignal from '../index.js';
 
 const { getContext, getSchema } = createTestHelpers({ OneSignal });
 

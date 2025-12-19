@@ -1,4 +1,4 @@
-import createJobs from '../jobs';
+import createJobs from '../jobs.js';
 
 const mockJob = {
   process: jest.fn(),

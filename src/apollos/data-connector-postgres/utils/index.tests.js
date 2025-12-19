@@ -1,4 +1,4 @@
-import { enforceCurrentUser } from './index';
+import { enforceCurrentUser } from './index.js';
 
 describe('enforceCurrentUser', () => {
   it('must allow a user from two different sources to see itself', async () => {

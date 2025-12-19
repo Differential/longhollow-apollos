@@ -1,14 +1,14 @@
 /* eslint-disable import/named */
-import { sequelize } from '../../postgres/index';
+import { sequelize } from '../../postgres/index.js';
 import {
   Person,
   ContentItem,
   Media,
   Follow,
   ContentItemCategory,
-} from '../../index';
-import * as Campus from '../index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+} from '../../index.js';
+import * as Campus from '../index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 describe('Campus model', () => {
   beforeEach(async () => {

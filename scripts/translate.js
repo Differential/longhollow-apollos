@@ -1,7 +1,4 @@
-const {
-  createGlobalId,
-  parseGlobalId,
-} = require('../src/apollos/server-core');
+import { createGlobalId, parseGlobalId } from '#apollos/server-core/index.js';
 
 const [id] = process.argv.slice(2);
 if (!id) {

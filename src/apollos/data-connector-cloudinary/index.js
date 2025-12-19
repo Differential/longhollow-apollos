@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import withCloudinary from './cloudinary';
+import withCloudinary from './cloudinary.js';
 
 export const resolver = {
   ImageMediaSource: {

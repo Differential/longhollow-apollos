@@ -55,4 +55,4 @@ async function down({ context: queryInterface }) {
 
 const name = '001-create-comments';
 
-module.exports = { up, down, name, order: 3 };
+export default { up, down, name, order: 3 };

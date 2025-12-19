@@ -1,5 +1,5 @@
 import { graphql } from 'graphql';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
 
 import {
   campusSchema,
@@ -9,9 +9,9 @@ import {
   contentChannelSchema,
   themeSchema,
   scriptureSchema,
-} from 'apollos/data-schema';
-import * as Event from '../index';
-import { Campus } from '../../index';
+} from '#apollos/data-schema/index.js';
+import * as Event from '../index.js';
+import { Campus } from '../../index.js';
 
 const { getSchema, getContext } = createTestHelpers({
   Event,

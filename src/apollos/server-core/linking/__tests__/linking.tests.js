@@ -1,5 +1,5 @@
-import ApollosConfig from 'apollos/config';
-import { setupUniversalLinks, generateAppLink } from '../index';
+import ApollosConfig from '#apollos/config/index.js';
+import { setupUniversalLinks, generateAppLink } from '../index.js';
 
 ApollosConfig.loadJs({
   APP: {

@@ -1,7 +1,7 @@
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from 'apollos/config';
-import { dataSource as RockConstants } from '../index';
-import { buildGetMock } from '../../test-utils';
+import ApollosConfig from '#apollos/config/index.js';
+import { dataSource as RockConstants } from '../index.js';
+import { buildGetMock } from '../../test-utils.js';
 
 ApollosConfig.loadJs({
   ROCK_MAPPINGS: {

@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const fields = [
   'originId',
@@ -37,4 +37,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-rename-content-item-categories-table';
 
-module.exports = { up, down, name, order: 6 };
+export default { up, down, name, order: 6 };

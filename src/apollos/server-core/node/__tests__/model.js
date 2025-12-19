@@ -1,6 +1,6 @@
 import { set, reset } from 'graphql-parse-resolve-info';
 import casual from 'casual';
-import Node, { createGlobalId, parseGlobalId } from '../model';
+import Node, { createGlobalId, parseGlobalId } from '../model.js';
 
 const schema = { getTypeMap: () => ({}) };
 

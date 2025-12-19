@@ -13,4 +13,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-add-liked-count';
 
-module.exports = { up, down, name, order: 3 };
+export default { up, down, name, order: 3 };

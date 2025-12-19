@@ -1,6 +1,6 @@
 import FormData from 'form-data';
 
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
 
 export default class BinaryFiles extends RockApolloDataSource {
   resource = 'BinaryFiles';

@@ -1,6 +1,6 @@
-import CreateComments001 from './001_create_comments';
-import AddLikedCount002 from './002_add_likedCount';
-import RenameCommentFields003 from './003_rename_comment_fields';
+import CreateComments001 from './001_create_comments.js';
+import AddLikedCount002 from './002_add_likedCount.js';
+import RenameCommentFields003 from './003_rename_comment_fields.js';
 
 const migrations = [
   CreateComments001,

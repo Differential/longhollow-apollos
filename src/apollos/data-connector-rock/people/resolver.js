@@ -1,7 +1,7 @@
 import moment from 'moment-timezone';
-import { createGlobalId } from 'apollos/server-core';
-import ApollosConfig from 'apollos/config';
-import { enforceCurrentUser } from '../utils';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import ApollosConfig from '#apollos/config/index.js';
+import { enforceCurrentUser } from '../utils.js';
 
 export default {
   Mutation: {

@@ -1,4 +1,4 @@
-import { createGlobalId } from 'apollos/server-core';
+import { createGlobalId } from '#apollos/server-core/index.js';
 
 const defaultContentItemResolvers = {
   likedCount: ({ id }, args, { dataSources }) =>

@@ -1,9 +1,10 @@
 /* eslint-disable new-cap, import/named */
-import { createGlobalId } from 'apollos/server-core';
-import { range } from 'lodash';
-import { sequelize } from '../../postgres/index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import lodash from 'lodash';
+import { sequelize } from '../../postgres/index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 import {
+const { range } = lodash;
   Comment,
   Person,
   Follow,
@@ -13,7 +14,7 @@ import {
   ContentItem,
   Media,
   ContentItemCategory,
-} from '../../index';
+} from '../../index.js';
 
 let person1;
 let person2;

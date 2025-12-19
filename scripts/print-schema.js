@@ -1,8 +1,8 @@
-const { isSchema, printSchema } = require('graphql');
-const { makeExecutableSchema } = require('@graphql-tools/schema');
+import { isSchema, printSchema } from 'graphql';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 
-// Use the compiled server output so this runs in Heroku release phase.
-const { schema, resolvers } = require('../lib/server');
+// Use the runtime server output for schema publishing.
+import { schema, resolvers } from '../src/server.js';
 
 const executableSchema = isSchema(schema)
   ? schema

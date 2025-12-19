@@ -63,4 +63,4 @@ async function down({ context: queryInterface }) {
 
 const name = '001-create-people';
 
-module.exports = { up, down, name, order: 2 };
+export default { up, down, name, order: 2 };

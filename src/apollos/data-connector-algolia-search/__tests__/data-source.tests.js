@@ -1,5 +1,6 @@
-import { times } from 'lodash';
-import Search from '../data-source';
+import lodash from 'lodash';
+import Search from '../data-source.js';
+const { times } = lodash;
 
 describe('The algolia search dataSource', () => {
   it('must be able to perform a full index of data from the ContentItem dataSource', async () => {

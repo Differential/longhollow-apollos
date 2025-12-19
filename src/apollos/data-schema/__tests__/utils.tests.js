@@ -1,5 +1,5 @@
-import ApollosConfig from 'apollos/config';
-import { extendForEachContentItemType } from '../utils';
+import ApollosConfig from '#apollos/config/index.js';
+import { extendForEachContentItemType } from '../utils.js';
 
 ApollosConfig.loadJs({
   ROCK_MAPPINGS: {

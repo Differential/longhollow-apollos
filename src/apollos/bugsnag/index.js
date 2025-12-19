@@ -1,7 +1,8 @@
 /* eslint-disable class-methods-use-this, no-unused-expressions, no-param-reassign */
-import ApollosConfig from 'apollos/config';
-import { get, fromPairs } from 'lodash';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
 import Bugsnag from '@bugsnag/js';
+const { get, fromPairs } = lodash;
 
 const isDev =
   process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';

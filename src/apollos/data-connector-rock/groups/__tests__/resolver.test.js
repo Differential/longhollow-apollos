@@ -1,9 +1,9 @@
 import { graphql } from 'graphql';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
 
-import { peopleSchema, authSchema } from 'apollos/data-schema';
-import * as Group from '../index';
-import { Auth, Person } from '../../index';
+import { peopleSchema, authSchema } from '#apollos/data-schema/index.js';
+import * as Group from '../index.js';
+import { Auth, Person } from '../../index.js';
 
 const { getSchema, getContext } = createTestHelpers({
   Group,

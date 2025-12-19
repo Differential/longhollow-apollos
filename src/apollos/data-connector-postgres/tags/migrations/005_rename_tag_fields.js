@@ -1,4 +1,4 @@
-import { renameColumns, revertColumnNames } from '../../utils/renameColumns';
+import { renameColumns, revertColumnNames } from '../../utils/renameColumns.js';
 
 const tagFields = [
   'originId',
@@ -53,4 +53,4 @@ async function down({ context: queryInterface }) {
 
 const name = '005-rename-tag-fields';
 
-module.exports = { up, down, name, order: 7 };
+export default { up, down, name, order: 7 };

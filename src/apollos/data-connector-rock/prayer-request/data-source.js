@@ -1,7 +1,8 @@
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import ApollosConfig from 'apollos/config';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import ApollosConfig from '#apollos/config/index.js';
 import moment from 'moment-timezone';
-import { get } from 'lodash';
+import lodash from 'lodash';
+const { get } = lodash;
 
 const { ROCK, ROCK_MAPPINGS } = ApollosConfig;
 export default class PrayerRequest extends RockApolloDataSource {

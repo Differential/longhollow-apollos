@@ -1,10 +1,11 @@
-import { get } from 'lodash';
-import { registerToken } from './token';
+import lodash from 'lodash';
+import { registerToken } from './token.js';
+const { get } = lodash;
 
-export { registerToken, generateToken } from './token';
-export { authSchema as schema } from 'apollos/data-schema';
-export { default as dataSource } from './data-source';
-export { default as resolver } from './resolver';
+export { registerToken, generateToken } from './token.js';
+export { authSchema as schema } from '#apollos/data-schema/index.js';
+export { default as dataSource } from './data-source.js';
+export { default as resolver } from './resolver.js';
 
 export const contextMiddleware = ({ req, context: ctx }) => {
   if (get(req, 'headers.authorization')) {

@@ -1,5 +1,5 @@
-import { parseGlobalId } from 'apollos/server-core';
-import { PostgresDataSource } from '../postgres';
+import { parseGlobalId } from '#apollos/server-core/index.js';
+import { PostgresDataSource } from '../postgres/index.js';
 
 class UserLike extends PostgresDataSource {
   modelName = 'user_likes';

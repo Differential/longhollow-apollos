@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize, defineModel, configureModel, sync } from '../index';
+import { sequelize, defineModel, configureModel, sync } from '../index.js';
 
 describe('Apollos Postgres support', () => {
   afterEach(async () => {

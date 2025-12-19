@@ -21,4 +21,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-add-name-index';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

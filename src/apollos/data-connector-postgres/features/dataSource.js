@@ -1,6 +1,6 @@
-import { Feature as RockFeature } from 'apollos/data-connector-rock';
-import { createGlobalId } from 'apollos/server-core';
-import { PostgresDataSource, isUuid } from '../postgres';
+import { Feature as RockFeature } from '#apollos/data-connector-rock/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import { PostgresDataSource, isUuid } from '../postgres/index.js';
 
 // We have to do something unfortunate in this file for the time being.
 // We essentially are incorperating methods from the Rock datasource

@@ -48,4 +48,4 @@ async function down({ context: queryInterface }) {
 
 const name = '001-create-campus';
 
-module.exports = { up, down, name, order: 1 };
+export default { up, down, name, order: 1 };

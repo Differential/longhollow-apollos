@@ -1,9 +1,9 @@
 /* eslint-disable import/named */
-import { sequelize } from '../../postgres/index';
-import PersonDataSource from '../../people/dataSource';
-import NotificationPreferencesDataSource from '../dataSource';
-import * as NotificationPreferences from '../index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { sequelize } from '../../postgres/index.js';
+import PersonDataSource from '../../people/dataSource.js';
+import NotificationPreferencesDataSource from '../dataSource.js';
+import * as NotificationPreferences from '../index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 import {
   Person,
   ContentItem,
@@ -11,7 +11,7 @@ import {
   Follow,
   ContentItemCategory,
   Campus,
-} from '../../index';
+} from '../../index.js';
 
 let person1;
 

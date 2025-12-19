@@ -1,5 +1,6 @@
-import { get } from 'lodash';
-import { createGlobalId } from 'apollos/server-core';
+import lodash from 'lodash';
+import { createGlobalId } from '#apollos/server-core/index.js';
+const { get } = lodash;
 
 export default {
   // deprecated

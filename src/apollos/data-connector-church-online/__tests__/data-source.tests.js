@@ -1,5 +1,5 @@
-import ApollosConfig from 'apollos/config';
-import LiveDataSource from '../data-source';
+import ApollosConfig from '#apollos/config/index.js';
+import LiveDataSource from '../data-source.js';
 
 ApollosConfig.loadJs({
   CHURCH_ONLINE: {

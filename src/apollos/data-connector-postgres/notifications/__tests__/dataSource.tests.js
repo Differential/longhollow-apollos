@@ -1,8 +1,8 @@
 /* eslint-disable import/named */
-import { sequelize } from '../../postgres/index';
-import NotificationPreferenceDataSource from '../../notification-preferences/dataSource';
-import NotificationsDataSource from '../dataSource';
-import * as Notifications from '../index';
+import { sequelize } from '../../postgres/index.js';
+import NotificationPreferenceDataSource from '../../notification-preferences/dataSource.js';
+import NotificationsDataSource from '../dataSource.js';
+import * as Notifications from '../index.js';
 import {
   Person,
   ContentItem,
@@ -10,8 +10,8 @@ import {
   ContentItemCategory,
   NotificationPreference,
   Campus,
-} from '../../index';
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+} from '../../index.js';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 let person1;
 

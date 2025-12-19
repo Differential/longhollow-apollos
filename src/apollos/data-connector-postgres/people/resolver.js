@@ -1,7 +1,8 @@
 import moment from 'moment-timezone';
-import { withEdgePagination } from 'apollos/server-core';
-import { startCase, toLower } from 'lodash';
-import { enforceCurrentUser } from '../utils';
+import { withEdgePagination } from '#apollos/server-core/index.js';
+import lodash from 'lodash';
+import { enforceCurrentUser } from '../utils/index.js';
+const { startCase, toLower } = lodash;
 
 export default {
   Mutation: {

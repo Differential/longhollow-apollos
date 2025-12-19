@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { defineModel, configureModel } from '../postgres';
+import { defineModel, configureModel } from '../postgres/index.js';
 
 const createModel = defineModel({
   modelName: 'feature',

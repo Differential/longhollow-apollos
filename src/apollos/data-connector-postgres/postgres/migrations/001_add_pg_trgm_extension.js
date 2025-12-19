@@ -10,4 +10,4 @@ async function down() {
 
 const name = '001-add-pg_trgm-extension';
 
-module.exports = { up, down, name, order: 0 };
+export default { up, down, name, order: 0 };

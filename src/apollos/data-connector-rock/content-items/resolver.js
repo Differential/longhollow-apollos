@@ -1,10 +1,11 @@
-import { get } from 'lodash';
+import lodash from 'lodash';
 import moment from 'moment-timezone';
 import {
   createGlobalId,
   withEdgePagination,
-} from 'apollos/server-core';
-import ApollosConfig from 'apollos/config';
+} from '#apollos/server-core/index.js';
+import ApollosConfig from '#apollos/config/index.js';
+const { get } = lodash;
 
 const { ROCK, ROCK_MAPPINGS } = ApollosConfig;
 

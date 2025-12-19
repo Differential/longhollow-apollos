@@ -1,6 +1,6 @@
-import ApollosConfig from 'apollos/config';
-import { buildGetMock } from '../../test-utils';
-import { dataSource as Persona } from '../index';
+import ApollosConfig from '#apollos/config/index.js';
+import { buildGetMock } from '../../test-utils.js';
+import { dataSource as Persona } from '../index.js';
 
 ApollosConfig.loadJs({
   ROCK: {

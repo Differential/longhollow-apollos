@@ -1,4 +1,4 @@
-import { parseKeyValueAttribute } from '../utils';
+import { parseKeyValueAttribute } from '../utils.js';
 
 describe('parseKeyValueAttribute', () => {
   it('should parse a rock key/value into a list of JS objects', () => {

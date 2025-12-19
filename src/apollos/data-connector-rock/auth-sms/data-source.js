@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 import { AuthenticationError, UserInputError } from 'apollo-server';
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
 import PhoneNumber from 'awesome-phonenumber';
-import { fieldsAsObject } from '../utils';
+import { fieldsAsObject } from '../utils.js';
 
-import { secret } from '../auth/token';
+import { secret } from '../auth/token.js';
 
 export default class AuthSmsDataSource extends RockApolloDataSource {
   expanded = true;

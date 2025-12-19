@@ -14,4 +14,4 @@ async function down({ context: queryInterface }) {
 
 const name = '005-change_url_to_text';
 
-module.exports = { up, down, name, order: 8 };
+export default { up, down, name, order: 8 };

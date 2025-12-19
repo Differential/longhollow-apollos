@@ -18,4 +18,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-add-cover-image';
 
-module.exports = { up, down, name, order: 7 };
+export default { up, down, name, order: 7 };

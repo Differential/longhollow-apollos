@@ -1,4 +1,4 @@
-import { PostgresDataSource } from '../postgres';
+import { PostgresDataSource } from '../postgres/index.js';
 
 class NotificationPreferencesDataSource extends PostgresDataSource {
   modelName = 'notificationPreferences';

@@ -1,9 +1,9 @@
-import ApollosConfig from 'apollos/config';
-import { createGlobalId } from 'apollos/server-core';
+import ApollosConfig from '#apollos/config/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
 
-import { dataSource as ActionAlgorithm } from '../../action-algorithms';
-import Feature from '../data-source';
-import resolver from '../resolver';
+import { dataSource as ActionAlgorithm } from '../../action-algorithms/index.js';
+import Feature from '../data-source.js';
+import resolver from '../resolver.js';
 
 async function expandResult(result) {
   let expandedResult = { ...result };

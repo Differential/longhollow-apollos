@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 import {
   extendForEachContentItemType,
   addInterfacesForEachContentItemType,
-} from './utils';
+} from './utils.js';
 
 export const interfacesSchema = gql`
   interface ContentNode {

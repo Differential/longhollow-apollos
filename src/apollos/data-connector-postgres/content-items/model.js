@@ -1,5 +1,5 @@
 import { DataTypes, Op, Sequelize } from 'sequelize';
-import { defineModel, configureModel } from '../postgres';
+import { defineModel, configureModel } from '../postgres/index.js';
 
 const createModel = defineModel({
   modelName: 'contentItem',

@@ -1,4 +1,4 @@
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import { AuthenticationError } from 'apollo-server';
 
 export const enforceProtocol = (uri) =>

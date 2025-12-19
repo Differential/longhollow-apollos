@@ -1,5 +1,5 @@
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import ApollosConfig from 'apollos/config';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import ApollosConfig from '#apollos/config/index.js';
 
 const { ROCK_MAPPINGS } = ApollosConfig;
 export default class Group extends RockApolloDataSource {

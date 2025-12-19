@@ -43,4 +43,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002_update_foreign_key_constraints';
 
-module.exports = { up, down, name, order: 5 };
+export default { up, down, name, order: 5 };

@@ -15,4 +15,4 @@ async function down({ context: queryInterface }) {
 
 const name = '001-create-media';
 
-module.exports = { up, down, name, order: 4 };
+export default { up, down, name, order: 4 };

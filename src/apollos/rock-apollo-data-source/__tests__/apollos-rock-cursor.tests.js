@@ -1,4 +1,4 @@
-import { createCursor, parseCursor } from '../cursor';
+import { createCursor, parseCursor } from '../cursor.js';
 
 describe('Node', () => {
   it('`createCursor` should take a valid json shape and return a string', () => {

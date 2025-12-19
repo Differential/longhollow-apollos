@@ -1,7 +1,6 @@
 module.exports = {
   extends: ['airbnb-base', 'plugin:prettier/recommended'],
-  parser: 'babel-eslint',
-  plugins: ['import', 'babel', 'prettier', 'jest'],
+  plugins: ['import', 'prettier', 'jest'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -40,7 +39,7 @@ module.exports = {
     'no-underscore-dangle': 0,
   },
   parserOptions: {
-    ecmaVersion: 7,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   settings: {
@@ -48,7 +47,6 @@ module.exports = {
       node: {
         extensions: ['.js'],
       },
-      'babel-module': {},
     },
   },
   env: {

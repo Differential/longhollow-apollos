@@ -1,5 +1,5 @@
-import ApollosConfig from 'apollos/config';
-import EventsDataSource from '../data-source';
+import ApollosConfig from '#apollos/config/index.js';
+import EventsDataSource from '../data-source.js';
 
 ApollosConfig.loadJs({
   APP: {

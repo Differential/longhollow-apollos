@@ -1,9 +1,10 @@
 import { AuthenticationError } from 'apollo-server';
-import { camelCase } from 'lodash';
+import lodash from 'lodash';
 import Sequelize, { Op } from 'sequelize';
-import { parseCursor, createCursor } from 'apollos/server-core';
+import { parseCursor, createCursor } from '#apollos/server-core/index.js';
 
-import { PostgresDataSource } from '../postgres';
+import { PostgresDataSource } from '../postgres/index.js';
+const { camelCase } = lodash;
 
 export const fieldsAsObject = (fields) =>
   fields.reduce(

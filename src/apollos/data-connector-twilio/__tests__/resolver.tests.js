@@ -1,5 +1,5 @@
-import { createTestHelpers } from 'apollos/server-core/testUtils';
-import * as Sms from '../index';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import * as Sms from '../index.js';
 
 const { getContext } = createTestHelpers({ Sms });
 let context;

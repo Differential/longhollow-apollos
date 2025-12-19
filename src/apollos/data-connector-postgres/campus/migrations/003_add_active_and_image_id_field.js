@@ -24,4 +24,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-add-active-and-image-id-field';
 
-module.exports = { up, down, name, order: 8 };
+export default { up, down, name, order: 8 };

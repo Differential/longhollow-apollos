@@ -10,4 +10,4 @@ async function down({ context: queryInterface }) {
 
 const name = '002-add-unique_index_for_features';
 
-module.exports = { up, down, name, order: 6 };
+export default { up, down, name, order: 6 };

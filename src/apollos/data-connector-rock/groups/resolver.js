@@ -1,5 +1,5 @@
-import { createGlobalId } from 'apollos/server-core';
-import { enforceCurrentUser } from '../utils';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import { enforceCurrentUser } from '../utils.js';
 
 export default {
   Group: {

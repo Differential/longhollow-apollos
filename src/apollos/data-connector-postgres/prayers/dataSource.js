@@ -1,7 +1,8 @@
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import { Op } from 'sequelize';
-import { get } from 'lodash';
-import { PostgresDataSource } from '../postgres';
+import lodash from 'lodash';
+import { PostgresDataSource } from '../postgres/index.js';
+const { get } = lodash;
 
 class Prayer extends PostgresDataSource {
   modelName = 'prayerRequest';

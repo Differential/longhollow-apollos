@@ -1,8 +1,14 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
-import dotenv from "dotenv/config"; // eslint-disable-line
-import ApollosConfig from 'apollos/config';
+import dotenv from 'dotenv';
+import ApollosConfig from '#apollos/config/index.js';
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 ApollosConfig.loadYaml({
   configPath: path.join(

@@ -2,8 +2,8 @@ import fs from 'fs';
 import util from 'util';
 import { DataSource } from 'apollo-datasource';
 import { UserInputError } from 'apollo-server';
-import { promise as DataURI } from 'datauri';
-import ApollosConfig from 'apollos/config';
+import datauri from 'datauri';
+import ApollosConfig from '#apollos/config/index.js';
 
 const readFile = util.promisify(fs.readFile);
 
@@ -127,3 +127,4 @@ export default class Pass extends DataSource {
     }
   }
 }
+const { promise: DataURI } = datauri;

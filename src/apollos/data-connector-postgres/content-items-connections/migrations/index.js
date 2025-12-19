@@ -1,6 +1,6 @@
-import CreateContentItemsConnection001 from './001_create_content_item_connections';
-import UpdateForeignKeyConstraints002 from './002_update_foreign_key_constraints';
-import RenameContentItemsConnectionsTable003 from './003_rename_content_item_connections_table';
+import CreateContentItemsConnection001 from './001_create_content_item_connections.js';
+import UpdateForeignKeyConstraints002 from './002_update_foreign_key_constraints.js';
+import RenameContentItemsConnectionsTable003 from './003_rename_content_item_connections_table.js';
 
 const migrations = [
   CreateContentItemsConnection001,

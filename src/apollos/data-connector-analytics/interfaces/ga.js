@@ -1,5 +1,5 @@
 import ua from 'universal-analytics';
-import BaseAnalytics from './base';
+import BaseAnalytics from './base.js';
 
 export default class GoogleAnalytics extends BaseAnalytics {
   constructor(accountId) {

@@ -1,6 +1,7 @@
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import ApollosConfig from 'apollos/config';
-import { get } from 'lodash';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import ApollosConfig from '#apollos/config/index.js';
+import lodash from 'lodash';
+const { get } = lodash;
 
 const { ROCK_MAPPINGS, CONTENT } = ApollosConfig;
 

@@ -1,7 +1,7 @@
-import ApollosConfig from 'apollos/config';
+import ApollosConfig from '#apollos/config/index.js';
 import { AuthenticationError } from 'apollo-server';
-import DataSource from '../data-source';
-import { buildGetMock } from '../../test-utils';
+import DataSource from '../data-source.js';
+import { buildGetMock } from '../../test-utils.js';
 
 ApollosConfig.loadJs({
   ROCK: {
@@ -52,7 +52,9 @@ describe('Personal device data source', () => {
   });
   it('raise an error without a logged in user', async () => {
     const dataSource = buildDataSource({
-      getCurrentPerson: () => throw new AuthenticationError(),
+      getCurrentPerson: () => {
+        throw new AuthenticationError();
+      },
     });
     dataSource.get = buildGetMock([], dataSource);
     await expect(

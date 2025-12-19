@@ -1,6 +1,6 @@
 /* eslint-disable import/named, new-cap */
-import ApollosConfig from 'apollos/config';
-import { sequelize } from '../../postgres/index';
+import ApollosConfig from '#apollos/config/index.js';
+import { sequelize } from '../../postgres/index.js';
 import {
   Media,
   Tag,
@@ -10,9 +10,9 @@ import {
   Follow,
   ContentItem,
   ContentItemCategory,
-} from '../../index';
+} from '../../index.js';
 
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 let person1;
 let person2;

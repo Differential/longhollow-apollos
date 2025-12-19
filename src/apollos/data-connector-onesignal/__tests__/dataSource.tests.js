@@ -1,4 +1,4 @@
-import dataSource from '../data-source';
+import dataSource from '../data-source.js';
 
 describe('OneSignal', () => {
   it('sends a push notification to a user', async () => {

@@ -1,5 +1,5 @@
-import CreateNotifications001 from './001_create_notifications';
-import RenameNotificationFields002 from './002_rename_notification_fields';
+import CreateNotifications001 from './001_create_notifications.js';
+import RenameNotificationFields002 from './002_rename_notification_fields.js';
 
 const migrations = [CreateNotifications001, RenameNotificationFields002];
 

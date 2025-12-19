@@ -1,10 +1,10 @@
-import { sequelize } from '../../postgres/index';
-import * as ContentItem from '../../content-items';
-import * as Feature from '../index';
-import * as Media from '../../media';
-import * as ContentItemCategory from '../../content-item-categories';
+import { sequelize } from '../../postgres/index.js';
+import * as ContentItem from '../../content-items/index.js';
+import * as Feature from '../index.js';
+import * as Media from '../../media/index.js';
+import * as ContentItemCategory from '../../content-item-categories/index.js';
 
-import { setupPostgresTestEnv } from '../../utils/testUtils';
+import { setupPostgresTestEnv } from '../../utils/testUtils.js';
 
 describe('Features model', () => {
   beforeEach(async () => {

@@ -46,4 +46,4 @@ async function down({ context: queryInterface }) {
 
 const name = '003-add-id-to-media';
 
-module.exports = { up, down, name, order: 6 };
+export default { up, down, name, order: 6 };

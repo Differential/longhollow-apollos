@@ -1,6 +1,6 @@
-import RockApolloDataSource from 'apollos/rock-apollo-data-source';
-import { createGlobalId } from 'apollos/server-core';
-import ApollosConfig from 'apollos/config';
+import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import { createGlobalId } from '#apollos/server-core/index.js';
+import ApollosConfig from '#apollos/config/index.js';
 
 const resolver = {
   Query: {

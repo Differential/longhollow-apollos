@@ -1,6 +1,6 @@
 import { graphql } from 'graphql';
-import ApollosConfig from 'apollos/config';
-import { Feature } from 'apollos/data-connector-rock';
+import ApollosConfig from '#apollos/config/index.js';
+import { Feature } from '#apollos/data-connector-rock/index.js';
 import {
   featuresSchema,
   scriptureSchema,
@@ -14,8 +14,8 @@ import {
   interactionsSchema,
   commentSchema,
   followingsSchema,
-} from 'apollos/data-schema';
-import { createTestHelpers } from 'apollos/server-core/testUtils';
+} from '#apollos/data-schema/index.js';
+import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
 
 import * as FeatureFeed from '..';
 

@@ -2,7 +2,7 @@
 /*
 Used like this
 ```
-import { ContentItem } from 'apollos/data-connector-rock'
+import { ContentItem } from '#apollos/data-connector-rock/index.js'
 const resolver = {
   ContentItem: {
     title: () => ...

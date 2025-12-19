@@ -1,4 +1,4 @@
-import RequestBuilder from '../request-builder';
+import RequestBuilder from '../request-builder.js';
 
 describe('RequestBuilder', () => {
   let request;

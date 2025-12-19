@@ -1,4 +1,4 @@
-import { get, uniq } from 'lodash';
+import lodash from 'lodash';
 import moment from 'moment-timezone';
 import natural from 'natural';
 import Hypher from 'hypher';
@@ -7,15 +7,16 @@ import sanitizeHtml from 'sanitize-html';
 
 import RockApolloDataSource, {
   parseKeyValueAttribute,
-} from 'apollos/rock-apollo-data-source';
-import ApollosConfig from 'apollos/config';
+} from '#apollos/rock-apollo-data-source/index.js';
+import ApollosConfig from '#apollos/config/index.js';
 import {
   createGlobalId,
   parseGlobalId,
   generateAppLink,
-} from 'apollos/server-core';
+} from '#apollos/server-core/index.js';
 
-import { createImageUrlFromGuid } from '../utils';
+import { createImageUrlFromGuid } from '../utils.js';
+const { get, uniq } = lodash;
 
 const { ROCK, ROCK_MAPPINGS } = ApollosConfig;
 

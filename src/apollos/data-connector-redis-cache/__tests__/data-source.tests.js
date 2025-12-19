@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { dataSource as Cache } from '../index';
+import { dataSource as Cache } from '../index.js';
 
 describe('Redis Cache', () => {
   it("doesn't constructs with Redis env url", () => {
