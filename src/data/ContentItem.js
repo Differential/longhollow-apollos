@@ -1,7 +1,7 @@
-import ApollosConfig from '@apollosproject/config';
-import { ContentItem } from '@apollosproject/data-connector-rock';
-import { contentItemSchema } from '@apollosproject/data-schema';
-import { createGlobalId } from '@apollosproject/server-core';
+import ApollosConfig from 'apollos/config';
+import { ContentItem } from 'apollos/data-connector-rock';
+import { contentItemSchema } from 'apollos/data-schema';
+import { createGlobalId } from 'apollos/server-core';
 import gql from 'graphql-tag';
 import sanitizeHtml from 'sanitize-html';
 import moment from 'moment';

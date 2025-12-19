@@ -26,7 +26,7 @@ DATABASE:
         require: false
         rejectUnauthorized: false
 BUGSNAG:
-  ## Optional, but you'll need to remove references to @apollosproject/bugsnag if you don't wish to use.
+  ## Optional, but you'll need to remove references to apollos/bugsnag if you don't wish to use.
   API_KEY: ${BUGSNAG_KEY}
 ROCK:
   URL: ${ROCK_URL}

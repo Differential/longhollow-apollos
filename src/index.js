@@ -1,5 +1,5 @@
 import dotenv from 'dotenv/config'; // eslint-disable-line
-// import '@apollosproject/data-connector-postgres/lib/postgres/pgEnum-fix';
+// import 'apollos/data-connector-postgres/postgres/pgEnum-fix';
 import config from './config'; // eslint-disable-line
 import server from './server';
 

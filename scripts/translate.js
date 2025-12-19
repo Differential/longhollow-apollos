@@ -1,7 +1,7 @@
 const {
   createGlobalId,
   parseGlobalId,
-} = require('@apollosproject/server-core');
+} = require('../src/apollos/server-core');
 
 const [id] = process.argv.slice(2);
 if (!id) {

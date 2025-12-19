@@ -3,17 +3,17 @@ import { gql } from 'apollo-server';
 import {
   createApolloServerConfig,
   Interfaces,
-} from '@apollosproject/server-core';
+} from 'apollos/server-core';
 
-import * as Analytics from '@apollosproject/data-connector-analytics';
-import * as Scripture from '@apollosproject/data-connector-bible';
-// import * as LiveStream from '@apollosproject/data-connector-church-online';
-// import * as Cloudinary from '@apollosproject/data-connector-cloudinary';
-import * as OneSignal from '@apollosproject/data-connector-onesignal';
-// import * as Search from '@apollosproject/data-connector-algolia-search';
-// import * as Pass from '@apollosproject/data-connector-passes';
-import * as Cache from '@apollosproject/data-connector-redis-cache';
-import * as Sms from '@apollosproject/data-connector-twilio';
+import * as Analytics from 'apollos/data-connector-analytics';
+import * as Scripture from 'apollos/data-connector-bible';
+// import * as LiveStream from 'apollos/data-connector-church-online';
+// import * as Cloudinary from 'apollos/data-connector-cloudinary';
+import * as OneSignal from 'apollos/data-connector-onesignal';
+// import * as Search from 'apollos/data-connector-algolia-search';
+// import * as Pass from 'apollos/data-connector-passes';
+import * as Cache from 'apollos/data-connector-redis-cache';
+import * as Sms from 'apollos/data-connector-twilio';
 import {
   Followings,
   // Interactions,
@@ -35,7 +35,7 @@ import {
   Persona,
   // Person
   BinaryFiles,
-} from '@apollosproject/data-connector-rock';
+} from 'apollos/data-connector-rock';
 
 import * as Theme from './theme';
 import * as ActionAlgorithm from './ActionAlgorithm';

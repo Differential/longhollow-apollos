@@ -158,291 +158,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollosproject/apollo-server-env-mock@npm:^2.29.3":
-  version: 2.30.0
-  resolution: "@apollosproject/apollo-server-env-mock@npm:2.30.0"
-  checksum: 10c0/b45ca9dfc8c24527bb1773cc89ec2cd5f874c5846119c3a77adca45e8f32780bbf5f61100327c7f647c65e1dc3cd92aaca0ba7c2df241c32d05d0e96bcaef238
-  languageName: node
-  linkType: hard
-
-"@apollosproject/babel-preset-apollos@npm:^2.29.3":
-  version: 2.30.0
-  resolution: "@apollosproject/babel-preset-apollos@npm:2.30.0"
-  dependencies:
-    "@babel/plugin-proposal-class-properties": "npm:7.4.0"
-    "@babel/plugin-proposal-decorators": "npm:7.4.0"
-    "@babel/plugin-proposal-do-expressions": "npm:7.2.0"
-    "@babel/plugin-proposal-export-default-from": "npm:7.2.0"
-    "@babel/plugin-proposal-export-namespace-from": "npm:7.2.0"
-    "@babel/plugin-proposal-function-bind": "npm:7.2.0"
-    "@babel/plugin-proposal-function-sent": "npm:7.2.0"
-    "@babel/plugin-proposal-json-strings": "npm:7.2.0"
-    "@babel/plugin-proposal-logical-assignment-operators": "npm:7.2.0"
-    "@babel/plugin-proposal-nullish-coalescing-operator": "npm:7.2.0"
-    "@babel/plugin-proposal-numeric-separator": "npm:7.2.0"
-    "@babel/plugin-proposal-optional-chaining": "npm:7.2.0"
-    "@babel/plugin-proposal-pipeline-operator": "npm:7.2.0"
-    "@babel/plugin-proposal-throw-expressions": "npm:7.2.0"
-    "@babel/plugin-syntax-dynamic-import": "npm:7.2.0"
-    "@babel/plugin-syntax-import-meta": "npm:7.2.0"
-    "@babel/plugin-transform-runtime": "npm:7.4.0"
-    "@babel/preset-env": "npm:7.4.2"
-    babel-plugin-module-resolver: "npm:^3.1.1"
-  checksum: 10c0/b15bb5ea7c44084a8a15b414e178255c5eb494b76c382517f6fe77d5a0ef70d9733c6045a0cc6fe16c5bd0188ddae0722221d21e9a12bd303ad12d5f96fd5b83
-  languageName: node
-  linkType: hard
-
-"@apollosproject/bugsnag@npm:^2.13.1":
-  version: 2.13.1
-  resolution: "@apollosproject/bugsnag@npm:2.13.1"
-  dependencies:
-    "@bugsnag/js": "npm:7.2.1"
-  checksum: 10c0/52c393c6322f9560cce869057bb906bcf904972d140b3fa84b068dc5d2528f013f6d5da9b011f537f1ac5e912426b0cfb54d4eb0f4cff2e769651b0b42f8df0a
-  languageName: node
-  linkType: hard
-
-"@apollosproject/config@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/config@npm:2.30.0"
-  dependencies:
-    js-yaml: "npm:^3.12.0"
-  peerDependencies:
-    react-native-config: "*"
-  checksum: 10c0/f0abd55024cad5061cd32a9f743029ae24948795c6e0671b5c446fe256ecfbb535c97ac0d5b3b1aadf8b4a7a1e57e159a47f01be26a5617aff418161ebb4e4a1
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-algolia-search@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-algolia-search@npm:2.30.0"
-  dependencies:
-    "@apollosproject/server-core": "npm:^2.30.0"
-    algoliasearch: "npm:^3.34.0"
-    apollo-datasource-rest: "npm:^0.6.4"
-  peerDependencies:
-    "@apollosproject/config": "*"
-    "@apollosproject/data-schema": "*"
-  checksum: 10c0/e93b0b9b35111c91aab816d3f45d16c00bdd91f948baedfffc0bf57b26a70fb1474289a949e14a6d07d9d779a9d4c973c9cb559f4b3de8240df37017466ee3d5
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-analytics@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-analytics@npm:2.30.0"
-  dependencies:
-    analytics-node: "npm:^3.4.0-beta.1"
-    apollo-datasource: "npm:^0.2.0"
-    universal-analytics: "npm:^0.4.20"
-  peerDependencies:
-    "@apollosproject/config": "*"
-    "@apollosproject/data-schema": "*"
-    "@apollosproject/rock-apollo-data-source": "*"
-    apollo-server: ^2.11.0
-  checksum: 10c0/741dae4cc27983ed1722d09455d1d2f0b2084297505cd856760cb4dbb9ca80c47413d84081c51c1fe6eb928acd1a5f48cca71a8742e92f3ee4e3bf7f2d1da4ea
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-bible@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-bible@npm:2.30.0"
-  dependencies:
-    "@apollosproject/server-core": "npm:^2.30.0"
-    apollo-datasource-rest: "npm:^0.6.4"
-    lodash: "npm:^4.17.11"
-  peerDependencies:
-    "@apollosproject/config": "*"
-    "@apollosproject/data-schema": "*"
-  checksum: 10c0/7a647f237cd27cd51fa84b08d6647f319114803cb3143b1486a7a8163e22a3d2e4c1649776cc97b90b080d6f6db0cb8206c4217eeffc61298f5f0efa97b4d4a5
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-church-online@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-church-online@npm:2.30.0"
-  dependencies:
-    "@apollosproject/server-core": "npm:^2.30.0"
-    apollo-datasource-rest: "npm:^0.6.4"
-  peerDependencies:
-    "@apollosproject/config": "*"
-    "@apollosproject/data-schema": "*"
-  checksum: 10c0/2f1249fef02062b622d8114af8c2aaf45b1d46fe6c8dac1a8b06b8c1801e2f4b2539cd586952b07c4853e6c23fcbaf51e1e21e5e83ec6835192342df5b5d8082
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-cloudinary@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-cloudinary@npm:2.30.0"
-  dependencies:
-    cloudinary: "npm:1.14.0"
-  peerDependencies:
-    "@apollosproject/config": "*"
-  checksum: 10c0/c128d756ea981448670e5285dd1d4843ccf020c3b647c41b33650de6ae7383f3837986687a4dfb2e17db430248b893a7c70d0af2ac6c980dde023cedb538d718
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-onesignal@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-onesignal@npm:2.30.0"
-  dependencies:
-    "@apollosproject/server-core": "npm:^2.30.0"
-    apollo-datasource-rest: "npm:^0.6.4"
-  peerDependencies:
-    "@apollosproject/config": "*"
-    "@apollosproject/data-connector-rock": "*"
-    "@apollosproject/data-schema": "*"
-  checksum: 10c0/8267c5ee320d038d0a326d5c9a1750e0d6a94d659d3cc0ff50f82f6b7396c34d1b74f3ee356bec8e7654291105cff1c3579ff0ad9eaa553008928c0652812acc
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-passes@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-passes@npm:2.30.0"
-  dependencies:
-    "@apollo/client": "npm:3.3.20"
-    "@apollosproject/server-core": "npm:^2.30.0"
-    apollo-datasource: "npm:^0.4.0"
-    datauri: "npm:^1.1.0"
-    lodash: "npm:^4.17.11"
-    passkit-generator: "npm:1.5.9"
-    qrcode: "npm:^1.3.3"
-  peerDependencies:
-    "@apollosproject/config": "*"
-    "@apollosproject/data-connector-rock": "*"
-    "@apollosproject/data-schema": "*"
-    apollo-server: ^2.11.0
-  checksum: 10c0/a49fbae7406f8e50d0e8ee5f828ff4cafefbda41480fa7cbcb529f3e08a5ac5dd80831ab6cc95bf0b302e67264f1a952a040694c5c3e724d5aa4615b05ceb7a2
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-postgres@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-postgres@npm:2.30.0"
-  dependencies:
-    "@apollosproject/data-schema": "npm:^2.30.0"
-    "@apollosproject/server-core": "npm:^2.30.0"
-    hyphenation.en-us: "npm:^0.2.1"
-    hypher: "npm:^0.2.5"
-    lodash: "npm:^4.17.11"
-    pg: "npm:^8.5.1"
-    pg-hstore: "npm:^2.3.3"
-    sequelize: "npm:^6.3.5"
-    umzug: "npm:^3.0.0-beta.15"
-  peerDependencies:
-    "@apollosproject/config": "*"
-  checksum: 10c0/f6a415fda16a4aaec6c50a3f027510a29ee1681e7dac3c9362f097d90c54b7f7819acde39f46a44f2cb6b0f8f7d6e22b73f2586f8d4025455731d965cc82282e
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-redis-cache@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-redis-cache@npm:2.30.0"
-  dependencies:
-    apollo-datasource: "npm:^0.2.0"
-    ioredis: "npm:4.14.1"
-  peerDependencies:
-    "@apollosproject/config": "*"
-  checksum: 10c0/541717e88ddc3f0189662425f664780da0437ea42de4b562d21b85befef64d8dc9378ccd8cf70064054b413487593ad0277967f3ad0da3e9aad291e1b9c63867
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-rock@npm:^2.32.2":
-  version: 2.34.0
-  resolution: "@apollosproject/data-connector-rock@npm:2.34.0"
-  dependencies:
-    awesome-phonenumber: "npm:^2.4.2"
-    form-data: "npm:^4.0.0"
-    hyphenation.en-us: "npm:^0.2.1"
-    hypher: "npm:^0.2.5"
-    jest: "npm:^25.1.0"
-    jsonwebtoken: "npm:^8.5.1"
-    lodash: "npm:^4.17.11"
-    moment: "npm:^2.22.2"
-    moment-timezone: "npm:^0.5.23"
-    natural: "npm:^0.6.2"
-    sanitize-html: "npm:^2.3.2"
-  peerDependencies:
-    "@apollosproject/config": "*"
-    "@apollosproject/data-schema": ">=2.26.0"
-    "@apollosproject/rock-apollo-data-source": "*"
-    "@apollosproject/server-core": "*"
-  checksum: 10c0/d38aa3f1f189986c8b11510ed7742ea79ca54528552f295f1848fb2ceb54deb69f0779b56490d59224697c908cd3a31d694b997f5ac1e6fc92d5743e2d54132b
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-connector-twilio@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-connector-twilio@npm:2.30.0"
-  dependencies:
-    apollo-datasource: "npm:^0.2.0"
-    twilio: "npm:^3.28.0"
-  peerDependencies:
-    "@apollosproject/config": "*"
-  checksum: 10c0/1050f10b6b66a7387e54f23751ebe9e688509f7186aea567844561976cda1eab83e196bdedb72f8de01f5b1c748e98c5e11b04eff0b02b95dbd97b0e0911b37c
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-schema@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/data-schema@npm:2.30.0"
-  dependencies:
-    "@apollo/client": "npm:3.3.20"
-  peerDependencies:
-    "@apollosproject/config": "*"
-  checksum: 10c0/c687f33dd89d7706ff17986f478d53f412e61a93f3c7c96cf3ae7a72c753d2f943f7f7967b4323e64388163fec4eb34ac1a8240224f95f1d71ba878f94f4a304
-  languageName: node
-  linkType: hard
-
-"@apollosproject/data-schema@npm:^2.32.2":
-  version: 2.34.0
-  resolution: "@apollosproject/data-schema@npm:2.34.0"
-  dependencies:
-    "@apollo/client": "npm:3.3.20"
-  peerDependencies:
-    "@apollosproject/config": "*"
-  checksum: 10c0/21833cb3a34bb0272fa6af52e7ace2e664192a7804d896fa55701a2323ff47052f3de82d94495d42facb4d174a7814a3318ac84335a0aa7b94ec686bcbd60929
-  languageName: node
-  linkType: hard
-
-"@apollosproject/eslint-config@npm:^2.29.3":
-  version: 2.30.0
-  resolution: "@apollosproject/eslint-config@npm:2.30.0"
-  checksum: 10c0/b51aa2aabb2c840b27f21de729b43cd851ee4dac8378358130436bd567647e0ebc12563d3974fe75950940708080457c471f767b7bbbaa4e5f1e401597d4375a
-  languageName: node
-  linkType: hard
-
-"@apollosproject/rock-apollo-data-source@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/rock-apollo-data-source@npm:2.30.0"
-  dependencies:
-    apollo-datasource-rest: "npm:^0.6.4"
-    apollo-server-env: "npm:^2.3.0"
-    lodash: "npm:^4.17.11"
-    with-query: "npm:^1.1.2"
-  peerDependencies:
-    "@apollosproject/config": "*"
-  checksum: 10c0/9b984d68d8ffd2fe7f66e504e00eb003db5293ea096a8adc047f40bcf56e0bad6e8d318938b0f89a6191cdf36b5459195065c153922193e7502eb3691cb56db9
-  languageName: node
-  linkType: hard
-
-"@apollosproject/server-core@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "@apollosproject/server-core@npm:2.30.0"
-  dependencies:
-    "@apollo/client": "npm:3.3.20"
-    "@apollosproject/data-schema": "npm:^2.30.0"
-    apollo-server-caching: "npm:^0.4.0"
-    bull: "npm:^3.11.0"
-    bull-board: "npm:^0.1.1"
-    express-basic-auth: "npm:^1.2.0"
-    graphql-parse-resolve-info: "npm:^4.4.5"
-    graphql-upload: "npm:^12.0.0"
-    lodash: "npm:^4.17.11"
-  peerDependencies:
-    apollo-server: ^2.11.0
-  checksum: 10c0/2611a51e37dcb7915cea58a72e0518ad8e5c23c7646252f6a4ba340c2bc29b825766d17d41d4abdf4750c6dcd3c09eeea740eade2c670e62ae48c221cb3ff079
-  languageName: node
-  linkType: hard
-
 "@babel/cli@npm:^7.4.5":
   version: 7.8.4
   resolution: "@babel/cli@npm:7.8.4"
@@ -2960,16 +2675,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"apollo-datasource@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "apollo-datasource@npm:0.4.0"
-  dependencies:
-    apollo-server-caching: "npm:0.4.0"
-    apollo-server-env: "npm:2.3.0"
-  checksum: 10c0/3e633e26848282ddc62aebd26adbf713a0dd1f56155b8af80a9843696488d049a65ef0525ff2bfa639b3eb2c6025fa6088944a9d9e738f46a8d90eefc5498b3f
-  languageName: node
-  linkType: hard
-
 "apollo-datasource@npm:^0.6.4":
   version: 0.6.4
   resolution: "apollo-datasource@npm:0.6.4"
@@ -3121,7 +2826,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"apollo-server-caching@npm:0.4.0, apollo-server-caching@npm:^0.4.0":
+"apollo-server-caching@npm:^0.4.0":
   version: 0.4.0
   resolution: "apollo-server-caching@npm:0.4.0"
   dependencies:
@@ -3232,16 +2937,6 @@ __metadata:
     node-fetch: "npm:^2.1.2"
     util.promisify: "npm:^1.0.0"
   checksum: 10c0/f0eca98a25bd2f5739d7f705ad3280973de498cd1ae2b110c2f84958d2fb060f849a3f98936ae8afc7ee3a6a2ee28e0798d9539af29dcc4139a382facba5b053
-  languageName: node
-  linkType: hard
-
-"apollo-server-env@npm:2.3.0":
-  version: 2.3.0
-  resolution: "apollo-server-env@npm:2.3.0"
-  dependencies:
-    node-fetch: "npm:^2.1.2"
-    util.promisify: "npm:^1.0.0"
-  checksum: 10c0/43454fd4a69d7a56978f87b085237ea8db4b631aaba2555afc561f73438009d36064843b7a37040274bdee3dba0f1165481c8c1f3dcfefcfe1aa966a1d828712
   languageName: node
   linkType: hard
 
@@ -3461,37 +3156,48 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apollos-church-api@workspace:."
   dependencies:
+    "@apollo/client": "npm:3.3.20"
     "@apollo/rover": "npm:^0.37.0"
-    "@apollosproject/apollo-server-env-mock": "npm:^2.29.3"
-    "@apollosproject/babel-preset-apollos": "npm:^2.29.3"
-    "@apollosproject/bugsnag": "npm:^2.13.1"
-    "@apollosproject/config": "npm:^2.30.0"
-    "@apollosproject/data-connector-algolia-search": "npm:^2.30.0"
-    "@apollosproject/data-connector-analytics": "npm:^2.30.0"
-    "@apollosproject/data-connector-bible": "npm:^2.30.0"
-    "@apollosproject/data-connector-church-online": "npm:^2.30.0"
-    "@apollosproject/data-connector-cloudinary": "npm:^2.30.0"
-    "@apollosproject/data-connector-onesignal": "npm:^2.30.0"
-    "@apollosproject/data-connector-passes": "npm:^2.30.0"
-    "@apollosproject/data-connector-postgres": "npm:^2.30.0"
-    "@apollosproject/data-connector-redis-cache": "npm:^2.30.0"
-    "@apollosproject/data-connector-rock": "npm:^2.32.2"
-    "@apollosproject/data-connector-twilio": "npm:^2.30.0"
-    "@apollosproject/data-schema": "npm:^2.32.2"
-    "@apollosproject/eslint-config": "npm:^2.29.3"
-    "@apollosproject/rock-apollo-data-source": "npm:^2.30.0"
-    "@apollosproject/server-core": "npm:^2.30.0"
     "@babel/cli": "npm:^7.4.5"
     "@babel/core": "npm:^7.4.5"
     "@babel/node": "npm:^7.7.4"
+    "@babel/plugin-proposal-class-properties": "npm:7.4.0"
+    "@babel/plugin-proposal-decorators": "npm:7.4.0"
+    "@babel/plugin-proposal-do-expressions": "npm:7.2.0"
+    "@babel/plugin-proposal-export-default-from": "npm:7.2.0"
+    "@babel/plugin-proposal-export-namespace-from": "npm:7.2.0"
+    "@babel/plugin-proposal-function-bind": "npm:7.2.0"
+    "@babel/plugin-proposal-function-sent": "npm:7.2.0"
+    "@babel/plugin-proposal-json-strings": "npm:7.2.0"
+    "@babel/plugin-proposal-logical-assignment-operators": "npm:7.2.0"
+    "@babel/plugin-proposal-nullish-coalescing-operator": "npm:7.2.0"
+    "@babel/plugin-proposal-numeric-separator": "npm:7.2.0"
+    "@babel/plugin-proposal-optional-chaining": "npm:7.2.0"
+    "@babel/plugin-proposal-pipeline-operator": "npm:7.2.0"
+    "@babel/plugin-proposal-throw-expressions": "npm:7.2.0"
+    "@babel/plugin-syntax-dynamic-import": "npm:7.2.0"
+    "@babel/plugin-syntax-import-meta": "npm:7.2.0"
+    "@babel/plugin-transform-runtime": "npm:7.4.0"
+    "@babel/preset-env": "npm:7.4.2"
+    "@bugsnag/js": "npm:7.2.1"
     "@graphql-tools/schema": "npm:^10.0.0"
+    algoliasearch: "npm:^3.34.0"
+    analytics-node: "npm:^3.4.0-beta.1"
+    apollo-datasource: "npm:^0.2.0"
+    apollo-datasource-rest: "npm:^0.6.4"
     apollo-server: "npm:^2.24.1"
+    apollo-server-caching: "npm:^0.4.0"
+    apollo-server-env: "npm:^2.3.0"
     apollo-server-express: "npm:2.14.2"
+    awesome-phonenumber: "npm:^2.4.2"
     babel-eslint: "npm:^10.0.3"
     babel-plugin-module-resolver: "npm:^3.2.0"
+    bull: "npm:^3.11.0"
+    bull-board: "npm:^0.1.1"
     cloudinary: "npm:^1.25.1"
     color: "npm:3.0.0"
     cors: "npm:^2.8.5"
+    datauri: "npm:^1.1.0"
     dotenv: "npm:6.0.0"
     eslint: "npm:^5.16.0"
     eslint-config-airbnb-base: "npm:^14.0.0"
@@ -3502,12 +3208,34 @@ __metadata:
     eslint-plugin-jest: "npm:^21.15.2"
     eslint-plugin-prettier: "npm:^2.6.0"
     express: "npm:^4.17.0"
+    express-basic-auth: "npm:^1.2.0"
+    form-data: "npm:^4.0.0"
     graphql: "npm:14.6.0"
+    graphql-parse-resolve-info: "npm:^4.4.5"
+    graphql-upload: "npm:^12.0.0"
+    hyphenation.en-us: "npm:^0.2.1"
+    hypher: "npm:^0.2.5"
+    ioredis: "npm:4.14.1"
+    jest: "npm:^25.1.0"
+    js-yaml: "npm:^3.12.0"
+    jsonwebtoken: "npm:^8.5.1"
+    lodash: "npm:^4.17.11"
+    moment: "npm:^2.22.2"
+    moment-timezone: "npm:^0.5.23"
+    natural: "npm:^0.6.2"
     nodemon: "npm:1.18.7"
+    passkit-generator: "npm:1.5.9"
+    pg: "npm:^8.5.1"
+    pg-hstore: "npm:^2.3.3"
     prettier: "npm:1.12.1"
+    qrcode: "npm:^1.3.3"
     randomcolor: "npm:0.5.3"
     sanitize-html: "npm:^2.4.0"
+    sequelize: "npm:^6.3.5"
+    twilio: "npm:^3.28.0"
     umzug: "npm:^3.0.0-beta.15"
+    universal-analytics: "npm:^0.4.20"
+    with-query: "npm:^1.1.2"
     yalc: "npm:^1.0.0-pre.47"
   languageName: unknown
   linkType: soft
@@ -3875,7 +3603,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-module-resolver@npm:^3.1.1, babel-plugin-module-resolver@npm:^3.2.0":
+"babel-plugin-module-resolver@npm:^3.2.0":
   version: 3.2.0
   resolution: "babel-plugin-module-resolver@npm:3.2.0"
   dependencies:
@@ -4547,16 +4275,6 @@ __metadata:
   peerDependencies:
     lodash: ">=4.0"
   checksum: 10c0/446023c09918dec09779bb77c242ccd5f7fbcfb34c5695828b68e7eb715b7d1981f9efbd137c3e3e178493be1cab8d0e0a86d32e2ee7cc7863c316f7ff417f55
-  languageName: node
-  linkType: hard
-
-"cloudinary@npm:1.14.0":
-  version: 1.14.0
-  resolution: "cloudinary@npm:1.14.0"
-  dependencies:
-    lodash: "npm:^4.17.11"
-    q: "npm:^1.5.1"
-  checksum: 10c0/f79223b89bbc848b0e7b5575a1acbe405838a62b561bd1732f5b5530b7abb3e49413e9b269f11a02ee6b19b71e9414dcc4e592d8af2c9a67d5ce288b514b667d
   languageName: node
   linkType: hard
 
@@ -11373,21 +11091,6 @@ __metadata:
   bin:
     sane: ./src/cli.js
   checksum: 10c0/7d0991ecaa10b02c6d0339a6f7e31db776971f3b659a351916dcc7ce3464671e72b54d80bcce118e39d4343e1e56c699fe35f6cb89fbd88b07095b72841cbfb0
-  languageName: node
-  linkType: hard
-
-"sanitize-html@npm:^2.3.2":
-  version: 2.3.3
-  resolution: "sanitize-html@npm:2.3.3"
-  dependencies:
-    deepmerge: "npm:^4.2.2"
-    escape-string-regexp: "npm:^4.0.0"
-    htmlparser2: "npm:^6.0.0"
-    is-plain-object: "npm:^5.0.0"
-    klona: "npm:^2.0.3"
-    parse-srcset: "npm:^1.0.2"
-    postcss: "npm:^8.0.2"
-  checksum: 10c0/61413351b0ccd167d37735e07a05ae8cf314fe184dfb7c3090668e4667d0b419ce0930b684c203085d5e1cdc2e56c212d59bee637612b6b50cd8a3c8589b49ce
   languageName: node
   linkType: hard
 

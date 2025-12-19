@@ -1,0 +1,31 @@
+import moment from 'moment-timezone';
+import { createGlobalId } from 'apollos/server-core';
+import ApollosConfig from 'apollos/config';
+import { enforceCurrentUser } from '../utils';
+
+export default {
+  Mutation: {
+    updateProfileField: (root, { input: { field, value } }, { dataSources }) =>
+      dataSources.Person.updateProfile([{ field, value }]),
+    updateProfileFields: (root, { input }, { dataSources }) =>
+      dataSources.Person.updateProfile(input),
+    uploadProfileImage: async (root, { file, size }, { dataSources }) =>
+      dataSources.Person.uploadProfileImage(file, size),
+  },
+  Person: {
+    id: ({ id }, args, context, { parentType }) =>
+      createGlobalId(id, parentType.name),
+    photo: async ({ photo }, args, { dataSources: { BinaryFiles } }) => ({
+      uri: await BinaryFiles.findOrReturnImageUrl(photo), // protect against passing null photo
+    }),
+    birthDate: enforceCurrentUser(({ birthDate }) =>
+      birthDate
+        ? moment.tz(birthDate, ApollosConfig.ROCK.TIMEZONE).toJSON()
+        : null
+    ),
+    gender: enforceCurrentUser(({ gender }, args, { dataSources }) =>
+      dataSources.Person.mapGender({ gender })
+    ),
+    email: enforceCurrentUser(({ email }) => email),
+  },
+};

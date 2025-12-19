@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { Person } from '@apollosproject/data-connector-rock';
+import { Person } from 'apollos/data-connector-rock';
 
 const schema = gql`
   ${Person.schema}

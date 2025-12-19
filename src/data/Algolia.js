@@ -1,9 +1,9 @@
-import * as baseSearch from '@apollosproject/data-connector-algolia-search';
+import * as baseSearch from 'apollos/data-connector-algolia-search';
 import {
   createCursor,
   createGlobalId,
   parseCursor
-} from '@apollosproject/server-core';
+} from 'apollos/server-core';
 import { graphql } from 'graphql';
 import Redis from 'ioredis';
 

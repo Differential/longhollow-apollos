@@ -2,7 +2,7 @@ import {
   dataSource,
   schema,
   resolver as baseResolver,
-} from '@apollosproject/data-connector-passes';
+} from 'apollos/data-connector-passes';
 
 const resolver = {
   ...baseResolver,

@@ -1,5 +1,8 @@
 {
-  "presets": ["@apollosproject/apollos"],
+  "presets": ["./src/apollos/babel-preset-apollos"],
+  "plugins": [
+    ["module-resolver", { "alias": { "apollos": "./src/apollos" } }]
+  ],
   "env": {
     "development": {
       "sourceMaps": "inline"

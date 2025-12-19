@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { Feature } from '@apollosproject/data-connector-rock';
+import { Feature } from 'apollos/data-connector-rock';
 
 const { dataSource, resolver: baseResolver } = Feature;
 const schema = gql`

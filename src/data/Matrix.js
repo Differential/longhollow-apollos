@@ -1,4 +1,4 @@
-import RockApolloDataSource from '@apollosproject/rock-apollo-data-source';
+import RockApolloDataSource from 'apollos/rock-apollo-data-source';
 
 class dataSource extends RockApolloDataSource {
   expanded = true;
