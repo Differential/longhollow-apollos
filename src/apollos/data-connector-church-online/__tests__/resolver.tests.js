@@ -1,14 +1,14 @@
 import { fetch } from 'apollo-server-env';
 
 import { graphql } from 'graphql';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
-import ApollosConfig from '#apollos/config/index.js';
+import { createTestHelpers } from '../../server-core/testUtils/index.js';
+import ApollosConfig from '../../config/index.js';
 import {
   contentItemSchema,
   themeSchema,
   scriptureSchema,
   contentChannelSchema,
-} from '#apollos/data-schema/index.js';
+} from '../../data-schema/index.js';
 import * as LiveStream from '../index.js';
 
 ApollosConfig.loadJs({

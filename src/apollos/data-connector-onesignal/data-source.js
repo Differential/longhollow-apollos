@@ -1,5 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 
 const { ONE_SIGNAL } = ApollosConfig;
 

@@ -3,8 +3,8 @@ import moment from 'moment-timezone';
 import {
   createGlobalId,
   withEdgePagination,
-} from '#apollos/server-core/index.js';
-import ApollosConfig from '#apollos/config/index.js';
+} from '../../server-core/index.js';
+import ApollosConfig from '../../config/index.js';
 const { get } = lodash;
 
 const { ROCK, ROCK_MAPPINGS } = ApollosConfig;

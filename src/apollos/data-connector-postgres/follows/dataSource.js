@@ -1,7 +1,7 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../config/index.js';
 import { Op } from 'sequelize';
-import { parseGlobalId } from '#apollos/server-core/node/index.js';
-import { generateAppLink } from '#apollos/server-core/index.js';
+import { parseGlobalId } from '../../server-core/node/index.js';
+import { generateAppLink } from '../../server-core/index.js';
 import lodash from 'lodash';
 import { PostgresDataSource, assertUuid } from '../postgres/index.js';
 import { FollowState } from './model.js';

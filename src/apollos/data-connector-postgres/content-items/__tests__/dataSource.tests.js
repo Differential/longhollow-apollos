@@ -1,5 +1,5 @@
 /* eslint-disable import/named, new-cap */
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import lodash from 'lodash';
 import { sequelize } from '../../postgres/index.js';
 import {

@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import { AuthenticationError, UserInputError } from 'apollo-server';
-import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import PhoneNumber from 'awesome-phonenumber';
 import { fieldsAsObject } from '../utils.js';
 

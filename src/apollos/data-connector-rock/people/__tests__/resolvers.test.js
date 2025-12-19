@@ -1,15 +1,15 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
 import { AuthenticationError } from 'apollo-server';
-import ApollosConfig from '#apollos/config/index.js';
-import { createGlobalId } from '#apollos/server-core/index.js';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import ApollosConfig from '../../../config/index.js';
+import { createGlobalId } from '../../../server-core/index.js';
+import { createTestHelpers } from '../../../server-core/testUtils/index.js';
 import {
   peopleSchema,
   mediaSchema,
   authSchema,
   deviceSchema,
-} from '#apollos/data-schema/index.js';
+} from '../../../data-schema/index.js';
 import { generateToken, registerToken } from '../../auth/index.js';
 // we import the root-level schema and resolver so we test the entire integration:
 import * as Person from '../index.js';

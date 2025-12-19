@@ -1,5 +1,5 @@
 import { Pass } from 'passkit-generator';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 
 class ApollosPassGenerator extends Pass {
   constructor(options) {

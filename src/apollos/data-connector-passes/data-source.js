@@ -3,7 +3,7 @@ import util from 'util';
 import { DataSource } from 'apollo-datasource';
 import { UserInputError } from 'apollo-server';
 import datauri from 'datauri';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 
 const readFile = util.promisify(fs.readFile);
 

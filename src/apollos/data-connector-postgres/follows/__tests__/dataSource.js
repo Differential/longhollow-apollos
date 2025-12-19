@@ -1,5 +1,5 @@
 /* eslint-disable import/named */
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import { sequelize } from '../../postgres/index.js';
 import FollowDataSource from '../dataSource.js';
 import PeopleDataSource from '../../people/dataSource.js';

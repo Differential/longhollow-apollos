@@ -1,8 +1,8 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from '#apollos/config/index.js';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
-import { peopleSchema } from '#apollos/data-schema/index.js';
+import ApollosConfig from '../../../config/index.js';
+import { createTestHelpers } from '../../../server-core/testUtils/index.js';
+import { peopleSchema } from '../../../data-schema/index.js';
 
 import * as AuthSms from '../index.js';
 import * as Auth from '../../auth/index.js';

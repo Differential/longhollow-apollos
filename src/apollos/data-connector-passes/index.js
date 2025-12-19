@@ -1,11 +1,11 @@
 // import { Pass } from 'passkit-generator';
-// import ApollosConfig from '#apollos/config/index.js';
+// import ApollosConfig from '../config/index.js';
 import PassGenerator from './PassGenerator.js';
 import resolver from './resolver.js';
 import dataSource from './data-source.js';
 
 export { resolver, dataSource };
-export { passSchema as schema } from '#apollos/data-schema/index.js';
+export { passSchema as schema } from '../data-schema/index.js';
 
 const serverMiddleware = ({ app, getContext }) => {
   app.get('/pass/:template', async (req, res) => {

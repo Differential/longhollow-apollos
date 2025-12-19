@@ -1,6 +1,6 @@
 import { AuthenticationError, UserInputError } from 'apollo-server';
 import lodash from 'lodash';
-import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import moment from 'moment';
 import { fieldsAsObject } from '../utils.js';
 const { camelCase, mapKeys } = lodash;

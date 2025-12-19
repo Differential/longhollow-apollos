@@ -1,5 +1,5 @@
 /* eslint-disable import/named */
-import { createGlobalId } from '#apollos/server-core/index.js';
+import { createGlobalId } from '../../../server-core/index.js';
 import { sequelize } from '../../postgres/index.js';
 import CommentDataSource from '../../comments/dataSource.js';
 import UserLike from '../dataSource.js';

@@ -1,7 +1,7 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from '#apollos/config/index.js';
-import { createGlobalId } from '#apollos/server-core/index.js';
+import ApollosConfig from '../../../config/index.js';
+import { createGlobalId } from '../../../server-core/index.js';
 import { AuthenticationError } from 'apollo-server';
 import lodash from 'lodash';
 
@@ -10,8 +10,8 @@ import {
   contentChannelSchema,
   themeSchema,
   scriptureSchema,
-} from '#apollos/data-schema/index.js';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+} from '../../../data-schema/index.js';
+import { createTestHelpers } from '../../../server-core/testUtils/index.js';
 import { generateToken } from '../../auth/index.js';
 import * as Followings from '../index.js';
 import * as RockConstants from '../../rock-constants/index.js';

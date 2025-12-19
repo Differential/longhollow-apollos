@@ -1,6 +1,6 @@
 import lodash from 'lodash';
 
-import { ActionAlgorithm } from '#apollos/data-connector-rock/index.js';
+import { ActionAlgorithm } from '../apollos/data-connector-rock/index.js';
 const { get } = lodash;
 
 const { resolver, schema } = ActionAlgorithm;

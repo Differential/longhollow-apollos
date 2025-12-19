@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import './pgEnum-fix.js';
 import { Sequelize, DataTypes } from 'sequelize';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../config/index.js';
 import connectJest from './test-connect.js';
 
 const sequelize =

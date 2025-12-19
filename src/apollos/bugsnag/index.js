@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this, no-unused-expressions, no-param-reassign */
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 import lodash from 'lodash';
 import Bugsnag from '@bugsnag/js';
 const { get, fromPairs } = lodash;

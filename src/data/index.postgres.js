@@ -6,16 +6,16 @@ import { gql } from 'apollo-server';
 import {
   createApolloServerConfig,
   Interfaces,
-} from '#apollos/server-core/index.js';
+} from '../apollos/server-core/index.js';
 
-import * as Analytics from '#apollos/data-connector-analytics/index.js';
-import * as Scripture from '#apollos/data-connector-bible/index.js';
-import * as LiveStream from '#apollos/data-connector-church-online/index.js';
-import * as Cloudinary from '#apollos/data-connector-cloudinary/index.js';
-import * as Search from '#apollos/data-connector-algolia-search/index.js';
-import * as Pass from '#apollos/data-connector-passes/index.js';
-import * as Cache from '#apollos/data-connector-redis-cache/index.js';
-import * as Sms from '#apollos/data-connector-twilio/index.js';
+import * as Analytics from '../apollos/data-connector-analytics/index.js';
+import * as Scripture from '../apollos/data-connector-bible/index.js';
+import * as LiveStream from '../apollos/data-connector-church-online/index.js';
+import * as Cloudinary from '../apollos/data-connector-cloudinary/index.js';
+import * as Search from '../apollos/data-connector-algolia-search/index.js';
+import * as Pass from '../apollos/data-connector-passes/index.js';
+import * as Cache from '../apollos/data-connector-redis-cache/index.js';
+import * as Sms from '../apollos/data-connector-twilio/index.js';
 import {
   Followings,
   Interactions,
@@ -36,7 +36,7 @@ import {
   ContentChannel,
   Feature as RockFeature,
   ActionAlgorithm as RockActionAlgorithm,
-} from '#apollos/data-connector-rock/index.js';
+} from '../apollos/data-connector-rock/index.js';
 
 import {
   Comment,
@@ -54,7 +54,7 @@ import {
   ContentItemsConnection,
   ContentItemCategory,
   ActionAlgorithm as PostgresActionAlgorithm,
-} from '#apollos/data-connector-postgres/index.js';
+} from '../apollos/data-connector-postgres/index.js';
 
 import * as Theme from './theme/index.js';
 

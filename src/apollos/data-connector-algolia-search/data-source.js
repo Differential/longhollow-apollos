@@ -1,12 +1,12 @@
 /* eslint-disable no-await-in-loop */
 import { graphql } from 'graphql';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 import algoliasearch from 'algoliasearch';
 import {
   parseCursor,
   createCursor,
   createGlobalId,
-} from '#apollos/server-core/index.js';
+} from '../server-core/index.js';
 
 let CLIENT;
 let INDEX;

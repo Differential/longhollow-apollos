@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import { advanceTo } from 'jest-date-mock';
 import Prayer from '../data-source.js';
 import { buildGetMock } from '../../test-utils.js';

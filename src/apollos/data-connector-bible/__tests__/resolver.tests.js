@@ -1,14 +1,14 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
-import { createGlobalId } from '#apollos/server-core/index.js';
-import ApollosConfig from '#apollos/config/index.js';
+import { createTestHelpers } from '../../server-core/testUtils/index.js';
+import { createGlobalId } from '../../server-core/index.js';
+import ApollosConfig from '../../config/index.js';
 import {
   themeSchema,
   contentChannelSchema,
   contentItemSchema,
   featuresSchema,
-} from '#apollos/data-schema/index.js';
+} from '../../data-schema/index.js';
 import * as Scripture from '../index.js';
 
 ApollosConfig.loadJs({

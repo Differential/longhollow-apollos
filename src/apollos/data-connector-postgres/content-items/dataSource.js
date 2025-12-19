@@ -5,9 +5,9 @@ import {
   generateAppLink,
   createCursor,
   parseCursor,
-} from '#apollos/server-core/index.js';
+} from '../../server-core/index.js';
 import { Sequelize, Op } from 'sequelize';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../config/index.js';
 import { PostgresDataSource } from '../postgres/index.js';
 
 class ContentItemDataSource extends PostgresDataSource {

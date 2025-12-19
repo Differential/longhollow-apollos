@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import { buildGetMock } from '../../test-utils.js';
 import { dataSource as Persona } from '../index.js';
 

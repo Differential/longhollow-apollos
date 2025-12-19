@@ -1,10 +1,10 @@
 import { fetch } from 'apollo-server-env';
 import { gql } from '@apollo/client';
 import { graphql } from 'graphql';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
-import ApollosConfig from '#apollos/config/index.js';
-import { createCursor } from '#apollos/server-core/index.js';
-// import { searchSchema } from '#apollos/data-schema/index.js';
+import { createTestHelpers } from '../../server-core/testUtils/index.js';
+import ApollosConfig from '../../config/index.js';
+import { createCursor } from '../../server-core/index.js';
+// import { searchSchema } from '../../data-schema/index.js';
 import * as Search from '../index.js';
 
 ApollosConfig.loadJs({

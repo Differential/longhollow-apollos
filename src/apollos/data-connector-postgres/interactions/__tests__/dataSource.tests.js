@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import { sequelize } from '../../postgres/index.js';
 import * as People from '../../people/index.js';
 import * as Campuses from '../../campus/index.js';

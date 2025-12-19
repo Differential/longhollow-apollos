@@ -1,4 +1,4 @@
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import { createTestHelpers } from '../../server-core/testUtils/index.js';
 import { fetch } from 'apollo-server-env';
 import { Auth, Person } from '../index.js';
 

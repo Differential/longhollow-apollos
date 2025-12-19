@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 import { InMemoryLRUCache } from 'apollo-server-caching';
 import { makeExecutableSchema } from 'apollo-server';
 import bullBoard from 'bull-board';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 import basicAuth from 'express-basic-auth';
 
 import * as Node from './node/index.js';

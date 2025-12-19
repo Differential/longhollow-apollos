@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from './apollos/config/index.js';
 
 dotenv.config();
 

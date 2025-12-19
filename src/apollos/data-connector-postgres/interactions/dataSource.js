@@ -1,5 +1,5 @@
-import { parseGlobalId } from '#apollos/server-core/index.js';
-import ApollosConfig from '#apollos/config/index.js';
+import { parseGlobalId } from '../../server-core/index.js';
+import ApollosConfig from '../../config/index.js';
 import lodash from 'lodash';
 import { PostgresDataSource } from '../postgres/index.js';
 const { get } = lodash;

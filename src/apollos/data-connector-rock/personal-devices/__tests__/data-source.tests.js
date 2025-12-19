@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import { AuthenticationError } from 'apollo-server';
 import DataSource from '../data-source.js';
 import { buildGetMock } from '../../test-utils.js';

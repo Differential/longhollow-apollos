@@ -1,5 +1,5 @@
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import { dataSource as RockConstants } from '../index.js';
 import { buildGetMock } from '../../test-utils.js';
 

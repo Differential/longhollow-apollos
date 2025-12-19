@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 import Pass from './PassGenerator.js';
 
 describe('PassGenerator', () => {

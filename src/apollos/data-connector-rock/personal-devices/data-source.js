@@ -1,4 +1,4 @@
-import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 
 export default class PersonalDevices extends RockApolloDataSource {
   resource = 'PersonalDevices';

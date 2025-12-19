@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../../config/index.js';
 import { dataSource as BinaryFilesDataSource } from '../index.js';
 
 ApollosConfig.loadJs({

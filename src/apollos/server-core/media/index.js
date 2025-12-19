@@ -1,4 +1,4 @@
-export { mediaSchema as schema } from '#apollos/data-schema/index.js';
+export { mediaSchema as schema } from '../../data-schema/index.js';
 
 const addTypenameToSources = (__typename) => ({ sources }) =>
   sources.map((s) => ({ __typename, ...s }));

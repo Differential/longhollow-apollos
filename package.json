@@ -4,9 +4,6 @@
   "private": true,
   "type": "module",
   "main": "src/index.js",
-  "imports": {
-    "#apollos/*": "./src/apollos/*"
-  },
   "scripts": {
     "setup": "./scripts/init.sh",
     "start": "yarn start:prod",

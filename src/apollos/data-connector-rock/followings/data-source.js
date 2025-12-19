@@ -1,6 +1,6 @@
 import { AuthenticationError } from 'apollo-server';
-import { parseGlobalId } from '#apollos/server-core/index.js';
-import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import { parseGlobalId } from '../../server-core/index.js';
+import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 
 export default class Followings extends RockApolloDataSource {
   resource = 'Followings';

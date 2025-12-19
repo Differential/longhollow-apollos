@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
-import { createGlobalId } from '#apollos/server-core/index.js';
-import ApollosConfig from '#apollos/config/index.js';
+import { createGlobalId } from '../../server-core/index.js';
+import ApollosConfig from '../../config/index.js';
 import { enforceCurrentUser } from '../utils.js';
 
 export default {

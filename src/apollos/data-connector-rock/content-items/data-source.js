@@ -7,13 +7,13 @@ import sanitizeHtml from 'sanitize-html';
 
 import RockApolloDataSource, {
   parseKeyValueAttribute,
-} from '#apollos/rock-apollo-data-source/index.js';
-import ApollosConfig from '#apollos/config/index.js';
+} from '../../rock-apollo-data-source/index.js';
+import ApollosConfig from '../../config/index.js';
 import {
   createGlobalId,
   parseGlobalId,
   generateAppLink,
-} from '#apollos/server-core/index.js';
+} from '../../server-core/index.js';
 
 import { createImageUrlFromGuid } from '../utils.js';
 const { get, uniq } = lodash;

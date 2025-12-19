@@ -1,4 +1,4 @@
-import { createGlobalId } from '#apollos/server-core/index.js';
+import { createGlobalId } from '../index.js';
 import { gql } from '@apollo/client';
 
 const schema = gql`

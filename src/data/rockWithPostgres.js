@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export, max-classes-per-file */
-import { parseGlobalId } from '#apollos/server-core/index.js';
-import { Person as postgresPerson } from '#apollos/data-connector-postgres/index.js';
-import * as OneSignalOriginal from '#apollos/data-connector-onesignal/index.js';
+import { parseGlobalId } from '../apollos/server-core/index.js';
+import { Person as postgresPerson } from '../apollos/data-connector-postgres/index.js';
+import * as OneSignalOriginal from '../apollos/data-connector-onesignal/index.js';
 
 class personDataSource extends postgresPerson.dataSource {
   async create(attributes) {

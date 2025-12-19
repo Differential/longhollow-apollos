@@ -1,7 +1,7 @@
 import lodash from 'lodash';
-import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
-import { parseGlobalId } from '#apollos/server-core/index.js';
-import ApollosConfig from '#apollos/config/index.js';
+import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
+import { parseGlobalId } from '../../server-core/index.js';
+import ApollosConfig from '../../config/index.js';
 import { latLonDistance } from '../utils.js';
 const { get } = lodash;
 

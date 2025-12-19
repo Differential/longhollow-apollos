@@ -1,12 +1,12 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
-import { authSchema } from '#apollos/data-schema/index.js';
-import { Person } from '#apollos/data-connector-rock/index.js';
-import { createGlobalId } from '#apollos/server-core/index.js';
+import { createTestHelpers } from '../server-core/testUtils/index.js';
+import { authSchema } from '../data-schema/index.js';
+import { Person } from '../data-connector-rock/index.js';
+import { createGlobalId } from '../server-core/index.js';
 import { gql } from '@apollo/client';
 
-import { generateToken } from '#apollos/data-connector-rock/auth/index.js';
+import { generateToken } from '../data-connector-rock/auth/index.js';
 import * as Pass from './index.js';
 
 class AuthDataSourceMock {

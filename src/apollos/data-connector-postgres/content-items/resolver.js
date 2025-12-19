@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import lodash from 'lodash';
-import { withEdgePagination } from '#apollos/server-core/index.js';
+import { withEdgePagination } from '../../server-core/index.js';
 const { get } = lodash;
 
 export const defaultContentItemResolvers = {

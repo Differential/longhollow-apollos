@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import { AuthenticationError, UserInputError } from 'apollo-server';
 import { fetch, Request } from 'apollo-server-env';
 import moment from 'moment';
-import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import { fieldsAsObject } from '../utils.js';
 
 import { generateToken } from './token.js';

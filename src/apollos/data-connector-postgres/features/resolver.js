@@ -1,5 +1,5 @@
 import lodash from 'lodash';
-import { createGlobalId } from '#apollos/server-core/index.js';
+import { createGlobalId } from '../../server-core/index.js';
 const { get } = lodash;
 
 const id = (type) => ({ apollosId, id: rootId }) =>

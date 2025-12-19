@@ -1,4 +1,4 @@
-import RockApolloDataSource from '#apollos/rock-apollo-data-source/index.js';
+import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import { AuthenticationError } from 'apollo-server';
 
 export default class Template extends RockApolloDataSource {

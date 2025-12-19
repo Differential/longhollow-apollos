@@ -1,4 +1,4 @@
-import { parseGlobalId } from '#apollos/server-core/index.js';
+import { parseGlobalId } from '../../server-core/index.js';
 
 export default {
   Mutation: {

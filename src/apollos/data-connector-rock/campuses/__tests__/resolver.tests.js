@@ -1,9 +1,9 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
-import ApollosConfig from '#apollos/config/index.js';
-import { createGlobalId } from '#apollos/server-core/index.js';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
-import { campusSchema, authSchema } from '#apollos/data-schema/index.js';
+import ApollosConfig from '../../../config/index.js';
+import { createGlobalId } from '../../../server-core/index.js';
+import { createTestHelpers } from '../../../server-core/testUtils/index.js';
+import { campusSchema, authSchema } from '../../../data-schema/index.js';
 
 // we import the root-level schema and resolver so we test the entire integration:
 import * as Campus from '../index.js';

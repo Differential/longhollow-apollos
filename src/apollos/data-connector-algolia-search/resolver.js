@@ -1,4 +1,4 @@
-import { withEdgePagination } from '#apollos/server-core/index.js';
+import { withEdgePagination } from '../server-core/index.js';
 
 const resolver = {
   Query: {

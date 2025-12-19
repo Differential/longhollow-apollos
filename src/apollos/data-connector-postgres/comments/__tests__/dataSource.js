@@ -1,5 +1,5 @@
 /* eslint-disable new-cap, import/named */
-import { createGlobalId } from '#apollos/server-core/index.js';
+import { createGlobalId } from '../../../server-core/index.js';
 import lodash from 'lodash';
 import { sequelize } from '../../postgres/index.js';
 import { setupPostgresTestEnv } from '../../utils/testUtils.js';

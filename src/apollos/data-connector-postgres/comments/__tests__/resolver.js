@@ -1,5 +1,5 @@
 import { graphql } from 'graphql';
-import { createTestHelpers } from '#apollos/server-core/testUtils/index.js';
+import { createTestHelpers } from '../../../server-core/testUtils/index.js';
 
 import {
   commentSchema,
@@ -10,7 +10,7 @@ import {
   contentChannelSchema,
   followingsSchema,
   themeSchema,
-} from '#apollos/data-schema/index.js';
+} from '../../../data-schema/index.js';
 import * as Comment from '../index.js';
 import * as Person from '../../people/index.js';
 import * as Follow from '../../follows/index.js';

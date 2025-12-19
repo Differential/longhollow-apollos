@@ -1,4 +1,4 @@
-import { Interactions } from '#apollos/data-connector-rock/index.js';
+import { Interactions } from '../../apollos/data-connector-rock/index.js';
 import gql from 'graphql-tag';
 
 export class dataSource extends Interactions.dataSource {

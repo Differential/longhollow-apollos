@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../../config/index.js';
 import { Op } from 'sequelize';
 import lodash from 'lodash';
 import { PostgresDataSource } from '../postgres/index.js';

@@ -1,7 +1,7 @@
 import { AuthenticationError } from 'apollo-server';
 import lodash from 'lodash';
 import Sequelize, { Op } from 'sequelize';
-import { parseCursor, createCursor } from '#apollos/server-core/index.js';
+import { parseCursor, createCursor } from '../../server-core/index.js';
 
 import { PostgresDataSource } from '../postgres/index.js';
 const { camelCase } = lodash;

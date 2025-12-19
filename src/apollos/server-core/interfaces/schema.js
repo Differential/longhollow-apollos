@@ -1,3 +1,3 @@
-import { interfacesSchema } from '#apollos/data-schema/index.js';
+import { interfacesSchema } from '../../data-schema/index.js';
 
 export default interfacesSchema;

@@ -1,4 +1,4 @@
-import { FeatureFeed } from '#apollos/data-connector-rock/index.js';
+import { FeatureFeed } from '../../apollos/data-connector-rock/index.js';
 
 const { resolver: coreResolver, dataSource } = FeatureFeed;
 

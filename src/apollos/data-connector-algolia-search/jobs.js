@@ -1,4 +1,4 @@
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 import lodash from 'lodash';
 import moment from 'moment-timezone';
 import Redis from 'ioredis';

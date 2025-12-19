@@ -1,6 +1,6 @@
 import { AuthenticationError } from 'apollo-server';
 import { DataSource } from 'apollo-datasource';
-import ApollosConfig from '#apollos/config/index.js';
+import ApollosConfig from '../config/index.js';
 import GAInterface from './interfaces/ga.js';
 import SegmentInterface from './interfaces/segment.js';
 import RockInteractions from './interfaces/rock_interactions.js';
