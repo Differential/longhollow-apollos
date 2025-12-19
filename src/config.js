@@ -31,30 +31,32 @@ ApollosConfig.loadJs({
 });
 
 // autodetect some settings
-(async () => {
-  if (!ApollosConfig.ROCK) return;
-  if (!ApollosConfig.ROCK.URL || !ApollosConfig.ROCK.API_TOKEN)
-    throw new Error('ROCK_URL and ROCK_TOKEN variables are required!');
+if (!process.env.APOLLOS_SKIP_CONFIG_AUTODETECT) {
+  (async () => {
+    if (!ApollosConfig.ROCK) return;
+    if (!ApollosConfig.ROCK.URL || !ApollosConfig.ROCK.API_TOKEN)
+      throw new Error('ROCK_URL and ROCK_TOKEN variables are required!');
 
-  let res;
+    let res;
 
-  // plugin
-  res = await fetch(
-    `${ApollosConfig.ROCK.URL}/api/RestControllers?$select=Name`,
-    { headers: { 'Authorization-Token': ApollosConfig.ROCK.API_TOKEN } }
-  );
-  const hasPlugin = (await res.json())
-    .map(({ Name }) => Name)
-    .includes('Apollos');
-  if (hasPlugin) logOutput('Apollos Rock plugin detected!');
-  ApollosConfig.loadJs({ ROCK: { USE_PLUGIN: hasPlugin } });
+    // plugin
+    res = await fetch(
+      `${ApollosConfig.ROCK.URL}/api/RestControllers?$select=Name`,
+      { headers: { 'Authorization-Token': ApollosConfig.ROCK.API_TOKEN } }
+    );
+    const hasPlugin = (await res.json())
+      .map(({ Name }) => Name)
+      .includes('Apollos');
+    if (hasPlugin) logOutput('Apollos Rock plugin detected!');
+    ApollosConfig.loadJs({ ROCK: { USE_PLUGIN: hasPlugin } });
 
-  // version
-  res = await fetch(
-    `${ApollosConfig.ROCK.URL}/api/Utility/GetRockSemanticVersionNumber`,
-    { headers: { 'Authorization-Token': ApollosConfig.ROCK.API_TOKEN } }
-  );
-  const version = (await res.text()).split('.');
-  logOutput(`Rock Version: ${version[1]}`);
-  ApollosConfig.loadJs({ ROCK: { VERSION: version[1] } });
-})();
+    // version
+    res = await fetch(
+      `${ApollosConfig.ROCK.URL}/api/Utility/GetRockSemanticVersionNumber`,
+      { headers: { 'Authorization-Token': ApollosConfig.ROCK.API_TOKEN } }
+    );
+    const version = (await res.text()).split('.');
+    logOutput(`Rock Version: ${version[1]}`);
+    ApollosConfig.loadJs({ ROCK: { VERSION: version[1] } });
+  })();
+}
