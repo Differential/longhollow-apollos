@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "./scripts/init.sh",
     "start": "yarn start:prod",
-    "start:dev": "NODE_ENV=development BABEL_ENV=development babel-node --watch ./src/index.js",
+    "dev": "NODE_ENV=development BABEL_ENV=development babel-node --watch ./src/index.js",
     "start:prod": "NODE_ENV=production node ./lib/index.js",
     "postinstall": "yarn build",
     "build": "NODE_ENV=production rm -rf ./lib && mkdir -p lib && babel ./src -d ./lib",
