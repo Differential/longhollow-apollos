@@ -1,7 +1,6 @@
 import dotenv from 'dotenv'; // eslint-disable-line
 
 dotenv.config();
-// import './apollos/data-connector-postgres/postgres/pgEnum-fix.js';
 import './config.js';
 import server from './server.js';
 import util from 'util';

@@ -55,10 +55,6 @@ import Cloudinary from './Cloudinary.js';
 // This module includes a Resolver that overides a resolver defined in `OneSignal`
 import * as OneSignalWithRock from './oneSignalWithRock.js';
 
-// This is to mock any postgres resolvers so we don't throw API errors for unresolved
-// typedefs
-import NoPostgres from './noPostgres.js';
-
 const data = {
   Interfaces,
   Followings,
@@ -94,7 +90,6 @@ const data = {
   Matrix,
   Person,
   BinaryFiles,
-  NoPostgres,
 };
 
 const {
