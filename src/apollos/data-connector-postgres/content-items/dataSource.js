@@ -9,6 +9,11 @@ import {
 import { Sequelize, Op } from 'sequelize';
 import ApollosConfig from '../../config/index.js';
 import { PostgresDataSource } from '../postgres/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 
 class ContentItemDataSource extends PostgresDataSource {
   modelName = 'contentItem';
@@ -162,7 +167,7 @@ class ContentItemDataSource extends PostgresDataSource {
 
   getFromCategoryIds = (ids = [], args = {}) => {
     if (ids.some((id) => typeof id === 'number')) {
-      console.warn(
+      logError(
         'You are passing rock ids IDS to ContentItem.getFromCategoryIds. This is supported, but we recommend using Postgres IDS in your config.yml long term'
       );
       return this.model.findAll({

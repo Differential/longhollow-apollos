@@ -1,6 +1,11 @@
 import { AuthenticationError } from 'apollo-server';
 import { parseGlobalId } from '../../server-core/index.js';
 import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
+
 
 export default class Followings extends RockApolloDataSource {
   resource = 'Followings';
@@ -78,7 +83,7 @@ export default class Followings extends RockApolloDataSource {
   }
 
   async getFollowingsCountByNodeId({ nodeId, originId }) {
-    console.log({ nodeId, originId });
+    logOutput({ nodeId, originId });
     const {
       dataSources: { RockConstants, Cache },
     } = this.context;

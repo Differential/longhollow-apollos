@@ -2,6 +2,11 @@ import lodash from 'lodash';
 import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import { createGlobalId } from '../../server-core/index.js';
 import ApollosConfig from '../../config/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { get } = lodash;
 
 export default class Feature extends RockApolloDataSource {
@@ -414,7 +419,7 @@ export default class Feature extends RockApolloDataSource {
 
   // deprecated
   getHomeFeedFeatures = () =>
-    console.warn(
+    logError(
       'getHomeFeedFeatures is deprecated, please use FeatureFeed.getFeed({type: "apollosConfig", args: {"section": "home"}})'
     ) || this.getFeatures(get(ApollosConfig, 'HOME_FEATURES', []));
 
@@ -432,7 +437,7 @@ export default class Feature extends RockApolloDataSource {
           case 'HorizontalCardList':
             return this.createHorizontalCardListFeature(finalConfig);
           case 'HeroListFeature':
-            console.warn(
+            logError(
               'Deprecated: Please use the name "HeroList" instead. You used "HeroListFeature"'
             );
             return this.createHeroListFeature(finalConfig);

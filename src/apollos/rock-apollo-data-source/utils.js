@@ -1,3 +1,7 @@
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
 /* eslint-disable import/prefer-default-export */
 
 export const parseKeyValueAttribute = (text = '') => {
@@ -37,7 +41,7 @@ export class RockLoggingExtension {
       .join('\n');
     if (calls && data) {
       // eslint-disable-next-line no-console
-      console.log(
+      logOutput(
         `While running query: ${Object.keys(data)[0]}
       Total Network Calls: ${totalNetworkCalls}
       ${callTable}

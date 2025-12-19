@@ -1,5 +1,10 @@
 import lodash from 'lodash';
 import { createGlobalId } from '../../server-core/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { get } = lodash;
 
 export default {
@@ -60,7 +65,7 @@ export default {
   },
   Query: {
     userFeedFeatures: async (root, args, { dataSources: { Feature } }) =>
-      console.warn('userFeedFeatures is deprecated. Use tabFeedFeatures.') ||
+      logError('userFeedFeatures is deprecated. Use tabFeedFeatures.') ||
       Feature.getHomeFeedFeatures(),
   },
   ActionListFeature: {

@@ -16,6 +16,11 @@ import {
 } from '../../server-core/index.js';
 
 import { createImageUrlFromGuid } from '../utils.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { get, uniq } = lodash;
 
 const { ROCK, ROCK_MAPPINGS } = ApollosConfig;
@@ -150,7 +155,7 @@ export default class ContentItem extends RockApolloDataSource {
           );
           break;
         default:
-          console.warn(`Received invalid feature key: ${key}`);
+          logError(`Received invalid feature key: ${key}`);
       }
     });
 
@@ -550,11 +555,11 @@ export default class ContentItem extends RockApolloDataSource {
   };
 
   byUserFeed = () =>
-    console.warn('ContentItem.byUserFeed is deprecated') ||
+    logError('ContentItem.byUserFeed is deprecated') ||
     this.byActive().orderBy('StartDateTime', 'desc').expand('ContentChannel');
 
   byActive = () =>
-    console.warn('ContentItem.byActive is deprecated') ||
+    logError('ContentItem.byActive is deprecated') ||
     this.request()
       .filterOneOf(
         this.activeChannelIds.map((id) => `ContentChannelId eq ${id}`)
@@ -563,7 +568,7 @@ export default class ContentItem extends RockApolloDataSource {
       .andFilter(this.LIVE_CONTENT());
 
   byDateAndActive = async ({ datetime }) =>
-    console.warn('ContentItem.byDateAndActive is deprecated') ||
+    logError('ContentItem.byDateAndActive is deprecated') ||
     this.request()
       .filterOneOf(
         this.activeChannelIds.map((id) => `ContentChannelId eq ${id}`)

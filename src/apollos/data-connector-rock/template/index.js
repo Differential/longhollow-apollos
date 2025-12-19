@@ -1,1 +1,4 @@
-export { default as dataSource } from './data-source.js';
+import dataSource from './data-source.js';
+
+export { dataSource };
+export default { dataSource };

@@ -19,3 +19,5 @@ export const setupPostgresTestEnv = async (models = []) => {
     })
   );
 };
+
+export default setupPostgresTestEnv;

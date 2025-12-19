@@ -2,6 +2,12 @@ import { parseGlobalId, createGlobalId } from '../../server-core/index.js';
 import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import ApollosConfig from '../../config/index.js';
 import lodash from 'lodash';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { flatten, get, chunk } = lodash;
 
 export default class Interactions extends RockApolloDataSource {
@@ -31,7 +37,7 @@ export default class Interactions extends RockApolloDataSource {
         await ContentItem.getCursorByChildContentItemId(id)
       ).get();
     } catch (e) {
-      console.log(e);
+      logOutput(e);
       // The postgres way
       const model = await ContentItem.getFromId(id);
       const parent = await model.getParent();
@@ -140,7 +146,7 @@ export default class Interactions extends RockApolloDataSource {
         )
       );
     }
-    console.warn(
+    logError(
       'Fetching interactions without the Rock plugin is extremly inefficient\n\nWe highly recommend using plugin version 1.6.0 or higher'
     );
     return flatten(
@@ -186,7 +192,7 @@ export default class Interactions extends RockApolloDataSource {
     const entityType = await RockConstants.modelType(__type);
 
     if (!entityType) {
-      console.error(
+      logError(
         'nodeId is an invalid (non-rock) entity type. This is not yet supported.'
       );
       return { success: false };
@@ -212,7 +218,7 @@ export default class Interactions extends RockApolloDataSource {
         ForeignKey: nodeId,
       });
     } catch (e) {
-      console.warn(e);
+      logError(e);
     }
 
     if (additional) {

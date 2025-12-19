@@ -32,3 +32,4 @@ class Persona extends RockApolloDataSource {
 }
 
 export { Persona as dataSource };
+export default { dataSource: Persona };

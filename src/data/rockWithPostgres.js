@@ -2,6 +2,12 @@
 import { parseGlobalId } from '../apollos/server-core/index.js';
 import { Person as postgresPerson } from '../apollos/data-connector-postgres/index.js';
 import * as OneSignalOriginal from '../apollos/data-connector-onesignal/index.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 
 class personDataSource extends postgresPerson.dataSource {
   async create(attributes) {
@@ -84,7 +90,7 @@ const personResolver = {
           },
         ]);
       } catch (e) {
-        console.warn(e);
+        logError(e);
       }
 
       // return the original return value (which is currentPerson)
@@ -136,7 +142,7 @@ export const OneSignal = {
 
 const defaultContentItemResolvers = {
   likedCount: (root, args, { dataSources }) =>
-    console.log(root, root.apollosId, root.originId) ||
+    logOutput(root, root.apollosId, root.originId) ||
     dataSources.Followings.getFollowingsCountByNodeId({
       nodeId: root.apollosId,
       originId: root.originId,

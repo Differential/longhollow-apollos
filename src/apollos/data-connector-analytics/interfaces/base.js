@@ -1,3 +1,7 @@
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
 /* eslint-disable */
 /* istanbul ignore next */
 export default class BaseAnalytics {
@@ -16,13 +20,13 @@ export default class BaseAnalytics {
   // called when a user is identified.
   identify({ anonymousId, userId, traits, context }) {
     /* istanbul ignore next */
-    console.log({ anonymousId, userId, traits, context });
+    logOutput({ anonymousId, userId, traits, context });
   }
 
   // called when an event is tracked
   track({ event, anonymousId, userId, properties, context }) {
     /* istanbul ignore next */
-    console.log({
+    logOutput({
       event,
       anonymousId,
       userId,

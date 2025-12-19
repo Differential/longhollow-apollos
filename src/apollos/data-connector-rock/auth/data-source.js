@@ -6,6 +6,11 @@ import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import { fieldsAsObject } from '../utils.js';
 
 import { generateToken } from './token.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 
 export default class AuthDataSource extends RockApolloDataSource {
   resource = 'Auth';
@@ -226,7 +231,7 @@ export default class AuthDataSource extends RockApolloDataSource {
       });
       return token;
     } catch (e) {
-      console.warn(
+      logError(
         'Using deprecated Rock endpoint, upgrade Rock to v10 when available.'
       );
       const { id } = await this.getCurrentPerson();

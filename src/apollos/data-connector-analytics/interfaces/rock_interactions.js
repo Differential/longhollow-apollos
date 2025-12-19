@@ -1,4 +1,9 @@
 import BaseAnalytics from './base.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
+
 
 export default class RockInteractionAnalytics extends BaseAnalytics {
   eventWhitelist = ['View Content'];
@@ -16,14 +21,14 @@ export default class RockInteractionAnalytics extends BaseAnalytics {
         });
       }
       default:
-        console.log(`${event} not supported by RockInteraction Analytics`);
+        logOutput(`${event} not supported by RockInteraction Analytics`);
         return null;
     }
   }
 
   trackViewContent({ title, itemId, sessionId }) {
     if (!itemId || !sessionId) {
-      console.log('No itemId or sessionId included in `track` call.');
+      logOutput('No itemId or sessionId included in `track` call.');
       return null;
     }
     return this.context.dataSources.Interactions.createContentItemInteraction({

@@ -6,6 +6,11 @@ import lodash from 'lodash';
 import { setupUniversalLinks } from './apollos/server-core/index.js';
 import { createMigrationRunner } from './apollos/data-connector-postgres/index.js';
 import { BugsnagPlugin } from './apollos/bugsnag/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { get } = lodash;
 
 const dataObj = ApollosConfig?.DATABASE?.URL
@@ -51,7 +56,7 @@ const apolloServer = new ApolloServer({
   extensions,
   plugins: [new BugsnagPlugin()],
   formatError: (error) => {
-    console.error(get(error, 'extensions.exception.stacktrace', []).join('\n'));
+    logError(get(error, 'extensions.exception.stacktrace', []).join('\n'));
     return error;
   },
   playground: {

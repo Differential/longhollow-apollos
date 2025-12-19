@@ -2,6 +2,11 @@ import fetch from 'jest-fetch-mock';
 
 import * as apolloDatasourceMocks from './apollo-datasource-mocks/index.js';
 import * as rockMocks from './rock-api-mocks/index.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
+
 
 const createApolloServerEnvMock = (apolloServerEnv) => {
   // eslint-disable-next-line
@@ -260,7 +265,7 @@ const createApolloServerEnvMock = (apolloServerEnv) => {
         return resolveWith(rockMocks.campuses());
       }
 
-      console.log(`No route matching ${url}`);
+      logOutput(`No route matching ${url}`);
       return Promise.reject(`No route matching ${url}`);
     });
   };

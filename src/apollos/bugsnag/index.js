@@ -2,6 +2,11 @@
 import ApollosConfig from '../config/index.js';
 import lodash from 'lodash';
 import Bugsnag from '@bugsnag/js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
+
 const { get, fromPairs } = lodash;
 
 const isDev =
@@ -28,7 +33,7 @@ export class BugsnagPlugin {
       didEncounterErrors({ errors, request }) {
         const headers = fromPairs(Array.from(request.http.headers.entries()));
         errors.forEach((error) => {
-          isDev && console.log(error);
+          isDev && logOutput(error);
           report(
             error,
             {

@@ -3,6 +3,8 @@
 Used like this
 ```
 import { ContentItem } from '../../data-connector-rock/index.js'
+
+
 const resolver = {
   ContentItem: {
     title: () => ...
@@ -13,8 +15,13 @@ export default resolverMerge(resolver, ContentItem)
 ```
 */
 
+import util from 'util';
+
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
 export const resolverMerge = (newResolver, { resolver = {} }) => {
   const finalResolver = {};
+
   // For each of the keys present in both new and old resolvers
   Object.keys({ ...newResolver, ...resolver }).forEach((key) => {
     // Merge in the new resolver, then the old resolver.
@@ -25,5 +32,5 @@ export const resolverMerge = (newResolver, { resolver = {} }) => {
 };
 
 export const schemaMerge = () => {
-  console.error('schemaMerge has been removed. Please use resolverMerge.');
+  logError('schemaMerge has been removed. Please use resolverMerge.');
 };

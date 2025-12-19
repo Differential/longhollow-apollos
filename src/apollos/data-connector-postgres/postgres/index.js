@@ -3,6 +3,11 @@ import './pgEnum-fix.js';
 import { Sequelize, DataTypes } from 'sequelize';
 import ApollosConfig from '../../config/index.js';
 import connectJest from './test-connect.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 
 const sequelize =
   process.env.NODE_ENV !== 'test'
@@ -64,7 +69,7 @@ const defineModel = ({
   external = false,
 }) => () => {
   if (attributes.originId || attributes.originType) {
-    console.error(
+    logError(
       `origin_id and origin_type are reserved attribute names. Use 'external = true' or pick other attributes.`
     );
   }

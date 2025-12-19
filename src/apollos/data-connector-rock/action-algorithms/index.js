@@ -1,6 +1,11 @@
 import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import lodash from 'lodash';
 import ApollosConfig from '../../config/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { flatten, get } = lodash;
 
 class ActionAlgorithm extends RockApolloDataSource {
@@ -40,7 +45,7 @@ class ActionAlgorithm extends RockApolloDataSource {
             // NOTE this is in for backwards compatibility
             // should remove reference to Feature.ACTION_ALGORITHIMS eventually
             if (featureAlgorithims[algorithm.type]) {
-              console.warn(
+              logError(
                 'Please move action algorithms from Feature to ActionAlgorithm data source.'
               );
               return featureAlgorithims[algorithm.type]({
@@ -123,7 +128,7 @@ class ActionAlgorithm extends RockApolloDataSource {
   // TODO deprecate, use CONTENT_FEED
   // Gets a configurable amount of content items from a specific content channel.
   async contentChannelAlgorithm({ contentChannelId, limit = null } = {}) {
-    console.warn('CONTENT_CHANNEL algorithm is deprecated, use CONTENT_FEED');
+    logError('CONTENT_CHANNEL algorithm is deprecated, use CONTENT_FEED');
     if (contentChannelId == null) {
       throw new Error(
         `contentChannelId is a required argument for the CONTENT_CHANNEL ActionList algorithm.
@@ -177,7 +182,7 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
   async latestSeriesChildrenAlgorithm({ limit = null, channelId } = {}) {
     const { ContentItem } = this.context.dataSources;
 
-    if (!channelId) return console.warn('Must provide channelId') || [];
+    if (!channelId) return logError('Must provide channelId') || [];
     const series = await ContentItem.byContentChannelId(channelId)
       .andFilter(ContentItem.LIVE_CONTENT())
       .first();
@@ -259,7 +264,7 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
 
   // TODO deprecate, use CONTENT_FEED instead
   async userFeedAlgorithm({ limit = 20 } = {}) {
-    console.warn('USER_FEED algorithm is deprecated, use CONTENT_FEED');
+    logError('USER_FEED algorithm is deprecated, use CONTENT_FEED');
     const { ContentItem } = this.context.dataSources;
 
     const items = await ContentItem.byUserFeed().top(limit).get();
@@ -316,3 +321,4 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
 }
 
 export { ActionAlgorithm as dataSource };
+export default { dataSource: ActionAlgorithm };

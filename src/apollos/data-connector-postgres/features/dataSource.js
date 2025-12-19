@@ -1,6 +1,11 @@
 import { Feature as RockFeature } from '../../data-connector-rock/index.js';
 import { createGlobalId } from '../../server-core/index.js';
 import { PostgresDataSource, isUuid } from '../postgres/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 
 // We have to do something unfortunate in this file for the time being.
 // We essentially are incorperating methods from the Rock datasource
@@ -110,7 +115,7 @@ class Feature extends PostgresDataSource {
 
   // deprecated
   getHomeFeedFeatures = () =>
-    console.warn(
+    logError(
       'getHomeFeedFeatures is deprecated, please use FeatureFeed.getFeed({type: "apollosConfig", args: {"section": "home"}})'
     );
 
@@ -128,7 +133,7 @@ class Feature extends PostgresDataSource {
           case 'HorizontalCardList':
             return this.createHorizontalCardListFeature(finalConfig);
           case 'HeroListFeature':
-            console.warn(
+            logError(
               'Deprecated: Please use the name "HeroList" instead. You used "HeroListFeature"'
             );
             return this.createHeroListFeature(finalConfig);

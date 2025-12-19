@@ -1,6 +1,11 @@
 import lodash from 'lodash';
 import { RESTDataSource } from 'apollo-datasource-rest';
 import ApollosConfig from '../config/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { get } = lodash;
 
 const { BIBLE_API } = ApollosConfig;
@@ -68,7 +73,7 @@ export default class Scripture extends RESTDataSource {
       }
     );
     if (!data.length) {
-      console.warn(
+      logError(
         `${version.toUpperCase()} version unauthorized or invalid, using WEB version`
       );
       const res = await this.get(
@@ -99,7 +104,7 @@ export default class Scripture extends RESTDataSource {
         version: version.toUpperCase(),
       }));
     }
-    console.warn(`No scripture returned, query: ${query} may be invalid`);
+    logError(`No scripture returned, query: ${query} may be invalid`);
     return [];
   }
 }

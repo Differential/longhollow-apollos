@@ -1,4 +1,9 @@
 import withQuery from 'with-query';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 
 // Simple request builder for querying the Rock API.
 // Would probably work against most OData APIs, but built to just
@@ -95,7 +100,7 @@ export default class RockRequestBuilder {
   filterOneOf = (filters) => {
     if (filters.length === 0) {
       // eslint-disable-next-line no-console
-      console.warn(`
+      logError(`
 You are filtering oneOf 0 filters.
 Normally this has the same effect as filtering with 0 filters.
 It's recommended that rather than passing an empty array with filterOneOf,

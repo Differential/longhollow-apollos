@@ -8,6 +8,11 @@ import { gql } from '@apollo/client';
 
 import { generateToken } from '../data-connector-rock/auth/index.js';
 import * as Pass from './index.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
+
 
 class AuthDataSourceMock {
   initialize = () => {};
@@ -100,7 +105,7 @@ describe('Passes', () => {
       `;
       const rootValue = {};
 
-      console.log({ context });
+      logOutput({ context });
 
       const result = await graphql(schema, query, rootValue, context);
       expect(result).toMatchSnapshot();

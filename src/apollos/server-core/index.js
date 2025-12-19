@@ -12,6 +12,12 @@ import * as Pagination from './pagination/index.js';
 import * as Media from './media/index.js';
 import * as Message from './message/index.js';
 import * as Upload from './upload/index.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { compact, mapValues, merge, flatten } = lodash;
 
 export { createGlobalId, parseGlobalId, isUuid } from './node/index.js';
@@ -26,7 +32,7 @@ export { Interfaces, Node };
 
 const safeGetWithWarning = (name) => (data, key) => {
   if (data == null) {
-    console.warn(
+    logError(
       `The ${key} data object is null.
       Check to make sure you are importing ${key} from the correct package
       or that your packages are up to date.
@@ -171,7 +177,7 @@ export const createContext = (data) => ({ req = {} } = {}) => {
   } catch (e) {
     // Not compatible with our test environment under certain conditions
     // Hence, we need to swallow errors.
-    console.warn(e);
+    logError(e);
   }
 
   return context;
@@ -221,7 +227,7 @@ export const createJobs = (data) => ({ app, context, dataSources }) => {
 
   let queues = {
     add: () => {
-      console.log(
+      logOutput(
         `process.env.REDIS_URL is undefined. Working with job queues/bull is a no-op`
       );
       return { process: () => ({}), add: () => ({}) };

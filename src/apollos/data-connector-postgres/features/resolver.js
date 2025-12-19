@@ -1,5 +1,10 @@
 import lodash from 'lodash';
 import { createGlobalId } from '../../server-core/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { get } = lodash;
 
 const id = (type) => ({ apollosId, id: rootId }) =>
@@ -70,7 +75,7 @@ const resolver = {
   },
   Query: {
     userFeedFeatures: async () =>
-      console.warn(
+      logError(
         'userFeedFeatures is deprecated and removed. Use tabFeedFeatures.'
       ),
   },

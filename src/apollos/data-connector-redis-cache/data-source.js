@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 import { DataSource } from 'apollo-datasource';
 import Redis from 'ioredis';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 
 let REDIS;
 
@@ -40,7 +45,7 @@ export default class Cache extends DataSource {
       const result = await func();
       return result;
     } catch (e) {
-      console.error(e);
+      logError(e);
       return null;
     }
   };

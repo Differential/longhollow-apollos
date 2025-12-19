@@ -1,6 +1,11 @@
 /* eslint-disable class-methods-use-this */
 import lodash from 'lodash';
 import { PostgresDataSource } from '../postgres/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { flatten, get } = lodash;
 
 class ActionAlgorithm extends PostgresDataSource {
@@ -42,7 +47,7 @@ class ActionAlgorithm extends PostgresDataSource {
             // NOTE this is in for backwards compatibility
             // should remove reference to Feature.ACTION_ALGORITHIMS eventually
             if (featureAlgorithims[algorithm.type]) {
-              console.warn(
+              logError(
                 'Please move action algorithms from Feature to ActionAlgorithm data source.'
               );
               return featureAlgorithims[algorithm.type]({
@@ -125,8 +130,8 @@ class ActionAlgorithm extends PostgresDataSource {
   // TODO deprecate, use CONTENT_FEED
   // Gets a configurable amount of content items from a specific content channel.
   async contentChannelAlgorithm() {
-    console.warn('CONTENT_CHANNEL algorithm is deprecated, use CONTENT_FEED');
-    console.warn('Using this algorithm now throws an error.');
+    logError('CONTENT_CHANNEL algorithm is deprecated, use CONTENT_FEED');
+    logError('Using this algorithm now throws an error.');
     throw new Error(
       'CONTENT_CHANNEL algorithm is deprecated, use CONTENT_FEED'
     );
@@ -158,7 +163,7 @@ class ActionAlgorithm extends PostgresDataSource {
   async latestSeriesChildrenAlgorithm({ limit = null, channelId } = {}) {
     const { ContentItem } = this.context.dataSources;
 
-    if (!channelId) return console.warn('Must provide channelId') || [];
+    if (!channelId) return logError('Must provide channelId') || [];
     const seriesList = await ContentItem.getFromCategoryIds([channelId], {
       limit: 1,
     });
@@ -181,8 +186,8 @@ class ActionAlgorithm extends PostgresDataSource {
 
   // Gets a configurable amount of content items from each of the configured campaigns
   async campaignItemsAlgorithm({ channelIds = [], limit = 1 } = {}) {
-    console.warn('CAMPAIGN_ITEMS has been renamed');
-    console.warn('Use CHILDREN_OF_PARENTS_BY_CATEGORY instead');
+    logError('CAMPAIGN_ITEMS has been renamed');
+    logError('Use CHILDREN_OF_PARENTS_BY_CATEGORY instead');
     return this.childrenOfParentsByCategoriesAlgoritm({
       categoryIds: channelIds,
       limit,
@@ -237,8 +242,8 @@ class ActionAlgorithm extends PostgresDataSource {
 
   // TODO deprecate, use CONTENT_FEED instead
   async userFeedAlgorithm() {
-    console.warn('USER_FEED algorithm is deprecated, use CONTENT_FEED');
-    console.warn('Using this algorithm now throws an error.');
+    logError('USER_FEED algorithm is deprecated, use CONTENT_FEED');
+    logError('Using this algorithm now throws an error.');
     throw new Error('USER_FEED algorithm is deprecated, use CONTENT_FEED');
   }
 

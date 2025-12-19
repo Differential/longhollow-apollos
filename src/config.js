@@ -4,6 +4,11 @@ import { fileURLToPath } from 'url';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 import ApollosConfig from './apollos/config/index.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
+
 
 dotenv.config();
 
@@ -41,7 +46,7 @@ ApollosConfig.loadJs({
   const hasPlugin = (await res.json())
     .map(({ Name }) => Name)
     .includes('Apollos');
-  if (hasPlugin) console.log('Apollos Rock plugin detected!');
+  if (hasPlugin) logOutput('Apollos Rock plugin detected!');
   ApollosConfig.loadJs({ ROCK: { USE_PLUGIN: hasPlugin } });
 
   // version
@@ -50,6 +55,6 @@ ApollosConfig.loadJs({
     { headers: { 'Authorization-Token': ApollosConfig.ROCK.API_TOKEN } }
   );
   const version = (await res.text()).split('.');
-  console.log(`Rock Version: ${version[1]}`);
+  logOutput(`Rock Version: ${version[1]}`);
   ApollosConfig.loadJs({ ROCK: { VERSION: version[1] } });
 })();

@@ -1,9 +1,12 @@
 import fs from 'fs';
-import util from 'util';
 import { DataSource } from 'apollo-datasource';
 import { UserInputError } from 'apollo-server';
 import datauri from 'datauri';
 import ApollosConfig from '../config/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
 
 const readFile = util.promisify(fs.readFile);
 
@@ -113,7 +116,7 @@ export default class Pass extends DataSource {
       if (cacheHit) return cacheHit;
     } catch (e) {
       // we don't care if cache is failing, for better or worse...so just log it:
-      console.warn('Error trying to read from cache: ', e);
+      logError('Error trying to read from cache: ', e);
     }
     return null;
   }
@@ -123,7 +126,7 @@ export default class Pass extends DataSource {
       await this.cache.set(key, value);
     } catch (e) {
       // we don't care if cache isn't working, for better or worse...so just log it:
-      console.warn('Error saving result to cache: ', e);
+      logError('Error saving result to cache: ', e);
     }
   }
 }

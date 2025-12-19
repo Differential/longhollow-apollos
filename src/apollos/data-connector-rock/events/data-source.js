@@ -2,6 +2,11 @@ import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
 import moment from 'moment-timezone';
 import ApollosConfig from '../../config/index.js';
 import lodash from 'lodash';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
+
+
 const { get } = lodash;
 
 export default class Event extends RockApolloDataSource {
@@ -18,7 +23,7 @@ export default class Event extends RockApolloDataSource {
   findRecent = () => {
     let request = this.request();
     if (!get(ApollosConfig, 'ROCK.USE_PLUGIN', false)) {
-      console.warn(
+      logError(
         'Fetching public campuses is not possible without the Apollos Plugin\n\nReturning all campuses.'
       );
     } else {

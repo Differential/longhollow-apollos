@@ -14,3 +14,4 @@ class dataSource extends RockApolloDataSource {
 }
 
 export { dataSource };
+export default { dataSource };

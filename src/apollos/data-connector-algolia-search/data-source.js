@@ -3,10 +3,15 @@ import { graphql } from 'graphql';
 import ApollosConfig from '../config/index.js';
 import algoliasearch from 'algoliasearch';
 import {
+
+
   parseCursor,
   createCursor,
   createGlobalId,
 } from '../server-core/index.js';
+import util from 'util';
+const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
+
 
 let CLIENT;
 let INDEX;
@@ -26,7 +31,7 @@ if (ApollosConfig.ALGOLIA.APPLICATION_ID && ApollosConfig.ALGOLIA.API_KEY) {
     }
   );
 } else {
-  console.warn(
+  logError(
     'You are using the Algolia Search datasource without Algolia credentials. To avoid issues, add Algolia credentials to your config.yml or remove the Algolia datasource'
   );
 }

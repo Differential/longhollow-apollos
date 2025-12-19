@@ -38,3 +38,4 @@ const createModel = defineModel({
 });
 
 export { createModel };
+export default createModel;

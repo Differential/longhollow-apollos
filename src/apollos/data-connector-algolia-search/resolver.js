@@ -1,4 +1,9 @@
 import { withEdgePagination } from '../server-core/index.js';
+import util from 'util';
+const logOutput = (...args) => process.stdout.write(`${util.format(...args)}\n`);
+
+
+
 
 const resolver = {
   Query: {
@@ -16,7 +21,7 @@ const resolver = {
       } catch (e) {
         // Right now we don't have a good mechanism to flush deleted items from the search index.
         // This helps make sure we don't return something unresolvable.
-        console.log(`Error fetching search result ${id}`, e);
+        logOutput(`Error fetching search result ${id}`, e);
         return null;
       }
     },
