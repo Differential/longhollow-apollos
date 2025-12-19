@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@apollo/rover": "^0.37.0",
+    "@apollosproject/babel-preset-apollos": "^2.29.3",
     "@apollosproject/bugsnag": "^2.13.1",
     "@apollosproject/config": "^2.30.0",
     "@apollosproject/data-connector-algolia-search": "^2.30.0",
@@ -38,6 +39,9 @@
     "@apollosproject/data-schema": "^2.32.2",
     "@apollosproject/rock-apollo-data-source": "^2.30.0",
     "@apollosproject/server-core": "^2.30.0",
+    "@babel/cli": "^7.4.5",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.7.4",
     "@graphql-tools/schema": "^10.0.0",
     "apollo-server": "^2.24.1",
     "apollo-server-express": "2.14.2",
@@ -54,11 +58,7 @@
   },
   "devDependencies": {
     "@apollosproject/apollo-server-env-mock": "^2.29.3",
-    "@apollosproject/babel-preset-apollos": "^2.29.3",
     "@apollosproject/eslint-config": "^2.29.3",
-    "@babel/cli": "^7.4.5",
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.7.4",
     "babel-eslint": "^10.0.3",
     "babel-plugin-module-resolver": "^3.2.0",
     "eslint": "^5.16.0",
@@ -72,6 +72,5 @@
     "nodemon": "1.18.7",
     "prettier": "1.12.1",
     "yalc": "^1.0.0-pre.47"
-  },
-  "packageManager": "yarn@4.7.0"
+  }
 }
