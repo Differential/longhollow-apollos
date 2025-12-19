@@ -1,5 +1,5 @@
 import { createGlobalId } from '../index.js';
-import { gql } from 'apollo-server';
+import { gql } from '@apollo/client';
 
 const schema = gql`
   type Message implements Node {

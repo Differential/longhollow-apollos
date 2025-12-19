@@ -1,5 +1,4 @@
 import { ApolloServer } from 'apollo-server-express';
-import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import ApollosConfig from './apollos/config/index.js';
 import express from 'express';
 import { RockLoggingExtension } from './apollos/rock-apollo-data-source/index.js';
@@ -34,17 +33,7 @@ export { resolvers, schema, testSchema };
 const isDev =
   process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
-const plugins = [new BugsnagPlugin()];
-if (isDev) {
-  plugins.push(new RockLoggingExtension());
-  plugins.push(
-    ApolloServerPluginLandingPageGraphQLPlayground({
-      settings: {
-        'editor.cursorShape': 'line',
-      },
-    })
-  );
-}
+const extensions = isDev ? [() => new RockLoggingExtension()] : [];
 
 const cacheOptions = isDev
   ? {}
@@ -64,10 +53,16 @@ const apolloServer = new ApolloServer({
   dataSources,
   context,
   introspection: true,
-  plugins,
+  extensions,
+  plugins: [new BugsnagPlugin()],
   formatError: (error) => {
     logError(get(error, 'extensions.exception.stacktrace', []).join('\n'));
     return error;
+  },
+  playground: {
+    settings: {
+      'editor.cursorShape': 'line',
+    },
   },
   uploads: false,
   ...cacheOptions,

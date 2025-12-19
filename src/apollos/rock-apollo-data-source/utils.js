@@ -16,18 +16,11 @@ export const parseKeyValueAttribute = (text = '') => {
 };
 
 export class RockLoggingExtension {
-  // Apollo Server v3 plugin wrapper for the old extension hook.
-  requestDidStart() {
-    return {
-      willSendResponse: (requestContext) => {
-        this.willSendResponse(requestContext);
-      },
-    };
-  }
-
   // eslint-disable-next-line class-methods-use-this
-  willSendResponse({ context: { dataSources: respDataSources }, response }) {
-    const data = response?.data;
+  willSendResponse({
+    context: { dataSources: respDataSources },
+    graphqlResponse: { data },
+  }) {
     let totalNetworkCalls = 0;
     const calls = {};
     Object.values(respDataSources).forEach((ds) => {
