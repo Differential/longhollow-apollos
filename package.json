@@ -18,7 +18,7 @@
     "schema:publish": "node ./scripts/print-schema.js | rover graph publish \"$APOLLO_GRAPH_REF\" --schema -"
   },
   "engines": {
-    "node": "16"
+    "node": "24"
   },
   "dependencies": {
     "@apollo/rover": "^0.37.0",
