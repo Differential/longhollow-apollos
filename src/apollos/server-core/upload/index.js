@@ -1,5 +1,4 @@
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
-import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.mjs';
+import { GraphQLUpload, graphqlUploadExpress } from 'graphql-upload';
 
 export const schema = `
   scalar Upload

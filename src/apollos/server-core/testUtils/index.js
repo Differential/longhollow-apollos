@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { makeExecutableSchema } from '@graphql-tools/schema';
+import { makeExecutableSchema } from 'apollo-server';
 import { testSchema } from '../../data-schema/index.js';
 import { createApolloServerConfig, createContextGetter } from '..';
 

@@ -1,75 +1,41 @@
-import fs from 'fs';
-import path from 'path';
-import { PKPass } from 'passkit-generator';
+import { Pass } from 'passkit-generator';
 import ApollosConfig from '../config/index.js';
 
-const readFile = fs.promises.readFile;
-const readdir = fs.promises.readdir;
+class ApollosPassGenerator extends Pass {
+  constructor(options) {
+    super({
+      certificates: {
+        wwdr: ApollosConfig.PASS.CERTIFICATES.WWDR,
+        signerCert: ApollosConfig.PASS.CERTIFICATES.SIGNER_CERT,
+        signerKey: {
+          keyFile: ApollosConfig.PASS.CERTIFICATES.SIGNER_KEY,
+          passphrase: ApollosConfig.PASS.CERTIFICATES.SIGNER_KEY_PASSPHRASE,
+        },
+      },
+      ...options,
+    });
+  }
 
-const buildCertificates = () => ({
-  wwdr: ApollosConfig.PASS.CERTIFICATES.WWDR,
-  signerCert: ApollosConfig.PASS.CERTIFICATES.SIGNER_CERT,
-  signerKey: ApollosConfig.PASS.CERTIFICATES.SIGNER_KEY,
-  signerKeyPassphrase: ApollosConfig.PASS.CERTIFICATES.SIGNER_KEY_PASSPHRASE,
-});
-
-const bufferFromDataUri = (uri) => {
-  if (!uri) return null;
-  const match = uri.match(/^data:.*;base64,(.+)$/);
-  if (!match) return null;
-  return Buffer.from(match[1], 'base64');
-};
-
-const readModelBuffers = async (modelPath) => {
-  const buffers = {};
-
-  const walk = async (dir, prefix = '') => {
-    const entries = await readdir(dir, { withFileTypes: true });
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
-      const relativePath = path.posix.join(prefix, entry.name);
-      if (entry.isDirectory()) {
-        await walk(fullPath, relativePath);
-        continue;
-      }
-      if (!entry.isFile()) continue;
-      if (entry.name === 'pass.json') continue;
-      buffers[relativePath] = await readFile(fullPath);
+  // Unfortunately, we need to overwrite this method because of how we allow for Lava templated pass files
+  // Essentially, all that this does is it tries to read the pass template as JSON, and if it fails,
+  // it drops it and continues with just overwrite properties
+  _patch(passBuffer) {
+    try {
+      JSON.parse(passBuffer.toString('utf8'));
+      return super._patch(passBuffer);
+    } catch (e) {
+      // without a 'type', the super function will throw an error here:
+      // https://github.com/alexandercerutti/passkit-generator/blob/master/src/pass.js#L652
+      return super._patch(Buffer.from(JSON.stringify({ generic: {} })));
     }
+  }
+
+  // Similar case here. We're just going to allow all types, because we can't reliably parse the pass template yet.
+  _validateType = () => {
+    // TODO: in the future, we might want to support more than the generic type.
+    this.type = 'generic';
+    return true;
   };
-
-  await walk(modelPath);
-  return buffers;
-};
-
-class ApollosPassGenerator {
-  constructor(options = {}) {
-    this._props = null;
-    this.shouldOverwrite = false;
-    this.Certificates = { _raw: buildCertificates() };
-    this._passPromise = this._createPass(options);
-  }
-
-  async _createPass({ model, props } = {}) {
-    const buffers = model ? await readModelBuffers(model) : {};
-    const pass = new PKPass(buffers, buildCertificates(), props);
-    return pass;
-  }
-
-  async load(uri, filename) {
-    const pass = await this._passPromise;
-    const buffer = bufferFromDataUri(uri);
-    if (!buffer) return;
-    pass.addBuffer(filename, buffer);
-  }
-
-  async generate() {
-    const pass = await this._passPromise;
-    if (this.shouldOverwrite && this._props) {
-      pass.addBuffer('pass.json', Buffer.from(JSON.stringify(this._props)));
-    }
-    return pass.getAsStream();
-  }
 }
 
 export default ApollosPassGenerator;
