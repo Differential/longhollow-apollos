@@ -1,37 +1,73 @@
 {
-  "name": "apollos-templates",
-  "scripts": {
-    "setup": "lerna run setup",
-    "start": "lerna run start:dev --parallel",
-    "link-packages": "watchman watch-del-all && yarn && lerna run link-packages",
-    "link-doctor": "node ./scripts/link-doctor.js",
-    "unlink-packages": "lerna run unlink-packages && yarn --check-files",
-    "lint": "lerna run lint --stream",
-    "test": "lerna run test --stream",
-    "ios": "lerna run ios --parallel",
-    "android": "lerna run android --parallel",
-    "pods": "lerna run pods --parallel",
-    "postinstall": "lerna run postinstall --parallel",
-    "bump": "yarn unlink-packages && ./scripts/bump.sh",
-    "canary": "./scripts/add-packages.sh canary && yarn",
-    "next": "./scripts/add-packages.sh next && yarn",
-    "secrets": "./scripts/secrets.sh"
-  },
+  "name": "apollos-church-api",
+  "version": "1.0.0",
   "private": true,
-  "devDependencies": {
-    "lerna": "^3.20.2",
-    "chalk": "^4.0.0"
+  "main": "lib/index.js",
+  "scripts": {
+    "setup": "./scripts/init.sh",
+    "start": "yarn start:prod",
+    "start:dev": "nodemon ./src/index.js --exec babel-node --delay 2 -e js,yaml,json,yml",
+    "start:prod": "NODE_ENV=production node ./lib/index.js",
+    "postinstall": "yarn build",
+    "link-packages": "node ./scripts/link-packages && yarn yalc update",
+    "unlink-packages": "node ./scripts/link-packages remove",
+    "build": "NODE_ENV=production rm -rf ./lib && mkdir -p lib && babel ./src -d ./lib",
+    "test": "echo \"No tests in apollos-church-api, all tested code is located in @apollosproject npm modules\"",
+    "lint": "eslint ./src --ext .js",
+    "translate": "node scripts/translate.js"
   },
-  "dependencies": {},
-  "workspaces": {
-    "packages": [
-      "apolloschurchapp",
-      "apollos-church-api"
-    ],
-    "nohoist": [
-      "*",
-      "**",
-      "**/**"
-    ]
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "@apollosproject/bugsnag": "^2.13.1",
+    "@apollosproject/config": "^2.30.0",
+    "@apollosproject/data-connector-algolia-search": "^2.30.0",
+    "@apollosproject/data-connector-analytics": "^2.30.0",
+    "@apollosproject/data-connector-bible": "^2.30.0",
+    "@apollosproject/data-connector-church-online": "^2.30.0",
+    "@apollosproject/data-connector-cloudinary": "^2.30.0",
+    "@apollosproject/data-connector-onesignal": "^2.30.0",
+    "@apollosproject/data-connector-passes": "^2.30.0",
+    "@apollosproject/data-connector-postgres": "^2.30.0",
+    "@apollosproject/data-connector-redis-cache": "^2.30.0",
+    "@apollosproject/data-connector-rock": "^2.32.2",
+    "@apollosproject/data-connector-twilio": "^2.30.0",
+    "@apollosproject/data-schema": "^2.32.2",
+    "@apollosproject/rock-apollo-data-source": "^2.30.0",
+    "@apollosproject/server-core": "^2.30.0",
+    "apollo-server": "^2.24.1",
+    "apollo-server-express": "2.14.2",
+    "cloudinary": "^1.25.1",
+    "color": "3.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "6.0.0",
+    "express": "^4.17.0",
+    "graphql": "14.6.0",
+    "prettier": "1.12.1",
+    "randomcolor": "0.5.3",
+    "sanitize-html": "^2.4.0",
+    "umzug": "^3.0.0-beta.15"
+  },
+  "devDependencies": {
+    "@apollosproject/apollo-server-env-mock": "^2.29.3",
+    "@apollosproject/babel-preset-apollos": "^2.29.3",
+    "@apollosproject/eslint-config": "^2.29.3",
+    "@babel/cli": "^7.4.5",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.7.4",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.15.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "nodemon": "1.18.7",
+    "prettier": "1.12.1",
+    "yalc": "^1.0.0-pre.47"
   }
 }
