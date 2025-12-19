@@ -4,7 +4,6 @@ import express from 'express';
 import { RockLoggingExtension } from './apollos/rock-apollo-data-source/index.js';
 import lodash from 'lodash';
 import { setupUniversalLinks } from './apollos/server-core/index.js';
-import { createMigrationRunner } from './apollos/data-connector-postgres/index.js';
 import { BugsnagPlugin } from './apollos/bugsnag/index.js';
 import util from 'util';
 const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
@@ -13,9 +12,7 @@ const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
 
 const { get } = lodash;
 
-const dataObj = ApollosConfig?.DATABASE?.URL
-  ? await import('./data/index.postgres.js')
-  : await import('./data/index.js');
+const dataObj = await import('./data/index.js');
 
 const {
   resolvers,
@@ -25,7 +22,6 @@ const {
   dataSources,
   applyServerMiddleware,
   setupJobs,
-  migrations,
 } = dataObj;
 
 export { resolvers, schema, testSchema };
@@ -82,14 +78,5 @@ setupUniversalLinks({ app });
 
 apolloServer.applyMiddleware({ app });
 apolloServer.applyMiddleware({ app, path: '/' });
-
-// make sure this is called last.
-// (or at least after the apollos server setup)
-(async () => {
-  if (ApollosConfig?.DATABASE?.URL) {
-    const migrationRunner = await createMigrationRunner({ migrations });
-    await migrationRunner.up();
-  }
-})();
 
 export default app;
