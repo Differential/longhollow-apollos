@@ -4,8 +4,14 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 // Ensure runtime config (config.yml/env expansion) is loaded during schema publish.
 import '../src/config.js';
 
-// Use the runtime server output for schema publishing.
-import { schema, resolvers } from '../src/server.js';
+import ApollosConfig from '../src/apollos/config/index.js';
+
+const dataObj = ApollosConfig?.DATABASE?.URL
+  ? await import('../src/data/index.postgres.js')
+  : await import('../src/data/index.js');
+
+// Use the runtime data output for schema publishing.
+const { schema, resolvers } = dataObj;
 
 const executableSchema = isSchema(schema)
   ? schema

@@ -1,7 +1,7 @@
 import lodash from 'lodash';
 import { gql } from 'apollo-server';
 import { InMemoryLRUCache } from 'apollo-server-caching';
-import { makeExecutableSchema } from 'apollo-server';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 import bullBoard from 'bull-board';
 import ApollosConfig from '../config/index.js';
 import basicAuth from 'express-basic-auth';
@@ -48,6 +48,16 @@ const builtInData = { Node, Pagination, Media, Message, Upload };
 
 export const createSchema = (data) => [
   gql`
+    directive @cacheControl(
+      maxAge: Int
+      scope: CacheControlScope
+    ) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+    enum CacheControlScope {
+      PUBLIC
+      PRIVATE
+    }
+
     type Query {
       _placeholder: Boolean # needed, empty schema defs aren't supported
     }
