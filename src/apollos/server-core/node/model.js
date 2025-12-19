@@ -1,11 +1,11 @@
-import Crypto from 'crypto';
 import { get, uniq, flatMap } from 'lodash';
 import { parseResolveInfo } from 'graphql-parse-resolve-info';
+import { createLegacyCipher, createLegacyDecipher } from '../crypto';
 
 const secret = process.env.SECRET || 'LZEVhlgzFZKClu1r';
 
 export function createGlobalId(id, type) {
-  const cipher = Crypto.createCipher('aes192', secret);
+  const cipher = createLegacyCipher(secret);
 
   let encrypted = cipher.update(`${id}`, 'utf8', 'hex');
   encrypted += cipher.final('hex');
@@ -20,7 +20,7 @@ export const isUuid = (id) =>
 
 export function parseGlobalId(encodedId) {
   try {
-    const decipher = Crypto.createDecipher('aes192', secret);
+    const decipher = createLegacyDecipher(secret);
 
     const [__type, encryptedId] = encodedId.split(':');
 

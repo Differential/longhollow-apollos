@@ -1,4 +1,4 @@
-import Crypto from 'crypto';
+import { createLegacyCipher, createLegacyDecipher } from '../crypto';
 
 export const withEdgePagination = async ({ edges }) => {
   const result = await edges;
@@ -11,7 +11,7 @@ const secret = process.env.SECRET || 'SEfjsvoSDFnvblaE';
 
 export function createCursor(obj) {
   const str = JSON.stringify(obj);
-  const cipher = Crypto.createCipher('aes192', secret);
+  const cipher = createLegacyCipher(secret);
   let encrypted = cipher.update(str, 'utf8', 'hex');
   encrypted += cipher.final('hex');
 
@@ -20,7 +20,7 @@ export function createCursor(obj) {
 
 export function parseCursor(str) {
   try {
-    const decipher = Crypto.createDecipher('aes192', secret);
+    const decipher = createLegacyDecipher(secret);
 
     let decrypted = decipher.update(decodeURI(str), 'hex', 'utf8');
     decrypted += decipher.final('utf8');
