@@ -7,13 +7,13 @@ This repository contains the Apollos GraphQL API only.
 Install tooling:
 
 - [Homebrew](https://brew.sh)
-- [Yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/)
 
 Install dependencies and initialize:
 
 ```
-yarn
-yarn setup
+npm install
+npm run setup
 ```
 
 ## Develop
@@ -21,7 +21,7 @@ yarn setup
 Start the API in dev mode:
 
 ```
-yarn dev
+npm run dev
 ```
 
 ## Deploy

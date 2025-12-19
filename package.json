@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "setup": "./scripts/init.sh",
-    "start": "yarn start:prod",
+    "start": "npm run start:prod",
     "dev": "NODE_ENV=development node --watch ./src/index.js",
     "start:prod": "NODE_ENV=production node ./src/index.js",
     "test": "echo \"No tests in apollos-church-api, all tested code is located in vendored apollos modules\"",
