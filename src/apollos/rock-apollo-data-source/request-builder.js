@@ -1,4 +1,4 @@
-import withQuery from 'with-query';
+import { withQuery } from 'with-query';
 import util from 'util';
 const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
 
