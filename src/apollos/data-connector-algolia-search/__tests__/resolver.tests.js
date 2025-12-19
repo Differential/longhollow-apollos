@@ -1,5 +1,5 @@
 import { fetch } from 'apollo-server-env';
-import { gql } from '@apollo/client';
+import { gql } from 'apollo-server';
 import { graphql } from 'graphql';
 import { createTestHelpers } from '../../server-core/testUtils/index.js';
 import ApollosConfig from '../../config/index.js';

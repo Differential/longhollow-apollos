@@ -1,5 +1,5 @@
 import lodash from 'lodash';
-import { gql } from '@apollo/client';
+import { gql } from 'apollo-server';
 import { InMemoryLRUCache } from 'apollo-server-caching';
 import { makeExecutableSchema } from 'apollo-server';
 import bullBoard from 'bull-board';

@@ -4,7 +4,7 @@ import { createTestHelpers } from '../server-core/testUtils/index.js';
 import { authSchema } from '../data-schema/index.js';
 import { Person } from '../data-connector-rock/index.js';
 import { createGlobalId } from '../server-core/index.js';
-import { gql } from '@apollo/client';
+import { gql } from 'apollo-server';
 
 import { generateToken } from '../data-connector-rock/auth/index.js';
 import * as Pass from './index.js';
