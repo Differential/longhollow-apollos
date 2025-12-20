@@ -1,7 +1,7 @@
 import lodash from 'lodash';
 import gql from 'graphql-tag';
 import { InMemoryLRUCache } from 'apollo-server-caching';
-import { makeExecutableSchema } from 'apollo-server';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 import bullBoard from 'bull-board';
 import ApollosConfig from '../config/index.js';
 import basicAuth from 'express-basic-auth';
