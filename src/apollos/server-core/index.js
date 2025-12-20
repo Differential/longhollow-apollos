@@ -56,9 +56,11 @@ export const createSchema = (data) => [
       _placeholder: Boolean # needed, empty schema defs aren't supported
     }
   `,
-  ...compact(
-    Object.values(
-      mapValues({ ...builtInData, ...data }, safeGetWithWarning('schema'))
+  ...flatten(
+    compact(
+      Object.values(
+        mapValues({ ...builtInData, ...data }, safeGetWithWarning('schema'))
+      )
     )
   ),
 ];
