@@ -38,7 +38,7 @@ export default class Interactions extends RockApolloDataSource {
       ).get();
     } catch (e) {
       logOutput(e);
-      // The postgres way
+      // The SQL way
       const model = await ContentItem.getFromId(id);
       const parent = await model.getParent();
       if (parent) seriesParents = [parent];
@@ -206,7 +206,7 @@ export default class Interactions extends RockApolloDataSource {
 
     const currentUser = await Auth.getCurrentPerson();
 
-    // Currently it throws an error for a postgres created prayer, this will be fixed once they are shoveled back
+    // Currently it throws an error for a SQL-created prayer, this will be fixed once they are shoveled back
     // into Rock or on command during the prayer creation
     try {
       await this.post('/Interactions', {

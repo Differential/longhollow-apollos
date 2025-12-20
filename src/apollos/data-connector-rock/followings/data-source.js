@@ -41,7 +41,7 @@ export default class Followings extends RockApolloDataSource {
     const followingsId = await this.post('/Followings', {
       PersonAliasId: currentUser.primaryAliasId,
       EntityTypeId: nodeType.id,
-      EntityId: rockId, // sometimes the originId may be a Rock ID, while the id itself is from Postgres
+      EntityId: rockId, // sometimes the originId may be a Rock ID
     });
 
     await Cache.set({

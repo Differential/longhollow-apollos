@@ -25,7 +25,7 @@ export function parseGlobalId(encodedId) {
 
     const [__type, encryptedId] = encodedId.split(':');
 
-    // That means it's a postgres ID belonging it's an apollos database
+    // That means it's an apollos database ID
     if (isUuid(encryptedId)) {
       return {
         __type,

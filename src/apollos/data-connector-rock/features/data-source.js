@@ -385,7 +385,7 @@ export default class Feature extends RockApolloDataSource {
     const { id } = await Auth.getCurrentPerson();
 
     // maps the person id, which right now is always from rock
-    // into the correct person id. Postgres if using Postgres, and Rock if using rock.
+    // into the correct person id. Rock if using Rock.
     const { id: personId } = await Person.getFromId(id, null, {
       originType: 'rock',
     });

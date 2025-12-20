@@ -130,7 +130,7 @@ class RockConstants extends RockApolloDataSource {
     if (ROCK_MAPPINGS?.CONTENT_ITEM[name]) {
       return ROCK_MAPPINGS.CONTENT_ITEM[name].EntityType;
     }
-    // Hack to get us through the Postgres/Rock days.
+    // Hack to get us through the Rock transition.
     if (CONTENT?.TYPES?.includes(name)) {
       return 'ContentChannelItem';
     }

@@ -14,9 +14,8 @@ export default class PrayerRequest extends RockApolloDataSource {
 
   getPersonAliasId = async ({ personId }) => {
     // This is tricky. I would prefer not to have this method here
-    // But ultimately the postgres module shouldn't have an aliasId
-    // but we depend on the alias ID from Rock. I don't want to have to keep around
-    // a RockPerson module and a PostgresPerson module long term.
+    // But ultimately the Rock module shouldn't have an aliasId
+    // but we depend on the alias ID from Rock.
     // This problem goes away long term when we don't rely on Rock for Prayers.
     const { Person } = this.context.dataSources;
 
