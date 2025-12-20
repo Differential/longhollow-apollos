@@ -10,4 +10,8 @@ const executableSchema = isSchema(schema)
   ? schema
   : makeExecutableSchema({ typeDefs: schema, resolvers });
 
-process.stdout.write(printSchema(executableSchema));
+const output = printSchema(executableSchema);
+process.stdout.write(`${output}\n`, () => {
+  // Ensure the process exits even if imported modules keep handles open.
+  process.exit(0);
+});
