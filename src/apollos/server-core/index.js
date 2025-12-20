@@ -262,6 +262,12 @@ export const createJobs = (data) => ({ app, context, dataSources }) => {
     queues = {
       add: (name, options) => {
         const queue = new Bull(name, process.env.REDIS_URL, options);
+        if (typeof queue.isPaused !== 'function') {
+          queue.isPaused = async () => false;
+        }
+        if (typeof queue.obliterate !== 'function') {
+          queue.obliterate = async () => queue.empty();
+        }
         if (addBullQueue) {
           addBullQueue(new BullAdapter(queue));
         }
