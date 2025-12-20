@@ -542,8 +542,10 @@ class dataSource extends ContentItem.dataSource {
         `ContentChannelItem/ExpireDateTime gt datetime'${date}' or ContentChannelItem/ExpireDateTime eq null`
       )
       .first();
-    if (!contentItemSlug)
-      throw new Error(`Slug "${slug}" does not exist or is expired.`);
+    if (!contentItemSlug) {
+      console.warn(`Slug "${slug}" does not exist or is expired.`);
+      return null;
+    }
 
     return this.getFromId(`${contentItemSlug.contentChannelItemId}`);
   };
