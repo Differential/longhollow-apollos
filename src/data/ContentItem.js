@@ -157,9 +157,9 @@ class dataSource extends ContentItem.dataSource {
   getActiveLiveStreamContent = async () => {
     const { LiveStream } = this.context.dataSources;
     const { isLive } = await LiveStream.getLiveStream();
-    // if not live, return empty content item
+    // if not live, return nothing
     // TODO: return next future sermon
-    if (!isLive) return [{ attributes: {}, attributeValues: {} }];
+    if (!isLive) return [];
 
     const mostRecentSermon = await this.getSermonFeed().first();
     return [mostRecentSermon];
