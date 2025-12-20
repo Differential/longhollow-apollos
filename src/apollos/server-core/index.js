@@ -2,7 +2,10 @@ import lodash from 'lodash';
 import gql from 'graphql-tag';
 import { InMemoryLRUCache } from 'apollo-server-caching';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import bullBoard from 'bull-board';
+import Bull from 'bull';
+import { createBullBoard } from '@bull-board/api';
+import { BullAdapter } from '@bull-board/api/bullAdapter';
+import { ExpressAdapter } from '@bull-board/express';
 import ApollosConfig from '../config/index.js';
 import basicAuth from 'express-basic-auth';
 
@@ -235,6 +238,7 @@ export const createJobs = (data) => ({ app, context, dataSources }) => {
   );
 
   const getContext = createContextGetter({ context, dataSources });
+  const jobsPath = '/admin/queues';
 
   let queues = {
     add: () => {
@@ -244,12 +248,28 @@ export const createJobs = (data) => ({ app, context, dataSources }) => {
       return { process: () => ({}), add: () => ({}) };
     },
   };
+  let bullBoardServer = null;
+  let addBullQueue = null;
 
   if (process.env.REDIS_URL) {
-    queues = createQueues(process.env.REDIS_URL);
+    bullBoardServer = new ExpressAdapter();
+    bullBoardServer.setBasePath(jobsPath);
+    const { addQueue } = createBullBoard({
+      queues: [],
+      serverAdapter: bullBoardServer,
+    });
+    addBullQueue = addQueue;
+    queues = {
+      add: (name, options) => {
+        const queue = new Bull(name, process.env.REDIS_URL, options);
+        if (addBullQueue) {
+          addBullQueue(new BullAdapter(queue));
+        }
+        return queue;
+      },
+    };
   }
 
-  const jobsPath = '/admin/queues';
   let trigger = () => null;
   if (ApollosConfig.APP.JOBS_USERNAME && ApollosConfig.APP.JOBS_PASSWORD) {
     const auth = basicAuth({
@@ -259,7 +279,9 @@ export const createJobs = (data) => ({ app, context, dataSources }) => {
       challenge: true,
     });
 
-    app.use(jobsPath, auth, UI);
+    if (bullBoardServer) {
+      app.use(jobsPath, auth, bullBoardServer.getRouter());
+    }
 
     // callback to define a manually triggered job
     trigger = (path, job) => {
@@ -297,4 +319,3 @@ export const createApolloServerConfig = (data) => {
     migrations,
   };
 };
-const { createQueues, UI } = bullBoard;
