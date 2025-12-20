@@ -1,5 +1,4 @@
-const __resolveType = ({ __typename, __type }, args, resolveInfo) =>
-  __typename || resolveInfo.schema.getType(__type);
+const __resolveType = ({ __typename, __type }) => __typename || __type;
 
 export default {
   LikableNode: {
