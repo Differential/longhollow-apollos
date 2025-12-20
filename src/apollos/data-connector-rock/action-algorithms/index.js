@@ -182,7 +182,10 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
   async latestSeriesChildrenAlgorithm({ limit = null, channelId } = {}) {
     const { ContentItem } = this.context.dataSources;
 
-    if (!channelId) return logError('Must provide channelId') || [];
+    if (!channelId) {
+      logError('Must provide channelId');
+      return [];
+    }
     const series = await ContentItem.byContentChannelId(channelId)
       .andFilter(ContentItem.LIVE_CONTENT())
       .first();

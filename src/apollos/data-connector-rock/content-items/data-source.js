@@ -554,22 +554,26 @@ export default class ContentItem extends RockApolloDataSource {
       .orderBy('StartDateTime', 'desc');
   };
 
-  byUserFeed = () =>
-    logError('ContentItem.byUserFeed is deprecated') ||
-    this.byActive().orderBy('StartDateTime', 'desc').expand('ContentChannel');
+  byUserFeed = () => {
+    logError('ContentItem.byUserFeed is deprecated');
+    return this.byActive()
+      .orderBy('StartDateTime', 'desc')
+      .expand('ContentChannel');
+  };
 
-  byActive = () =>
-    logError('ContentItem.byActive is deprecated') ||
-    this.request()
+  byActive = () => {
+    logError('ContentItem.byActive is deprecated');
+    return this.request()
       .filterOneOf(
         this.activeChannelIds.map((id) => `ContentChannelId eq ${id}`)
       )
       .cache({ ttl: 60 })
       .andFilter(this.LIVE_CONTENT());
+  };
 
-  byDateAndActive = async ({ datetime }) =>
-    logError('ContentItem.byDateAndActive is deprecated') ||
-    this.request()
+  byDateAndActive = async ({ datetime }) => {
+    logError('ContentItem.byDateAndActive is deprecated');
+    return this.request()
       .filterOneOf(
         this.activeChannelIds.map((id) => `ContentChannelId eq ${id}`)
       )
@@ -578,6 +582,7 @@ export default class ContentItem extends RockApolloDataSource {
         `(CreatedDateTime gt datetime'${datetime}') or (ModifiedDateTime gt datetime'${datetime}')`
       )
       .andFilter(this.LIVE_CONTENT());
+  };
 
   byContentChannelId = (id) =>
     this.request()

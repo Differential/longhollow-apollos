@@ -418,10 +418,12 @@ export default class Feature extends RockApolloDataSource {
   }
 
   // deprecated
-  getHomeFeedFeatures = () =>
+  getHomeFeedFeatures = () => {
     logError(
       'getHomeFeedFeatures is deprecated, please use FeatureFeed.getFeed({type: "apollosConfig", args: {"section": "home"}})'
-    ) || this.getFeatures(get(ApollosConfig, 'HOME_FEATURES', []));
+    );
+    return this.getFeatures(get(ApollosConfig, 'HOME_FEATURES', []));
+  };
 
   getFeatures = async (featuresConfig = [], args = {}) => {
     return Promise.all(

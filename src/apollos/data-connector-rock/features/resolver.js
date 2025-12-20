@@ -64,9 +64,10 @@ export default {
     id: ({ id }) => createGlobalId(id, 'ScriptureFeature'),
   },
   Query: {
-    userFeedFeatures: async (root, args, { dataSources: { Feature } }) =>
-      logError('userFeedFeatures is deprecated. Use tabFeedFeatures.') ||
-      Feature.getHomeFeedFeatures(),
+    userFeedFeatures: async (root, args, { dataSources: { Feature } }) => {
+      logError('userFeedFeatures is deprecated. Use tabFeedFeatures.');
+      return Feature.getHomeFeedFeatures();
+    },
   },
   ActionListFeature: {
     id: ({ id }) => createGlobalId(id, 'ActionListFeature'),
