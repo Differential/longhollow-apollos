@@ -55,6 +55,15 @@ export const createSchema = (data) => [
     type Mutation {
       _placeholder: Boolean # needed, empty schema defs aren't supported
     }
+
+    enum CacheControlScope {
+      PUBLIC
+      PRIVATE
+    }
+    directive @cacheControl(
+      maxAge: Int
+      scope: CacheControlScope
+    ) on FIELD_DEFINITION | OBJECT | INTERFACE
   `,
   ...flatten(
     compact(
