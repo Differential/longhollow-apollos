@@ -76,6 +76,7 @@ setupJobs({ app, dataSources, context });
 // Comment out if you don't want the API serving apple-app-site-association or assetlinks manifests.
 setupUniversalLinks({ app });
 
+await apolloServer.start();
 apolloServer.applyMiddleware({ app });
 apolloServer.applyMiddleware({ app, path: '/' });
 

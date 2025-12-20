@@ -49,8 +49,7 @@ const serverMiddleware = ({ app, getContext }) => {
 
     // Hack: passkit-generator has protections built-in to keep people from overriding too much.
     // Since this is a test service, we don't care, and will let people override whatever they want:
-    pass._props = passData;
-    pass.shouldOverwrite = true;
+    pass.setProps(passData);
 
     try {
       const stream = await pass.generate();
