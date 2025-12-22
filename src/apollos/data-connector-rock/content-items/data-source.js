@@ -47,9 +47,23 @@ export default class ContentItem extends RockApolloDataSource {
       typeof attributeValues[key].value === 'string' &&
       attributeValues[key].value.startsWith('http')); // looks like a video url
 
+  attributeIsAudio = ({ key, attributeValues, attributes }) =>
+    attributes[key].fieldTypeId === 77 || // audio file
+    attributes[key].fieldTypeId === 78 || // audio url
+    (key.toLowerCase().includes('audio') &&
+      typeof attributeValues[key].value === 'string' &&
+      attributeValues[key].value.startsWith('http')); // looks like an audio url
+
   hasMedia = ({ attributeValues, attributes }) =>
     Object.keys(attributes).filter((key) =>
       this.attributeIsVideo({
+        key,
+        attributeValues,
+        attributes,
+      })
+    ).length ||
+    Object.keys(attributes).filter((key) =>
+      this.attributeIsAudio({
         key,
         attributeValues,
         attributes,
@@ -87,6 +101,24 @@ export default class ContentItem extends RockApolloDataSource {
       key,
       name: attributes[key].name,
       embedHtml: get(attributeValues, 'videoEmbed.value', null), // TODO: this assumes that the key `VideoEmebed` is always used on Rock
+      sources: attributeValues[key].value
+        ? [{ uri: attributeValues[key].value }]
+        : [],
+    }));
+  };
+
+  getAudios = ({ attributeValues, attributes }) => {
+    const audioKeys = Object.keys(attributes).filter((key) =>
+      this.attributeIsAudio({
+        key,
+        attributeValues,
+        attributes,
+      })
+    );
+    return audioKeys.map((key) => ({
+      __typename: 'AudioMedia',
+      key,
+      name: attributes[key].name,
       sources: attributeValues[key].value
         ? [{ uri: attributeValues[key].value }]
         : [],

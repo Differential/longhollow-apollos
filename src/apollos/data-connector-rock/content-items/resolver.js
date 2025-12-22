@@ -46,6 +46,9 @@ export const defaultContentItemResolvers = {
   videos: (root, args, { dataSources: { ContentItem } }) =>
     ContentItem.getVideos(root),
 
+  audios: (root, args, { dataSources: { ContentItem } }) =>
+    ContentItem.getAudios(root),
+
   coverImage: (root, args, { dataSources: { ContentItem } }) =>
     ContentItem.getCoverImage(root),
 

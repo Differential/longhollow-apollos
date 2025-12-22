@@ -25,6 +25,9 @@ export default {
   VideoNode: {
     __resolveType,
   },
+  AudioNode: {
+    __resolveType,
+  },
   ProgressNode: {
     __resolveType,
   },

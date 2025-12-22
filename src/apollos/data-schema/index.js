@@ -21,6 +21,10 @@ export const interfacesSchema = gql`
     videos: [VideoMedia]
   }
 
+  interface AudioNode {
+    audios: [AudioMedia]
+  }
+
   interface ContentParentNode {
     childContentItemsConnection(
       first: Int
@@ -56,6 +60,7 @@ export const interfacesSchema = gql`
       'ContentNode',
       'Card',
       'VideoNode',
+      'AudioNode',
       'ContentChildNode',
       'ContentParentNode',
       'ThemedNode',
@@ -239,6 +244,19 @@ export const mediaSchema = gql`
     embedHtml: String
   }
 
+  type AudioMedia implements Media {
+    name: String
+    key: String
+    # duration: Float
+    sources: [AudioMediaSource]
+  }
+
+  type AudioMediaSource implements MediaSource {
+    uri: String
+    # format: String
+    # size: String
+  }
+
   type ImageMediaSource implements MediaSource {
     uri: String
     # width: Int
@@ -254,6 +272,7 @@ export const mediaSchema = gql`
   enum MediaInputType {
     IMAGE
     VIDEO
+    AUDIO
   }
 `;
 
@@ -401,6 +420,7 @@ export const contentItemSchema = gql`
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
+    audios: [AudioMedia]
     htmlContent: String
     summary: String
     childContentItemsConnection(
@@ -424,6 +444,7 @@ export const contentItemSchema = gql`
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
+    audios: [AudioMedia]
     htmlContent: String
     summary: String
     childContentItemsConnection(
@@ -447,6 +468,7 @@ export const contentItemSchema = gql`
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
+    audios: [AudioMedia]
     htmlContent: String
     summary: String
     childContentItemsConnection(
@@ -472,6 +494,7 @@ export const contentItemSchema = gql`
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
+    audios: [AudioMedia]
     htmlContent: String
     summary: String
     childContentItemsConnection(
@@ -497,6 +520,7 @@ export const contentItemSchema = gql`
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
+    audios: [AudioMedia]
     htmlContent: String
     summary: String
     childContentItemsConnection(
@@ -523,6 +547,7 @@ export const contentItemSchema = gql`
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
+    audios: [AudioMedia]
     htmlContent: String
     summary: String
     childContentItemsConnection(
