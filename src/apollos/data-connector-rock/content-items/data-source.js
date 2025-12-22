@@ -80,6 +80,7 @@ export default class ContentItem extends RockApolloDataSource {
     );
     return imageKeys.map((key) => ({
       __typename: 'ImageMedia',
+      key,
       name: attributes[key].name,
       sources: attributeValues[key].value
         ? [{ uri: createImageUrlFromGuid(attributeValues[key].value) }]
@@ -97,6 +98,7 @@ export default class ContentItem extends RockApolloDataSource {
     );
     return videoKeys.map((key) => ({
       __typename: 'VideoMedia',
+      key,
       name: attributes[key].name,
       embedHtml: get(attributeValues, 'videoEmbed.value', null), // TODO: this assumes that the key `VideoEmebed` is always used on Rock
       sources: attributeValues[key].value
@@ -115,6 +117,7 @@ export default class ContentItem extends RockApolloDataSource {
     );
     return audioKeys.map((key) => ({
       __typename: 'AudioMedia',
+      key,
       name: attributes[key].name,
       sources: attributeValues[key].value
         ? [{ uri: attributeValues[key].value }]
