@@ -45,9 +45,6 @@ export default {
   ActionListAction: {
     id: ({ id }) => createGlobalId(id, 'ActionListAction'),
   },
-  ActionTableAction: {
-    id: ({ id }) => createGlobalId(id, 'ActionTableAction'),
-  },
   ScriptureFeature: {
     scriptures: (
       { reference, version },
@@ -68,9 +65,6 @@ export default {
   },
   ActionListFeature: {
     id: ({ id }) => createGlobalId(id, 'ActionListFeature'),
-  },
-  ActionTableFeature: {
-    id: ({ id }) => createGlobalId(id, 'ActionTableFeature'),
   },
   HeroListFeature: {
     id: ({ id }) => createGlobalId(id, 'HeroListFeature'),
