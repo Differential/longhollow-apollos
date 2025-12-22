@@ -222,7 +222,6 @@ export const deviceSchema = gql`
 export const mediaSchema = gql`
   interface Media {
     name: String
-    key: String
     sources: [MediaSource]
   }
 
@@ -232,13 +231,11 @@ export const mediaSchema = gql`
 
   type ImageMedia implements Media {
     name: String
-    key: String
     sources: [ImageMediaSource]
   }
 
   type VideoMedia implements Media {
     name: String
-    key: String
     sources: [VideoMediaSource]
     # duration: Float
     embedHtml: String
@@ -246,7 +243,6 @@ export const mediaSchema = gql`
 
   type AudioMedia implements Media {
     name: String
-    key: String
     # duration: Float
     sources: [AudioMediaSource]
   }
