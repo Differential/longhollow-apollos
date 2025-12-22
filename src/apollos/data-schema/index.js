@@ -1114,15 +1114,6 @@ export const commentSchema = gql`
     comments: [Comment] @cacheControl(maxAge: 10)
   }
 
-  type AddCommentFeature implements Feature & Node {
-    id: ID!
-    order: Int
-    relatedNode: Node!
-
-    addPrompt: String
-    initialPrompt: String
-  }
-
   enum CommentVisibility {
     PUBLIC
     PRIVATE

@@ -200,13 +200,6 @@ export default class ContentItem extends RockApolloDataSource {
       const nodeType = item.__type || this.resolveType(item);
       const flagLimit = get(ApollosConfig, 'APP.FLAG_LIMIT', 0);
       features.push(
-        Feature.createAddCommentFeature({
-          nodeId: id,
-          nodeType,
-          relatedNode: item,
-          initialPrompt: this.getAddCommentInitialPrompt(attributeValues),
-          addPrompt: this.getAddCommentAddPrompt(attributeValues),
-        }),
         Feature.createCommentListFeature({ nodeId: id, nodeType, flagLimit })
       );
       // If we have comments enabled on the item's parent.
@@ -230,17 +223,6 @@ export default class ContentItem extends RockApolloDataSource {
         const nodeType = item.__type || this.resolveType(item);
         const flagLimit = get(ApollosConfig, 'APP.FLAG_LIMIT', 0);
         features.push(
-          Feature.createAddCommentFeature({
-            nodeId: item.id,
-            nodeType,
-            relatedNode: item,
-            initialPrompt: this.getAddCommentInitialPrompt(
-              commentParent.attributeValues
-            ),
-            addPrompt: this.getAddCommentAddPrompt(
-              commentParent.attributeValues
-            ),
-          }),
           Feature.createCommentListFeature({
             nodeId: item.id,
             nodeType,
