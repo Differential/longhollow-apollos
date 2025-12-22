@@ -72,7 +72,7 @@ app.get('/forgot-password', (req, res) => {
 });
 
 applyServerMiddleware({ app, dataSources, context });
-setupJobs({ app, dataSources, context });
+setupJobs({ app, dataSources, context, schema, resolvers });
 // Comment out if you don't want the API serving apple-app-site-association or assetlinks manifests.
 setupUniversalLinks({ app });
 

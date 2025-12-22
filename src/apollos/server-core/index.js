@@ -199,6 +199,21 @@ export const createContext = (data) => ({ req = {} } = {}) => {
 
 export const createContextGetter = (serverConfig) => (data) => {
   const testContext = serverConfig.context(data);
+
+  if (serverConfig.schema) {
+    try {
+      if (typeof serverConfig.schema.getTypeMap === 'function') {
+        testContext.schema = serverConfig.schema;
+      } else if (serverConfig.resolvers) {
+        testContext.schema = makeExecutableSchema({
+          typeDefs: serverConfig.schema,
+          resolvers: serverConfig.resolvers,
+        });
+      }
+    } catch (e) {
+      logError(e);
+    }
+  }
   const testDataSources = serverConfig.dataSources();
 
   // Apollo Server does this internally.
@@ -230,14 +245,21 @@ export const createMiddleware = (data) => ({ app, context, dataSources }) => {
   return middlewares.forEach((middleware) => middleware({ app, getContext }));
 };
 
-export const createJobs = (data) => ({ app, context, dataSources }) => {
+export const createJobs =
+  (data) =>
+  ({ app, context, dataSources, schema, resolvers }) => {
   const jobs = compact(
     Object.values(
       mapValues({ ...builtInData, ...data }, safeGetWithWarning('jobs'))
     )
   );
 
-  const getContext = createContextGetter({ context, dataSources });
+  const getContext = createContextGetter({
+    context,
+    dataSources,
+    schema,
+    resolvers,
+  });
   const jobsPath = '/admin/queues';
 
   let queues = {

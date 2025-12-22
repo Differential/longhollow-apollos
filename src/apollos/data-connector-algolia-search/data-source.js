@@ -68,9 +68,9 @@ export default class Search {
     const { ContentItem } = this.context.dataSources;
     const type = await ContentItem.resolveType(item);
 
-    const { data } = await graphql(
-      this.context.schema,
-      `
+    const { data } = await graphql({
+      schema: this.context.schema,
+      source: `
 query getItem {
   node(id: "${createGlobalId(item.id, type)}") {
     ... on ContentItem {
@@ -84,9 +84,9 @@ query getItem {
     }
   }
 }`,
-      {},
-      this.context
-    );
+      rootValue: {},
+      contextValue: this.context,
+    });
     return data.node;
   }
 

@@ -8,6 +8,8 @@ import { graphql } from 'graphql';
 import Redis from 'ioredis';
 
 const { schema, resolver, dataSource: BaseSearch } = baseSearch;
+const logError = (...args) =>
+  process.stderr.write(`${args.join(' ')}\n`);
 
 const CATEGORIES = [
   'Sermons',
@@ -106,9 +108,9 @@ export class Search extends BaseSearch {
           dates,
         },
       },
-    } = await graphql(
-      this.context.schema,
-      `
+    } = await graphql({
+      schema: this.context.schema,
+      source: `
       {
         node(id: "${node.id}") {
           id
@@ -141,9 +143,9 @@ export class Search extends BaseSearch {
         }
       }
       `,
-      {},
-      this.context
-    );
+      rootValue: {},
+      contextValue: this.context,
+    });
     return {
       ...node,
       category: CATEGORIES.includes(parentChannel?.name)
@@ -186,9 +188,9 @@ export class Search extends BaseSearch {
               ministry,
             },
           },
-        } = await graphql(
-          this.context.schema,
-          `
+        } = await graphql({
+          schema: this.context.schema,
+          source: `
       {
         node(id: "${createGlobalId(person.id, 'Person')}") {
           id
@@ -204,9 +206,9 @@ export class Search extends BaseSearch {
         }
       }
       `,
-          {},
-          this.context
-        );
+          rootValue: {},
+          contextValue: this.context,
+        });
         // try to match how content items are indexed so the front end layout will be easier to conform
         return {
           objectID: id,
@@ -273,6 +275,21 @@ const createJobs = ({ getContext, queues, trigger = () => null }) => {
   FullIndexQueue.process(() => {
     const context = getContext();
     return context.dataSources.Search.indexAll();
+  });
+
+  FullIndexQueue.on('failed', (job, err) => {
+    logError(
+      '[algolia-full-index-queue] failed',
+      `job=${job?.id || 'unknown'}`,
+      err?.stack || err?.message || err
+    );
+  });
+
+  FullIndexQueue.on('error', (err) => {
+    logError(
+      '[algolia-full-index-queue] error',
+      err?.stack || err?.message || err
+    );
   });
 
   FullIndexQueue.add(null, { repeat: { cron: '15 3 * * *' }, attempts: 3 });
