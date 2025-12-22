@@ -15,6 +15,9 @@ export const resolver = {
   ImageMedia: {
     sources: addTypenameToSources('ImageMediaSource'),
   },
+  AudioMedia: {
+    sources: addTypenameToSources('AudioMediaSource'),
+  },
   VideoMedia: {
     sources: addTypenameToSources('VideoMediaSource'),
   },

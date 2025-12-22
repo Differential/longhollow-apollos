@@ -20,6 +20,7 @@ const schema = gql`
     publishDate: String
     images: [ImageMedia]
     videos: [VideoMedia]
+    audios: [AudioMedia]
     childContentItemsConnection(
       first: Int
       after: String
