@@ -915,25 +915,6 @@ export const featuresSchema = gql`
     primaryAction: FeatureAction
   }
 
-  # An item in an ActionBarFeature. Buttons with an icon and title.
-  type ActionBarAction {
-    id: ID!
-    icon: String
-    title: String
-    action: ACTION_FEATURE_ACTION
-    relatedNode: Node
-  }
-
-  # A list of actions, represented as a series of horizontal buttons with icons.
-  # Also has a title above the actions (which can exist by itself by omotting the actions)
-  type ActionBarFeature implements Feature & Node {
-    id: ID!
-    order: Int
-
-    title: String
-    actions: [ActionBarAction]
-  }
-
   type ActionTableAction {
     id: ID!
     title: String

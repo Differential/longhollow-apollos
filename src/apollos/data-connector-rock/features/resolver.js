@@ -45,9 +45,6 @@ export default {
   ActionListAction: {
     id: ({ id }) => createGlobalId(id, 'ActionListAction'),
   },
-  ActionBarAction: {
-    id: ({ id }) => createGlobalId(id, 'ActionBarAction'),
-  },
   ActionTableAction: {
     id: ({ id }) => createGlobalId(id, 'ActionTableAction'),
   },
@@ -71,9 +68,6 @@ export default {
   },
   ActionListFeature: {
     id: ({ id }) => createGlobalId(id, 'ActionListFeature'),
-  },
-  ActionBarFeature: {
-    id: ({ id }) => createGlobalId(id, 'ActionBarFeature'),
   },
   ActionTableFeature: {
     id: ({ id }) => createGlobalId(id, 'ActionTableFeature'),
