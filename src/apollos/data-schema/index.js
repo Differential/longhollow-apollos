@@ -868,7 +868,6 @@ export const passSchema = gql`
 export const featuresSchema = gql`
   interface Feature {
     id: ID!
-    order: Int # 0 is the "Main Content". If order is < 0 than this comes before the body content.
   }
 
   enum ACTION_FEATURE_ACTION {
@@ -907,7 +906,6 @@ export const featuresSchema = gql`
   # Has a button at the very bottom (primary action)
   type ActionListFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     title: String
     subtitle: String
@@ -919,7 +917,6 @@ export const featuresSchema = gql`
   # Also has a button at the very bottom.
   type HeroListFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     title: String
     subtitle: String
@@ -948,7 +945,6 @@ export const featuresSchema = gql`
   # A Vertical list of cards.
   type VerticalCardListFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     title: String
     subtitle: String
@@ -960,7 +956,6 @@ export const featuresSchema = gql`
   # Also has a button at the top right.
   type HorizontalCardListFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     title: String
     subtitle: String
@@ -970,7 +965,6 @@ export const featuresSchema = gql`
 
   type TextFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     title: String
     body: String
@@ -978,7 +972,6 @@ export const featuresSchema = gql`
 
   type ScriptureFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     title: String
     scriptures: [Scripture]
@@ -986,7 +979,6 @@ export const featuresSchema = gql`
 
   type WebviewFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     title: String
     linkText: String
@@ -995,7 +987,6 @@ export const featuresSchema = gql`
 
   type ButtonFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     action: FeatureAction
   }
@@ -1109,7 +1100,6 @@ export const commentSchema = gql`
 
   type CommentListFeature implements Feature & Node {
     id: ID!
-    order: Int
 
     comments: [Comment] @cacheControl(maxAge: 10)
   }
@@ -1163,7 +1153,6 @@ export const prayerSchema = gql`
 
   type PrayerListFeature implements Feature & Node {
     id: ID!
-    order: Int
     isCard: Boolean
     title: String
     subtitle: String
@@ -1172,7 +1161,6 @@ export const prayerSchema = gql`
 
   type VerticalPrayerListFeature implements Feature & Node {
     id: ID!
-    order: Int
     title: String
     subtitle: String
     prayers: [PrayerRequest]
