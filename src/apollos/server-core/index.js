@@ -267,7 +267,14 @@ export const createJobs =
       logOutput(
         `process.env.REDIS_URL is undefined. Working with job queues/bull is a no-op`
       );
-      return { process: () => ({}), add: () => ({}) };
+      return {
+        process: () => ({}),
+        add: () => ({}),
+        on: () => ({}),
+        getCompleted: async () => [],
+        isPaused: async () => false,
+        obliterate: async () => ({}),
+      };
     },
   };
   let bullBoardServer = null;
