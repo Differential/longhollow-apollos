@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['airbnb-base', 'prettier'],
-  plugins: ['import', 'jest'],
+  plugins: ['import'],
   rules: {
     'arrow-body-style': 0,
     camelcase: 0,
@@ -26,8 +26,6 @@ module.exports = {
     'no-use-before-define': 0,
     'prefer-promise-reject-errors': 0,
     'prefer-regex-literals': 0,
-    'react-native/no-unused-styles': 0,
-    'react/destructuring-assignment': 0,
     'global-require': 0,
     'import/no-cycle': 0,
     'function-paren-newline': 0,
@@ -54,6 +52,5 @@ module.exports = {
   ],
   env: {
     node: true,
-    'jest/globals': true,
   },
 };

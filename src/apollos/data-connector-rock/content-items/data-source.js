@@ -215,11 +215,6 @@ export default class ContentItem extends RockApolloDataSource {
             'True'
         )
       ) {
-        const commentParent = parents.find(
-          (p) =>
-            get(p, 'attributeValues.childrenHaveComments.value', 'False') ===
-            'True'
-        );
         const nodeType = item.__type || this.resolveType(item);
         const flagLimit = get(ApollosConfig, 'APP.FLAG_LIMIT', 0);
         features.push(

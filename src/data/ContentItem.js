@@ -543,7 +543,6 @@ class dataSource extends ContentItem.dataSource {
       )
       .first();
     if (!contentItemSlug) {
-      console.warn(`Slug "${slug}" does not exist or is expired.`);
       return null;
     }
 
