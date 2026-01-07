@@ -95,7 +95,7 @@ export default class RockApolloDataSource extends RESTDataSource {
     });
   }
 
-  async paginate({ cursor, args: { after, first = 20, orderBy } = {} }) {
+  async paginate({ cursor, args: { after, first = 30, orderBy } = {} }) {
     let skip = 0;
     if (after) {
       const parsed = parseCursor(after);
