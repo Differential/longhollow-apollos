@@ -10,6 +10,7 @@
     "dev": "NODE_ENV=development nodemon ./src/index.js",
     "start:prod": "NODE_ENV=production node ./src/index.js",
     "lint": "eslint ./src --ext .js",
+    "test": "node -e \"console.log('No tests specified')\"",
     "translate": "node ./scripts/translate.js",
     "schema:publish": "node ./scripts/print-schema.js | rover graph publish \"$APOLLO_GRAPH_REF\" --schema -"
   },
