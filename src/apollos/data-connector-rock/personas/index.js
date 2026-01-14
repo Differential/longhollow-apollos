@@ -19,9 +19,7 @@ class Persona extends RockApolloDataSource {
     // Rely on custom code without the plugin.
     // Use plugin, if the user has set USE_PLUGIN to true.
     // In general, you should ALWAYS use the plugin if possible.
-    const endpoint = get(ApollosConfig, 'ROCK.USE_PLUGIN', false)
-      ? 'Apollos/GetPersistedDataViewsForEntity'
-      : 'DataViews/GetPersistedDataViewsForEntity';
+    const endpoint =  'DataViews/GetPersistedDataViewsForEntity';
 
     // Return a list of all dataviews by GUID a user is a memeber
     return this.request(endpoint)
