@@ -51,6 +51,16 @@ export class RockLoggingExtension {
           calls,
         })
       );
+      Object.keys(calls || {}).forEach((callPath) => {
+        logOutput(
+          JSON.stringify({
+            type: 'rock_request_metrics_path',
+            queryName,
+            path: decodeURI(callPath),
+            count: calls[callPath],
+          })
+        );
+      });
       return;
     }
 
