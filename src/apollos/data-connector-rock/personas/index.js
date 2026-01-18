@@ -1,8 +1,4 @@
-import lodash from 'lodash';
-
 import RockApolloDataSource from '../../rock-apollo-data-source/index.js';
-import ApollosConfig from '../../config/index.js';
-const { get } = lodash;
 
 class Persona extends RockApolloDataSource {
   getPersonas = async ({ categoryId }) => {

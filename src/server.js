@@ -29,7 +29,9 @@ export { resolvers, schema, testSchema };
 const isDev =
   process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
-const extensions = isDev ? [() => new RockLoggingExtension()] : [];
+const enableRockMetrics =
+  isDev || process.env.ROCK_REQUEST_METRICS === 'true';
+const extensions = enableRockMetrics ? [() => new RockLoggingExtension()] : [];
 
 const cacheOptions = isDev
   ? {}
