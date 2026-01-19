@@ -39,10 +39,34 @@ export class RockLoggingExtension {
     const callTable = Object.keys(calls)
       .map((callPath) => `${decodeURI(callPath)}: ${calls[callPath]}`)
       .join('\n');
-    if (calls && data) {
-      // eslint-disable-next-line no-console
+    const queryName = data ? Object.keys(data)[0] : null;
+    const metricsEnabled = process.env.ROCK_REQUEST_METRICS === 'true';
+
+    if (metricsEnabled) {
       logOutput(
-        `While running query: ${Object.keys(data)[0]}
+        JSON.stringify({
+          type: 'rock_request_metrics',
+          queryName,
+          totalNetworkCalls,
+          calls,
+        })
+      );
+      Object.keys(calls || {}).forEach((callPath) => {
+        logOutput(
+          JSON.stringify({
+            type: 'rock_request_metrics_path',
+            queryName,
+            path: decodeURI(callPath),
+            count: calls[callPath],
+          })
+        );
+      });
+      return;
+    }
+
+    if (calls && data) {
+      logOutput(
+        `While running query: ${queryName}
       Total Network Calls: ${totalNetworkCalls}
       ${callTable}
       `
