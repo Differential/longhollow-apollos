@@ -6,6 +6,8 @@ import lodash from 'lodash';
 import { setupUniversalLinks } from './apollos/server-core/index.js';
 import { BugsnagPlugin } from './apollos/bugsnag/index.js';
 import util from 'util';
+import { ApolloServerPluginCacheControl } from 'apollo-server-core';
+
 const logError = (...args) => process.stderr.write(`${util.format(...args)}\n`);
 
 
@@ -36,11 +38,9 @@ const extensions = enableRockMetrics ? [() => new RockLoggingExtension()] : [];
 const cacheOptions = isDev
   ? {}
   : {
-      cacheControl: {
-        stripFormattedExtensions: false,
-        calculateHttpHeaders: true,
-        defaultMaxAge: 3600,
-      },
+      stripFormattedExtensions: false,
+      calculateHttpHeaders: true,
+      defaultMaxAge: 3600,
     };
 
 const { ROCK, APP } = ApollosConfig;
@@ -52,7 +52,7 @@ const apolloServer = new ApolloServer({
   context,
   introspection: true,
   extensions,
-  plugins: [new BugsnagPlugin()],
+  plugins: [new BugsnagPlugin(), ApolloServerPluginCacheControl(cacheOptions)],
   formatError: (error) => {
     logError(get(error, 'extensions.exception.stacktrace', []).join('\n'));
     return error;
@@ -63,7 +63,6 @@ const apolloServer = new ApolloServer({
     },
   },
   uploads: false,
-  ...cacheOptions,
 });
 
 const app = express();

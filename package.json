@@ -30,6 +30,7 @@
     "apollo-datasource-rest": "^0.6.4",
     "apollo-server": "^3.13.0",
     "apollo-server-caching": "^0.4.0",
+    "apollo-server-core": "^3.13.0",
     "apollo-server-env": "^2.3.0",
     "apollo-server-express": "^3.13.0",
     "awesome-phonenumber": "^2.4.2",
