@@ -11,7 +11,6 @@ import RequestBuilder from './request-builder.js';
 const { get, mapKeys, mapValues, camelCase } = lodash;
 
 export {
-  RockLoggingExtension,
   RockRequestMetricsPlugin,
   parseKeyValueAttribute,
 } from './utils.js';

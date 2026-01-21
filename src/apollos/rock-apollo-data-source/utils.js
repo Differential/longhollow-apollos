@@ -96,17 +96,3 @@ export const RockRequestMetricsPlugin = {
     };
   },
 };
-
-export class RockLoggingExtension {
-  // eslint-disable-next-line class-methods-use-this
-  willSendResponse({
-    context,
-    graphqlResponse: { data },
-  }) {
-    logRockRequestMetrics({
-      dataSources: context?.dataSources,
-      data,
-      context,
-    });
-  }
-}
