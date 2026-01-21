@@ -36,6 +36,23 @@ export default class ContentChannel extends RockApolloDataSource {
     return [...result, ...channels];
   };
 
-  getFromId = (id) =>
-    this.request().filter(`Id eq ${id}`).expand('ChildContentChannels').first();
+  getFromId = async (id) => {
+    const { Cache } = this.context.dataSources;
+    const cacheKey = `contentChannel:${id}`;
+    const cachedValue = await Cache.get({ key: cacheKey });
+    if (cachedValue) {
+      return cachedValue;
+    }
+
+    const channel = await this.request()
+      .filter(`Id eq ${id}`)
+      .expand('ChildContentChannels')
+      .first();
+
+    if (channel) {
+      Cache.set({ key: cacheKey, data: channel, expiresIn: 60 * 5 });
+    }
+
+    return channel;
+  };
 }

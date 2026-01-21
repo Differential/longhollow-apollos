@@ -423,7 +423,7 @@ export const contentItemSchema = gql`
       first: Int
       after: String
       orderBy: ContentItemsConnectionOrderInput
-    ): ContentItemsConnection
+    ): ContentItemsConnection @cacheControl(maxAge: 300)
     siblingContentItemsConnection(
       first: Int
       after: String

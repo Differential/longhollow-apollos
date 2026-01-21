@@ -104,7 +104,7 @@ const schema = gql`
 
   extend type Query {
     getMinistryContent(ministry: String!): [ContentItem]
-    getContentBySlug(slug: String!): ContentItem
+    getContentBySlug(slug: String!): ContentItem @cacheControl(maxAge: 300)
   }
 `;
 
@@ -531,6 +531,12 @@ class dataSource extends ContentItem.dataSource {
   }
 
   getBySlug = async (slug) => {
+    const { Cache } = this.context.dataSources;
+    const cacheKey = `contentItem:slug:${slug}`;
+    const cachedContentItemId = await Cache.get({ key: cacheKey });
+    if (cachedContentItemId != null) {
+      return this.getFromId(`${cachedContentItemId}`);
+    }
     const date = moment()
       .tz(ROCK.TIMEZONE)
       .format()
@@ -545,6 +551,12 @@ class dataSource extends ContentItem.dataSource {
     if (!contentItemSlug) {
       return null;
     }
+
+    Cache.set({
+      key: cacheKey,
+      data: contentItemSlug.contentChannelItemId,
+      expiresIn: 60 * 5,
+    });
 
     return this.getFromId(`${contentItemSlug.contentChannelItemId}`);
   };
@@ -597,7 +609,7 @@ class dataSource extends ContentItem.dataSource {
     this.request()
       .filter(`ContentChannelId eq ${id}`)
       .andFilter(this.LIVE_CONTENT())
-      .cache({ ttl: 60 })
+      .cache({ ttl: 300 })
       .orderBy()
       .sort([
         { field: 'Priority', direction: 'asc' },
