@@ -10,7 +10,11 @@ import { createCursor, parseCursor } from './cursor.js';
 import RequestBuilder from './request-builder.js';
 const { get, mapKeys, mapValues, camelCase } = lodash;
 
-export { RockLoggingExtension, parseKeyValueAttribute } from './utils.js';
+export {
+  RockLoggingExtension,
+  RockRequestMetricsPlugin,
+  parseKeyValueAttribute,
+} from './utils.js';
 
 const { ROCK } = ApollosConfig;
 
