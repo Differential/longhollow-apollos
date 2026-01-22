@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-express';
 import ApollosConfig from './apollos/config/index.js';
 import express from 'express';
-import { RockLoggingExtension } from './apollos/rock-apollo-data-source/index.js';
+import { RockRequestMetricsPlugin } from './apollos/rock-apollo-data-source/index.js';
 import lodash from 'lodash';
 import { setupUniversalLinks } from './apollos/server-core/index.js';
 import { BugsnagPlugin } from './apollos/bugsnag/index.js';
@@ -33,7 +33,7 @@ const isDev =
 
 const enableRockMetrics =
   isDev || process.env.ROCK_REQUEST_METRICS === 'true';
-const extensions = enableRockMetrics ? [() => new RockLoggingExtension()] : [];
+const rockMetricsPlugins = enableRockMetrics ? [RockRequestMetricsPlugin] : [];
 
 const cacheOptions = isDev
   ? {}
@@ -51,8 +51,11 @@ const apolloServer = new ApolloServer({
   dataSources,
   context,
   introspection: true,
-  extensions,
-  plugins: [new BugsnagPlugin(), ApolloServerPluginCacheControl(cacheOptions)],
+  plugins: [
+    new BugsnagPlugin(),
+    ApolloServerPluginCacheControl(cacheOptions),
+    ...rockMetricsPlugins,
+  ],
   formatError: (error) => {
     logError(get(error, 'extensions.exception.stacktrace', []).join('\n'));
     return error;

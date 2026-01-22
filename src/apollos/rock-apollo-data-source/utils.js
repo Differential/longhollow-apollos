@@ -15,62 +15,84 @@ export const parseKeyValueAttribute = (text = '') => {
   });
 };
 
-export class RockLoggingExtension {
-  // eslint-disable-next-line class-methods-use-this
-  willSendResponse({
-    context: { dataSources: respDataSources },
-    graphqlResponse: { data },
-  }) {
-    let totalNetworkCalls = 0;
-    const calls = {};
-    Object.values(respDataSources).forEach((ds) => {
-      if (ds.callCount) {
-        totalNetworkCalls += ds.callCount;
-      }
-      if (ds.calls) {
-        Object.keys(ds.calls).forEach((callPath) => {
-          if (!calls[callPath]) {
-            calls[callPath] = 0;
-          }
-          calls[callPath] += ds.calls[callPath];
-        });
-      }
-    });
-    const callTable = Object.keys(calls)
-      .map((callPath) => `${decodeURI(callPath)}: ${calls[callPath]}`)
-      .join('\n');
-    const queryName = data ? Object.keys(data)[0] : null;
-    const metricsEnabled = process.env.ROCK_REQUEST_METRICS === 'true';
+export const collectRockRequestMetrics = ({ dataSources = {}, data } = {}) => {
+  let totalNetworkCalls = 0;
+  const calls = {};
+  Object.values(dataSources || {}).forEach((ds) => {
+    if (ds.callCount) {
+      totalNetworkCalls += ds.callCount;
+    }
+    if (ds.calls) {
+      Object.keys(ds.calls).forEach((callPath) => {
+        if (!calls[callPath]) {
+          calls[callPath] = 0;
+        }
+        calls[callPath] += ds.calls[callPath];
+      });
+    }
+  });
+  const callTable = Object.keys(calls)
+    .map((callPath) => `${decodeURI(callPath)}: ${calls[callPath]}`)
+    .join('\n');
+  const queryName = data ? Object.keys(data)[0] : null;
 
-    if (metricsEnabled) {
+  return { totalNetworkCalls, calls, callTable, queryName };
+};
+
+export const logRockRequestMetrics = ({
+  dataSources,
+  data,
+  context,
+} = {}) => {
+  if (context && context.__rockMetricsLogged) return;
+  if (context) context.__rockMetricsLogged = true;
+
+  const { totalNetworkCalls, calls, callTable, queryName } =
+    collectRockRequestMetrics({ dataSources, data });
+  const metricsEnabled = process.env.ROCK_REQUEST_METRICS === 'true';
+
+  if (metricsEnabled) {
+    logOutput(
+      JSON.stringify({
+        type: 'rock_request_metrics',
+        queryName,
+        totalNetworkCalls,
+        calls,
+      })
+    );
+    Object.keys(calls || {}).forEach((callPath) => {
       logOutput(
         JSON.stringify({
-          type: 'rock_request_metrics',
+          type: 'rock_request_metrics_path',
           queryName,
-          totalNetworkCalls,
-          calls,
+          path: decodeURI(callPath),
+          count: calls[callPath],
         })
       );
-      Object.keys(calls || {}).forEach((callPath) => {
-        logOutput(
-          JSON.stringify({
-            type: 'rock_request_metrics_path',
-            queryName,
-            path: decodeURI(callPath),
-            count: calls[callPath],
-          })
-        );
-      });
-      return;
-    }
+    });
+    return;
+  }
 
-    if (calls && data) {
-      logOutput(
-        `While running query: ${queryName}
+  if (calls && data) {
+    logOutput(
+      `While running query: ${queryName}
       Total Network Calls: ${totalNetworkCalls}
       ${callTable}
       `
-      );
-    }
+    );
   }
-}
+};
+
+export const RockRequestMetricsPlugin = {
+  requestDidStart() {
+    return {
+      willSendResponse(requestContext) {
+        logRockRequestMetrics({
+          dataSources: requestContext.context?.dataSources,
+          data: requestContext.response?.data,
+          context: requestContext.context,
+        });
+      },
+    };
+  },
+};
