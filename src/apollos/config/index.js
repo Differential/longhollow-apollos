@@ -1,5 +1,5 @@
 import fs from 'fs';
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 import attachEnvVariables from './attach-env-variables.js';
 
 class Config {
@@ -28,7 +28,7 @@ class Config {
     } catch (e) {
       throw new Error(`${configPath} does not exist`);
     }
-    this._yml = yaml.safeLoad(file);
+    this._yml = file.trim() ? load(file) || {} : {};
     this.config = Object.assign(this.config, attachEnvVariables(this._yml));
     this.attachConfigToClass(this.config);
     return this;
